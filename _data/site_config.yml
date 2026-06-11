@@ -98,7 +98,7 @@ frontpage_goals_grid:
   title: frontpage.heading_short
   description: frontpage.instructions_shorter
 frontpage_introduction_banner:
-goal_image_base: 'https://eustat-des.github.io/site/assets/img/goals'
+goal_image_base: 'https://eustat-pre.github.io/site/assets/img/goals'
 goal_image_extension: ''
 goals_page:
   title: general.goals
@@ -284,7 +284,7 @@ progress_status:
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
-remote_data_prefix: 'https://eustat-des.github.io/data/'
+remote_data_prefix: 'https://eustat-pre.github.io/data/'
 reporting_status:
   title: status.reporting_status
   description: status.description
@@ -299,8 +299,8 @@ reporting_status:
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
-repository_url_data: 'https://github.com/EUSTAT-DES/data'
-repository_url_site: 'https://github.com/EUSTAT-DES/site'
+repository_url_data: 'https://github.com/EUSTAT-PRE/data'
+repository_url_site: 'https://github.com/EUSTAT-PRE/site'
 search_index_boost: []
 search_index_extra_fields: []
 site_config_form:
