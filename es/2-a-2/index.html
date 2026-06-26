@@ -145,7 +145,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260626072203">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260626104145">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -629,13 +629,13 @@ data-event-label="high"
             
                 
                     <div class="progress-status-label">
-                        Datos no disponibles
+                        Estancamiento o retroceso
                     </div>
                 
             
             
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/notstarted.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/retroceso.png" alt="Estancamiento o retroceso" />
                 </div>
             
         </div>
@@ -647,6 +647,13 @@ data-event-label="high"
 
 
   
+
+<div class="row" id="page-content">
+  <div class="col-xs-12">
+    <p><b>Dirección deseada:</b> Ascenso</p>
+
+  </div>
+</div>
 
 
   
@@ -662,7 +669,7 @@ data-event-label="high"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
-  data-showdata="false"
+  data-showdata="true"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -674,14 +681,536 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Valor&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Serie&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Millones de euros&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unidad&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Valor&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
   data-proxy=""
   data-proxyseries="null"
 >
   
-  <div id="indicator-main" class="indicator-main col-md-12">
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-unit-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-series-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    <div id="serieses"></div>
+<div id="units"></div>
+<div id="toolbar">
+  <span id="series-help">
+    <h4>Subcategorías</h4>
+    <p>Elija categorías de las listas desplegables a continuación para ver diferentes desgloses de los datos. Algunos no estarán disponibles hasta que se elija un nivel superior.</p>
+  </span>
+  <div id="fields">
+    <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+  </div>
+</div>
+
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    
+
+
+
+
+<div id="headlineTable">
+
+  <div id="datatables">
+
+    
+    <a role="button" href="https://eustat-pre.github.io/data/es/headline/2-a-2.csv" class="btn btn-primary btn-download" download="indicator_2-a-2.csv" tabindex="0" role="button">Descargar los datos de los titulares (.csv)</a>
+    
+    <a role="button" href="https://eustat-pre.github.io/data/es/data/2-a-2.csv" class="btn btn-primary btn-download" download='indicator_2-a-2.csv' tabindex='0' role='button'>Descargar datos de origen (.csv)</a>
+
+    <p class="no-js-disaggregation-hint">Descargar los datos de origen para los desgloses (.csv)</p>
+
+    
+    <h3>Datos principales</h3>
+    <table class="table-responsive table table-hover dataTable no-footer" role="grid">
+      <caption>Total de corrientes oficiales de recursos (asistencia oficial para el desarrollo más otras corrientes oficiales) destinado al sector agrícola</caption>
+      <thead>
+        
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col">Units</th>
+        
+        
+        
+        <th scope="col" class="table-value">Series</th>
+        
+        
+      </thead>
+      <tbody>
+        
+        <tr>
+          
+          
+          <td>2014</td>
+          
+          
+          
+          <td>6.71</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2015</td>
+          
+          
+          
+          <td>5.61</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2016</td>
+          
+          
+          
+          <td>7.37</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2017</td>
+          
+          
+          
+          <td>6.58</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2018</td>
+          
+          
+          
+          <td>3.69</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2019</td>
+          
+          
+          
+          <td>2.72</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>3.49</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2021</td>
+          
+          
+          
+          <td>5.28</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2022</td>
+          
+          
+          
+          <td>5.56</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2023</td>
+          
+          
+          
+          <td>5.94</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2024</td>
+          
+          
+          
+          <td>5.39</td>
+          
+          
+          
+          <td>Millones de euros</td>
+          
+          
+          
+          <td class="table-value">Asistencia oficial para el desarollo destinada a la agricultura (desembolso bruto total)</td>
+          
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+
+  
+  <div id="datatableFooter">
+    
+    
+    <p>Área geográfica: </p>
+    
+    
+    <p>Unidad de medida: </p>
+    
+    
+    <p>Nota: </p>
+    
+  </div>
+  
+
+</div>
+
+
+<section>
+
+  <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    <div style="display: none;">
+    <span id="table-alternative">Para la alternativa de datos en forma de tabla, véase la pestaña Tabla.</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link active"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Chart tab"
+
+        
+      >Gráfico</button>
+    </li>
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link "
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Table tab"
+
+        
+      >Tabla</button>
+    </li>
+    
+  </ul>
+  
+    <div class="tab-content data-view">
+    
+      
+        <div role="tabpanel" class="tab-pane active" id="chartview">
+          
+
+    <div id="dataset-size-warning" style="display:none" role="alert">
+      <i class="fa fa-bolt"><span class="sr-only">Advertencia:</span></i>
+      Hay demasiados conjuntos de datos para mostrar en el gráfico. No todo se mostrará hasta que elimine algunas selecciones.
+    </div>
+
+    
+    <div id="selectionsChart">
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">
+            Total de corrientes oficiales de recursos (asistencia oficial para el desarrollo más otras corrientes oficiales) destinado al sector agrícola
+          </h4>
+          <div id="chart" class="plot-container">
+            <canvas
+    role="img"
+    aria-labelledby="chart-heading"
+    aria-describedby="table-alternative chart-annotations"
+    tabindex="0"
+ ></canvas>
+
+          </div>
+          <div id="plotLegend"></div>
+          
+
+
+
+<div id="selectionChartFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unidad de medida:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Nota:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Fecha última actualización datos:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+        </div>
+      </figure>
+      <div id="chartSelectionDownload" class="clearfix">
+        <button
+          id="btnSave"
+          title="Descargar la imagen del gráfico como PNG"
+          aria-label="Descargar la imagen del gráfico como PNG"
+          class='btn btn-primary btn-download'>
+          Descargar la imagen del gráfico (.png)
+        </button><!--
+   --></div>
+    </div>
+
+
+
+        </div>
+      
+    
+      
+        <div role="tabpanel" class="tab-pane " id="tableview">
+          <div style="display: none;">
+            <span id="column-sort-info">Pulse para ordenar por esta columna</span>
+          </div>
+          <div id="selectionsTable"></div>
+<dl id="tableTargetLines" class="clearfix"></dl>
+
+
+
+
+<div id="selectionTableFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unidad de medida:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Nota:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Fecha última actualización datos:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+<div id="tableSelectionDownload" class="clearfix"></div>
+
+        </div>
+      
+    
+  </div>
+  
+
+  </div>
+
+</section>
+
   
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
@@ -784,7 +1313,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Indicador disponible </th>
         <td>
           
-            <p>La CA de Euskadi no elabora estadísticas oficiales continuas con la metodología del indicador</p>
+            <p>Asistencia oficial al desarollo destinada a la agricultura (desembolso bruto total)</p>
 
           
         </td>
@@ -810,6 +1339,43 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
+      
+      <tr>
+        <th scope="row">Definición del indicador </th>
+        <td>
+          
+            <p>Ayuda Oficial al Desarrollo de la Administración Autonómica y Local de la CAPV  destinada al sector de la agricultura (desembolso bruto total)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Fórmula teórica </th>
+        <td>
+          
+            
+\[AOD_{agricultura}^{t}\]
+
+<p>donde:</p>
+
+<p>$AOD_{agricultura}^{t} $= Cantidad de Ayuda Oficial al Desarrollo destinada a la agricultura en el año $t$</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
         
           
       
@@ -820,18 +1386,20 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
-        
+      
+      <tr>
+        <th scope="row">Observaciones </th>
+        <td>
           
-      
-      
-      
-        
+            
+<p>El sector agrícola comprende todos los códigos sectoriales de la serie 311 del Creditor Reporting System (CRS) de la OCDE.</p>
+
           
-      
-      
-      
+        </td>
+        </tr>
         
-          
+      
+  
       
       
       
@@ -844,11 +1412,6 @@ data-event-label="Change to indicator.global_metadata tab"
   
   
   
-      
-      
-      
-        
-          
       
       
       
@@ -904,10 +1467,25 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       <tr>
+        <th scope="row">Fecha última actualización datos </th>
+        <td>
+          
+            26/06/2026
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+      
+      <tr>
         <th scope="row">Fecha última actualización metadatos </th>
         <td>
           
-            10/10/2025
+            26/06/2026
           
         </td>
         </tr>
@@ -930,10 +1508,70 @@ data-event-label="Change to indicator.global_metadata tab"
         <div role="tabpanel" class="tab-pane " id="sources_alt">
             <article>
                 
-
                 
 
-    
+
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        
+        <h4 class="sr-only">Fuente 1</h4>
+        
+        
+        <table class="table indicator-source-table">
+            
+            
+            
+            <tr>
+                <td colspan="2"><img alt="Agencia Vasca de Cooperación y Solidaridad" src="/site/assets/img/fuentes/Elankidetza.png" /></td>
+            </tr>
+            
+            
+            
+            <tr>
+                <th scope="row">Organización</th>
+                <td>Agencia Vasca de Cooperación y Solidaridad</td>
+            </tr>
+            
+            
+            
+            <tr>
+                <th scope="row">Periodicidad</th>
+                <td>Anual</td>
+            </tr>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <tr>
+                <th scope="row">Enlace a la fuente de datos</th>
+                
+                <td><a href="https://euskalankidetza.hegoa.ehu.eus/es/site" target="_blank" rel="noopener">Portal de la cooperación pública vasca</a></td>
+                
+            </tr>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </table>
+    </div>
+
+</div>
 
             </article>
         </div>
@@ -1229,7 +1867,7 @@ donantes proporcionan a los países en desarrollo para la agricultura.</p>
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260626072203'></script>
+<script src='/site/assets/js/sdg.js?v=20260626104145'></script>
 
 
 <script>
@@ -1249,7 +1887,7 @@ donantes proporcionan a los países en desarrollo para la agricultura.</p>
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260626072203"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260626104145"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
