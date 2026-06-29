@@ -145,7 +145,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260626104145">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260629060429">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -308,13 +308,13 @@ layout-indicator-iframe
             
                 
                     <div class="progress-status-label">
-                        Ez dago daturik eskuragarri
+                        Geldialdia edo atzerakada
                     </div>
                 
             
             
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/notstarted.png" alt="Ez dago daturik eskuragarri" />
+                    <img src="/site/assets/img/progress/retroceso.png" alt="Geldialdia edo atzerakada" />
                 </div>
             
         </div>
@@ -326,6 +326,13 @@ layout-indicator-iframe
 
 
   
+
+<div class="row" id="page-content">
+  <div class="col-xs-12">
+    <p><b>Nahi den norabidea:</b> Igoera</p>
+
+  </div>
+</div>
 
 
   
@@ -341,7 +348,7 @@ layout-indicator-iframe
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
-  data-showdata="false"
+  data-showdata="true"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -360,7 +367,269 @@ layout-indicator-iframe
   data-proxyseries="null"
 >
   
-  <div id="indicator-main" class="indicator-main col-md-12">
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-unit-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-series-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    <div id="serieses"></div>
+<div id="units"></div>
+<div id="toolbar">
+  <span id="series-help">
+    <h4>Azpikategoriak</h4>
+    <p>Datuen desagregazioak ikusteko, aukeratu jarraian goitibeherako zerrenden kategoriak. Batzuk ez dira erabilgarri egongo goragoko mailan kategoriaren bat aukeratu arte.</p>
+  </span>
+  <div id="fields">
+    <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+  </div>
+</div>
+
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    
+
+
+
+
+<div id="headlineTable">
+
+  <div id="datatables">
+
+    
+    <a role="button" href="https://eustat-pre.github.io/data/eu/data/3-b-2.csv" class="btn btn-primary btn-download" download='indicator_3-b-2.csv' tabindex='0' role='button'>Jatorrizko datuak deskargatu (.csv)</a>
+
+    <p class="no-js-disaggregation-hint">Deskargatu desagregazioen jatorrizko datuak (.csv)</p>
+
+    
+    <h3>Ez dago datu nagusirik</h3>
+    
+  </div>
+
+  
+
+</div>
+
+
+<section>
+
+  <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    <div style="display: none;">
+    <span id="table-alternative">Datuak taula forman ikusteko, joan Taula erlaitzera.</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link active"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Chart tab"
+
+        
+      >Grafikoa</button>
+    </li>
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link "
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Table tab"
+
+        
+      >Taula</button>
+    </li>
+    
+  </ul>
+  
+    <div class="tab-content data-view">
+    
+      
+        <div role="tabpanel" class="tab-pane active" id="chartview">
+          
+
+    <div id="dataset-size-warning" style="display:none" role="alert">
+      <i class="fa fa-bolt"><span class="sr-only">Abisua:</span></i>
+      Datu gehiegi daude grafikoan erakusteko. Dena ez da erakutsiko aukeraketa batzuk kendu arte.
+    </div>
+
+    
+    <div id="selectionsChart">
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">
+            Ikerketa medikoaren eta oinarrizko osasun-arretaren sektoreetarako garapenerako laguntza ofizialaren guztizko garbia
+          </h4>
+          <div id="chart" class="plot-container">
+            <canvas
+    role="img"
+    aria-labelledby="chart-heading"
+    aria-describedby="table-alternative chart-annotations"
+    tabindex="0"
+ ></canvas>
+
+          </div>
+          <div id="plotLegend"></div>
+          
+
+
+
+<div id="selectionChartFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unitatea:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Oharra:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Datuen azken eguneratze-data:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+        </div>
+      </figure>
+      <div id="chartSelectionDownload" class="clearfix">
+        <button
+          id="btnSave"
+          title="Deskargatu grafikoaren irudia PNG gisa"
+          aria-label="Deskargatu grafikoaren irudia PNG gisa"
+          class='btn btn-primary btn-download'>
+          Deskargatu grafikoaren irudia (.png)
+        </button><!--
+   --></div>
+    </div>
+
+
+
+        </div>
+      
+    
+      
+        <div role="tabpanel" class="tab-pane " id="tableview">
+          <div style="display: none;">
+            <span id="column-sort-info">Sakatu zutabe honen bidez ordenatzeko</span>
+          </div>
+          <div id="selectionsTable"></div>
+<dl id="tableTargetLines" class="clearfix"></dl>
+
+
+
+
+<div id="selectionTableFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unitatea:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Oharra:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Datuen azken eguneratze-data:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+<div id="tableSelectionDownload" class="clearfix"></div>
+
+        </div>
+      
+    
+  </div>
+  
+
+  </div>
+
+</section>
+
   
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
@@ -459,7 +728,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Eskuragarri dagoen adierazlea </th>
         <td>
           
-            <p>Euskal AEk ez du estatistika jarraitu eta ofizialik egiten adierazlearen metodologiarekin</p>
+            <p>Osasun-ikerketara eta oinarrizko osasun-arretara bideratutako Garapenerako Laguntza Ofiziala</p>
 
           
         </td>
@@ -485,6 +754,44 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
+      
+      <tr>
+        <th scope="row">Definizioa </th>
+        <td>
+          
+            <p>EAEko administrazio autonomikoaren eta toki administrazioen Garapenerako  Laguntza Ofiziala, osasun-ikerketara eta oinarrizko osasun-arretara  bideratutakoa (guztizko ordainketa gordina)</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Formula teorikoa </th>
+        <td>
+          
+            
+\[GLO_{osasuna}^{t}\]
+
+<p>non:</p>
+
+<p>$GLO_{osasuna}^{t} $= osasun-ikerketara eta oinarrizko osasun-arretara bideratutako Garapenerako 
+Laguntza Ofizialaren kopurua $t$ urtean</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+      
+      
+      
         
           
       
@@ -495,18 +802,21 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
-        
+      
+      <tr>
+        <th scope="row">Oharra </th>
+        <td>
           
-      
-      
-      
-        
+            
+<p>Ikerketa medikoa ELGEren Creditor Reporting System (CRS) delakoaren 12182 sektoreko kodeari dagokio, 
+eta oinarrizko osasunak 122 serieko kode guztiak hartzen ditu.</p>
+
           
-      
-      
-      
+        </td>
+        </tr>
         
-          
+      
+  
       
       
       
@@ -582,7 +892,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Metadatuen azken eguneratze-data </th>
         <td>
           
-            2025/06/18
+            2026/06/26
           
         </td>
         </tr>
@@ -605,10 +915,70 @@ data-event-label="Change to indicator.global_metadata tab"
         <div role="tabpanel" class="tab-pane " id="sources_alt">
             <article>
                 
-
                 
 
-    
+
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        
+        <h4 class="sr-only">Iturria 1</h4>
+        
+        
+        <table class="table indicator-source-table">
+            
+            
+            
+            <tr>
+                <td colspan="2"><img alt="Lankidetzarako eta Elkartasunerako Euskal Agentzia" src="/site/assets/img/fuentes/Elankidetza.png" /></td>
+            </tr>
+            
+            
+            
+            <tr>
+                <th scope="row">Erakundea</th>
+                <td>Lankidetzarako eta Elkartasunerako Euskal Agentzia</td>
+            </tr>
+            
+            
+            
+            <tr>
+                <th scope="row">Aldizkakotasuna</th>
+                <td>Urtekoa</td>
+            </tr>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <tr>
+                <th scope="row">Datu-iturrirako esteka</th>
+                
+                <td><a href="https://euskalankidetza.hegoa.ehu.eus/?locale=eu" target="_blank" rel="noopener">Euskal lankidetza publikoaren ataria</a></td>
+                
+            </tr>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </table>
+    </div>
+
+</div>
 
             </article>
         </div>
@@ -767,7 +1137,7 @@ emaileek garapen-bidean dauden herrialdeei ematen dieten ahalegin publikoa ikerk
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260626104145'></script>
+<script src='/site/assets/js/sdg.js?v=20260629060429'></script>
 
 
 <script>
@@ -787,7 +1157,7 @@ emaileek garapen-bidean dauden herrialdeei ematen dieten ahalegin publikoa ikerk
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260626104145"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260629060429"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
