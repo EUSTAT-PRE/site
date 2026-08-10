@@ -2850,14 +2850,15 @@ header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 0.5rem; }
+  padding-left: 0.5rem;
+  height: 50px; }
 
 .header .logo-header {
   display: flex;
   align-items: center; }
 
 .header .logo-header img {
-  width: 9em; }
+  height: 50px; }
 
 .header #euskadieus-logo {
   width: 9em; }
