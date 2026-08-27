@@ -140,7 +140,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260827082245">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260827102729">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -649,7 +649,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('definicion', "Diru-sarrera baliokidea pobreziaren nazioarteko atalasea baino txikiagoa duten pertsonen proportzioa. Muga hori  AEBetako 2,15 dolarretan dago ezarrita, 2017ko erosteko ahalmenaren parekotasunean.  ");
+        var currentValue = normalizeCurrentValue('definicion', "Diru-sarrera baliokidea pobreziaren nazioarteko atalasea baino txikiagoa duten pertsonen proportzioa. Muga hori  AEBetako 3 dolarretan dago ezarrita, 2021eko erosteko ahalmenaren parekotasunean.  ");
         var propertyEditor = editor.getEditor('root.definicion');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -663,7 +663,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('formula', "\n$$PP_{UIP}^{t} = \\frac{P_{UIP}^{t}}{P^{t}} \\cdot 100$$\n\nnon:\n\n$P_{UIP}^{t} =$ pobreziaren nazioarteko atalasea (2,15 dolar/eguneko) baino diru-sarrera baliokide \ntxikiagoa duten biztanleak, $t$ urtean\n\n$P^{t} =$ biztanleria $t$ urtean\n");
+        var currentValue = normalizeCurrentValue('formula', "\n$$PP_{UIP}^{t} = \\frac{P_{UIP}^{t}}{P^{t}} \\cdot 100$$\n\nnon:\n\n$P_{UIP}^{t} =$ pobreziaren nazioarteko atalasea (3 dolar/eguneko) baino diru-sarrera baliokide \ntxikiagoa duten biztanleak, $t$ urtean\n\n$P^{t} =$ biztanleria $t$ urtean\n");
         var propertyEditor = editor.getEditor('root.formula');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -711,7 +711,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('justificacion_global', "Pobrezia-lerroak aldatu egiten dira herrialdeen erosahalmenaren arabera, eta gradiente ekonomiko \nesanguratsua dute. Hori dela eta, herrialde aberatsenek bizi-estandar altuagoak ezarri ohi dituzte \npobrezia zehazteko. \n\nHala ere, pobrezia absolutu globala kontsumoaren arabera neurtu nahi bada, beharrezkoa da oinarrizko \nondasunen gainean erosahalmen berdina duten bi pertsona berdin tratatzea –biak pobreak edo biak ez-pobreak–, \nbaita herrialde desberdinetan bizi badira ere. \n\nMundu Mailako Garapenari buruzko 1990eko Txostena egin zenetik, Munduko Bankuak estandar komun bat ezarri \nnahi izan du muturreko pobrezia neurtzeko, pobreziak munduko herrialde pobreenetan zer esan nahi duen \noinarri hartuta. Herrialde desberdinetan bizi diren pertsonen ongizatea eskala komun batean neur daiteke, \nmoneten erosahalmenean dauden aldeak doituz. \n\nNormalean erabiltzen den estandarra eguneko dolar 1ekoa da, 1985eko nazioarteko prezioen arabera neurtua \neta tokiko dibisara egokitua, erosahalmenaren paritatearen (EAP) aldaketa-tasak erabiliz. Estandar hori \nMundu Mailako Garapenari buruzko 1990eko Txostenerako aukeratu zen, garai hartan diru-sarrera baxuko \nherrialdeetako pobrezia-lerroetan ohikoa zelako. Mundu-mailan bizitzaren kostuan dauden aldeak aldatu \nahala, nazioarteko pobrezia-lerroa eguneratu egin behar da, EAP prezioen datu berriak erabilita, aldaketa \nhoriek islatzek aldera. Azken aldaketa 2022ko irailean izan zen. Munduko Bankuak 2,15 dolar ezarri zituen \nnazioarteko pobrezia-lerro gisa, 2017ko EAP baliatuta.  \n\n\nIturria: Nazio Batuen Estatistika Sekzioa\n");
+        var currentValue = normalizeCurrentValue('justificacion_global', "Pobrezia-lerroak aldatu egiten dira herrialdeen erosahalmenaren arabera, eta gradiente ekonomiko \nesanguratsua dute. Hori dela eta, herrialde aberatsenek bizi-estandar altuagoak ezarri ohi dituzte \npobrezia zehazteko. \n\nHala ere, pobrezia absolutu globala kontsumoaren arabera neurtu nahi bada, beharrezkoa da oinarrizko \nondasunen gainean erosahalmen berdina duten bi pertsona berdin tratatzea –biak pobreak edo biak ez-pobreak–, \nbaita herrialde desberdinetan bizi badira ere. \n\nMundu Mailako Garapenari buruzko 1990eko Txostena egin zenetik, Munduko Bankuak estandar komun bat ezarri \nnahi izan du muturreko pobrezia neurtzeko, pobreziak munduko herrialde pobreenetan zer esan nahi duen \noinarri hartuta. Herrialde desberdinetan bizi diren pertsonen ongizatea eskala komun batean neur daiteke, \nmoneten erosahalmenean dauden aldeak doituz. \n\nNormalean erabiltzen den estandarra eguneko dolar 1ekoa da, 1985eko nazioarteko prezioen arabera neurtua \neta tokiko dibisara egokitua, erosahalmenaren paritatearen (EAP) aldaketa-tasak erabiliz. Estandar hori \nMundu Mailako Garapenari buruzko 1990eko Txostenerako aukeratu zen, garai hartan diru-sarrera baxuko \nherrialdeetako pobrezia-lerroetan ohikoa zelako. Mundu-mailan bizitzaren kostuan dauden aldeak aldatu \nahala, nazioarteko pobrezia-lerroa eguneratu egin behar da, EAP prezioen datu berriak erabilita, aldaketa \nhoriek islatzek aldera. Azken aldaketa 2025eko ekainean izan zen. Munduko Bankuak 3 dolar ezarri zituen \nnazioarteko pobrezia-lerro gisa, 2021eko EAP baliatuta.  \n\n\nIturria: Nazio Batuen Estatistika Sekzioa\n");
         var propertyEditor = editor.getEditor('root.justificacion_global');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -805,7 +805,7 @@ data-event-label="high"
 
     
       try {
-        var currentValue = normalizeCurrentValue('national_metadata_updated_date', "2025-06-18");
+        var currentValue = normalizeCurrentValue('national_metadata_updated_date', "2026-08-27");
         var propertyEditor = editor.getEditor('root.national_metadata_updated_date');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -1025,7 +1025,7 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260827082245'></script>
+<script src='/site/assets/js/sdg.js?v=20260827102729'></script>
 
 
 <script>
@@ -1045,7 +1045,7 @@ data-event-label="high"
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260827082245"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260827102729"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
