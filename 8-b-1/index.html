@@ -145,7 +145,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907080617">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907122435">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -665,7 +665,7 @@ data-event-label="high"
   data-indicatorid='indicator_8-b-1'
   data-id="8-b-1"
   data-country="Guztira"
-  data-charttitle="Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua"
+  data-charttitle="Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila eta administrazio publiko autonomikoek enplegua sustatzeko egindako gastua"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
@@ -725,7 +725,7 @@ data-event-label="high"
     
     <h3>Datu nagusiak</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua</caption>
+      <caption>Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila eta administrazio publiko autonomikoek enplegua sustatzeko egindako gastua</caption>
       <thead>
         
         
@@ -1408,7 +1408,7 @@ data-event-label="Change to Table tab"
       <figure role="group">
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">
-            Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua
+            Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila eta administrazio publiko autonomikoek enplegua sustatzeko egindako gastua
           </h4>
           <div id="chart" class="plot-container">
             <canvas
@@ -1653,7 +1653,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Eskuragarri dagoen adierazlea </th>
         <td>
           
-            <p>Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua</p>
+            <p>Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila eta administrazio publiko autonomikoek enplegua sustatzeko egindako gastua</p>
 
           
         </td>
@@ -1706,8 +1706,20 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Definizioa </th>
         <td>
           
-            <p>Administrazio autonomikoak enplegua sustatzeko egiten duen gastuaren proportzioa (autonomia erkidegoetako 
-aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika)</p>
+            
+<p>Eskuragarri dauden serieak:</p>
+
+<p><b> - Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila:</b>
+Lanaren Nazioarteko Erakundeak ezarritako irizpideen arabera, gazteen enplegua sustatzeko estrategia publikoen ezarpenari dagokion puntuazioa (0 eta 3 artekoa)</p>
+
+<p><b> - Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua:</b>
+Administrazio autonomikoak enplegua sustatzeko egindako gastua (aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika)</p>
+
+<p><b> - Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua, gastu guztiarekiko:</b>
+Administrazio autonomikoak enplegua sustatzeko egindako gastuaren proportzioa (aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren</p>
+<ol>
+  <li>gastu-politika)</li>
+</ol>
 
           
         </td>
@@ -1724,7 +1736,29 @@ aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika
         <td>
           
             
-\[G_{enplegu\, sustapena}^{t} = \frac{G_{enplegu\, sustapena}^{t}}{G^{t}} \cdot 100\]
+<p><b> Gazteen enplegua sustatzeko estrategia publikoen ezarpen maila</b></p>
+
+\[GEE^{t}\]
+
+<p>non:</p>
+
+<p>$GEE^{t} =$ Lanaren Nazioarteko Erakundearen irizpideen arabera lortutako puntuazioa $t$ urtean</p>
+
+<p><br /></p>
+
+<p><b> Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua</b></p>
+
+\[G_{enplegu\, sustapena}^{t}\]
+
+<p>non:</p>
+
+<p>$G_{enplegu\, sustapena}^{t} =$ autonomia erkidegoko aurrekontu bateratuen likidazioan enplegua sustatzeko gastua (sailkapen funtzionalaren 24. gastu-politika) $t$ urtean</p>
+
+<p><br /></p>
+
+<p><b> Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua, gastu guztiarekiko</b></p>
+
+\[PG_{enplegu\, sustapena}^{t} = \frac{G_{enplegu\, sustapena}^{t}}{G^{t}} \cdot 100\]
 
 <p>non:</p>
 
@@ -1768,7 +1802,18 @@ aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika
         <td>
           
             
-<p>Autonomia erkidegoetako aurrekontu-likidazioen datu bateratuak araztuta hartzen dira tokiko finantza-bitartekaritzatik  eta NPEtik (nekazaritza-politika erkidea)</p>
+<p>Lanaren Nazioarteko Erakundeak ezarritako irizpideen araberako puntuazioen deskribapena:</p>
+
+<ul>
+  <li>Daturik ez: Ez dago behar adina informazio gazte enplegurako estrategiarik dagoen ebaluatzeko</li>
+  <li>0: Herrialdeak ez du gazteen enplegurako inolako estrategia nazionalik garatu, eta ez du neurririk hartu estrategia hori garatu edo martxan jartzeko</li>
+  <li>1: Herrialdea gazteentzako estrategia nazionala garatzeko prozesuan dago</li>
+  <li>2: Herrialdeak gazte enplegurako estrategia nazionala garatu eta onartu du</li>
+  <li>3: Herrialdeak gazteen enplegurako estrategia nazionala martxan jarri du</li>
+</ul>
+
+<p>Autonomia erkidegoetako aurrekontu-likidazioen datu bateratuak araztuta hartzen dira tokiko finantza-bitartekaritzatik 
+eta NPEtik (nekazaritza-politika erkidea)</p>
 
           
         </td>
@@ -1785,7 +1830,8 @@ aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika
         <td>
           
             <img src="/site/assets/img/oceca/ocecas_image.png" style="width: 200px; float: left; margin-right: 10px;" alt="Logo OCECAS">
-            <p>Autonomia-erkidegoetako estatistika-organo zentralen arteko metodologia harmonizatua erabiliz kalkulatutako adierazlea</p>
+            
+<p>“Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua” eta “Administrazio publiko autonomikoek enplegua sustatzeko egindako gastua, gastu guztiarekiko”  seriak autonomia-erkidegoetako estatistika-organo nagusien arteko metodologia harmonizatua erabiliz kalkulatu dira</p>
 
           
         </td>
@@ -1873,7 +1919,7 @@ aurrekontu-likidazioetan erabilitako sailkapen funtzionalaren 24. gastu-politika
         <th scope="row">Metadatuen azken eguneratze-data </th>
         <td>
           
-            2025/06/18
+            2026/09/07
           
         </td>
         </tr>
@@ -2029,7 +2075,7 @@ kontsulta/koordinazio handia inplikatzen du.</p>
         <th scope="row">Euskal AEn eskura dagoen adierazlearen eta NBEko/EBko adierazlearen arteko konparagarritasuna </th>
         <td>
           
-            <p>EAEn eskuragarri dagoen adierazleak ez ditu betetzen Nazio Batuen adierazlearen metadatuak, baina informazio osagarria ematen du.</p>
+            <p>EAEn eskuragarri dagoen adierazleak partzialki betetzen ditu Nazio Batuen adierazlearen metadatuak, eta informazio osagarria ematen du.</p>
 
           
         </td>
@@ -2261,7 +2307,7 @@ kontsulta/koordinazio handia inplikatzen du.</p>
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260907080617'></script>
+<script src='/site/assets/js/sdg.js?v=20260907122435'></script>
 
 
 <script>
@@ -2281,7 +2327,7 @@ kontsulta/koordinazio handia inplikatzen du.</p>
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260907080617"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260907122435"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

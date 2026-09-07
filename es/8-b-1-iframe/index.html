@@ -145,7 +145,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907080617">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907122435">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -344,7 +344,7 @@ layout-indicator-iframe
   data-indicatorid='indicator_8-b-1'
   data-id="8-b-1"
   data-country="Total"
-  data-charttitle="Gasto de las administraciones públicas autonómicas en fomento del empleo"
+  data-charttitle="Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes y gasto de las administraciones públicas autonómicas en fomento del empleo"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
@@ -404,7 +404,7 @@ layout-indicator-iframe
     
     <h3>Datos principales</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>Gasto de las administraciones públicas autonómicas en fomento del empleo</caption>
+      <caption>Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes y gasto de las administraciones públicas autonómicas en fomento del empleo</caption>
       <thead>
         
         
@@ -1087,7 +1087,7 @@ data-event-label="Change to Table tab"
       <figure role="group">
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">
-            Gasto de las administraciones públicas autonómicas en fomento del empleo
+            Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes y gasto de las administraciones públicas autonómicas en fomento del empleo
           </h4>
           <div id="chart" class="plot-container">
             <canvas
@@ -1328,7 +1328,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Indicador disponible </th>
         <td>
           
-            <p>Gasto de las administraciones públicas autonómicas en fomento del empleo</p>
+            <p>Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes y gasto de las administraciones públicas autonómicas en fomento del empleo</p>
 
           
         </td>
@@ -1381,7 +1381,19 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Definición del indicador </th>
         <td>
           
-            <p>Proporción del gasto de la administración autonómica en fomento del empleo (política de gasto 24 de la clasificación funcional empleada en las liquidaciones presupuestarias de las comunidades autónomas)</p>
+            
+<p>Series disponibles:</p>
+
+<p><b> - Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes:</b>
+Puntuación correspondiente a la implantación de estrategias públicas de fomento del empleo juvenil de acuerdo con los criterios establecidos por la Organización Internacional del Trabajo (entre 0 y 3 puntos)</p>
+
+<p><b> - Gasto de la administración autonómica en fomento del empleo:</b>
+Gasto realizado por la administración autonómica en fomento del empleo (política de gasto 24 de la clasificación funcional empleada en las liquidaciones 
+presupuestarias)</p>
+
+<p><b> - Proporción del gasto de la administración autonómica destinado al fomento del empleo :</b>
+Proporción del gasto realizado por la administración autonómica destinado al fomento del empleo sobre el gasto total (política de gasto 24 de la clasificación 
+funcional empleada en las liquidaciones presupuestarias)</p>
 
           
         </td>
@@ -1398,7 +1410,29 @@ data-event-label="Change to indicator.global_metadata tab"
         <td>
           
             
-\[G_{fomento\, empleo}^{t} = \frac{G_{fomento\, empleo}^{t}}{G^{t}} \cdot 100\]
+<p><b> Nivel de implantación de estrategias públicas para el empleo de las personas jóvenes</b></p>
+
+\[IEE^{t}\]
+
+<p>donde:</p>
+
+<p>$IEE^{t} =$ Puntuación obtenida según los criterios de la Organización Internacional del Trabajo en el año $t$</p>
+
+<p><br /></p>
+
+<p><b> Gasto de la administración autonómica en fomento del empleo</b></p>
+
+\[G_{fomento\, empleo}^{t}\]
+
+<p>donde:</p>
+
+<p>$G_{fomento\, empleo}^{t} =$ gasto en fomento del empleo en la liquidación de presupuestos consolidados de la comunidad autónoma (política de gasto 24 de la clasificación funcional) en el año $t$</p>
+
+<p><br /></p>
+
+<p><b> Proporción del gasto de la administración autonómica en fomento del empleo</b></p>
+
+\[PG_{fomento\, empleo}^{t} = \frac{G_{fomento\, empleo}^{t}}{G^{t}} \cdot 100\]
 
 <p>donde:</p>
 
@@ -1442,7 +1476,18 @@ data-event-label="Change to indicator.global_metadata tab"
         <td>
           
             
-<p>Los datos consolidados de las liquidaciones presupuestarias de las comunidades autónomas  se toman depurados de IFL (intermediación financiera local) y PAC (política agrícola común)</p>
+<p>Descripción de las puntuaciones según los criterios de la Organización Internacional del Trabajo:</p>
+
+<ul>
+  <li>No datos: No hay información suficiente para evaluar la existencia de una estrategia de empleo juvenil</li>
+  <li>0: El país no ha desarrollado ninguna estrategia nacional para el empleo juvenil ni tomado medidas para desarrollarla o adoptarla</li>
+  <li>1: El país está en el proceso de desarrollar una estrategia nacional para el empleo juvenil</li>
+  <li>2: El país ha desarrollado y adoptado una estrategia nacional para el empleo juvenil</li>
+  <li>3: El país ha puesto en marcha una estrategia nacional para el empleo juvenil</li>
+</ul>
+
+<p>Los datos consolidados de las liquidaciones presupuestarias de las comunidades autónomas 
+se toman depurados de IFL (intermediación financiera local) y PAC (política agrícola común)</p>
 
           
         </td>
@@ -1459,7 +1504,9 @@ data-event-label="Change to indicator.global_metadata tab"
         <td>
           
             <img src="/site/assets/img/oceca/ocecas_image.png" style="width: 200px; float: left; margin-right: 10px;" alt="Logo OCECAS">
-            <p>Indicador calculado utilizando una metodología armonizada entre los órganos centrales de estadística de las comunidades autónomas</p>
+            
+<p>Las series “Gasto de la administración autonómica en fomento del empleo” y “Proporción del gasto de la administración autonómica en fomento del empleo”
+están calculadas utilizando una metodología armonizada entre los órganos centrales de estadística de las comunidades autónomas.</p>
 
           
         </td>
@@ -1547,7 +1594,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Fecha última actualización metadatos </th>
         <td>
           
-            18/06/2025
+            07/09/2026
           
         </td>
         </tr>
@@ -1705,7 +1752,7 @@ participación y consulta/coordinación entre las diferentes partes interesadas.
         <th scope="row">Comparabilidad entre el indicador disponible en la C.A. de Euskadi y el indicador de Naciones Unidas/Unión Europea </th>
         <td>
           
-            <p>El indicador disponible no cumple con los metadatos del indicador de Naciones Unidas pero aporta información complementaria.</p>
+            <p>El indicador disponible cumple parcialmente con los metadatos del indicador de Naciones Unidas y aporta información complementaria.</p>
 
           
         </td>
@@ -1798,7 +1845,7 @@ participación y consulta/coordinación entre las diferentes partes interesadas.
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260907080617'></script>
+<script src='/site/assets/js/sdg.js?v=20260907122435'></script>
 
 
 <script>
@@ -1818,7 +1865,7 @@ participación y consulta/coordinación entre las diferentes partes interesadas.
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260907080617"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260907122435"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

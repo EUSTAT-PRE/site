@@ -145,7 +145,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907080617">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260907122435">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -665,7 +665,7 @@ data-event-label="high"
   data-indicatorid='indicator_8-b-1'
   data-id="8-b-1"
   data-country="Total"
-  data-charttitle="Spending by regional public administrations on employment promotion"
+  data-charttitle="Level of implementation of public strategies for youth employment and spending by regional public administrations on employment promotion"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
@@ -725,7 +725,7 @@ data-event-label="high"
     
     <h3>Headline data</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>Spending by regional public administrations on employment promotion</caption>
+      <caption>Level of implementation of public strategies for youth employment and spending by regional public administrations on employment promotion</caption>
       <thead>
         
         
@@ -1408,7 +1408,7 @@ data-event-label="Change to Table tab"
       <figure role="group">
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">
-            Spending by regional public administrations on employment promotion
+            Level of implementation of public strategies for youth employment and spending by regional public administrations on employment promotion
           </h4>
           <div id="chart" class="plot-container">
             <canvas
@@ -1653,7 +1653,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Available indicator </th>
         <td>
           
-            <p>Spending by regional public administrations on employment promotion</p>
+            <p>Level of implementation of public strategies for youth employment and spending by regional public administrations on employment promotion</p>
 
           
         </td>
@@ -1706,9 +1706,19 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Definition </th>
         <td>
           
-            <p>Expenditure of the regional public administrations on employment promotion (expenditure policy 
-24 of the functional classification used in the budgetary settlements of the autonomous communities) 
-and total expenditure</p>
+            
+<p>Available series:</p>
+
+<p><b> - Level of implementation of public strategies for youth employment:</b>
+Score on the implementation of public strategies to promote youth employment in accordance with the criteria established by the International Labour Organisation (0-3 points)</p>
+
+<p><b> - Expenditure of the regional public administrations on employment promotion:</b>
+Expenditure of the regional public administrations on employment promotion (expenditure policy 
+24 of the functional classification used in the budgetary settlements of the autonomous communities)</p>
+
+<p><b> - Proportion of the regional public administration’s expenditure on employment promotion:</b>
+Expenditure of the regional public administrations on employment promotion as a percentage of total expenditure(expenditure policy 
+24 of the functional classification used in the budgetary settlements of the autonomous communities)</p>
 
           
         </td>
@@ -1725,7 +1735,29 @@ and total expenditure</p>
         <td>
           
             
-\[G_{employment\, promotion}^{t} = \frac{G_{employment\, promotion}^{t}}{G^{t}} \cdot 100\]
+<p><b> Level of implementation of public strategies for youth employment</b></p>
+
+\[IYES^{t}\]
+
+<p>where:</p>
+
+<p>$IYES^{t} =$ score obtained in accordance with the criteria of the International Labour Organisation in year $t$</p>
+
+<p><br /></p>
+
+<p><b> Expenditure of the regional public administrations on employment promotion</b></p>
+
+\[G_{employment\, promotion}^{t}\]
+
+<p>where:</p>
+
+<p>$G_{employment\, promotion}^{t} =$ expenditure on employment promotion in the settlement of consolidated budgets of the autonomous community (expenditure policy 24 of the functional classification) in year $t$</p>
+
+<p><br /></p>
+
+<p><b> Proportion of the regional public administration’s expenditure on employment promotion</b></p>
+
+\[PG_{employment\, promotion}^{t} = \frac{G_{employment\, promotion}^{t}}{G^{t}} \cdot 100\]
 
 <p>where:</p>
 
@@ -1769,6 +1801,16 @@ and total expenditure</p>
         <td>
           
             
+<p>Description of the scores according to the International Labour Organisation’s criteria:</p>
+
+<ul>
+  <li>No data: No information available to assess the existence of a national strategy for youth employment</li>
+  <li>0: The country has not developed any national strategy for youth employment or taken steps to develop or adopt one</li>
+  <li>1: The country is in the process of developing a national strategy for youth employment</li>
+  <li>2: The country has developed and adopted a national strategy for youth employment</li>
+  <li>3: The country has operationalised a national strategy for youth employment</li>
+</ul>
+
 <p>Consolidated data of the budgetary settlements of the autonomous communities are taken from IFL  (Local Financial Intermediation) and PAC (Common Agricultural Policy)</p>
 
           
@@ -1786,7 +1828,9 @@ and total expenditure</p>
         <td>
           
             <img src="/site/assets/img/oceca/ocecas_image.png" style="width: 200px; float: left; margin-right: 10px;" alt="Logo OCECAS">
-            <p>Indicator calculated using a methodology harmonised across the central statistical bodies of the autonomous communities</p>
+            
+<p>The series “Expenditure of the regional public administrations on employment promotion” and “Proportion of the regional public administration’s expenditure on employment promotion” have 
+been compiled using a methodology harmonised among the central statistical bodies of the autonomous communities</p>
 
           
         </td>
@@ -1874,7 +1918,7 @@ and total expenditure</p>
         <th scope="row">Metadata last updated </th>
         <td>
           
-            2025/06/18
+            2026/09/07
           
         </td>
         </tr>
@@ -2030,7 +2074,7 @@ coordination among different stakeholders.</p>
         <th scope="row">Comparability between the available indicator and the UN indicator </th>
         <td>
           
-            <p>The available indicator does not comply with the metadata of the United Nations indicator, but provides complementary information.</p>
+            <p>The available indicator partially complies with the metadata of the United Nations indicator, and provides complementary information.</p>
 
           
         </td>
@@ -2262,7 +2306,7 @@ coordination among different stakeholders.</p>
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260907080617'></script>
+<script src='/site/assets/js/sdg.js?v=20260907122435'></script>
 
 
 <script>
@@ -2282,7 +2326,7 @@ coordination among different stakeholders.</p>
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260907080617"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260907122435"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
