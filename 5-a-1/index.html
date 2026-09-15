@@ -2,7 +2,7 @@
 <html lang="eu" class="no-js">
     <head>
         <meta charset="utf-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
         <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
@@ -43,6 +43,8 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'eu',
+
+  language_numbers: 'eu',
 
   mapColors: {
     "default": [
@@ -145,7 +147,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260911094213">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260915095608">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -268,14 +270,19 @@ document.addEventListener('DOMContentLoaded', function () {
     buildCanvas();
 
     window.addEventListener('resize', function () {
-        cHeight = document.querySelector('.o-content').offsetHeight;
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
     });
 
     window.addEventListener('scroll', function () {
         if (window.scrollY > 500) {
-            document.querySelector('.scrollup').style.display = 'block';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
         } else {
-            document.querySelector('.scrollup').style.display = 'none';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
         }
     });
 });
@@ -625,19 +632,27 @@ data-event-label="high"
         
     
     
+        
+        
+        
+        
+        
+        
         <div class="progress-status">
-            
+            <div class="progress-status-inline">
                 
-                    <div class="progress-status-label">
-                        Arrazoizko aurrerapena, baina bizkortu egin behar da
-                    </div>
-                
-            
-            
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/en_progreso.png" alt="Arrazoizko aurrerapena, baina bizkortu egin behar da" />
+                    <img src="/site/assets/img/progress/retroceso_significativo.png" alt="Atzerakada nabarmena / Atzerakada xedearekiko" />
                 </div>
-            
+                
+                
+                    
+                    <div class="progress-status-label">
+                        Atzerakada nabarmena / Atzerakada xedearekiko
+                    </div>
+                    
+                
+            </div>
         </div>
     
 
@@ -681,7 +696,7 @@ data-event-label="high"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Urtea&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta&quot;,&quot;Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Seriea&quot;},{&quot;name&quot;:&quot;Sexo&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Emakumea&quot;,&quot;Gizona&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Sexua&quot;},{&quot;name&quot;:&quot;Tenencia&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Jabetzan&quot;,&quot;Errentamenduan&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Edukitza-mota&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba / Álava&quot;,&quot;Bizkaia&quot;,&quot;Gipuzkoa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Lurralde historikoa&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;%&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unitatea&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Balioa&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Urtea&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta&quot;,&quot;Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Seriea&quot;},{&quot;name&quot;:&quot;Sexo&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Emakumea&quot;,&quot;Gizona&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Sexua&quot;},{&quot;name&quot;:&quot;Tenencia&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Jabetzan&quot;,&quot;Errentamenduan&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Edukitza-mota&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba / Álava&quot;,&quot;Bizkaia&quot;,&quot;Gipuzkoa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Lurralde historikoa&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;%&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unitatea&quot;},{&quot;name&quot;:&quot;Progress&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Progress&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Balioa&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
   data-proxy=""
@@ -741,7 +756,11 @@ data-event-label="high"
         
         
         
-        <th scope="col" class="table-value">Series</th>
+        <th scope="col">Series</th>
+        
+        
+        
+        <th scope="col" class="table-value">Progress</th>
         
         
       </thead>
@@ -762,7 +781,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          <td>Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          
+          
+          
+          <td class="table-value">66.8</td>
           
           
         </tr>
@@ -782,7 +805,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          <td>Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -802,7 +829,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          <td>Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -822,7 +853,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          <td>Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          
+          
+          
+          <td class="table-value">69.4</td>
           
           
         </tr>
@@ -842,7 +877,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          <td>Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -862,7 +901,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          <td>Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          
+          
+          
+          <td class="table-value">61.8</td>
           
           
         </tr>
@@ -882,7 +925,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          <td>Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          
+          
+          
+          <td class="table-value">67.1</td>
           
           
         </tr>
@@ -902,7 +949,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          <td>Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -922,7 +973,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          <td>Jabetza-eskubideak edo nekazaritza-lurren gaineko eskubide seguruak dituzten nekazarien guztizkoaren proportzioa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -942,7 +997,11 @@ data-event-label="high"
           
           
           
-          <td class="table-value">Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          <td>Emakumeen proportzioa nekazaritza-lurren jabeen edo eskubideen titularren artean, edukitze-motaren arabera banakatuta</td>
+          
+          
+          
+          <td class="table-value">62.6</td>
           
           
         </tr>
@@ -1100,6 +1159,15 @@ data-event-label="Change to Table tab"
           data-ts-attribute="DATA_LAST_UPDATE"
         ></dd>
         
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        ></dd>
+        
         
     </dl>
     
@@ -1170,6 +1238,15 @@ data-event-label="Change to Table tab"
         <dd
           class="data-controlled-footer-field"
           data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
         ></dd>
         
         
@@ -1285,6 +1362,8 @@ data-event-label="Change to indicator.global_metadata tab"
                 <table class="table metadata-content">
   <tbody>
   
+    
+    
       
       
       
@@ -1301,11 +1380,15 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1322,6 +1405,8 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
@@ -1338,6 +1423,8 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
@@ -1354,6 +1441,8 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
@@ -1392,6 +1481,8 @@ titular guztiekiko, edukitza-motaren arabera</b></p>
         
       
   
+    
+    
       
       
       
@@ -1412,6 +1503,8 @@ titular guztiekiko, edukitza-motaren arabera</b></p>
         
       
   
+    
+    
       
       
       
@@ -1428,6 +1521,8 @@ titular guztiekiko, edukitza-motaren arabera</b></p>
         
       
   
+    
+    
       
       
       
@@ -1449,68 +1544,106 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
         
       
   
+    
+    
       
       
       
         
           
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1519,13 +1652,15 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
         <th scope="row">Datuen azken eguneratze-data </th>
         <td>
           
-            2026/05/25
+            2026/09/11
           
         </td>
         </tr>
         
       
   
+    
+    
       
       
       
@@ -1543,6 +1678,7 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
   
   </tbody>
 </table>
+
             </article>
         </div>
         
@@ -1603,7 +1739,7 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
             <tr>
                 <th scope="row">Datu-iturrirako esteka</th>
                 
-                <td><a href="https://eu.eustat.eus/estadisticas/tema_92/opt_1/temas.html" target="_blank" rel="noopener">Nekazaritzako ustiategien egituraren inkesta</a></td>
+                <td><a href="https://eu.eustat.eus/estadisticas/tema_92/opt_1/temas.html" target="_blank" rel="noopener noreferrer">Nekazaritzako ustiategien egituraren inkesta</a></td>
                 
             </tr>
             
@@ -1658,7 +1794,7 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
             <tr>
                 <th scope="row">Datu-iturrirako esteka</th>
                 
-                <td><a href="https://eu.eustat.eus/estadisticas/tema_260/opt_1/temas.html" target="_blank" rel="noopener">Nekazaritza-zentsua</a></td>
+                <td><a href="https://eu.eustat.eus/estadisticas/tema_260/opt_1/temas.html" target="_blank" rel="noopener noreferrer">Nekazaritza-zentsua</a></td>
                 
             </tr>
             
@@ -1676,6 +1812,7 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
     </div>
 
 </div>
+
 
             </article>
         </div>
@@ -1695,21 +1832,45 @@ nekazaritza-lurren gaineko eskubide seguruetan zein neurritan dauden desabantail
                 <table class="table metadata-content">
   <tbody>
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1735,6 +1896,8 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
         
       
   
+    
+    
       
       
       
@@ -1751,16 +1914,22 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
         
       
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1777,25 +1946,52 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
         
       
   
+    
+    
       
       
       
         
           
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
   </tbody>
 </table>
+
             </article>
         </div>
         
@@ -1950,18 +2146,18 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.2.2/dist/chartjs-plugin-annotation.min.js" integrity="sha256-XuHhf6q+GD7fscc96mTm/228GXf1Nn9wOYOE0EgeFzY=" crossorigin="anonymous"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
 
 
 
@@ -1975,7 +2171,7 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260911094213'></script>
+<script src='/site/assets/js/sdg.js?v=20260915095608'></script>
 
 
 <script>
@@ -1995,7 +2191,7 @@ jabetza/eskubide seguruak dituzten biztanleak aipatzen ditu, eta horietako zenba
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260911094213"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260915095608"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

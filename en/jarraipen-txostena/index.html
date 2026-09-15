@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
         <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
@@ -43,6 +43,8 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'en',
+
+  language_numbers: 'en',
 
   mapColors: {
     "default": [
@@ -140,7 +142,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260911094213">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260915095608">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -263,14 +265,19 @@ document.addEventListener('DOMContentLoaded', function () {
     buildCanvas();
 
     window.addEventListener('resize', function () {
-        cHeight = document.querySelector('.o-content').offsetHeight;
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
     });
 
     window.addEventListener('scroll', function () {
         if (window.scrollY > 500) {
-            document.querySelector('.scrollup').style.display = 'block';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
         } else {
-            document.querySelector('.scrollup').style.display = 'none';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
         }
     });
 });
@@ -390,11 +397,36 @@ data-event-label="high"
 <div id="main-content" class="container reportingstatus" role="main">
   <!-- Introducción -->
   <div>
-    <h1>
-  
-    Monitoring report
-  
-</h1>
+    <div class="progreso-intro-header">
+  <h1>
+    
+      Monitoring report
+    
+  </h1>
+  <div class="progreso-action-icons">
+    <a href="https://eustat-pre.github.io/data/progreso.csv"
+       class="progreso-icon-btn progreso-download-btn-header"
+       title="Download monitoring report data (.csv)"
+       aria-label="Download monitoring report data (.csv)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </a>
+    <button type="button"
+            class="progreso-icon-btn progreso-print-btn"
+            title="Print monitoring report"
+            aria-label="Print monitoring report"
+            onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+    </button>
+  </div>
+</div>
 
 
 <div class="reporting-status-description">
@@ -403,6 +435,29 @@ data-event-label="high"
 
 <p>To learn more about the methodology used to assess progress, see <a href="https://sdg.eustat.eus/en/metodologia">Measuring Progress on the Sustainable Development Goals</a>.</p>
 
+  <div class="progreso-action-icons progreso-action-icons-mobile">
+    <a href="https://eustat-pre.github.io/data/progreso.csv"
+       class="progreso-icon-btn progreso-download-btn-mobile"
+       title="Download monitoring report data (.csv)"
+       aria-label="Download monitoring report data (.csv)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </a>
+    <button type="button"
+            class="progreso-icon-btn progreso-print-btn"
+            title="Print monitoring report"
+            aria-label="Print monitoring report"
+            onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+    </button>
+  </div>
 </div>
 
 
@@ -431,66 +486,156 @@ data-event-label="high"
                     
                     
                     
+                    
+                    
+                    
+                    
+                                        
                     <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">99</span>
+                        <span class="status significant-progress">
+                            <span class="status-inner">94</span>
                         </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">37.93%</span>
+                        
+                        <a href="/siteen/progreso-nabarmena/" class="status-category-link">Significant progress / Target met or on track</a>
+                        
+                        <span class="value">36.02%</span>
                     </div>
                     
                     
                     
                     
+                    
+                    
+                    
+                    
+                                        
                     <div>
-                        <span class="status progreso">
+                        <span class="status moderate-progress">
+                            <span class="status-inner">16</span>
+                        </span>
+                        
+                        <a href="/siteen/progreso-moderatua/" class="status-category-link">Moderate progress</a>
+                        
+                        <span class="value">6.13%</span>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                        
+                    <div>
+                        <span class="status no-progress">
+                            <span class="status-inner">7</span>
+                        </span>
+                        
+                        <a href="/siteen/geldialdia/" class="status-category-link">Stagnation</a>
+                        
+                        <span class="value">2.68%</span>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                        
+                    <div>
+                        <span class="status moderate-deterioration">
                             <span class="status-inner">24</span>
                         </span>
-                        <strong>Fair progress but acceleration needed</strong>
+                        
+                        <a href="/siteen/atzerakada-moderatua/" class="status-category-link">Moderate regression / Insufficient progress towards target</a>
+                        
                         <span class="value">9.2%</span>
                     </div>
                     
                     
                     
                     
+                    
+                    
+                    
+                    
+                                        
                     <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">33</span>
+                        <span class="status significant-deterioration">
+                            <span class="status-inner">17</span>
                         </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">12.64%</span>
+                        
+                        <a href="/siteen/atzerakada-nabarmena/" class="status-category-link">Significant regression / Movement away from target</a>
+                        
+                        <span class="value">6.51%</span>
                     </div>
                     
                     
                     
                     
+                    
+                    
+                    
+                    
+                                        
                     <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">14</span>
+                        <span class="status not-available">
+                            <span class="status-inner">12</span>
                         </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">5.36%</span>
+                        
+                        <a href="/siteen/ez-ebaluagarria/" class="status-category-link">Not evaluable</a>
+                        
+                        <span class="value">4.6%</span>
                     </div>
                     
                     
                     
                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                        
                     <div>
                         <span class="status notstarted">
                             <span class="status-inner">82</span>
                         </span>
-                        <strong>No data available</strong>
+                        
+                        <a href="/siteen/hasieratu-gabe/" class="status-category-link">No data available</a>
+                        
                         <span class="value">31.42%</span>
                     </div>
                     
                     
                     
                     
+                    
+                    
+                    
+                    
+                                        
                     <div>
                         <span class="status notapplicable">
                             <span class="status-inner">9</span>
                         </span>
-                        <strong>Not applicable</strong>
+                        
+                        <a href="/siteen/ez-aplikagarria/" class="status-category-link">Not applicable</a>
+                        
                         <span class="value">3.45%</span>
                     </div>
                     
@@ -502,27 +647,73 @@ data-event-label="high"
                 
                 
                 
-                <span class="alcanzado" style="width:37.93103448275862%" title="On track or target met: 37.93%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:36.015325670498086%" title="Significant progress / Target met or on track: 36.02%"></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:9.195402298850574%" title="Fair progress but acceleration needed: 9.2%"></span>
+                
+                
+                
+                <span class="moderate-progress" style="width:6.130268199233716%" title="Moderate progress: 6.13%"></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:12.643678160919542%" title="Stagnation or regression: 12.64%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:2.681992337164751%" title="Stagnation: 2.68%"></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:5.363984674329502%" title="Not evaluable: 5.36%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:9.195402298850574%" title="Moderate regression / Insufficient progress towards target: 9.2%"></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:6.513409961685824%" title="Significant regression / Movement away from target: 6.51%"></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:4.597701149425287%" title="Not evaluable: 4.6%"></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
                 
                 <span class="notstarted" style="width:31.417624521072796%" title="No data available: 31.42%"></span>
+                
+                
+                
                 
                 
                 
@@ -560,97 +751,70 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/1/">No poverty</a>
             </h3>
-            <span class="total">13 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">6</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">46.15%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">3</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">23.08%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">15.38%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:46.15384615384615%" title="On track or target met: 46.15%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:46.15384615384615%" title="Significant progress / Target met or on track: 46.15%"><span class="status-inner">6</span></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:23.076923076923077%" title="Fair progress but acceleration needed: 23.08%"></span>
+                
+                
+                
+                <span class="moderate-progress" style="width:7.6923076923076925%" title="Moderate progress: 7.69%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:7.6923076923076925%" title="Stagnation or regression: 7.69%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:7.6923076923076925%" title="Stagnation: 7.69%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:7.6923076923076925%" title="Not evaluable: 7.69%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:15.384615384615385%" title="Moderate regression / Insufficient progress towards target: 15.38%"><span class="status-inner">2</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:15.384615384615385%" title="No data available: 15.38%"></span>
+                
+                
+                
+                <span class="significant-deterioration" style="width:7.6923076923076925%" title="Significant regression / Movement away from target: 7.69%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:15.384615384615385%" title="No data available: 15.38%"><span class="status-inner">2</span></span>
                 
                 
                 
@@ -677,97 +841,70 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/2/">Zero hunger</a>
             </h3>
-            <span class="total">18 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">22.22%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">11.11%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">27.78%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">11.11%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">27.78%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:22.22222222222222%" title="On track or target met: 22.22%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:22.22222222222222%" title="Significant progress / Target met or on track: 22.22%"><span class="status-inner">4</span></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:11.11111111111111%" title="Fair progress but acceleration needed: 11.11%"></span>
+                
+                
+                
+                <span class="moderate-progress" style="width:5.555555555555555%" title="Moderate progress: 5.56%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:27.77777777777778%" title="Stagnation or regression: 27.78%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:5.555555555555555%" title="Stagnation: 5.56%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:11.11111111111111%" title="Not evaluable: 11.11%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:27.77777777777778%" title="Moderate regression / Insufficient progress towards target: 27.78%"><span class="status-inner">5</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:27.77777777777778%" title="No data available: 27.78%"></span>
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:11.11111111111111%" title="Not evaluable: 11.11%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:27.77777777777778%" title="No data available: 27.78%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -794,97 +931,75 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/3/">Good health and well-being</a>
             </h3>
-            <span class="total">30 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">16</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">53.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">6.67%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">6</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">20.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">6.67%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">13.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:53.333333333333336%" title="On track or target met: 53.33%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:43.333333333333336%" title="Significant progress / Target met or on track: 43.33%"><span class="status-inner">13</span></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:6.666666666666667%" title="Fair progress but acceleration needed: 6.67%"></span>
+                
+                
+                
+                <span class="moderate-progress" style="width:3.3333333333333335%" title="Moderate progress: 3.33%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:20.0%" title="Stagnation or regression: 20.0%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:3.3333333333333335%" title="Stagnation: 3.33%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:6.666666666666667%" title="Not evaluable: 6.67%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:23.333333333333332%" title="Moderate regression / Insufficient progress towards target: 23.33%"><span class="status-inner">7</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:13.333333333333334%" title="No data available: 13.33%"></span>
+                
+                
+                
+                <span class="significant-deterioration" style="width:6.666666666666667%" title="Significant regression / Movement away from target: 6.67%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:6.666666666666667%" title="Not evaluable: 6.67%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:13.333333333333334%" title="No data available: 13.33%"><span class="status-inner">4</span></span>
                 
                 
                 
@@ -911,79 +1026,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/4/">Quality education</a>
             </h3>
-            <span class="total">13 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">30.77%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">38.46%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">3</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">23.08%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:30.76923076923077%" title="On track or target met: 30.77%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:38.46153846153847%" title="Fair progress but acceleration needed: 38.46%"></span>
-                
-                
-                
-                
-                <span class="retroceso" style="width:7.6923076923076925%" title="Stagnation or regression: 7.69%"></span>
+                <span class="significant-progress" style="width:38.46153846153847%" title="Significant progress / Target met or on track: 38.46%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -991,7 +1042,49 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:23.076923076923077%" title="No data available: 23.08%"></span>
+                <span class="moderate-progress" style="width:15.384615384615385%" title="Moderate progress: 15.38%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="moderate-deterioration" style="width:15.384615384615385%" title="Moderate regression / Insufficient progress towards target: 15.38%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:7.6923076923076925%" title="Not evaluable: 7.69%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:23.076923076923077%" title="No data available: 23.08%"><span class="status-inner">3</span></span>
                 
                 
                 
@@ -1018,79 +1111,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/5/">Gender equality</a>
             </h3>
-            <span class="total">14 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">35.71%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">14.29%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">3</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">21.43%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">28.57%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:35.714285714285715%" title="On track or target met: 35.71%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:14.285714285714285%" title="Fair progress but acceleration needed: 14.29%"></span>
-                
-                
-                
-                
-                <span class="retroceso" style="width:21.428571428571427%" title="Stagnation or regression: 21.43%"></span>
+                <span class="significant-progress" style="width:35.714285714285715%" title="Significant progress / Target met or on track: 35.71%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -1098,7 +1127,49 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:28.57142857142857%" title="No data available: 28.57%"></span>
+                <span class="moderate-progress" style="width:7.142857142857142%" title="Moderate progress: 7.14%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="moderate-deterioration" style="width:7.142857142857142%" title="Moderate regression / Insufficient progress towards target: 7.14%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:21.428571428571427%" title="Significant regression / Movement away from target: 21.43%"><span class="status-inner">3</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:28.57142857142857%" title="No data available: 28.57%"><span class="status-inner">4</span></span>
                 
                 
                 
@@ -1125,97 +1196,55 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/6/">Clean water and sanitation</a>
             </h3>
-            <span class="total">11 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">36.36%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">9.09%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">9.09%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">9.09%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">36.36%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:36.36363636363637%" title="On track or target met: 36.36%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:54.54545454545454%" title="Significant progress / Target met or on track: 54.55%"><span class="status-inner">6</span></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:9.090909090909092%" title="Fair progress but acceleration needed: 9.09%"></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:9.090909090909092%" title="Stagnation or regression: 9.09%"></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:9.090909090909092%" title="Not evaluable: 9.09%"></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:36.36363636363637%" title="No data available: 36.36%"></span>
+                
+                
+                
+                <span class="not-available" style="width:9.090909090909092%" title="Not evaluable: 9.09%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:36.36363636363637%" title="No data available: 36.36%"><span class="status-inner">4</span></span>
                 
                 
                 
@@ -1242,53 +1271,23 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/7/">Affordable and clean energy</a>
             </h3>
-            <span class="total">6 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">83.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">16.67%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:83.33333333333334%" title="On track or target met: 83.33%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:66.66666666666666%" title="Significant progress / Target met or on track: 66.67%"><span class="status-inner">4</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="moderate-progress" style="width:16.666666666666664%" title="Moderate progress: 16.67%"><span class="status-inner">1</span></span>
                 
                 
                 
@@ -1302,7 +1301,25 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:16.666666666666664%" title="No data available: 16.67%"></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:16.666666666666664%" title="No data available: 16.67%"><span class="status-inner">1</span></span>
                 
                 
                 
@@ -1329,87 +1346,70 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/8/">Decent work and economic growth</a>
             </h3>
-            <span class="total">18 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">9</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">50.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">11.11%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">11.11%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">27.78%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:50.0%" title="On track or target met: 50.0%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:11.11111111111111%" title="Fair progress but acceleration needed: 11.11%"></span>
-                
-                
+                <span class="significant-progress" style="width:38.88888888888889%" title="Significant progress / Target met or on track: 38.89%"><span class="status-inner">7</span></span>
                 
                 
                 
                 
                 
-                <span class="noevaluado" style="width:11.11111111111111%" title="Not evaluable: 11.11%"></span>
+                
+                
+                <span class="moderate-progress" style="width:16.666666666666664%" title="Moderate progress: 16.67%"><span class="status-inner">3</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:27.77777777777778%" title="No data available: 27.78%"></span>
+                
+                
+                
+                
+                
+                
+                <span class="moderate-deterioration" style="width:5.555555555555555%" title="Moderate regression / Insufficient progress towards target: 5.56%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:5.555555555555555%" title="Significant regression / Movement away from target: 5.56%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:5.555555555555555%" title="Not evaluable: 5.56%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:27.77777777777778%" title="No data available: 27.78%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -1436,61 +1436,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/9/">Industry, innovation and infrastructure</a>
             </h3>
-            <span class="total">13 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">7</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">53.85%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">30.77%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">15.38%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:53.84615384615385%" title="On track or target met: 53.85%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:53.84615384615385%" title="Significant progress / Target met or on track: 53.85%"><span class="status-inner">7</span></span>
                 
                 
                 
@@ -1498,7 +1452,7 @@ data-event-label="high"
                 
                 
                 
-                <span class="retroceso" style="width:30.76923076923077%" title="Stagnation or regression: 30.77%"></span>
+                <span class="moderate-progress" style="width:15.384615384615385%" title="Moderate progress: 15.38%"><span class="status-inner">2</span></span>
                 
                 
                 
@@ -1506,7 +1460,41 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:15.384615384615385%" title="No data available: 15.38%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:7.6923076923076925%" title="Moderate regression / Insufficient progress towards target: 7.69%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:7.6923076923076925%" title="Significant regression / Movement away from target: 7.69%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:15.384615384615385%" title="No data available: 15.38%"><span class="status-inner">2</span></span>
                 
                 
                 
@@ -1533,77 +1521,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/10/">Reduced inequalities</a>
             </h3>
-            <span class="total">14 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">7.14%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">28.57%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">7.14%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">7</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">50.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notapplicable">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not applicable</strong>
-                        <span class="value">7.14%</span>
-                    </div>
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:7.142857142857142%" title="On track or target met: 7.14%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:7.142857142857142%" title="Significant progress / Target met or on track: 7.14%"><span class="status-inner">1</span></span>
                 
                 
                 
@@ -1611,22 +1537,57 @@ data-event-label="high"
                 
                 
                 
-                <span class="retroceso" style="width:28.57142857142857%" title="Stagnation or regression: 28.57%"></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:7.142857142857142%" title="Not evaluable: 7.14%"></span>
+                
+                
+                <span class="moderate-deterioration" style="width:7.142857142857142%" title="Moderate regression / Insufficient progress towards target: 7.14%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:50.0%" title="No data available: 50.0%"></span>
+                
+                
+                
+                <span class="significant-deterioration" style="width:21.428571428571427%" title="Significant regression / Movement away from target: 21.43%"><span class="status-inner">3</span></span>
                 
                 
                 
                 
-                <span class="notapplicable" style="width:7.142857142857142%" title="Not applicable: 7.14%"></span>
+                
+                
+                
+                <span class="not-available" style="width:7.142857142857142%" title="Not evaluable: 7.14%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:50.0%" title="No data available: 50.0%"><span class="status-inner">7</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="notapplicable" style="width:7.142857142857142%" title="Not applicable: 7.14%"><span class="status-inner">1</span></span>
                 
                 
             </div>
@@ -1650,79 +1611,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/11/">Sustainable cities and communities</a>
             </h3>
-            <span class="total">16 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">10</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">62.5%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">6.25%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">6.25%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">25.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:62.5%" title="On track or target met: 62.5%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:6.25%" title="Fair progress but acceleration needed: 6.25%"></span>
-                
-                
-                
-                
-                <span class="retroceso" style="width:6.25%" title="Stagnation or regression: 6.25%"></span>
+                <span class="significant-progress" style="width:68.75%" title="Significant progress / Target met or on track: 68.75%"><span class="status-inner">11</span></span>
                 
                 
                 
@@ -1730,7 +1627,39 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:25.0%" title="No data available: 25.0%"></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:6.25%" title="Significant regression / Movement away from target: 6.25%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:25.0%" title="No data available: 25.0%"><span class="status-inner">4</span></span>
                 
                 
                 
@@ -1757,77 +1686,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/12/">Responsible consumption and production</a>
             </h3>
-            <span class="total">13 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">6</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">46.15%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">30.77%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notapplicable">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not applicable</strong>
-                        <span class="value">7.69%</span>
-                    </div>
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:46.15384615384615%" title="On track or target met: 46.15%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:38.46153846153847%" title="Significant progress / Target met or on track: 38.46%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -1835,22 +1702,52 @@ data-event-label="high"
                 
                 
                 
-                <span class="retroceso" style="width:7.6923076923076925%" title="Stagnation or regression: 7.69%"></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:7.6923076923076925%" title="Not evaluable: 7.69%"></span>
+                
+                
+                <span class="moderate-deterioration" style="width:15.384615384615385%" title="Moderate regression / Insufficient progress towards target: 15.38%"><span class="status-inner">2</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:30.76923076923077%" title="No data available: 30.77%"></span>
                 
                 
                 
                 
-                <span class="notapplicable" style="width:7.6923076923076925%" title="Not applicable: 7.69%"></span>
+                
+                
+                <span class="not-available" style="width:7.6923076923076925%" title="Not evaluable: 7.69%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:30.76923076923077%" title="No data available: 30.77%"><span class="status-inner">4</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="notapplicable" style="width:7.6923076923076925%" title="Not applicable: 7.69%"><span class="status-inner">1</span></span>
                 
                 
             </div>
@@ -1874,61 +1771,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/13/">Climate action</a>
             </h3>
-            <span class="total">8 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">62.5%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">12.5%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notapplicable">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not applicable</strong>
-                        <span class="value">25.0%</span>
-                    </div>
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:62.5%" title="On track or target met: 62.5%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:62.5%" title="Significant progress / Target met or on track: 62.5%"><span class="status-inner">5</span></span>
                 
                 
                 
@@ -1942,12 +1793,36 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:12.5%" title="No data available: 12.5%"></span>
                 
                 
                 
                 
-                <span class="notapplicable" style="width:25.0%" title="Not applicable: 25.0%"></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:12.5%" title="No data available: 12.5%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="notapplicable" style="width:25.0%" title="Not applicable: 25.0%"><span class="status-inner">2</span></span>
                 
                 
             </div>
@@ -1971,61 +1846,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/14/">Life below water</a>
             </h3>
-            <span class="total">10 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">10.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">10.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">8</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">80.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:10.0%" title="On track or target met: 10.0%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:10.0%" title="Significant progress / Target met or on track: 10.0%"><span class="status-inner">1</span></span>
                 
                 
                 
@@ -2033,7 +1862,10 @@ data-event-label="high"
                 
                 
                 
-                <span class="retroceso" style="width:10.0%" title="Stagnation or regression: 10.0%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:10.0%" title="Stagnation: 10.0%"><span class="status-inner">1</span></span>
                 
                 
                 
@@ -2041,7 +1873,28 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:80.0%" title="No data available: 80.0%"></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:80.0%" title="No data available: 80.0%"><span class="status-inner">8</span></span>
                 
                 
                 
@@ -2068,87 +1921,65 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/15/">Life on land</a>
             </h3>
-            <span class="total">15 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">26.67%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">13.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">13.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">7</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">46.67%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:26.666666666666668%" title="On track or target met: 26.67%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:13.333333333333334%" title="Fair progress but acceleration needed: 13.33%"></span>
-                
-                
+                <span class="significant-progress" style="width:20.0%" title="Significant progress / Target met or on track: 20.0%"><span class="status-inner">3</span></span>
                 
                 
                 
                 
                 
-                <span class="noevaluado" style="width:13.333333333333334%" title="Not evaluable: 13.33%"></span>
+                
+                
+                <span class="moderate-progress" style="width:6.666666666666667%" title="Moderate progress: 6.67%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:46.666666666666664%" title="No data available: 46.67%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:13.333333333333334%" title="Stagnation: 13.33%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="not-available" style="width:13.333333333333334%" title="Not evaluable: 13.33%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:46.666666666666664%" title="No data available: 46.67%"><span class="status-inner">7</span></span>
                 
                 
                 
@@ -2175,87 +2006,15 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/16/">Peace, justice and strong institutions</a>
             </h3>
-            <span class="total">25 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">5</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">20.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">3</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">12.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">16.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">12</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">48.0%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notapplicable">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Not applicable</strong>
-                        <span class="value">4.0%</span>
-                    </div>
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:20.0%" title="On track or target met: 20.0%"></span>
                 
                 
                 
-                
-                <span class="progreso" style="width:12.0%" title="Fair progress but acceleration needed: 12.0%"></span>
-                
-                
-                
-                
-                <span class="retroceso" style="width:16.0%" title="Stagnation or regression: 16.0%"></span>
+                <span class="significant-progress" style="width:16.0%" title="Significant progress / Target met or on track: 16.0%"><span class="status-inner">4</span></span>
                 
                 
                 
@@ -2263,12 +2022,57 @@ data-event-label="high"
                 
                 
                 
-                <span class="notstarted" style="width:48.0%" title="No data available: 48.0%"></span>
+                
+                
+                
+                <span class="no-progress" style="width:4.0%" title="Stagnation: 4.0%"><span class="status-inner">1</span></span>
                 
                 
                 
                 
-                <span class="notapplicable" style="width:4.0%" title="Not applicable: 4.0%"></span>
+                
+                
+                
+                <span class="moderate-deterioration" style="width:8.0%" title="Moderate regression / Insufficient progress towards target: 8.0%"><span class="status-inner">2</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="significant-deterioration" style="width:20.0%" title="Significant regression / Movement away from target: 20.0%"><span class="status-inner">5</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:48.0%" title="No data available: 48.0%"><span class="status-inner">12</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="notapplicable" style="width:4.0%" title="Not applicable: 4.0%"><span class="status-inner">1</span></span>
                 
                 
             </div>
@@ -2292,110 +2096,68 @@ data-event-label="high"
             <h3 class="status-goal">
                 <a href="/site/en/17/">Partnerships for the goals</a>
             </h3>
-            <span class="total">24 indicators</span>
             
-            <div class="summary">
-                <div class="statuses">
-                    
-                    
-                    
-                    <div>
-                        <span class="status alcanzado">
-                            <span class="status-inner">7</span>
-                        </span>
-                        <strong>On track or target met</strong>
-                        <span class="value">29.17%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status progreso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Fair progress but acceleration needed</strong>
-                        <span class="value">4.17%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status retroceso">
-                            <span class="status-inner">1</span>
-                        </span>
-                        <strong>Stagnation or regression</strong>
-                        <span class="value">4.17%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status noevaluado">
-                            <span class="status-inner">2</span>
-                        </span>
-                        <strong>Not evaluable</strong>
-                        <span class="value">8.33%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notstarted">
-                            <span class="status-inner">9</span>
-                        </span>
-                        <strong>No data available</strong>
-                        <span class="value">37.5%</span>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <span class="status notapplicable">
-                            <span class="status-inner">4</span>
-                        </span>
-                        <strong>Not applicable</strong>
-                        <span class="value">16.67%</span>
-                    </div>
-                    
-                    
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 
                 
                 
-                <span class="alcanzado" style="width:29.166666666666668%" title="On track or target met: 29.17%"></span>
+                
+                
+                
+                <span class="significant-progress" style="width:29.166666666666668%" title="Significant progress / Target met or on track: 29.17%"><span class="status-inner">7</span></span>
                 
                 
                 
                 
-                <span class="progreso" style="width:4.166666666666666%" title="Fair progress but acceleration needed: 4.17%"></span>
+                
+                
+                
+                <span class="moderate-progress" style="width:12.5%" title="Moderate progress: 12.5%"><span class="status-inner">3</span></span>
                 
                 
                 
                 
-                <span class="retroceso" style="width:4.166666666666666%" title="Stagnation or regression: 4.17%"></span>
                 
                 
                 
                 
-                <span class="noevaluado" style="width:8.333333333333332%" title="Not evaluable: 8.33%"></span>
                 
                 
                 
                 
-                <span class="notstarted" style="width:37.5%" title="No data available: 37.5%"></span>
                 
                 
                 
                 
-                <span class="notapplicable" style="width:16.666666666666664%" title="Not applicable: 16.67%"></span>
+                <span class="not-available" style="width:4.166666666666666%" title="Not evaluable: 4.17%"><span class="status-inner">1</span></span>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <span class="notstarted" style="width:37.5%" title="No data available: 37.5%"><span class="status-inner">9</span></span>
+                
+                
+                
+                
+                
+                
+                
+                <span class="notapplicable" style="width:16.666666666666664%" title="Not applicable: 16.67%"><span class="status-inner">4</span></span>
                 
                 
             </div>
@@ -2408,6 +2170,138 @@ data-event-label="high"
 
   <a href="#top">Back to top</a>
 </div>
+
+<script>
+(function () {
+  // En móvil: mover goal-stats fuera de details para que ocupe ancho completo
+  function reorderForMobile() {
+    // Per-goal items
+    document.querySelectorAll('.reporting-status-item').forEach(function (item) {
+      var details = item.querySelector('.details');
+      var goalStats = item.querySelector('.goal-stats');
+      var br = item.querySelector('br[style]');
+      if (!details || !goalStats) return;
+      if (window.innerWidth <= 576) {
+        if (goalStats.parentNode === details) {
+          item.insertBefore(goalStats, br || null);
+          details.style.flex = '1';
+          details.style.minWidth = '0';
+          details.style.float = 'none';
+        }
+      } else {
+        if (goalStats.parentNode === item) {
+          details.appendChild(goalStats);
+          details.style.flex = '';
+          details.style.minWidth = '';
+          details.style.float = '';
+        }
+      }
+    });
+
+    // Overall block: mover .statuses y .goal-stats fuera de .details
+    var overall = document.querySelector('.goal-overall');
+    if (overall) {
+      var details = overall.querySelector(':scope > .details');
+      var statuses = overall.querySelector('.statuses');
+      var goalStats = overall.querySelector(':scope > .details > .goal-stats, :scope > .goal-stats');
+      var directBr = null;
+      overall.childNodes.forEach(function(n) { if (n.nodeName === 'BR') directBr = n; });
+      if (window.innerWidth <= 576) {
+        if (statuses && statuses.parentNode !== overall) {
+          overall.insertBefore(statuses, directBr);
+          statuses.style.width = '100%';
+          statuses.style.boxSizing = 'border-box';
+        }
+        if (goalStats && goalStats.parentNode !== overall) {
+          overall.insertBefore(goalStats, directBr);
+        }
+        if (details) {
+          details.style.flex = '1';
+          details.style.minWidth = '0';
+          details.style.float = 'none';
+        }
+      } else {
+        var summary = overall.querySelector('.summary');
+        if (statuses && statuses.parentNode === overall && summary) {
+          summary.appendChild(statuses);
+          statuses.style.width = '';
+          statuses.style.boxSizing = '';
+        }
+        if (goalStats && goalStats.parentNode === overall) {
+          details.appendChild(goalStats);
+        }
+        if (details) {
+          details.style.flex = '';
+          details.style.minWidth = '';
+          details.style.float = '';
+        }
+      }
+    }
+  }
+
+  // Añadir span.total con el total de indicadores por objetivo
+  document.querySelectorAll('.reporting-status-item').forEach(function (item) {
+    var spans = item.querySelectorAll('.goal-stats span[title] .status-inner');
+    var total = 0;
+    spans.forEach(function (s) { total += parseInt(s.textContent) || 0; });
+    if (total > 0) {
+      var details = item.querySelector('.details');
+      var goalStats = item.querySelector('.goal-stats');
+      if (details && goalStats) {
+        var totalSpan = document.createElement('span');
+        totalSpan.className = 'total';
+        totalSpan.textContent = total + ' ' + (opensdg.language === 'eu' ? 'adierazle' : opensdg.language === 'es' ? 'indicadores' : 'indicators');
+        details.insertBefore(totalSpan, goalStats.parentNode === details ? goalStats : null);
+      }
+    }
+  });
+
+  reorderForMobile();
+  window.addEventListener('resize', reorderForMobile);
+
+  // Tooltip bocadillo con flecha alineada al número
+  document.querySelectorAll('.reporting-status-item .goal-stats span[title]').forEach(function (span) {
+    var text = span.getAttribute('title');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'goal-bar-tooltip';
+    tip.textContent = text;
+    span.appendChild(tip);
+
+    span.addEventListener('mouseenter', function () {
+      var spanRect = span.getBoundingClientRect();
+      var spanCenter = spanRect.left + spanRect.width / 2;
+
+      if (window.innerWidth <= 576) {
+        // Móvil: tooltip al ancho de la barra, alineado a su borde izquierdo
+        var barRect = span.parentNode.getBoundingClientRect();
+        tip.style.left = (barRect.left - spanRect.left) + 'px';
+        tip.style.right = '';
+        tip.style.transform = 'none';
+        tip.style.width = barRect.width + 'px';
+        tip.style.whiteSpace = 'normal';
+        tip.style.textAlign = 'center';
+        requestAnimationFrame(function () {
+          var newTipRect = tip.getBoundingClientRect();
+          var arrowPct = (spanCenter - newTipRect.left) / newTipRect.width * 100;
+          arrowPct = Math.max(5, Math.min(95, arrowPct));
+          tip.style.setProperty('--arrow-offset', arrowPct + '%');
+        });
+      } else {
+        // Escritorio: tooltip centrado sobre el número, ancho según texto
+        tip.style.left = '50%';
+        tip.style.right = '';
+        tip.style.transform = 'translateX(-50%)';
+        tip.style.width = '';
+        tip.style.whiteSpace = 'nowrap';
+        tip.style.textAlign = '';
+        tip.style.setProperty('--arrow-offset', '50%');
+      }
+    });
+  });
+})();
+</script>
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -2524,16 +2418,16 @@ data-event-label="high"
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
 
 
 
@@ -2547,7 +2441,7 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260911094213'></script>
+<script src='/site/assets/js/sdg.js?v=20260915095608'></script>
 
 
 <script>
@@ -2567,7 +2461,7 @@ data-event-label="high"
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260911094213"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260915095608"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

@@ -2,7 +2,7 @@
 <html lang="es" class="no-js">
     <head>
         <meta charset="utf-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
         <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
@@ -43,6 +43,8 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'es',
+
+  language_numbers: 'es',
 
   mapColors: {
     "default": [
@@ -145,7 +147,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260911094213">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260915095608">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -304,19 +306,27 @@ layout-indicator-iframe
         
     
     
+        
+        
+        
+        
+        
+        
         <div class="progress-status">
-            
+            <div class="progress-status-inline">
                 
-                    <div class="progress-status-label">
-                        Progreso razonable, pero es necesario acelerarlo
-                    </div>
-                
-            
-            
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/en_progreso.png" alt="Progreso razonable, pero es necesario acelerarlo" />
+                    <img src="/site/assets/img/progress/retroceso.png" alt="Progreso insuficiente para alcanzar la meta" />
                 </div>
-            
+                
+                
+                    
+                    <div class="progress-status-label">
+                        Progreso insuficiente para alcanzar la meta
+                    </div>
+                    
+                
+            </div>
         </div>
     
 
@@ -360,7 +370,7 @@ layout-indicator-iframe
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Índice de paridad de género en la realización de actividades educativas&quot;,&quot;Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)&quot;,&quot;Índice de paridad en salud en la realización de actividades educativas&quot;,&quot;Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Serie&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba/Álava&quot;,&quot;Gipuzkoa&quot;,&quot;Bizkaia&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Territorio histórico&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Ratio&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unidad&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Valor&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Año&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Índice de paridad de género en la realización de actividades educativas&quot;,&quot;Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)&quot;,&quot;Índice de paridad en salud en la realización de actividades educativas&quot;,&quot;Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Serie&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba/Álava&quot;,&quot;Gipuzkoa&quot;,&quot;Bizkaia&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Territorio histórico&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Ratio&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unidad&quot;},{&quot;name&quot;:&quot;Progress&quot;,&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Progress&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Valor&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
   data-proxy=""
@@ -420,7 +430,11 @@ layout-indicator-iframe
         
         
         
-        <th scope="col" class="table-value">Series</th>
+        <th scope="col">Series</th>
+        
+        
+        
+        <th scope="col" class="table-value">Progress</th>
         
         
       </thead>
@@ -441,7 +455,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad de género en la realización de actividades educativas</td>
+          <td>Índice de paridad de género en la realización de actividades educativas</td>
+          
+          
+          
+          <td class="table-value">1.07</td>
           
           
         </tr>
@@ -461,7 +479,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad de género en la realización de actividades educativas</td>
+          <td>Índice de paridad de género en la realización de actividades educativas</td>
+          
+          
+          
+          <td class="table-value">1.17</td>
           
           
         </tr>
@@ -481,7 +503,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad de género en la realización de actividades educativas</td>
+          <td>Índice de paridad de género en la realización de actividades educativas</td>
+          
+          
+          
+          <td class="table-value">1.0</td>
           
           
         </tr>
@@ -501,7 +527,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          <td>Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          
+          
+          
+          <td class="table-value">1.6666666666666667</td>
           
           
         </tr>
@@ -521,7 +551,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          <td>Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          
+          
+          
+          <td class="table-value">1.6666666666666667</td>
           
           
         </tr>
@@ -541,7 +575,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          <td>Índice de paridad en ingresos en la realización de actividades educativas (quintiles superior e inferior)</td>
+          
+          
+          
+          <td class="table-value">1.5625</td>
           
           
         </tr>
@@ -561,7 +599,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad en salud en la realización de actividades educativas</td>
+          <td>Índice de paridad en salud en la realización de actividades educativas</td>
+          
+          
+          
+          <td class="table-value">1.5151515151515151</td>
           
           
         </tr>
@@ -581,7 +623,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad en salud en la realización de actividades educativas</td>
+          <td>Índice de paridad en salud en la realización de actividades educativas</td>
+          
+          
+          
+          <td class="table-value">1.4285714285714286</td>
           
           
         </tr>
@@ -601,7 +647,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.02</td>
           
           
         </tr>
@@ -621,7 +671,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0989010989010988</td>
           
           
         </tr>
@@ -641,7 +695,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0989010989010988</td>
           
           
         </tr>
@@ -661,7 +719,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0101010101010102</td>
           
           
         </tr>
@@ -681,7 +743,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.1111111111111112</td>
           
           
         </tr>
@@ -701,7 +767,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.01</td>
           
           
         </tr>
@@ -721,7 +791,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0638297872340423</td>
           
           
         </tr>
@@ -741,7 +815,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.1363636363636365</td>
           
           
         </tr>
@@ -761,7 +839,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0309278350515465</td>
           
           
         </tr>
@@ -781,7 +863,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0869565217391304</td>
           
           
         </tr>
@@ -801,7 +887,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0101010101010102</td>
           
           
         </tr>
@@ -821,7 +911,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.075268817204301</td>
           
           
         </tr>
@@ -841,7 +935,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.020408163265306</td>
           
           
         </tr>
@@ -861,7 +959,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.0416666666666667</td>
           
           
         </tr>
@@ -881,7 +983,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          <td>Índice de paridad residencial en la realización de actividades educativas (municipios de más y menos de 10.000 habitantes)</td>
+          
+          
+          
+          <td class="table-value">1.02</td>
           
           
         </tr>
@@ -1039,6 +1145,15 @@ data-event-label="Change to Table tab"
           data-ts-attribute="DATA_LAST_UPDATE"
         ></dd>
         
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        ></dd>
+        
         
     </dl>
     
@@ -1109,6 +1224,15 @@ data-event-label="Change to Table tab"
         <dd
           class="data-controlled-footer-field"
           data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
         ></dd>
         
         
@@ -1220,6 +1344,8 @@ data-event-label="Change to indicator.global_metadata tab"
                 <table class="table metadata-content">
   <tbody>
   
+    
+    
       
       
       
@@ -1236,11 +1362,15 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1257,6 +1387,8 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
@@ -1273,6 +1405,8 @@ data-event-label="Change to indicator.global_metadata tab"
         
       
   
+    
+    
       
       
       
@@ -1300,6 +1434,8 @@ habitantes (en las últimas 4 semanas)</li>
         
       
   
+    
+    
       
       
       
@@ -1330,11 +1466,15 @@ personas sin limitaciones por problemas de salud)</p>
         
       
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1351,6 +1491,8 @@ personas sin limitaciones por problemas de salud)</p>
         
       
   
+    
+    
       
       
       
@@ -1368,6 +1510,8 @@ personas sin limitaciones por problemas de salud)</p>
         
       
   
+    
+    
       
       
       
@@ -1385,63 +1529,99 @@ personas sin limitaciones por problemas de salud)</p>
         
       
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1450,13 +1630,15 @@ personas sin limitaciones por problemas de salud)</p>
         <th scope="row">Fecha última actualización datos </th>
         <td>
           
-            11/09/2025
+            21/07/2026
           
         </td>
         </tr>
         
       
   
+    
+    
       
       
       
@@ -1474,6 +1656,7 @@ personas sin limitaciones por problemas de salud)</p>
   
   </tbody>
 </table>
+
             </article>
         </div>
         
@@ -1534,7 +1717,7 @@ personas sin limitaciones por problemas de salud)</p>
             <tr>
                 <th scope="row">Enlace a la fuente de datos</th>
                 
-                <td><a href="https://es.eustat.eus/estadisticas/tema_57/opt_1/temas.html" target="_blank" rel="noopener">Encuesta de población en relación con la actividad</a></td>
+                <td><a href="https://es.eustat.eus/estadisticas/tema_57/opt_1/temas.html" target="_blank" rel="noopener noreferrer">Encuesta de población en relación con la actividad</a></td>
                 
             </tr>
             
@@ -1589,7 +1772,7 @@ personas sin limitaciones por problemas de salud)</p>
             <tr>
                 <th scope="row">Enlace a la fuente de datos</th>
                 
-                <td><a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176759&menu=ultiDatos&idp=1254735573113" target="_blank" rel="noopener">Encuesta sobre la participación de la población adulta en las actividades de aprendizaje</a></td>
+                <td><a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176759&menu=ultiDatos&idp=1254735573113" target="_blank" rel="noopener noreferrer">Encuesta sobre la participación de la población adulta en las actividades de aprendizaje</a></td>
                 
             </tr>
             
@@ -1607,6 +1790,7 @@ personas sin limitaciones por problemas de salud)</p>
     </div>
 
 </div>
+
 
             </article>
         </div>
@@ -1626,21 +1810,45 @@ personas sin limitaciones por problemas de salud)</p>
                 <table class="table metadata-content">
   <tbody>
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1658,6 +1866,8 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
         
       
   
+    
+    
       
       
       
@@ -1674,6 +1884,8 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
         
       
   
+    
+    
       
       
       
@@ -1691,11 +1903,15 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
         
       
   
+    
+    
       
       
       
         
           
+    
+    
       
       
       
@@ -1712,25 +1928,52 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
         
       
   
+    
+    
       
       
       
         
           
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
+    
+    
   
   </tbody>
 </table>
+
             </article>
         </div>
         
@@ -1746,18 +1989,18 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.2.2/dist/chartjs-plugin-annotation.min.js" integrity="sha256-XuHhf6q+GD7fscc96mTm/228GXf1Nn9wOYOE0EgeFzY=" crossorigin="anonymous"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
 
 
 
@@ -1771,7 +2014,7 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260911094213'></script>
+<script src='/site/assets/js/sdg.js?v=20260915095608'></script>
 
 
 <script>
@@ -1791,7 +2034,7 @@ Fuente: División de Estadísticas de las Naciones Unidas</p>
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260911094213"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260915095608"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

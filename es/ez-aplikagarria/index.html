@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
+
+        <script>
+// This is where we initialise any global variables, namespaced in "opensdg".
+var opensdg = {
+
+  // A base URL for asynchronous calls to SDG data.
+  remoteDataBaseUrl: 'https://eustat-pre.github.io/data/es',
+
+  chartConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Chart.js.
+  chartConfigAlter: function(callback) {
+    this.chartConfigAlterations.push(callback);
+  },
+
+  tableConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Datatables.
+  tableConfigAlter: function(callback) {
+    this.tableConfigAlterations.push(callback);
+  },
+
+  // A hook which can be replaced to alter whether/how the values that are
+  // displayed on indicator tables/graphs get rounded. A "context" parameter
+  // is also passed which contains additional information.
+  dataRounding: function(value, context) {
+    // Alterations go here.
+    return value;
+  },
+
+  // A hook which can be used to alter the data before it is displayed on charts/tables.
+  dataDisplayAlterations: [],
+  dataDisplayAlter: function(callback) {
+    this.dataDisplayAlterations.push(callback);
+  },
+
+  // Disaggregations which should be ignored on indicator pages.
+  ignoredDisaggregations: null,
+
+  language: 'es',
+
+  language_numbers: 'es',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
+};
+
+</script>
+
+        <script>
+// JavaScript container for translation data.
+var translations = {
+  //Javascript version of the "t" filter from jekyll-open-sdg-plugins.
+  t: function(key) {
+
+    if (!key || typeof key !== 'string') {
+      return '';
+    }
+
+    // The majority of uses of this function are to translate disaggregation
+    // data. To spare data providers of needing to enter "data." in front of
+    // their disaggregation data, we specifically look for that here.
+    if (typeof this.data === 'object' && this.data !== null && this.data[key]) {
+      return this.data[key];
+    }
+
+    var originalKey = key;
+    var drilled = this;
+    var levelsDrilled = 0;
+    var levels = key.split('.');
+
+    for (var level in levels) {
+      // If we have drilled down to soon, abort.
+      if (typeof drilled !== 'object') {
+        break;
+      }
+
+      if (levels[level] in drilled) {
+        drilled = drilled[levels[level]];
+        levelsDrilled += 1;
+      }
+    }
+
+    // If we didn't drill the right number of levels, return the original string.
+    if (levels.length != levelsDrilled) {
+      return originalKey;
+    }
+
+    // Otherwise we must have drilled all the way.
+    return drilled;
+  },
+};
+</script>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title and meta description
+        ================================================== -->
+
+        
+    <title>No aplicable - Indicadores para los Objetivos de Desarrollo Sostenible</title>
+
+
+
+        
+        <meta name="robots" content="noindex, nofollow">
+        
+
+        <!--[if IE 9]>
+        <script src="/site/assets/js/lib/classList.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/site/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/site/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/site/assets/img/favicons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/site/assets/img/favicons/favicon.ico" />
+
+        
+
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260915095608">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"  crossorigin=""/>
+        <link rel="stylesheet" href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'  crossorigin=""/>
+        <link rel="stylesheet" href="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.css"  crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
+        
+
+        
+
+
+        <!--[if IE]>
+        <link rel="stylesheet" href="/site/assets/css/ie.css">
+        <![endif]-->
+
+        
+
+    </head>
+<body class="language-es
+layout-progrestatus-categoria
+">
+<!-- <div class="container"> -->
+
+<script>translations['header'] = {"alpha":"POC","calendar":"Calendario","complaints_suggestions":"Quejas y sugerencias","database":"Banco de datos","disclaimer":"Este es un sitio web de desarrollo.","follow_us":"Síganos:","info_service":"Servicio de información","municipal_info":"Info. municipal","operations":"Operaciones","press_service":"Servicio de prensa","situation":"Coyuntura","themes":"Temas"};</script>
+
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0"></a>
+<div class="container internet-explorer-message">
+    <h2 class="internet-explorer-message-title"></h2>
+    <p class="internet-explorer-message-body"></p>
+</div>
+<header role="banner" class="">
+  <div class="header" >
+    <div class="header-top">
+        <div id="logo" class="logo-header">
+            <a id="logo-link" href="https://es.eustat.eus/indice.html">
+                <img src="/site/assets/img/LogoEustat.png" alt="eustat">
+            </a>
+            <div class="logo-header-description">
+                Euskal Estatistika Erakundea<br>Instituto Vasco de Estadística
+            </div>
+        </div>
+        <div id="trigger_home" class="menu-button">
+            <img id="euskadieus-logo"src="/site/assets/img/logo-euskadi-eus.png" alt="eustat">
+            <img id="menu-button-img" src="/site/assets/img/ham.png" alt="Mostrar/ocultar menu principal">
+        </div>
+    </div>
+    <div class="zutabeak">
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL01_01" data-ajax="false" href="https://es.eustat.eus/estadisticas/opt_0/id_All/temalista.html">Temas</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_02" data-ajax="false" href="https://es.eustat.eus/estadisticas/opt_1/id_All/temalista.html">Operaciones</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_03" data-ajax="false" href="https://es.eustat.eus/bancopx/spanish/indice.html">Banco de datos</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_04" data-ajax="false" onclick="cambiaTemasOperaciones(2);" href="https://es.eustat.eus/indice.html#cy">Coyuntura</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_05" data-ajax="false" href="https://es.eustat.eus/municipal/datos_estadisticos/info_territorial_c.asp">Info. municipal</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL02_01" data-ajax="false" href="https://es.eustat.eus/estadisticas/calendario.html">Calendario</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_02" data-ajax="false" href="https://es.eustat.eus/productosServicios/sugerencias.html">Quejas y sugerencias</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_03" data-ajax="false" href="https://es.eustat.eusprodserv/info_c.html">Servicio de información</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_04" data-ajax="false" href="https://es.eustat.eus/notas_c.html">Servicio de prensa</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <div class="rrss">
+                <span class="texto-rrss">
+                  Síganos:
+                </span>
+                <div class="iconos-rrss">
+                    <a href="https://es.linkedin.com/company/eustat" target="_blank" title="LinkedIn"
+                        style="display:inline-block;"><img class="sociales" alt="LinkedIn"
+                            src="/site/assets/img/rrss/linkedin.gif"></a>
+                    <a href="http://www.facebook.com/eustat" target="_blank" title="Facebook"
+                        style="display:inline-block;"><img class="sociales" alt="Facebook"
+                            src="/site/assets/img/rrss/facebook.gif"></a>
+                    <a href="http://twitter.com/eustat" target="_blank" title="X"
+                        style="display:inline-block;"><img class="sociales" alt="X"
+                            src="/site/assets/img/rrss/X.gif"></a>
+                    <a href="https://bsky.app/profile/eustat.eus" target="_blank" title="BlueSky"
+                        style="display:inline-block;"><img class="sociales" alt="BlueSky"
+                            src="/site/assets/img/rrss/BlueSky.png"></a>
+                    <a href="https://www.youtube.com/user/eustat1986/" target="_blank" title="Youtube"
+                        style="display:inline-block;"><img class="sociales" alt="Youtube"
+                            src="/site/assets/img/rrss/youtube.png"></a>
+                    <a href="https://es.eustat.eus/web/comun/extractorclobRSS.ashx?id=/rss/novedades_c.xml"
+                        target="_blank" title="Rss novedades" style="display:inline-block;"><img
+                            class="sociales" alt="Rss novedades" src="/site/assets/img/rrss/rss2.png"></a>
+                </div>
+            </div>
+        </div>
+    </div><!-- zutabeak -->
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM completamente cargado y procesado');
+    var container = document.querySelector('.header');
+    var zutabeak = document.querySelector('.zutabeak');
+
+    function buildCanvas() {
+        document.getElementById('trigger_home').addEventListener('click', function (e) {
+            console.log("hey");
+            
+            e.preventDefault();
+            container.classList.toggle('active');
+            zutabeak.classList.toggle('active');
+            if (container.classList.contains('active')) {
+                
+                document.getElementById('menu-button-img').src = "/site/assets/img/aspa.png";
+               
+            } else {
+                document.getElementById('menu-button-img').src = "/site/assets/img/ham.png";
+                
+            }
+        });
+    }
+
+    buildCanvas();
+
+    window.addEventListener('resize', function () {
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
+    });
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 500) {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
+        } else {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
+        }
+    });
+});
+</script>
+  <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
+            <a class="navbar-brand" href="/site/es/" id="home" aria-label="" title="">
+    <img src="/site/assets/img/logo/SDG_logo_es.png" alt="Ir a la página de inicio" />
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav" id="menu"><li class="nav-item ">
+    <a class="nav-link" href="/site/es/">Inicio</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/site/es/jarraipen-txostena">Informe de seguimiento</a>
+</li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Datos desagregados
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-desagregaciones"><li class=" ">
+    <a class="dropdown-item" href="/site/es/lurraldea/">Territorio histórico</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/es/udalerria/">Municipio</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/es/sexua/">Sexo</a>
+</li></ul>
+            </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-masinfo" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Más información
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-masinfo"><li class=" ">
+    <a class="dropdown-item" href="/site/es/agenda2030/">Agenda 2030</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/es/aurkezpena/">Información disponible sobre los indicadores</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/es/plataforma/">Acerca de la plataforma web</a>
+</li></ul>
+            </li></ul>
+    
+                </div>
+                <div class="header-search-bar">
+                    <form class="align-self-lg-end" id="search" action="/site/es/search/">
+    <div class="input-group">
+        <label class="visually-hidden" for="indicator_search"></label>
+        <input class="form-control" type="search" name="q" id="indicator_search" title="">
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary ms-n5" aria-label="" id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+                </div>
+                <div class="header-toggles d-flex">
+
+
+
+
+
+  <div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <a class="language-toggle-link" href="/site/ez-aplikagarria/">
+                EU
+            </a>
+        </li><li class="language-option-es list-inline-item">
+            <span class="language-toggle-active-language">
+                ES
+            </span>
+        </li><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/site/en/ez-aplikagarria/">
+                EN
+            </a>
+        </li></ul>
+</div>
+
+
+                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <a class="language-toggle-link" href="/site/ez-aplikagarria/">
+                EU
+            </a>
+        </li><li class="language-option-es list-inline-item">
+            <span class="language-toggle-active-language">
+                ES
+            </span>
+        </li><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/site/en/ez-aplikagarria/">
+                EN
+            </a>
+        </li></ul>
+</div></span><a title="" aria-label=""
+    data-contrast-switch-to="" role="button" href="javascript:void(0)" data-on="click"
+data-event-category="Accessibility"
+data-event-action="Change contrast setting"
+data-event-label="high"
+>A</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="top" tabindex=-1></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="main-content" class="container layout-progrestatus-categoria" role="main">
+
+  <!-- Cabecera: volver al informe -->
+  <nav aria-label="" style="margin-bottom: 20px;">
+    
+    <a href="/site/es/jarraipen-txostena/" class="back-link">
+      &#8592; Informe de seguimiento
+    </a>
+  </nav>
+
+  <!-- Título de la categoría -->
+  <div class="categoria-header" style="margin-bottom: 30px;">
+    <h1 style="margin: 0 0 12px 0;">No aplicable</h1>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      
+      <span class="total">
+        <span>9</span>
+        indicadores
+      </span>
+    </div>
+  </div>
+
+  <!-- Orden de goals: sacado de progreso.csv que ya viene ordenado numéricamente por el build -->
+  
+  
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/es/10/" title=" 10" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/es/10.png" alt="Reducción de las Desigualdades" width="80" height="80" class="goal-icon-10 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Reducción de las Desigualdades</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">10.6.1</span>
+              <a href="/site/es/10-6-1/">Proporción de miembros y derechos de voto de los países en desarrollo en organizaciones internacionales</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/es/12/" title=" 12" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/es/12.png" alt="Producción y Consumo Responsables" width="80" height="80" class="goal-icon-12 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Producción y Consumo Responsables</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">12.4.1</span>
+              <a href="/site/es/12-4-1/">Número de partes en los acuerdos ambientales multilaterales internacionales sobre desechos peligrosos y otros productos químicos que cumplen sus compromisos y obligaciones de transmitir información como se exige en cada uno de esos acuerdos</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/es/13/" title=" 13" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/es/13.png" alt="Acción por el Clima" width="80" height="80" class="goal-icon-13 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Acción por el Clima</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">13.a.1</span>
+              <a href="/site/es/13-a-1/">Cantidades proporcionadas y movilizadas en dólares de los Estados Unidos al año en relación con el objetivo actual mantenido de movilización colectiva de 100.000 millones de dólares de aquí a 2025</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">13.b.1</span>
+              <a href="/site/es/13-b-1/">Número de países menos adelantados y pequeños Estados insulares en desarrollo con contribuciones determinadas a nivel nacional, estrategias a largo plazo, planes nacionales de adaptación y comunicaciones sobre la adaptación, notificadas a la secretaría de la Convención Marco de las Naciones Unidas sobre el Cambio Climático</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/es/16/" title=" 16" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/es/16.png" alt="Paz, justicia e instituciones fuertes" width="80" height="80" class="goal-icon-16 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Paz, justicia e instituciones fuertes</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">16.8.1</span>
+              <a href="/site/es/16-8-1/">Proporción de miembros y derechos de voto de los países en desarrollo en organizaciones internacionales</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/es/17/" title=" 17" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/es/17.png" alt="Alianzas para Lograr los Objetivos" width="80" height="80" class="goal-icon-17 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Alianzas para Lograr los Objetivos</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">17.4.1</span>
+              <a href="/site/es/17-4-1/">Servicio de la deuda en proporción a las exportaciones de bienes, servicios e ingresos primarios</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.10.1</span>
+              <a href="/site/es/17-10-1/">Promedio arancelario mundial ponderado</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.11.1</span>
+              <a href="/site/es/17-11-1/">Participación de los países en desarrollo y los países menos adelantados en las exportaciones mundiales</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.12.1</span>
+              <a href="/site/es/17-12-1/">Promedio ponderado de los aranceles que enfrentan los países en desarrollo, los países menos adelantados y los pequeños Estados insulares en desarrollo</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+
+  <a href="#top">Volver arriba</a>
+</div>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="footerLinks">
+                    <ul>
+                        <li>
+                            <a href="https://open-sdg.org">Construido con Open SDG</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/site/es/config">Configuration</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pieEustat">
+  <div class="marcopie">
+      <div class="enlaces">
+          <div class="centradomini">
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/about/links_c.html">
+                          Enlaces
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/faq_c.html">
+                          FAQ
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/sitemap_c.html">
+                          Mapa
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_04" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/accesibilidad_c.html">
+                          Accesibilidad
+                      </a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="centradomini">
+              <div class="Prayamini"></div>
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/about/a_eustat_c.html">
+                          Acerca de Eustat
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://www.euskadi.eus/sede-electronica/">
+                          Sede electrónica
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://es.eustat.eus/privacidad_c.html">
+                          Privacidad
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="piederecho">
+          <div class="logos-rrss-pie">
+              <div class="logos">
+                  <a id="ctl00_Pie_pieCOL03_07" data-ajax="false"
+                     href="https://es.eustat.eus/about/aenor_c.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/aenor_2022_c.png"
+                          alt="AENOR"
+                          style="border-width:0px;">
+                  </a>
+
+                  <a id="ctl00_Pie_pieCOL03_07b" data-ajax="false"
+                     href="https://es.eustat.eus/about/aenor_c.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/logo_ENS_2022.png"
+                          alt="ENS"
+                          style="border-width:0px;">
+                  </a>
+              </div>
+          </div>
+
+          <div class="piederecho-texto">
+              <p class="piederechop bold">Eustat - Euskal Estatistika Erakundea - Instituto Vasco de Estadística</p>
+              <p class="piederechop">Eustat es el organismo público que desarrolla, produce y difunde información estadística oficial de la C.A. de Euskadi.</p>
+              <p class="piederechop">
+                  c/Donostia - San Sebastián, 1<br>
+                  01010 Vitoria-Gasteiz<br>
+                  Tfno: (+34) 945017500<br>
+                  Fax: (+34) 945017501<br>
+                  webmaster_eustat@eustat.eus
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script>translations['general'] = translations['general'] || {};
+    translations['general']['hide'] = 'Ocultar';</script>
+
+<script>translations['search'] = translations['search'] || {};
+    translations['search']['search'] = '';</script>
+
+<script src='/site/assets/js/sdg.js?v=20260915095608'></script>
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],  // Permite $...$ y \(...\) para matemáticas en línea
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Permite $$...$$ y \[...\] para ecuaciones en bloque
+      tags: 'none'  // Desactiva la numeración automática de ecuaciones
+    },
+    svg: {
+      fontCache: 'global'  // Optimiza el rendimiento al reutilizar fuentes matemáticas
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+    
+    <script src="/site/assets/js/custom.js?v=20260915095608"></script><script>
+    new indicatorInit();
+    new accessibilitySwitcher();
+</script>
+
+
+</body>
+</html>

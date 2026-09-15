@@ -1356,7 +1356,7 @@ function nonFieldColumns() {
     'Unit multiplier',
     'Unit measure',
   ];
-  var timeSeriesAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"}];
+  var timeSeriesAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"},{"field":"Progress","label":""}];
   if (timeSeriesAttributes && timeSeriesAttributes.length > 0) {
     timeSeriesAttributes.forEach(function(tsAttribute) {
       columns.push(tsAttribute.field);
@@ -2115,6 +2115,19 @@ function getDataBySelectedFields(rows, selectedFields) {
 }
 
 /**
+ * @param {Array} rows
+ * @param {Array} selectedFields Field items
+ * @return {Array} Rows
+ */
+function hasDataBySelectedFields(rows, selectedFields) {
+  return rows.some(function(row) {
+    return selectedFields.some(function(field) {
+      return field.values.includes(row[field.field]);
+    });
+  });
+}
+
+/**
  * @param {Array} fieldNames
  * @param {Object} dataSchema
  */
@@ -2803,7 +2816,7 @@ function getTimeSeriesAttributes(rows) {
     return [];
   }
   var timeSeriesAttributes = [],
-      possibleAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"}],
+      possibleAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"},{"field":"Progress","label":""}],
       firstRow = rows[0],
       firstRowKeys = Object.keys(firstRow);
   possibleAttributes.forEach(function(possibleAttribute) {
@@ -2874,6 +2887,7 @@ function getAllObservationAttributes(rows) {
     getDataByUnit: getDataByUnit,
     getDataBySeries: getDataBySeries,
     getDataBySelectedFields: getDataBySelectedFields,
+    hasDataBySelectedFields: hasDataBySelectedFields,
     getUnitFromStartValues: getUnitFromStartValues,
     getSeriesFromStartValues: getSeriesFromStartValues,
     selectFieldsFromStartValues: selectFieldsFromStartValues,
@@ -3146,12 +3160,19 @@ function getAllObservationAttributes(rows) {
         this.selectedSeries = startingSeries;
       }
 
-      // Decide on starting field values if not changing series.
+      // Decide on starting field values.
       var startingFields = this.selectedFields;
-      if (this.hasStartValues && !options.changingSeries) {
+      var useMinimumStartingFields = false;
+      if (this.hasStartValues) {
         startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
+        // Quick test to see if this would result in zero matches, in cases where
+        // the series is being changed and the new series would not show data.
+        if (options.changingSeries && !helpers.hasDataBySelectedFields(this.data, startingFields)) {
+          useMinimumStartingFields = true;
+          startingFields = this.selectedFields;
+        }
       }
-      else {
+      if (!this.hasStartValues || useMinimumStartingFields) {
         if (headline.length === 0) {
           startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
         }
@@ -3388,7 +3409,7 @@ function sortFieldGroup(fieldGroupElement) {
  * @return null
  */
 function updateTimeSeriesAttributes(tsAttributeValues) {
-    var timeSeriesAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"}];
+    var timeSeriesAttributes = [{"field":"COMMENT_TS","label":"indicator.footnote"},{"field":"DATA_LAST_UPDATE","label":"metadata_fields.national_data_update_url"},{"field":"Progress","label":""}];
     timeSeriesAttributes.forEach(function(tsAttribute) {
         var field = tsAttribute.field,
             valueMatch = tsAttributeValues.find(function(tsAttributeValue) {
@@ -4307,10 +4328,10 @@ opensdg.chartTypes.base = function(info) {
         value = parseInt(value, 10);
     }
     if (value === 1) {
-        return 'Yes';
+        return translations.indicator.affirmative;
     }
     else if (value === -1) {
-        return 'No';
+        return translations.indicator.negative;
     }
     return '';
 }
@@ -4444,6 +4465,15 @@ function initialiseDataTable(el, info) {
                     var additionalInfo = Object.assign({}, info);
                     additionalInfo.row = row;
                     additionalInfo.col = col;
+                    if (info.chartType === 'binary') {
+                        var cellDataInt = Number(cellData);
+                        if (cellDataInt === 1) {
+                            cellData = translations.indicator.affirmative;
+                        }
+                        else if (cellDataInt === 0 || cellDataInt === -1) {
+                            cellData = translations.indicator.negative;
+                        }
+                    }
                     $(td).text(alterDataDisplay(cellData, rowData, 'table cell', additionalInfo));
                 },
             },
@@ -4464,7 +4494,7 @@ function initialiseDataTable(el, info) {
  * @return null
  */
 function createSelectionsTable(chartInfo) {
-    createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', chartInfo.isProxy, chartInfo.observationAttributesTable);
+    createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', chartInfo.isProxy, chartInfo.observationAttributesTable, chartInfo.chartType);
     $('#tableSelectionDownload').empty();
     createTableTargetLines(chartInfo.graphAnnotations);
     createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload', chartInfo.selectedSeries, chartInfo.selectedUnit);
@@ -4514,9 +4544,10 @@ function tableHasData(table) {
  * @param {Element} el
  * @param {bool} isProxy
  * @param {Object} observationAttributesTable
+ * @param {String} chartType
  * @return null
  */
-function createTable(table, indicatorId, el, isProxy, observationAttributesTable) {
+function createTable(table, indicatorId, el, isProxy, observationAttributesTable, chartType) {
 
     var table_class = OPTIONS.table_class || 'table table-hover';
 
@@ -4571,6 +4602,7 @@ function createTable(table, indicatorId, el, isProxy, observationAttributesTable
             table: table,
             indicatorId: indicatorId,
             observationAttributesTable: observationAttributesTable,
+            chartType: chartType,
         };
         initialiseDataTable(el, alterationInfo);
 
@@ -4643,7 +4675,7 @@ function setDataTableWidth(table) {
     // ascertain whether the table should be width 100% or explicit width:
     var containerWidth = table.closest('.dataTables_wrapper').width();
 
-    if (totalWidth > containerWidth) {
+    if (totalWidth > containerWidth && containerWidth > 0) {
         table.css('width', totalWidth + 'px');
     } else {
         table.css('width', '100%');
@@ -4721,7 +4753,11 @@ function alterDataDisplay(value, info, context, additionalInfo) {
             localeOpts.minimumFractionDigits = VIEW._precision;
             localeOpts.maximumFractionDigits = VIEW._precision;
         }
-        altered = altered.toLocaleString(opensdg.language, localeOpts);
+        altered = altered.toLocaleString(opensdg.language_numbers, localeOpts);
+        // Still use the custom decimal separator if it is there.
+        if (OPTIONS.decimalSeparator) {
+            altered = altered.toString().replace(VIEW._browserDecimalSeparator, OPTIONS.decimalSeparator);
+        }
     }
     // Now let's add any footnotes from observation attributes.
     var obsAttributes = [];
@@ -4752,6 +4788,17 @@ function alterDataDisplay(value, info, context, additionalInfo) {
  */
 function getObservationAttributeFootnoteSymbol(num) {
     return '[' + translations.indicator.note + ' ' + (num + 1) + ']';
+}
+
+/**
+ * Figure out what the browser will be using for the decimal separator.
+ *
+ * @returns {string} The decimal separator the browser will use.
+ */
+function getBrowserDecimalSeparator() {
+    var browserDecimal = 1.1;
+    browserDecimal = browserDecimal.toLocaleString(opensdg.language_numbers).substring(1, 2);
+    return browserDecimal;
 }
 
   /**
@@ -4943,6 +4990,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     sortFieldGroup: sortFieldGroup,
     getObservationAttributeFootnoteSymbol: getObservationAttributeFootnoteSymbol,
     getObservationAttributeText: getObservationAttributeText,
+    getBrowserDecimalSeparator: getBrowserDecimalSeparator,
   }
 })();
 
@@ -4954,6 +5002,7 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
     VIEW._legendElement = OPTIONS.legendElement;
     VIEW._precision = undefined;
     VIEW._chartInstances = {};
+    VIEW._browserDecimalSeparator = helpers.getBrowserDecimalSeparator();
 
     var chartHeight = screen.height < OPTIONS.maxChartHeight ? screen.height : OPTIONS.maxChartHeight;
     $('.plot-container', OPTIONS.rootElement).css('height', chartHeight + 'px');
