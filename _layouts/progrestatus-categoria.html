@@ -1,0 +1,88 @@
+{% include head.html %}
+{% include header.html %}
+
+{% assign status_value = page.status_value %}
+{% assign status_types = site.progress_status.status_types %}
+{% assign status_type = status_types | where: "value", status_value | first %}
+
+{% assign _t_key = 'status.' | append: status_value | append: '_mixto' %}
+{% assign _t_label = _t_key | t %}
+{% if _t_label == _t_key %}
+  {% if status_type %}
+    {% assign _t_label = status_type.label | t %}
+  {% else %}
+    {% assign _t_label = status_value %}
+  {% endif %}
+{% endif %}
+
+{% assign all_rows = site.data.csv.progreso_indicadores %}
+{% assign cat_rows = all_rows | where: "status", status_value %}
+
+<div id="main-content" class="container layout-progrestatus-categoria" role="main">
+
+  <!-- Cabecera: volver al informe -->
+  <nav aria-label="{{ page.t.general.back }}" style="margin-bottom: 20px;">
+    {% if page.language == 'es' %}{% assign _lang_prefix = '/es/' %}
+    {% elsif page.language == 'en' %}{% assign _lang_prefix = 'en/' %}
+    {% else %}{% assign _lang_prefix = '/' %}{% endif %}
+    <a href="{{ site.baseurl }}{{ _lang_prefix }}jarraipen-txostena/" class="back-link">
+      &#8592; {{ page.t.status.reporting_status }}
+    </a>
+  </nav>
+
+  <!-- Título de la categoría -->
+  <div class="categoria-header" style="margin-bottom: 30px;">
+    <h1 style="margin: 0 0 12px 0;">{{ _t_label }}</h1>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      {% if status_type and status_type.image %}
+        <div class="progress-status">
+          <div class="progress-status-image">
+            <img src="{{ site.baseurl }}/{{ status_type.image }}" alt="{{ _t_label }}" />
+          </div>
+        </div>
+      {% endif %}
+      <span class="total">
+        <span>{{ cat_rows.size }}</span>
+        {% if page.language == 'eu' %}adierazle{% elsif page.language == 'en' %}indicators{% else %}indicadores{% endif %}
+      </span>
+    </div>
+  </div>
+
+  <!-- Orden de goals: sacado de progreso.csv que ya viene ordenado numéricamente por el build -->
+  {% assign progreso_data = site.data.csv.progreso %}
+  {% assign goals_ordered = progreso_data | where_exp: "item", "item.goal != 'overall'" | map: "goal" | uniq %}
+
+  {% for goal_num in goals_ordered %}
+    {% assign goal_indicators = cat_rows | where: "goal", goal_num %}
+    {% if goal_indicators.size > 0 %}
+    {% assign goal_details = goal_num | sdg_lookup %}
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          {% if goal_details.icon %}
+            <a href="{{ goal_details.url }}" title="{{ page.t.goal.indicators_for_goal }} {{ goal_details.number }}" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="{{ goal_details.icon }}" alt="{{ goal_details.short | escape }}" width="80" height="80" class="goal-icon-{{ goal_details.number }} goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
+            </a>
+          {% endif %}
+          <h3 style="margin: 0;">{{ goal_details.short }}</h3>
+        </div>
+
+        <!-- Lista de indicadores -->
+        <ul class="categoria-indicator-list">
+          {% for row in goal_indicators %}
+            {% assign indicator = row.indicator | sdg_lookup %}
+            <li>
+              <span class="indicator-number">{{ indicator.number }}</span>
+              <a href="{{ indicator.url }}">{{ indicator.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    {% endif %}
+  {% endfor %}
+
+  {% include back-to-top.html %}
+</div>
+
+{% include footer.html %}

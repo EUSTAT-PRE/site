@@ -431,11 +431,16 @@ ul.iconillo {
 }
 
 
-// Nuevos estados
+// Nuevos estados (legacy)
 .alcanzado {background-color: #45ba80; background: #45ba80;}
-.progreso {background-color: #fec329; background: #fec329;}
-.retroceso {background-color: #db405a; background: #db405a;}
-.noevaluado {background-color: #ccd5dd; background: #ccd5dd;}
+.progreso {background-color: #b3d37a; background: #b3d37a;}
+// Nuevos estados (Eurostat)
+.significant-progress {background-color: #45ba80; background: #45ba80;}
+.moderate-progress {background-color: #b3d37a; background: #b3d37a;}
+.no-progress {background-color: #fec329; background: #fec329;}
+.moderate-deterioration {background-color: #ff7f27; background: #ff7f27;}
+.significant-deterioration {background-color: #db405a; background: #db405a;}
+.not-available {background-color: #ccd5dd; background: #ccd5dd;}
 
 
 // Progress status
@@ -449,13 +454,23 @@ ul.iconillo {
             strong {
                 font-weight: normal;
             }
+            .status-category-link {
+                font-weight: normal;
+                color: $text-color;
+                text-decoration: underline;
+                text-decoration-style: dotted;
+                text-underline-offset: 2px;
+                &:hover {
+                    color: #0056b3;
+                    text-decoration-style: solid;
+                }
+            }
             > div {
                 display: inline-block;
                 margin-bottom: 5px;
                 margin-right: 10px;
 
                 .status {
-                    border: none !important;
                     @include status;
                     display: inline-block;
                     margin-right: 3px;
@@ -464,12 +479,19 @@ ul.iconillo {
                     width: 40px;
                     text-align: center;
                     font-size: $fontSize;
-
-  .status-inner {
-    padding: 0 2px;
-    border-radius: 5px; // Mantén los bordes redondeados si es necesario.
-    color: #000; // Texto negro para todos.
-}
+                    &.notapplicable {
+                        border: none;
+                    }
+                    &.not-available {
+                        background-color: #ccd5dd;
+                        background: #ccd5dd;
+                        border-color: #ccd5dd;
+                    }
+                    .status-inner {
+                        padding: 0 2px;
+                        border-radius: 5px;
+                        color: #000;
+                    }
                 }
             }
         }
@@ -483,11 +505,6 @@ ul.iconillo {
             border: 1px solid $color-dark;
             font-size: 0;
             margin-top: 10px;
-            & span {
-                display: inline-block;
-                height: 10px;
-                font-weight: bold;
-            }
             .notapplicable {
                 background-color: $status-backgroundColor-notapplicable;
                 background: $status-backgroundColor-notapplicable;
@@ -496,16 +513,23 @@ ul.iconillo {
                 background-color: $status-backgroundColor-notstarted;
                 background: $status-backgroundColor-notstarted;
             }
-// Otros estados de progreso
-
-                        .alcanzado {background-color: #45ba80;
-                                   background: #45ba80;}
-                        .progreso {background-color: #fec329;
-                                               background: #fec329;}
-                        .retroceso {background-color: #db405a;
-                                           background: #db405a;}
-                        .noevaluado {background-color: #ccd5dd;
-                                       background: #ccd5dd;}
+// Otros estados de progreso (legacy)
+                        .alcanzado {background-color: #45ba80; background: #45ba80;}
+                        .progreso {background-color: #b3d37a; background: #b3d37a;}
+                        .retroceso {background-color: #ff7f27; background: #ff7f27;}
+                        .noevaluado {background-color: #ccd5dd; background: #ccd5dd;}
+// Otros estados de progreso (Eurostat)
+                        .significant-progress {background-color: #45ba80; background: #45ba80;}
+                        .moderate-progress {background-color: #b3d37a; background: #b3d37a;}
+                        .no-progress {background-color: #fec329; background: #fec329;}
+                        .moderate-deterioration {background-color: #ff7f27; background: #ff7f27;}
+                        .significant-deterioration {background-color: #db405a; background: #db405a;}
+                        .not-available {background-color: #ccd5dd; background: #ccd5dd;}
+        }
+        .goal-overall .goal-stats span {
+            display: inline-block;
+            height: 10px;
+            font-weight: bold;
         }
         .divider {
             height: 15px;
@@ -513,8 +537,8 @@ ul.iconillo {
         .goal {
             clear: left;
             margin-bottom: 4px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid $horizontalRule-color;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ccc;
             .total {
                 line-height: 1.2;
                 font-size: $fontSize;
@@ -526,6 +550,7 @@ ul.iconillo {
                 margin-bottom: 10px;
                 border-radius: 4px;
                 border: 1px solid $horizontalRule-color;
+                margin-left: 10px;
                 @media screen and (min-width: 520px) {
                     margin-left: 10px;
                 }
@@ -556,7 +581,7 @@ ul.iconillo {
                 }
             }
             h3 {
-                margin-top: 10px;
+                margin-top: 2px;
                 @media screen and (min-width: 520px) {
                     display: inline-block;
                 }
@@ -577,10 +602,146 @@ ul.iconillo {
         .goal-overall {
             margin-bottom: 20px;
         }
+
+        .reporting-status-item .goal-stats {
+            & span {
+                display: inline-block;
+                font-size: $fontSize;
+                text-align: center;
+                color: #000;
+                position: relative;
+                cursor: default;
+                font-weight: normal;
+                padding: 4px 0;
+                .status-inner {
+                    padding: 0 2px;
+                    border-radius: 5px;
+                    position: relative;
+                    z-index: 2;
+                }
+                &.notapplicable .status-inner {
+                    background: rgba(255, 255, 255, 0.8);
+                }
+                // Tooltip gestionado via JS (.goal-bar-tooltip)
+                &[title] {
+                    &::before { content: none; }
+                    &::after  { content: none; }
+                }
+                .goal-bar-tooltip {
+                    display: none;
+                    position: absolute;
+                    bottom: calc(100% + 12px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 0, 0, 0.85);
+                    color: #fff;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-weight: normal;
+                    white-space: nowrap;
+                    pointer-events: none;
+                    z-index: 100;
+                    line-height: 25px;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: var(--arrow-offset, 50%);
+                        transform: translateX(-50%);
+                        border: 5px solid transparent;
+                        border-top-color: rgba(0, 0, 0, 0.85);
+                    }
+                }
+                &:hover .goal-bar-tooltip {
+                    display: block;
+                }
+            }
+        }
     }
 
     #main-content .reporting-status-item {
         margin-bottom: 20px;
+    }
+
+    @media only screen and (max-width: 576px) {
+        #main-content .goal-overall {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        #main-content .goal-overall .frame {
+            width: auto;
+            float: none;
+            display: inline-block;
+            margin-bottom: 5px;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        #main-content .goal-overall .details {
+            flex: 1;
+            min-width: 0;
+            float: none;
+            margin-left: 10px;
+            h2 {
+                margin-top: 0;
+                margin-left: 0;
+                display: block;
+            }
+        }
+        #main-content .goal-overall > .summary,
+        #main-content .goal-overall > .goal-stats {
+            width: 100%;
+            clear: both;
+        }
+        #main-content .goal-overall > .summary .statuses {
+            width: 100%;
+        }
+        #main-content .goal-overall > .statuses {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #main-content .goal-overall > .statuses > div,
+        #main-content .goal-overall .statuses > div {
+            display: block;
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+        #main-content .reporting-status-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        #main-content .reporting-status-item .frame {
+            width: auto;
+            float: none;
+            display: inline-block;
+            margin-bottom: 5px;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        #main-content .reporting-status-item .details {
+            flex: 1;
+            min-width: 0;
+            float: none;
+            margin-left: 10px;
+            h3 {
+                font-size: 20px;
+                margin-top: 0;
+                margin-left: 0;
+            }
+        }
+        #main-content .reporting-status-item > .goal-stats {
+            width: 100%;
+            clear: both;
+        }
+        #main-content a[href="#top"] {
+            width: auto;
+        }
     }
 
     &.contrast-high {
@@ -609,6 +770,10 @@ ul.iconillo {
                     background-color: $status-backgroundColor-complete-highContrast;
                     background: $status-backgroundColor-complete-highContrast;
                 }
+                .not-available {
+                    background-color: #ccd5dd !important;
+                    background: #ccd5dd !important;
+                }
             }
 
             .statuses {
@@ -624,8 +789,252 @@ ul.iconillo {
                     &.notstarted {
                         border: $status-border-notstarted-highContrast !important;
                     }
+                    &.not-available {
+                        background-color: #ccd5dd !important;
+                        background: #ccd5dd !important;
+                        border-color: #ccd5dd !important;
+                    }
                 }
             }
         }
     }
+}
+.leaflet-tooltip {
+  pointer-events: none !important;
+}
+
+// Informe de seguimiento — iconos descarga e impresión
+.progreso-intro-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  h1 { margin: 0; }
+}
+
+.layout-progrestatus {
+  .progreso-action-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .progreso-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 0;
+    border: none;
+    background: #00703c;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    box-shadow: 0 2px 0 #002d18;
+    &:hover {
+      background: #005a30;
+      color: white;
+    }
+    &:focus {
+      background: #fd0;
+      color: #0b0c0c;
+      outline: none;
+    }
+  }
+  .progreso-action-icons-mobile {
+    display: none;
+    margin-top: 12px;
+  }
+  @media (max-width: 992px) {
+    .progreso-intro-header .progreso-action-icons { display: none; }
+    .progreso-action-icons-mobile { display: flex; }
+  }
+}
+
+// Estilos de impresión — informe de seguimiento
+@media print {
+  .layout-progrestatus {
+    // Forzar colores de fondo (imprescindible para las barras y status-inner)
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  // Ocultar elementos no útiles al imprimir
+  .layout-progrestatus .progreso-action-icons,
+  .layout-progrestatus .progreso-action-icons-mobile,
+  .layout-progrestatus #back-to-top,
+  .layout-progrestatus .goal-bar-tooltip,
+  .header-search-bar,
+  .language-toggle-container,
+  [data-contrast-switch-to],
+  .enlaces,
+  a[href="#top"] {
+    display: none !important;
+  }
+
+  // Layout compacto tipo móvil: icono pequeño + título en fila, barra debajo al 100%
+  .layout-progrestatus #main-content .reporting-status-item {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+  .layout-progrestatus #main-content .frame {
+    width: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    margin-bottom: 4px !important;
+  }
+  .layout-progrestatus #main-content .frame img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .layout-progrestatus #main-content .details {
+    flex: 1 !important;
+    min-width: 0 !important;
+    float: none !important;
+    margin-left: 8px !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+  .layout-progrestatus #main-content .details h3 {
+    font-size: 15px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: inline !important;
+  }
+  .layout-progrestatus #main-content .details .total {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+    display: inline !important;
+    font-size: 11px !important;
+  }
+  // La barra sigue debajo, al 100% del ancho de .details
+  .layout-progrestatus #main-content .details .goal-stats {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-top: 4px !important;
+  }
+  // Barra más baja en print
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span {
+    padding: 4px 0 !important;
+    font-size: 11px !important;
+  }
+  .layout-progrestatus #main-content .reporting-status-item > .goal-stats {
+    width: 100% !important;
+    clear: both !important;
+    margin-top: 4px !important;
+  }
+  // Barra overall: igual de compacta
+  .layout-progrestatus #main-content .goal-overall {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+  .layout-progrestatus #main-content .goal-overall .frame img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .layout-progrestatus #main-content .goal-overall .details {
+    flex: 1 !important;
+    float: none !important;
+    margin-left: 8px !important;
+    width: auto !important;
+  }
+  .layout-progrestatus #main-content .goal-overall > .goal-stats {
+    width: 100% !important;
+    clear: both !important;
+  }
+  // Evitar que un objetivo se corte entre páginas
+  .layout-progrestatus .reporting-status-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+// Detalle de indicador — icono de progreso a la izquierda de la descripción
+.progress-status-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .progress-status-image {
+        flex-shrink: 0;
+        max-width: 136px;
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .progress-status-label {
+        line-height: 1.3;
+    }
+}
+
+// Layout de categoría de progreso (lista de indicadores por estado)
+.layout-progrestatus-categoria {
+  padding-top: 20px;
+
+  .back-link {
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 14px;
+    &:hover { text-decoration: underline; }
+  }
+
+  .total {
+    line-height: 1.2;
+    font-size: $fontSize;
+    width: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid $horizontalRule-color;
+  }
+
+  .categoria-goal-block {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .categoria-separator {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+
+  .categoria-indicator-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+
+      .indicator-number {
+        flex-shrink: 0;
+        min-width: 60px;
+        color: #555;
+        font-size: 14px;
+      }
+
+      a {
+        text-decoration: underline;
+        color: #0056b3;
+        flex-grow: 1;
+        &:hover { color: #003d80; }
+      }
+    }
+  }
 }

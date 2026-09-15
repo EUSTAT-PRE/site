@@ -37,11 +37,30 @@
                     {% for status_type in status_types %}
                     {% assign status_stats = overall_data | where: "status", status_type.value | first %}
                     {% if status_stats %}
+                    {% assign _t_key_o = 'status.' | append: status_type.value | append: '_mixto' %}
+                    {% assign _t_label_o = _t_key_o | t %}
+                    {% if _t_label_o == _t_key_o %}{% assign _t_label_o = status_type.label | t %}{% endif %}
+                    {% assign _cat_slug = nil %}
+                    {% if status_type.value == 'significant_progress' %}{% assign _cat_slug = 'progreso-nabarmena' %}
+                    {% elsif status_type.value == 'moderate_progress' %}{% assign _cat_slug = 'progreso-moderatua' %}
+                    {% elsif status_type.value == 'no_progress' %}{% assign _cat_slug = 'geldialdia' %}
+                    {% elsif status_type.value == 'moderate_deterioration' %}{% assign _cat_slug = 'atzerakada-moderatua' %}
+                    {% elsif status_type.value == 'significant_deterioration' %}{% assign _cat_slug = 'atzerakada-nabarmena' %}
+                    {% elsif status_type.value == 'not_available' %}{% assign _cat_slug = 'ez-ebaluagarria' %}
+                    {% elsif status_type.value == 'notstarted' %}{% assign _cat_slug = 'hasieratu-gabe' %}
+                    {% elsif status_type.value == 'notapplicable' %}{% assign _cat_slug = 'ez-aplikagarria' %}
+                    {% endif %}                    {% if page.language == 'es' %}{% assign _cat_prefix = '/es/' %}
+                    {% elsif page.language == 'en' %}{% assign _cat_prefix = 'en/' %}
+                    {% else %}{% assign _cat_prefix = '/' %}{% endif %}
                     <div>
                         <span class="status {{ status_type.value | slugify }}">
                             <span class="status-inner">{{ status_stats.count }}</span>
                         </span>
-                        <strong>{{ status_type.label | t }}</strong>
+                        {% if _cat_slug %}
+                        <a href="{{ site.baseurl }}{{ _cat_prefix }}{{ _cat_slug }}/" class="status-category-link">{{ _t_label_o }}</a>
+                        {% else %}
+                        <strong>{{ _t_label_o }}</strong>
+                        {% endif %}
                         <span class="value">{{ status_stats.percentage | round: 2 }}%</span>
                     </div>
                     {% endif %}
@@ -53,7 +72,10 @@
                 {% for status_type in status_types %}
                 {% assign status_stats = overall_data | where: "status", status_type.value | first %}
                 {% if status_stats %}
-                <span class="{{ status_type.value | slugify }}" style="width:{{ status_stats.percentage }}%" title="{{ status_type.label | t }}: {{ status_stats.percentage | round: 2 }}%"></span>
+                {% assign _t_key_o = 'status.' | append: status_type.value | append: '_mixto' %}
+                {% assign _t_label_o = _t_key_o | t %}
+                {% if _t_label_o == _t_key_o %}{% assign _t_label_o = status_type.label | t %}{% endif %}
+                <span class="{{ status_type.value | slugify }}" style="width:{{ status_stats.percentage }}%" title="{{ _t_label_o }}: {{ status_stats.percentage | round: 2 }}%"></span>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -86,30 +108,15 @@
             <h3 class="status-goal">
                 <a href="{{ goal_details.url }}">{{ goal_details.short }}</a>
             </h3>
-            <span class="total">{{ goal_totals }} {{ indicators_plural }}</span>
             {% if goal_totals > 0 %}
-            <div class="summary">
-                <div class="statuses">
-                    {% for status_type in status_types %}
-                    {% assign status_stats = goal_data | where: "status", status_type.value | first %}
-                    {% if status_stats %}
-                    <div>
-                        <span class="status {{ status_type.value | slugify }}">
-                            <span class="status-inner">{{ status_stats.count }}</span>
-                        </span>
-                        <strong>{{ status_type.label | t }}</strong>
-                        <span class="value">{{ status_stats.percentage | round: 2 }}%</span>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                    <br style="clear:both;">
-                </div>
-            </div>
             <div class="goal-stats">
                 {% for status_type in status_types %}
                 {% assign status_stats = goal_data | where: "status", status_type.value | first %}
                 {% if status_stats %}
-                <span class="{{ status_type.value | slugify }}" style="width:{{ status_stats.percentage }}%" title="{{ status_type.label | t }}: {{ status_stats.percentage | round: 2 }}%"></span>
+                {% assign _t_key_g = 'status.' | append: status_type.value | append: '_mixto' %}
+                {% assign _t_label_g = _t_key_g | t %}
+                {% if _t_label_g == _t_key_g %}{% assign _t_label_g = status_type.label | t %}{% endif %}
+                <span class="{{ status_type.value | slugify }}" style="width:{{ status_stats.percentage }}%" title="{{ _t_label_g }}: {{ status_stats.percentage | round: 2 }}%"><span class="status-inner">{{ status_stats.count }}</span></span>
                 {% endif %}
                 {% endfor %}
             </div>
@@ -122,4 +129,136 @@
 
   {% include back-to-top.html %}
 </div>
+
+<script>
+(function () {
+  // En móvil: mover goal-stats fuera de details para que ocupe ancho completo
+  function reorderForMobile() {
+    // Per-goal items
+    document.querySelectorAll('.reporting-status-item').forEach(function (item) {
+      var details = item.querySelector('.details');
+      var goalStats = item.querySelector('.goal-stats');
+      var br = item.querySelector('br[style]');
+      if (!details || !goalStats) return;
+      if (window.innerWidth <= 576) {
+        if (goalStats.parentNode === details) {
+          item.insertBefore(goalStats, br || null);
+          details.style.flex = '1';
+          details.style.minWidth = '0';
+          details.style.float = 'none';
+        }
+      } else {
+        if (goalStats.parentNode === item) {
+          details.appendChild(goalStats);
+          details.style.flex = '';
+          details.style.minWidth = '';
+          details.style.float = '';
+        }
+      }
+    });
+
+    // Overall block: mover .statuses y .goal-stats fuera de .details
+    var overall = document.querySelector('.goal-overall');
+    if (overall) {
+      var details = overall.querySelector(':scope > .details');
+      var statuses = overall.querySelector('.statuses');
+      var goalStats = overall.querySelector(':scope > .details > .goal-stats, :scope > .goal-stats');
+      var directBr = null;
+      overall.childNodes.forEach(function(n) { if (n.nodeName === 'BR') directBr = n; });
+      if (window.innerWidth <= 576) {
+        if (statuses && statuses.parentNode !== overall) {
+          overall.insertBefore(statuses, directBr);
+          statuses.style.width = '100%';
+          statuses.style.boxSizing = 'border-box';
+        }
+        if (goalStats && goalStats.parentNode !== overall) {
+          overall.insertBefore(goalStats, directBr);
+        }
+        if (details) {
+          details.style.flex = '1';
+          details.style.minWidth = '0';
+          details.style.float = 'none';
+        }
+      } else {
+        var summary = overall.querySelector('.summary');
+        if (statuses && statuses.parentNode === overall && summary) {
+          summary.appendChild(statuses);
+          statuses.style.width = '';
+          statuses.style.boxSizing = '';
+        }
+        if (goalStats && goalStats.parentNode === overall) {
+          details.appendChild(goalStats);
+        }
+        if (details) {
+          details.style.flex = '';
+          details.style.minWidth = '';
+          details.style.float = '';
+        }
+      }
+    }
+  }
+
+  // Añadir span.total con el total de indicadores por objetivo
+  document.querySelectorAll('.reporting-status-item').forEach(function (item) {
+    var spans = item.querySelectorAll('.goal-stats span[title] .status-inner');
+    var total = 0;
+    spans.forEach(function (s) { total += parseInt(s.textContent) || 0; });
+    if (total > 0) {
+      var details = item.querySelector('.details');
+      var goalStats = item.querySelector('.goal-stats');
+      if (details && goalStats) {
+        var totalSpan = document.createElement('span');
+        totalSpan.className = 'total';
+        totalSpan.textContent = total + ' ' + (opensdg.language === 'eu' ? 'adierazle' : opensdg.language === 'es' ? 'indicadores' : 'indicators');
+        details.insertBefore(totalSpan, goalStats.parentNode === details ? goalStats : null);
+      }
+    }
+  });
+
+  reorderForMobile();
+  window.addEventListener('resize', reorderForMobile);
+
+  // Tooltip bocadillo con flecha alineada al número
+  document.querySelectorAll('.reporting-status-item .goal-stats span[title]').forEach(function (span) {
+    var text = span.getAttribute('title');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'goal-bar-tooltip';
+    tip.textContent = text;
+    span.appendChild(tip);
+
+    span.addEventListener('mouseenter', function () {
+      var spanRect = span.getBoundingClientRect();
+      var spanCenter = spanRect.left + spanRect.width / 2;
+
+      if (window.innerWidth <= 576) {
+        // Móvil: tooltip al ancho de la barra, alineado a su borde izquierdo
+        var barRect = span.parentNode.getBoundingClientRect();
+        tip.style.left = (barRect.left - spanRect.left) + 'px';
+        tip.style.right = '';
+        tip.style.transform = 'none';
+        tip.style.width = barRect.width + 'px';
+        tip.style.whiteSpace = 'normal';
+        tip.style.textAlign = 'center';
+        requestAnimationFrame(function () {
+          var newTipRect = tip.getBoundingClientRect();
+          var arrowPct = (spanCenter - newTipRect.left) / newTipRect.width * 100;
+          arrowPct = Math.max(5, Math.min(95, arrowPct));
+          tip.style.setProperty('--arrow-offset', arrowPct + '%');
+        });
+      } else {
+        // Escritorio: tooltip centrado sobre el número, ancho según texto
+        tip.style.left = '50%';
+        tip.style.right = '';
+        tip.style.transform = 'translateX(-50%)';
+        tip.style.width = '';
+        tip.style.whiteSpace = 'nowrap';
+        tip.style.textAlign = '';
+        tip.style.setProperty('--arrow-offset', '50%');
+      }
+    });
+  });
+})();
+</script>
+
 {% include footer.html %}
