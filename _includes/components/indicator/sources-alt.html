@@ -66,7 +66,7 @@ file is controlled by the 'sources' indicator configuration option.
             <tr>
                 <th scope="row">{{ page.t.metadata_fields.source_url_1 }}</th>
                 {% if has_url %}
-                <td><a href="{{ source.url }}" target="_blank" rel="noopener">{{ url_text | t }}</a></td>
+                <td><a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ url_text | t }}</a></td>
                 {% else %}
                 <td>{{ placeholder }}</td>
                 {% endif %}

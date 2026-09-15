@@ -1,19 +1,35 @@
 {% if include.indicator.progress_status and include.indicator.progress_status != '' %}
     {% assign progress_status = site.progress_status.status_types | where: 'value', include.indicator.progress_status | first %}
     {% if progress_status %}
+        {% comment %}Construir clave de traducción con variante target{% endcomment %}
+        {% if include.variant %}
+            {% assign _variant = include.variant %}
+        {% elsif include.indicator.target_variant and include.indicator.target_variant != '' %}
+            {% assign _variant = include.indicator.target_variant %}
+        {% else %}
+            {% assign _variant = 'sin_target' %}
+        {% endif %}
+        {% assign _t_key = 'status.' | append: include.indicator.progress_status | append: '_' | append: _variant %}
+        {% assign _t_label = _t_key | t %}
+        {% comment %}Fallback: si la clave no existe, usar el label genérico del site_config{% endcomment %}
+        {% if _t_label == _t_key %}
+            {% assign _t_label = progress_status.label | t %}
+        {% endif %}
         <div class="progress-status">
-            {% if page.indicator %}
-                {% if progress_status.label and progress_status.label != '' %}
-                    <div class="progress-status-label">
-                        {{ progress_status.label | t }}
-                    </div>
-                {% endif %}
-            {% endif %}
-            {% if progress_status.image and progress_status.image != '' %}
+            <div class="progress-status-inline">
+                {% if progress_status.image and progress_status.image != '' %}
                 <div class="progress-status-image">
-                    <img src="{{ site.baseurl }}/{{ progress_status.image }}" alt="{{ progress_status.alt | default: progress_status.label | t }}" />
+                    <img src="{{ site.baseurl }}/{{ progress_status.image }}" alt="{{ _t_label }}" />
                 </div>
-            {% endif %}
+                {% endif %}
+                {% if page.indicator %}
+                    {% if progress_status.label and progress_status.label != '' %}
+                    <div class="progress-status-label">
+                        {{ _t_label }}
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 {% endif %}

@@ -91,14 +91,19 @@ document.addEventListener('DOMContentLoaded', function () {
     buildCanvas();
 
     window.addEventListener('resize', function () {
-        cHeight = document.querySelector('.o-content').offsetHeight;
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
     });
 
     window.addEventListener('scroll', function () {
         if (window.scrollY > 500) {
-            document.querySelector('.scrollup').style.display = 'block';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
         } else {
-            document.querySelector('.scrollup').style.display = 'none';
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
         }
     });
 });

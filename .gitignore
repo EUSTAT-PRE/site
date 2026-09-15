@@ -11,3 +11,14 @@ Gemfile.lock
 deploy_key*
 deploy_key*.pub
 *.keybase
+Progress Measurement for Canada’s Sustainable Development Goals - Canada Indicators For The Sustainable Development Goals.html
+Progress Measurement for Canada’s Sustainable Development Goals - Canada Indicators For The Sustainable Development Goals_files/
+EU SDG assessment approach 2025 final.pdf
+EU SDG assessment approach 2025 final version copiada.md
+
+.kiro
+
+# Desarrollo local con Docker
+_data/csv/progreso.csv
+Dockerfile
+docker-serve.sh

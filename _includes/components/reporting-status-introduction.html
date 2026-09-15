@@ -1,0 +1,61 @@
+<div class="progreso-intro-header">
+  <h1>
+    {% if site.reporting_status.title %}
+      {{ site.reporting_status.title | t }}
+    {% else %}
+      {{ page.t.status.reporting_status }}
+    {% endif %}
+  </h1>
+  <div class="progreso-action-icons">
+    <a href="{{ site.remote_data_prefix }}progreso.csv"
+       class="progreso-icon-btn progreso-download-btn-header"
+       title="{{ page.t.status.download_progress_csv }}"
+       aria-label="{{ page.t.status.download_progress_csv }}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </a>
+    <button type="button"
+            class="progreso-icon-btn progreso-print-btn"
+            title="{{ page.t.status.print_page }}"
+            aria-label="{{ page.t.status.print_page }}"
+            onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+{% if site.reporting_status.description %}
+<div class="reporting-status-description">
+  {{ site.reporting_status.description | t | markdownify }}
+  <div class="progreso-action-icons progreso-action-icons-mobile">
+    <a href="{{ site.remote_data_prefix }}progreso.csv"
+       class="progreso-icon-btn progreso-download-btn-mobile"
+       title="{{ page.t.status.download_progress_csv }}"
+       aria-label="{{ page.t.status.download_progress_csv }}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+    </a>
+    <button type="button"
+            class="progreso-icon-btn progreso-print-btn"
+            title="{{ page.t.status.print_page }}"
+            aria-label="{{ page.t.status.print_page }}"
+            onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+    </button>
+  </div>
+</div>
+{% endif %}

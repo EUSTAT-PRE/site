@@ -36,6 +36,10 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2.2'
+    - name: Download progreso.csv from data
+      run: curl -f -o _data/csv/progreso.csv https://sdg.eustat.eus/sdg-data-prod/progreso.csv
+    - name: Download progreso_indicadores.csv from data
+      run: curl -f -o _data/csv/progreso_indicadores.csv https://sdg.eustat.eus/sdg-data-prod/progreso_indicadores.csv
     - name: Build the site
       run: |
         gem install bundler

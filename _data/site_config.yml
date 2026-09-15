@@ -252,33 +252,66 @@ news:
 observation_attributes:
   - field: COMMENT_OBS
     label: indicator.footnote
+auto_progress_calculation: true
 progress_status:
   status_heading: status.progress_status
   status_help: status.progress_status
   status_types:
-    - value: alcanzado
-      label: status.alcanzado
+    # === Estados Eurostat (generados por motor automático) ===
+    - value: significant_progress
+      label: status.progreso_significativo
       image: assets/img/progress/alcanzado.png
-      alt: status.alcanzado
+      alt: status.progreso_significativo
+      hide_on_goal_pages: false
+    - value: moderate_progress
+      label: status.progreso_moderado
+      image: assets/img/progress/en_progreso.png
+      alt: status.progreso_moderado
+      hide_on_goal_pages: false
+    - value: no_progress
+      label: status.sin_progreso
+      image: assets/img/progress/sin_progreso.png
+      alt: status.sin_progreso
+      hide_on_goal_pages: false
+    - value: moderate_deterioration
+      label: status.retroceso_moderado
+      image: assets/img/progress/retroceso.png
+      alt: status.retroceso_moderado
+      hide_on_goal_pages: false
+    - value: significant_deterioration
+      label: status.retroceso_significativo
+      image: assets/img/progress/retroceso_significativo.png
+      alt: status.retroceso_significativo
+      hide_on_goal_pages: false
+    - value: not_available
+      label: status.no_evaluado
+      image: assets/img/progress/no_evaluable.png
+      alt: status.no_evaluado
+      hide_on_goal_pages: false
+    # === Estados legacy (compatibilidad con progress_status manual) ===
+    - value: alcanzado
+      label: status.progreso_significativo
+      image: assets/img/progress/alcanzado.png
+      alt: status.progreso_significativo
       hide_on_goal_pages: false
     - value: progreso
-      label: status.en_progreso
+      label: status.progreso_moderado
       image: assets/img/progress/en_progreso.png
-      alt: status.en_progreso
+      alt: status.progreso_moderado
       hide_on_goal_pages: false
     - value: retroceso
-      label: status.retroceso
+      label: status.retroceso_moderado
       image: assets/img/progress/retroceso.png
-      alt: status.retroceso
+      alt: status.retroceso_moderado
       hide_on_goal_pages: false
     - value: noevaluado
       label: status.no_evaluado
-      image: assets/img/progress/no_evaluado.png
+      image: assets/img/progress/no_evaluable.png
       alt: status.no_evaluado
       hide_on_goal_pages: false
     - value: notstarted
       label: status.no_data_available
-      image: assets/img/progress/notstarted.png
+      image: assets/img/progress/sin_datos_disponibles.png
       alt: status.no_data_available
       hide_on_goal_pages: false
     - value: notapplicable
@@ -313,5 +346,7 @@ time_series_attributes:
     label: indicator.footnote
   - field: DATA_LAST_UPDATE
     label: metadata_fields.national_data_update_url
+  - field: Progress
+    label: ''
 use_new_config_forms: true
 
