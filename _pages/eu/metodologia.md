@@ -12,7 +12,7 @@ layout: page
 Aurrerapena informazio fidagarriarekin neurtu eta jarraipena egitea funtsezkoa da Euskal Autonomia Erkidegoa GJHak lortzeko bidean aurrera nola doan ulertzeko. 
 
 Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak erakusten du non ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
-diren ahaleginak. Horrez gain, aukera ematen du Euskal Autonomia Erkidegoa 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazteko. Jarraipen-txostena 
+diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazteko. Jarraipen-txostena 
 helburu desberdinak lortzeko politiken eta ekintzen arrakasta hobeto ulertzeko tresna izan daiteke. Halaber, seinale argia izan daiteke, ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
@@ -20,7 +20,7 @@ GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodolo
 aurrerapena neurtzeko erabiltzen duen metodologian] (https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzea, ebaluazio garden, 
 ulerterraz eta alderagarria egiteko.
 
-Ebaluaketak neurtzen du adierazlea 2030 Agendan ezarritako xedera hurbiltzen ari den edo hartatik urruntzen ari den, eta zein abiaduratan. Metodoak denboran zehar egindako 
+Ebaluaketak neurtzen du adierazlea 2030 Agendan ezarritako xedera hurbiltzen ari den edo hartatik urruntzen ari den, eta zein abiaduratan; denboran zehar egindako 
 aurrerapenean jartzen du arreta, ez egungo egoeran.
 
 Adierazle batzuetarako Nazio Batuen Erakundeak mundu osorako xede kuantitatibo zehatza finkatu du 2030erako. Kasu horietan, Euskal Autonomia Erkidegorako xede hori bera hartu 
@@ -36,7 +36,7 @@ Adierazle edo serieen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira
 ## 2. Aurrerapen-kategoriak
 
 
-<style>
+<style type="text/css">
   .aurrerapen-kategoriak {
     width: 700px;
     border-collapse: collapse;
@@ -184,248 +184,7 @@ Adierazle batzuk ezin dira Euskal Autonomia Erkidegoan aplikatu, hainbat arrazoi
 <br><br>  
 
 
+[Aurrerapenaren neurketaren metodologia](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf)
 
-## 3. Metodologia
 
-Aurrerapena neurtzeko modu desberdinak erabiltzen dira; bat 2030erako zenbakizko xederik ez duten adierazle edo azpiadierazleentzat, eta bestea halako xedea dutenentzat.
-Gainera, azpiadierazle bat baino gehiago duten adierazleen aurrerapena neurtzeko, kalkulu gehiagarri bat egiten da. 
-
-### 3.1 2030erako zenbakizko xederik ez duten adierazleak
-
-Xede kuantitatiborik ez dagoenean, ebaluatzen dena da adierazlea desiragarria den norabidean ala kontrako norabidean mugitzen ari den, eta zein abiaduratan.
-
-Horretarako urteko hazkunde-tasa konposatua erabiltzen da (CAGR, ingelesezko inizialengatik). Oinarri-urteko datua (normalean 2015) eta eskuragarri dagoen azken datua hartu eta denbora-tarte horretan izandako urteko hazkunde-tasa 
-kalkulatzen da (%etan adierazia).
-
-
-$$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
-
-<br><br>
-
-Non: 𝑏 = oinarri-urtea (normalean 2015), 𝑡 = datuak eskuragarri dagoen azken urtea (adibidez 2024), 𝑣𝑏 = oinarri-balioa b urtean, 𝑣𝑡 = 𝑡 azken urteko balioa<br>
-<br><br>  
-
-Ondoren, kalkulatutako CAGRa zuzentzen da, adierazlearen norabide desiragarriaren arabera: 
-
-Norabide desiragarria jaitsiera bada:
-
-$$CAGR_{z} = CAGR_{a} \cdot (- 1)$$
-
-Norabide desiragarria igoera bada:
-
-$$CAGR_{z} = CAGR_{a}$$
-
-
-Azkenik, $$CAGR_{z}$$ ondoko tarteen arabera ebaluatzen da:
-
-
-<style>
-.tarteak {
-  width: 700px;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.tarteak th {
-  background-color: #d9e2f3;
-  font-weight: bold;
-  text-align: center;
-  padding: 8px;
-  border: 1px solid #777;
-}
-
-.tarteak td {
-  height: 48px;
-  padding: 4px 10px;
-  border-bottom: 1px solid #777;
-}
-
-.tarteak th:first-child {
-  width: 50%;
-  text-align: left;
-}
-
-.tarteak th:last-child {
-  width: 50%;
-}
-
-</style>
-
-<table class="tarteak">
-  <thead>
-    <tr>
-      <th>CAGR_{z}</th>
-      <th>Kategoria</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>&lt; % 1 </td>
-      <td>Aurrerapen nabarmena</td>
-    </tr>
-    <tr>
-      <td>≤ % 1 eta &gt; % 0.1 </td>
-      <td>Neurrizko aurrerapena</td>
-    </tr>
-    <tr>
-      <td>≤ % 0.1 eta ≥ % −0.1</td>
-      <td>Geldialdia</td>
-    </tr>
-    <tr>
-      <td>&lt; % −0.1 eta ≥ % −1</td>
-      <td>Neurrizko atzerakada</td>
-    </tr>
-    <tr>
-      <td>&lt; % −1</td>
-      <td>Atzerakada nabarmena</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-### 3.2 2030erako zenbakizko xedea duten adierazleak
-
-2030erako xede kuantitatiboa ezarrita dagoen kasuetan, adierazlearen bilakaera eta xedea lortzeko izan beharko lukeena alderatzen dira.
-
-Horretarako hiru urrats egiten dira:
-
-#####1. Urteko hazkunde-tasa konposatua kalkulatu (ikus 3.1 puntuko formula)
-
-
-#####2. Xedea lortzeko teorikoki beharko litzatekeen hazkunde-tasa kalkulatu
-
-
-$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
-
-<br><br> 
-
-Non: 𝑏 = oinarri-urtea (normalean 2015), 𝑧 = xede-urtea (normalean 2030), 𝑣𝑏 = oinarri-balioa b urtean, 𝑥 = xedearen balioa xede-urtean<br>
-<br><br> 
-
-
-#####3. Behatutako hazkunde-tasaren eta behar den hazkunde-tasaren arteko ratioa kalkulatu
-
-
-$$R_{a/r} = \frac{CAGR_{a}}{CAGR_{r}}$$
-
-
-Ondoren, ratioa ondoko tarten arabera ebaluatzen da:
-
-
-<table class="tarteak">
-  <thead>
-    <tr>
-      <th>Ratioa</th>
-      <th>Kategoria</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>≥ % 95 </td>
-      <td>Aurrerapen nabarmena</td>
-    </tr>
-    <tr>
-      <td>&lt; % 95 eta ≥ % 60 </td>
-      <td>Neurrizko aurrerapena</td>
-    </tr>
-    <tr>
-      <td>&lt; % 60 eta ≥ % 0</td>
-      <td>Aurrerapen eskasegia xedea lortzeko</td>
-    </tr>
-    <tr>
-      <td>&lt; % 0 </td>
-      <td>Atzerakada xedearekiko</td>
-    </tr>
-  </tbody>
-</table>
-
-
-### 3.3 Azpiadierazle bat baino gehiago duten adierazleak
-
-Kasu batzuetan, adierazle batek maila bereko hainbat azpiadierazle ditu, ez dago nagusia den azpiadierazle bat. Kasu horietan, azpiadierazle bakoitzaren aurrerapena kalkulatu eta guztiak bateratzen dira adierazlearen aurrerapena ebaluatzeko.
-Horretarako, azpiadierazle bakoitzaren aurrerapen-balioak (CAGR zuzendua zenbakizko xederik ez duten azpiadierazleentzat eta Ratioa zenbakizko xedea dutenentzat) -5 eta +5 arteko puntuazio bat hartzen du, ondoko funtzioen arabera:
-
-##### 2030erako zenbakizko xederik ez duten adierazleak
-
-\[
-P=
-\begin{cases}
-+5, & CAGR_z \geq \%2 \text{ denean}\\[4pt]
-2{,}5\cdot CAGR_z, & \%-2 < CAGR_z < \%2 \text{ denean}\\[4pt]
--5, & CAGR_z \leq \%-2 \text{ denean}
-\end{cases}
-\]
-
-
-##### 2030erako zenbakizko xedea duten adierazleak
-
-\[
-P=
-\begin{cases}
-+5, & ratioa \geq 130 \text{ denean}\\[4pt]
-7{,}142857\cdot(ratioa-60), & 60 \leq ratioa < 130 \text{ denean}\\[4pt]
-4{,}166666\cdot(ratioa+60)-5, & -60 < ratioa < 60 \text{ denean}\\[4pt]
--5, & ratioa \leq -60 \text{ denean}
-\end{cases}
-\]
-
-
-Adierazlearen aurrerapena azpiadierazleen puntuazioaren batezbesteko aritmetikoak emango du, ondoko tarteen arabera:
-
-
-<table class="tarteak">
-  <thead>
-    <tr>
-      <th>Puntuazioa</th>
-      <th>Kategoria</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>&lt; 2.5 </td>
-      <td>Aurrerapen nabarmena</td>
-    </tr>
-    <tr>
-      <td>≤ 2.5 eta &gt; 0.25 </td>
-      <td>Neurrizko aurrerapena</td>
-    </tr>
-    <tr>
-      <td>≤ 0.25 eta ≥ −0.25</td>
-      <td>Geldialdia</td>
-    </tr>
-    <tr>
-      <td>&lt; −0.25 eta ≥ −2.5</td>
-      <td>Neurrizko atzerakada</td>
-    </tr>
-    <tr>
-      <td>&lt; −2.5</td>
-      <td>Atzerakada nabarmena</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-### 3.4 Kontsiderazioak eta salbuespenak  
-Datuen izaera dela eta, zenbait gogoeta eta salbuespen definitu dira:  
-
-1. Azken urteko balioak helburua betetzen duenean, xedea lortu dela ulertuko da, azken urteetako joera gorabehera.
-2. Kasu batzuetan, adierazleek gehienezko edo gutxienezko muga naturalak dituzte (adibidez 9.c.1 Sare mugikorreko estaldura duten biztanleen proportzioa adierazleak ezin du % 100 baino handiagoa den 
-balio bat izan. Oinarri-urtean adierazlearen balioa muga horretatik oso gertu baldin badago, ezinezkoa izan daiteke "Aurrerapen nabarmena" kategoriak eskatzen duen hazkunde-tasa lortzea. Kasu horietan kategoria bakoitzerako hazkunde-tasaren atalaseak zuzentzeko eskala-faktore bat erabiltzen da.
-3. 2015ean daturik ez dagoenean, 2015aren ondoren edo aurretik eskuragarri dagoen lehen urtea erabiltzen da oinarri-urte bezala.
-4. Besterik zehaztu ezean, 2030a hartuko da xede-urtetzat.
-5. Adierazle bitarrei bi kategoria hauetako bat esleituko zaie:
-  a. Baiezkoa bada, "Xedea lortuta".
-  b. Ezezkoa bada, "Atzerakada nabarmena".
-4. Aurrerapen-estimazioek errealitatea gehiegi sinplifikatzen dute. Beharrezkoa da aurrerapenari testuingurua ematea beste informazio batzuekin.
-5. Datuek politiken eragina islatzeko denbora behar da; denbora-seriea zenbat eta luzeagoa izan, orduan eta hobea izango da aurrerapena neurtzeko metodologia.
-7. Adierazle batzuetan, desiragarria da xedea lortzea, baina gainditzeak ondorio negatiboak izan ditzake. Adibidez 4.5.1 adierazleko parekotasun-indizeetan, ahalik eta parekotasun handiena lortzea litzateke xedea (indizea=1), eta xede horren gainetik edo azpitik egotea berdin litzateke negatiboa.
-Kasu horietan, aurrerapenaren ebaluaketak berdin hartzen ditu kontuan idealarekiko desbideraketak, norabide batean edo bestean izan. Halakoak dira 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1 eta 16.7.1 adierazleak.
 
