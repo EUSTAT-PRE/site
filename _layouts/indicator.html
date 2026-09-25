@@ -8,12 +8,17 @@
 {% include multilingual-js.html key="data" %}
 
 <div class="container">
-  {% if site.create_indicators.previous_next_links %}
-    {% include components/banda.html %}
-  {% else %}
+  {% unless site.create_indicators.previous_next_links %}
     {% include components/indicator/breadcrumbs.html %}
-  {% endif %}
+  {% endunless %}
 </div>
+{% if site.create_indicators.previous_next_links %}
+<div class="ods-navigation-wrapper">
+  <div class="container">
+    {% include components/banda.html %}
+  </div>
+</div>
+{% endif %}
 
 {% include components/indicator/header.html %}
 
