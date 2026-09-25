@@ -3087,11 +3087,18 @@ ul.iconillo {
   border-color: transparent;
   margin-bottom: 5px; }
 
+.ods-navigation-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease; }
+  .ods-navigation-wrapper.is-sticky {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+
 .ods-navigation {
   background-color: transparent;
-  /* Fondo transparente */
-  padding: 10px 0;
-  /* Espacio vertical */
+  padding: 8px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -3737,3 +3744,11 @@ ul.iconillo {
         flex-grow: 1; }
         .layout-progrestatus-categoria .categoria-indicator-list li a:hover {
           color: #003d80; }
+
+/* Goldilocks — ocultar columna Progress del footer del indicador.
+   Open SDG la registra como time_series_attribute y muestra su valor
+   numérico (resultado de la fórmula goldilocks) bajo la leyenda de unidades.
+   La columna es solo para cálculo interno; no debe ser visible. */
+dt[data-ts-attribute="Progress"],
+dd[data-ts-attribute="Progress"] {
+  display: none !important; }
