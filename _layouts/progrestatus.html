@@ -50,7 +50,7 @@
                     {% elsif status_type.value == 'notstarted' %}{% assign _cat_slug = 'hasieratu-gabe' %}
                     {% elsif status_type.value == 'notapplicable' %}{% assign _cat_slug = 'ez-aplikagarria' %}
                     {% endif %}                    {% if page.language == 'es' %}{% assign _cat_prefix = '/es/' %}
-                    {% elsif page.language == 'en' %}{% assign _cat_prefix = 'en/' %}
+                    {% elsif page.language == 'en' %}{% assign _cat_prefix = '/en/' %}
                     {% else %}{% assign _cat_prefix = '/' %}{% endif %}
                     <div>
                         <span class="status {{ status_type.value | slugify }}">

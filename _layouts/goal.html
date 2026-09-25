@@ -3,10 +3,14 @@
 
 <div class="container">
   {% include components/goal/breadcrumbs.html %}
-  {% if site.create_goals.previous_next_links %}
-    {% include components/banda.html %}
-  {% endif %}
 </div>
+{% if site.create_goals.previous_next_links %}
+<div class="ods-navigation-wrapper">
+  <div class="container">
+    {% include components/banda.html %}
+  </div>
+</div>
+{% endif %}
 
 {% include components/goal/header.html %}
 
