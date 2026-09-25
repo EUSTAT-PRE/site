@@ -147,7 +147,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260925093528">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260925112058">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -685,7 +685,7 @@ data-event-label="high"
   data-indicatorid='indicator_5-4-1'
   data-id="5-4-1"
   data-country="Guztira"
-  data-charttitle="Batez besteko egun batean etxeari eta familiari eskainitako denbora"
+  data-charttitle="Batez besteko egun batean etxeari eta familiari eskainitako denbora eta genero-parekotasunaren indizea (emakume eta gizonen artean) etxeari eta familiari eskainitako batez besteko denboran"
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
@@ -745,7 +745,7 @@ data-event-label="high"
     
     <h3>Datu nagusiak</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>Batez besteko egun batean etxeari eta familiari eskainitako denbora</caption>
+      <caption>Batez besteko egun batean etxeari eta familiari eskainitako denbora eta genero-parekotasunaren indizea (emakume eta gizonen artean) etxeari eta familiari eskainitako batez besteko denboran</caption>
       <thead>
         
         
@@ -1016,7 +1016,7 @@ data-event-label="Change to Table tab"
       <figure role="group">
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">
-            Batez besteko egun batean etxeari eta familiari eskainitako denbora
+            Batez besteko egun batean etxeari eta familiari eskainitako denbora eta genero-parekotasunaren indizea (emakume eta gizonen artean) etxeari eta familiari eskainitako batez besteko denboran
           </h4>
           <div id="chart" class="plot-container">
             <canvas
@@ -1281,7 +1281,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Eskuragarri dagoen adierazlea </th>
         <td>
           
-            <p>Batez besteko egun batean etxeari eta familiari eskainitako denbora</p>
+            <p>Batez besteko egun batean etxeari eta familiari eskainitako denbora eta genero-parekotasunaren indizea (emakume eta gizonen artean) etxeari eta familiari eskainitako batez besteko denboran</p>
 
           
         </td>
@@ -1342,7 +1342,12 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Definizioa </th>
         <td>
           
-            <p>Batez besteko egun batean etxearekin eta familiarekin lotutako jardueretan(etxeko lanak eta etxeko lagunez arduratzea) emandako minutuak, biztanleko.</p>
+            <p>Eskuragarri dauden serieak:</p>
+
+<ul>
+  <li>Batez besteko egun batean etxearekin eta familiarekin lotutako jardueretan (etxeko lanak eta etxeko lagunez arduratzea) emandako minutuak, biztanleko, sexuaren arabera</li>
+  <li>Etxeari eta familiari eskainitako minutuen emakume eta eta gizonen arteko proportzioa</li>
+</ul>
 
           
         </td>
@@ -1360,14 +1365,26 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Formula teorikoa </th>
         <td>
           
-            
+            <p><b> Batez besteko egun batean etxeari eta familiari eskainitako denbora</b></p>
+
 \[THFP^{t} = \frac{THF^{t}}{PHF^{t}}\]
 
 <p>non:</p>
 
 <p>$THF^{t} =$ biztanleriak batez besteko egun batean etxeko lanetan edo etxeko lagunez arduratzen emandako minutuak $t$ urtean</p>
 
-<p>$PHF^{t} =$ biztanleria $t$ urtean</p>
+<p>$PHF^{t} =$ biztanleria $t$ urtean
+<br /></p>
+
+<p><b> Genero-parekotasunaren indizea etxeari eta familiari eskainitako batez besteko denboran</b></p>
+
+\[ITHF^{t} = \frac{THFM^{t}}{THFH^{t}}\]
+
+<p>non:</p>
+
+<p>$THFM^{t} =$ emakumeek batez besteko egun batean etxeko lanetan edo etxeko lagunez arduratzen emandako minutuak $t$ urtean</p>
+
+<p>$THFH^{t} =$ gizonek batez besteko egun batean etxeko lanetan edo etxeko lagunez arduratzen emandako minutuak $t$ urtean</p>
 
           
         </td>
@@ -1545,7 +1562,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Metadatuen azken eguneratze-data </th>
         <td>
           
-            2026/09/23
+            2026/09/25
           
         </td>
         </tr>
@@ -2007,7 +2024,7 @@ dituztenik denbora-kopuru horiek.</p>
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260925093528'></script>
+<script src='/site/assets/js/sdg.js?v=20260925112058'></script>
 
 
 <script>
@@ -2027,7 +2044,7 @@ dituztenik denbora-kopuru horiek.</p>
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260925093528"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260925112058"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
