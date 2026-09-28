@@ -17,7 +17,7 @@ helburu desberdinak lortzeko politiken eta ekintzen arrakasta hobeto ulertzeko t
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
 GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustatek erabaki du [Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
-aurrerapena neurtzeko erabiltzen duen metodologian] (https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzea, ebaluazio garden, 
+aurrerapena neurtzeko erabiltzen duen metodologian](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzea, ebaluazio garden, 
 ulerterraz eta alderagarria egiteko.
 
 Ebaluaketak neurtzen du adierazlea 2030 Agendan ezarritako xedera hurbiltzen ari den edo hartatik urruntzen ari den, eta zein abiaduratan; denboran zehar egindako 
@@ -26,22 +26,22 @@ aurrerapenean jartzen du arreta, ez egungo egoeran.
 Adierazle batzuetarako Nazio Batuen Erakundeak mundu osorako xede kuantitatibo zehatza finkatu du 2030erako. Kasu horietan, Euskal Autonomia Erkidegorako xede hori bera hartu 
 da aurrerapena ebaluatzeko orduan, eta adierazle bakoitzaren orrian azaltzen da.
 
-Beste kasu batzuetan, Nazio Batuen Erakundeak ez du zehaztu zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazle horren balorearen joera desiragarria. 
+Beste kasu batzuetan, Nazio Batuen Erakundeak ez du zehaztu zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazle horren balioaren joera desiragarria. 
 Norabide normatiboa "Igoera" denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa "Jaitsiera" denean, adierazlearen balioa txikiagotzea. Adierazle edo serie bakoitzerako 
 norabide normatiboa [Nazio Batuen Estatistika Dibisioaren 2026ko aurrerapenaren neurketari buruzko ohar tekniko](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf)tik 
 hartu da, eta adierazle bakoitzaren orrian azaltzen da. 
 
-Adierazle edo serieen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira kontuan hartzen aurrerapena neurtzean, guztizko datuak baino ez dira erabiltzen.
+Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira kontuan hartzen aurrerapena neurtzean, guztizko datuak baino ez dira erabiltzen.
 
 ## 2. Aurrerapen-kategoriak
 
 
 <style type="text/css">
   .aurrerapen-kategoriak {
-    width: 700px;
+    width: 900px;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     color: #555;
   }
 
@@ -77,8 +77,8 @@ Adierazle edo serieen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira
   }
 
   .aurrerapen-kategoriak img {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
   }
 </style>
@@ -168,7 +168,8 @@ Adierazle edo serieen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira
   </tbody>
 
 </table>
-
+<br>
+<br>
 Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:
 
 
