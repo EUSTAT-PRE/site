@@ -147,7 +147,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260925163047">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20260928084801">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -316,13 +316,13 @@ layout-indicator-iframe
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Aurrerapen nabarmena" />
+                    <img src="/site/assets/img/progress/alcanzado.png" alt="Xedea lortuta edo lortzeko bidean" />
                 </div>
                 
                 
                     
                     <div class="progress-status-label">
-                        Aurrerapen nabarmena
+                        Xedea lortuta edo lortzeko bidean
                     </div>
                     
                 
@@ -370,7 +370,7 @@ layout-indicator-iframe
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Urtea&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Familiako gastuaren hazkunde-tasa per capita&quot;,&quot;Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita&quot;,&quot;Familiako diru-sarreraren hazkunde-tasa per capita&quot;,&quot;Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Seriea&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba / Álava&quot;,&quot;Bizkaia&quot;,&quot;Gipuzkoa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Lurralde historikoa&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;%&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unitatea&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Balioa&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Urtea&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Familiako gastuaren hazkunde-tasa per capita&quot;,&quot;Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita&quot;,&quot;Familiako diru-sarreraren hazkunde-tasa per capita&quot;,&quot;Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Seriea&quot;},{&quot;name&quot;:&quot;Territorio&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Araba / Álava&quot;,&quot;Bizkaia&quot;,&quot;Gipuzkoa&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Lurralde historikoa&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;%&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unitatea&quot;},{&quot;name&quot;:&quot;Progress&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Progress&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Balioa&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
   data-proxy=""
@@ -430,7 +430,11 @@ layout-indicator-iframe
         
         
         
-        <th scope="col" class="table-value">Series</th>
+        <th scope="col">Series</th>
+        
+        
+        
+        <th scope="col" class="table-value">Progress</th>
         
         
       </thead>
@@ -451,7 +455,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -471,7 +479,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -491,7 +503,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -511,7 +527,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -531,7 +551,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -551,7 +575,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -571,7 +599,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -591,7 +623,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -611,7 +647,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -631,7 +671,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -651,7 +695,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -671,7 +719,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -691,7 +743,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -711,7 +767,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -731,7 +791,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -751,7 +815,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -771,7 +839,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -791,7 +863,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -811,7 +887,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -831,7 +911,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -851,7 +935,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -871,7 +959,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -891,7 +983,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -911,7 +1007,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          <td>Familiako %40 pobreenarena gastuaren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -931,7 +1031,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -951,7 +1055,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -971,7 +1079,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -991,7 +1103,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1011,7 +1127,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1031,7 +1151,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1051,7 +1175,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          <td>Familiako diru-sarreraren hazkunde-tasa per capita</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1071,7 +1199,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1091,7 +1223,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1111,7 +1247,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1131,7 +1271,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1151,7 +1295,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1171,7 +1319,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -1191,7 +1343,11 @@ layout-indicator-iframe
           
           
           
-          <td class="table-value">Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          <td>Familiako %40 pobreenarena biztanle bakoitzeko diru-sarreraren hazkunde-tasa</td>
+          
+          
+          
+          <td class="table-value"></td>
           
           
         </tr>
@@ -2217,7 +2373,7 @@ oparotasun partekatua aztertzean, garrantzitsua da ongizatearen adierazle ugaria
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20260925163047'></script>
+<script src='/site/assets/js/sdg.js?v=20260928084801'></script>
 
 
 <script>
@@ -2237,7 +2393,7 @@ oparotasun partekatua aztertzean, garrantzitsua da ongizatearen adierazle ugaria
 
     
     
-    <script src="/site/assets/js/custom.js?v=20260925163047"></script><script>
+    <script src="/site/assets/js/custom.js?v=20260928084801"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
