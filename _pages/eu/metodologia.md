@@ -12,24 +12,23 @@ layout: page
 Aurrerapena informazio fidagarriarekin neurtu eta jarraipena egitea funtsezkoa da Euskal Autonomia Erkidegoa GJHak lortzeko bidean aurrera nola doan ulertzeko. 
 
 Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak erakusten du non ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
-diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazteko. Jarraipen-txostena 
-helburu desberdinak lortzeko politiken eta ekintzen arrakasta hobeto ulertzeko tresna izan daiteke. Halaber, seinale argia izan daiteke, ebidentzian oinarritutako politika 
+diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazi eta ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
-GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustatek erabiltzen duena [Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
-aurrerapena neurtzeko erabiltzen duen metodologian](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzea, ebaluazio garden, 
+GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustat [Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
+aurrerapena neurtzeko erabiltzen duen metodologian](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzen da, ebaluazio garden, 
 ulerterraz eta alderagarria egiteko.
 
 Ebaluaketak neurtzen du adierazlea 2030 Agendan ezarritako xedera hurbiltzen ari den edo hartatik urruntzen ari den, eta zein abiaduratan; denboran zehar egindako 
 aurrerapenean jartzen du arreta, ez egungo egoeran.
 
-Adierazle batzuetarako Nazio Batuen Erakundeak mundu osorako xede kuantitatibo zehatza finkatu du 2030erako. Kasu horietan, Euskal Autonomia Erkidegorako xede hori bera hartu 
-da aurrerapena ebaluatzeko orduan, eta adierazle bakoitzaren orrian azaltzen da.
+Adierazle batzuetarako Nazio Batuen Erakundeak mundu osorako xede kuantitatibo zehatza finkatu du 2030erako. Kasu horietan, plataforma honetako adierazle bakoitzaren orrian 
+agertzen da, eta aurrerapena ebaluatzeko orduan Euskal Autonomia Erkidegorako xede hori bera hartu da.
 
 Beste kasu batzuetan, Nazio Batuen Erakundeak ez du zehaztu zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazle horren balioaren joera desiragarria. 
-Norabide normatiboa "Igoera" denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa "Jaitsiera" denean, adierazlearen balioa txikiagotzea. Adierazle edo serie bakoitzerako 
+Norabide normatiboa "Igoera" denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa "Jaitsiera" denean, adierazlearen balioa txikiagotzea. Adierazle bakoitzerako 
 norabide normatiboa [Nazio Batuen Estatistika Dibisioaren 2026ko aurrerapenaren neurketari buruzko ohar tekniko](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf)tik 
-hartu da, eta adierazle bakoitzaren orrian azaltzen da. 
+hartu da, eta adierazle bakoitzaren orrian agertzen da. 
 
 Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira kontuan hartzen aurrerapena neurtzean, guztizko datuak baino ez dira erabiltzen.
 
@@ -128,7 +127,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
         [Kategoria ez aplikagarria]
       </td>
       <td>
-        Geldialdia. Ez du ez aurrera ez atzera egin.
+        Geldialdia. Ez doa ez aurrera ez atzera.
       </td>
     </tr>
 
