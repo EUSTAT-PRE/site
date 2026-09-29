@@ -42,7 +42,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
     border-collapse: collapse;
     font-family: Arial, sans-serif;
     font-size: 14px;
-    color: #000;
+    color: #333;
   }
 
   .aurrerapen-kategoriak th {
@@ -146,7 +146,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso.png" alt="Atzerakada nabarmena">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.png" alt="Atzerakada nabarmena">
       </td>
       <td>
         Atzerakada xedearekiko. Xedetik urruntzen ari da.
@@ -161,7 +161,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
         <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.png" alt="Ez ebaluagarria">
       </td>
       <td colspan="2">
-        Ez ebaluagarria. Ezin da aurrerapena modu fidagarrian ebaluatu,   <br>
+        Ez ebaluagarria. Ezin da aurrerapena modu fidagarrian ebaluatu, nahikoa datu ez dagoelako, norabide normatiboa ez dagoelako argi, edo bestelako arrazoiengatik.<br>
       </td>
     </tr>
 
