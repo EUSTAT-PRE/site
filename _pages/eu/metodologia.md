@@ -16,7 +16,7 @@ diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari 
 helburu desberdinak lortzeko politiken eta ekintzen arrakasta hobeto ulertzeko tresna izan daiteke. Halaber, seinale argia izan daiteke, ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
-GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustatek erabaki du [Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
+GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustatek erabiltzen duena [Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
 aurrerapena neurtzeko erabiltzen duen metodologian](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) oinarritzea, ebaluazio garden, 
 ulerterraz eta alderagarria egiteko.
 
@@ -38,11 +38,11 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
 <style type="text/css">
   .aurrerapen-kategoriak {
-    width: 900px;
+    width: 850px;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
-    font-size: 12px;
-    color: #555;
+    font-size: 14px;
+    color: #000;
   }
 
   .aurrerapen-kategoriak th {
@@ -77,8 +77,8 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
   }
 
   .aurrerapen-kategoriak img {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
   }
 </style>
@@ -173,11 +173,11 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:
 
 
-#### Ez eskuragarria
-Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari dira laster datuak emateko
+### Ez eskuragarria
+Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari gara laster datuak eskaini ahal izateko.
 
 
-#### Ez aplikagarria
+### Ez aplikagarria
 Adierazle batzuk ezin dira Euskal Autonomia Erkidegoan aplikatu, hainbat arrazoi direla medio:
 -	Ez dagokio, garapen-mailagatik: adibidez, 10.6.1 adierazlea Garapen bidean dauden herrialdetako kideen eta boto-eskubideen proportzioa nazioarteko erakundeetan, ez da egokia Euskadirentzat, ez baita garapen bidean dagoen herrialdea.
 -	Euskadiri ez dagokion arau edo egitura instituzional bati buruzkoa da: adibidez, 12.4.1 adierazlea Hondakin arriskutsuei eta beste produktu kimiko batzuei buruzko nazioarteko ingurumen-akordio aldeaniztunetan konpromisoak eta informazioa transmititzeko betebeharrak betetzen dituzten alderdien kopurua, akordio horietako bakoitzean eskatzen den bezala, estatuek sinatutako nazioarteko akordio bati dagokio, eta, beraz, ezin zaio Euskadiri aplikatu.
