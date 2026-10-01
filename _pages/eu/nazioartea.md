@@ -9,7 +9,7 @@ permalink: /nazioartea/
 **Nazio Batuen Erakundea**
 - [SDG Global Database](https://unstats.un.org/sdgs/dataportal)
 
-- [Sustainable Development Goals Report 2025](https://unstats.un.org/sdgs/report/2025/)
+- [Sustainable Development Goals Report 2026](https://unstats.un.org/sdgs/report/2026/)
 
 - [E-Handbook on Sustainable Development Goals Indicators](https://unstats.un.org/wiki/spaces/SDGeHandbook/pages/34505092/Home)
 
