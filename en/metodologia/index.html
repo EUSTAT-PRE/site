@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
+
+        <script>
+// This is where we initialise any global variables, namespaced in "opensdg".
+var opensdg = {
+
+  // A base URL for asynchronous calls to SDG data.
+  remoteDataBaseUrl: 'https://eustat-pre.github.io/data/en',
+
+  chartConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Chart.js.
+  chartConfigAlter: function(callback) {
+    this.chartConfigAlterations.push(callback);
+  },
+
+  tableConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Datatables.
+  tableConfigAlter: function(callback) {
+    this.tableConfigAlterations.push(callback);
+  },
+
+  // A hook which can be replaced to alter whether/how the values that are
+  // displayed on indicator tables/graphs get rounded. A "context" parameter
+  // is also passed which contains additional information.
+  dataRounding: function(value, context) {
+    // Alterations go here.
+    return value;
+  },
+
+  // A hook which can be used to alter the data before it is displayed on charts/tables.
+  dataDisplayAlterations: [],
+  dataDisplayAlter: function(callback) {
+    this.dataDisplayAlterations.push(callback);
+  },
+
+  // Disaggregations which should be ignored on indicator pages.
+  ignoredDisaggregations: null,
+
+  language: 'en',
+
+  language_numbers: 'en',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
+};
+
+</script>
+
+        <script>
+// JavaScript container for translation data.
+var translations = {
+  //Javascript version of the "t" filter from jekyll-open-sdg-plugins.
+  t: function(key) {
+
+    if (!key || typeof key !== 'string') {
+      return '';
+    }
+
+    // The majority of uses of this function are to translate disaggregation
+    // data. To spare data providers of needing to enter "data." in front of
+    // their disaggregation data, we specifically look for that here.
+    if (typeof this.data === 'object' && this.data !== null && this.data[key]) {
+      return this.data[key];
+    }
+
+    var originalKey = key;
+    var drilled = this;
+    var levelsDrilled = 0;
+    var levels = key.split('.');
+
+    for (var level in levels) {
+      // If we have drilled down to soon, abort.
+      if (typeof drilled !== 'object') {
+        break;
+      }
+
+      if (levels[level] in drilled) {
+        drilled = drilled[levels[level]];
+        levelsDrilled += 1;
+      }
+    }
+
+    // If we didn't drill the right number of levels, return the original string.
+    if (levels.length != levelsDrilled) {
+      return originalKey;
+    }
+
+    // Otherwise we must have drilled all the way.
+    return drilled;
+  },
+};
+</script>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title and meta description
+        ================================================== -->
+
+        
+    <title>Measuring progress on the Sustainable Development Goals - Indicators For The Sustainable Development Goals</title>
+
+
+
+        
+        <meta name="robots" content="noindex, nofollow">
+        
+
+        <!--[if IE 9]>
+        <script src="/site/assets/js/lib/classList.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/site/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/site/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/site/assets/img/favicons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/site/assets/img/favicons/favicon.ico" />
+
+        
+
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261001105707">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"  crossorigin=""/>
+        <link rel="stylesheet" href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'  crossorigin=""/>
+        <link rel="stylesheet" href="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.css"  crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
+        
+
+        
+
+
+        <!--[if IE]>
+        <link rel="stylesheet" href="/site/assets/css/ie.css">
+        <![endif]-->
+
+        
+
+    </head>
+<body class="language-en
+layout-page
+">
+<!-- <div class="container"> -->
+
+<script>translations['header'] = {"alpha":"POC","calendar":"Calendar","complaints_suggestions":"Complaints and Suggestions","database":"Data Bank","disclaimer":"This is a development website.","follow_us":"Follow Us:","info_service":"Information Service","municipal_info":"Municipalities information","operations":"Operations","press_service":"Press Service","situation":"Economic & Social Trends","themes":"Themes"};</script>
+
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0"></a>
+<div class="container internet-explorer-message">
+    <h2 class="internet-explorer-message-title"></h2>
+    <p class="internet-explorer-message-body"></p>
+</div>
+<header role="banner" class="">
+  <div class="header" >
+    <div class="header-top">
+        <div id="logo" class="logo-header">
+            <a id="logo-link" href="https://en.eustat.eus/indice.html">
+                <img src="/site/assets/img/LogoEustat.png" alt="eustat">
+            </a>
+            <div class="logo-header-description">
+                Euskal Estatistika Erakundea<br>Instituto Vasco de Estadística
+            </div>
+        </div>
+        <div id="trigger_home" class="menu-button">
+            <img id="euskadieus-logo"src="/site/assets/img/logo-euskadi-eus.png" alt="eustat">
+            <img id="menu-button-img" src="/site/assets/img/ham.png" alt="Mostrar/ocultar menu principal">
+        </div>
+    </div>
+    <div class="zutabeak">
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL01_01" data-ajax="false" href="https://en.eustat.eus/estadisticas/opt_0/id_All/temalista.html">Themes</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_02" data-ajax="false" href="https://en.eustat.eus/estadisticas/opt_1/id_All/temalista.html">Operations</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_03" data-ajax="false" href="https://en.eustat.eus/bancopx/spanish/indice.html">Data Bank</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_04" data-ajax="false" onclick="cambiaTemasOperaciones(2);" href="https://en.eustat.eus/indice.html#cy">Economic & Social Trends</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_05" data-ajax="false" href="https://en.eustat.eus/municipal/datos_estadisticos/info_territorial_c.asp">Municipalities information</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL02_01" data-ajax="false" href="https://en.eustat.eus/estadisticas/calendario.html">Calendar</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_02" data-ajax="false" href="https://en.eustat.eus/productosServicios/sugerencias.html">Complaints and Suggestions</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_03" data-ajax="false" href="https://en.eustat.eusprodserv/info_c.html">Information Service</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_04" data-ajax="false" href="https://en.eustat.eus/notas_c.html">Press Service</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <div class="rrss">
+                <span class="texto-rrss">
+                  Follow Us:
+                </span>
+                <div class="iconos-rrss">
+                    <a href="https://es.linkedin.com/company/eustat" target="_blank" title="LinkedIn"
+                        style="display:inline-block;"><img class="sociales" alt="LinkedIn"
+                            src="/site/assets/img/rrss/linkedin.gif"></a>
+                    <a href="http://www.facebook.com/eustat" target="_blank" title="Facebook"
+                        style="display:inline-block;"><img class="sociales" alt="Facebook"
+                            src="/site/assets/img/rrss/facebook.gif"></a>
+                    <a href="http://twitter.com/eustat" target="_blank" title="X"
+                        style="display:inline-block;"><img class="sociales" alt="X"
+                            src="/site/assets/img/rrss/X.gif"></a>
+                    <a href="https://bsky.app/profile/eustat.eus" target="_blank" title="BlueSky"
+                        style="display:inline-block;"><img class="sociales" alt="BlueSky"
+                            src="/site/assets/img/rrss/BlueSky.png"></a>
+                    <a href="https://www.youtube.com/user/eustat1986/" target="_blank" title="Youtube"
+                        style="display:inline-block;"><img class="sociales" alt="Youtube"
+                            src="/site/assets/img/rrss/youtube.png"></a>
+                    <a href="https://en.eustat.eus/web/comun/extractorclobRSS.ashx?id=/rss/novedades_c.xml"
+                        title="Rss novedades" style="display:inline-block;"><img
+                            class="sociales" alt="Rss novedades" src="/site/assets/img/rrss/rss2.png"></a>
+                </div>
+            </div>
+        </div>
+    </div><!-- zutabeak -->
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM completamente cargado y procesado');
+    var container = document.querySelector('.header');
+    var zutabeak = document.querySelector('.zutabeak');
+
+    function buildCanvas() {
+        document.getElementById('trigger_home').addEventListener('click', function (e) {
+            console.log("hey");
+            
+            e.preventDefault();
+            container.classList.toggle('active');
+            zutabeak.classList.toggle('active');
+            if (container.classList.contains('active')) {
+                
+                document.getElementById('menu-button-img').src = "/site/assets/img/aspa.png";
+               
+            } else {
+                document.getElementById('menu-button-img').src = "/site/assets/img/ham.png";
+                
+            }
+        });
+    }
+
+    buildCanvas();
+
+    window.addEventListener('resize', function () {
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
+    });
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 500) {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
+        } else {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
+        }
+    });
+});
+</script>
+  <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
+            <a class="navbar-brand" href="/site/en/" id="home" aria-label="" title="">
+    <img src="/site/assets/img/logo/SDG_logo_en.png" alt="Go to homepage" />
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav" id="menu"><li class="nav-item ">
+    <a class="nav-link" href="/site/en/">Home</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/site/en/jarraipen-txostena">Monitoring report</a>
+</li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Disaggregated data
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-desagregaciones"><li class=" ">
+    <a class="dropdown-item" href="/site/en/lurraldea/">Province</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/en/udalerria/">Municipality</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/en/sexua/">Sex</a>
+</li></ul>
+            </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-masinfo" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    More information
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-masinfo"><li class=" ">
+    <a class="dropdown-item" href="/site/en/agenda2030/">2030 Agenda</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/en/aurkezpena/">Available information about the indicators</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/en/plataforma/">About the web platform</a>
+</li></ul>
+            </li></ul>
+    
+                </div>
+                <div class="header-search-bar">
+                    <form class="align-self-lg-end" id="search" action="/site/en/search/">
+    <div class="input-group">
+        <label class="visually-hidden" for="indicator_search"></label>
+        <input class="form-control" type="search" name="q" id="indicator_search" title="">
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary ms-n5" aria-label="" id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+                </div>
+                <div class="header-toggles d-flex">
+
+
+
+
+
+  <div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <a class="language-toggle-link" href="/site/metodologia/">
+                EU
+            </a>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/site/es/metodologia/">
+                ES
+            </a>
+        </li><li class="language-option-en list-inline-item">
+            <span class="language-toggle-active-language">
+                EN
+            </span>
+        </li></ul>
+</div>
+
+
+                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <a class="language-toggle-link" href="/site/metodologia/">
+                EU
+            </a>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/site/es/metodologia/">
+                ES
+            </a>
+        </li><li class="language-option-en list-inline-item">
+            <span class="language-toggle-active-language">
+                EN
+            </span>
+        </li></ul>
+</div></span><a title="" aria-label=""
+    data-contrast-switch-to="" role="button" href="javascript:void(0)" data-on="click"
+data-event-category="Accessibility"
+data-event-action="Change contrast setting"
+data-event-label="high"
+>A</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="top" tabindex=-1></div>
+
+
+<div id="main-content" class="container main-content-pages" role="main">
+    <div>
+        <h1>Measuring progress on the Sustainable Development Goals</h1>
+        
+
+
+    <h2 id="1-progress-assessment">1. Progress assessment</h2>
+
+<p>Measuring and tracking progress with reliable information is key to understanding how the Basque Country is progressing toward achieving the SDGs.</p>
+
+<p>Closely monitoring the progress of each indicator reveals where progress is being made and where efforts should be focused. Furthermore, 
+it enables open and transparent reporting on the implementation of the 2030 Agenda, as well as the adjustment or development of effective, evidence-based policies, thereby helping to ensure the achievement of the goals.</p>
+
+<p>Various organizations have developed methodologies to measure progress on SDG indicators. Eustat relies on the <a href="https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03">methodology used by Eurostat to measure progress on European Union SDG indicators</a>, 
+with the aim of conducting a transparent, understandable, and comparable assessment.</p>
+
+<p>The assessment method considers whether an indicator has moved towards or away from the target set in the 2030 Agenda, as well as the speed of this movement. The method focuses on progress over time and not on the current status.</p>
+
+<p>For certain indicators, the United Nations has set a global quantitative target for 2030. In these cases, the target is specified on the page for each indicator on this platform, and has been adopted to measure progress on the indicator within the Basque Autonomous Community.</p>
+
+<p>In other cases, the UN has not specified a numerical target but has indicated the normative direction —that is, the desirable trend for the indicator’s value. When the normative direction is “Increase” it is desirable for the indicator’s value to rise; when the 
+normative direction is “Decrease” it is desirable for the indicator’s value to lower. The normative direction for each indicator has been drawn from the <a href="https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf">2026 Technical Note for Progress Assessment by the United Nations Statistics Division</a> 
+and is specified on each indicator’s page.</p>
+
+<p>Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are not taken into account when measuring progress; only total data are used.</p>
+
+<h2 id="2-categorías-de-progreso">2. Categorías de progreso</h2>
+
+<style type="text/css">
+  .aurrerapen-kategoriak {
+    width: 850px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .aurrerapen-kategoriak th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+  }
+
+  .aurrerapen-kategoriak th:first-child {
+    text-align: center;
+    width: 15%;
+  }
+
+  .aurrerapen-kategoriak th:nth-child(2) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak th:nth-child(3) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+
+  .aurrerapen-kategoriak td:first-child {
+    text-align: center;
+  }
+
+  .aurrerapen-kategoriak img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+</style>
+
+<table class="aurrerapen-kategoriak">
+
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>With quantitative target</th>
+      <th>Without quantitative target</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+      </td>
+      <td>
+        Target met or on track. The target has been reached, or —if progress continues as it has so far— it will be reached by 2030.. 
+      </td>
+      <td>
+        Significant progress. It is making significant progress in the desired direction.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/en_progreso.png" alt="Moderate progress" />
+      </td>
+      <td>
+        Moderate progress towards the target. It is approaching the target, but some acceleration is needed in order to reach it by 2030.
+      </td>
+      <td>
+        Moderate progress. It is making moderate progress in the desired direction.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/sin_progreso.png" alt="Stagnation" />
+      </td>
+      <td>
+        [Category not applicable]
+      </td>
+      <td>
+        Stagnation. No progress nor deterioration.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/retroceso.png" alt="Moderate deterioration" />
+      </td>
+      <td>
+        Insufficient progress towards the target. Progreso insuficiente para alcanzar la meta. Progress is being made towards the target, but significant acceleration would be required to reach it by 2030.
+      </td>
+      <td>
+        Moderate deterioration. It moves moderately in the direction opposite to the desired one.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/retroceso_significativo.png" alt="Significant deterioration" />
+      </td>
+      <td>
+        Movement away from target. It is getting further away from the target.  
+      </td>
+      <td>
+        Significant deterioration. It moves significantly in the direction opposite to the desired one.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/no_evaluable.png" alt="Not evaluable" />
+      </td>
+      <td colspan="2">
+        Not evaluable. Progress cannot be reliably assessed because there is insufficient data, the desired direction is unclear, or for other reasons.<br />
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
+<p><br />
+<br />
+There are two other categories in the Progress Report:</p>
+
+<h3 id="no-data-available">No data available</h3>
+<p>There is currently no data for this indicator, but we are analyzing various sources in order to provide data shortly.</p>
+
+<h3 id="not-applicable">Not applicable</h3>
+<p>Certain indicators cannot be applied to the Basque Country for various reasons:</p>
+<ul>
+  <li>Not applicable, due to its level of development: For example, indicator 10.6.1 Proportion of members and voting rights of developing countries in international organizations is not appropriate for the Basque Country, since it is not a developing country.</li>
+  <li>It refers to a standard or institutional structure that does not apply to the Basque Country: for example, indicator 12.4.1 Number of parties to international multilateral environmental agreements on hazardous waste and other chemicals that comply with their commitments and obligations to transmit information as required by each of these agreements, refers to an international agreement signed by the states, so it cannot be applied to the Basque Country.</li>
+  <li>They are global measurement indicators: for example, indicator 17.10.1 Weighted average world tariff.
+<br /><br /></li>
+</ul>
+
+<p><a href="https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf">Methodology of progress assessment</a></p>
+
+
+
+
+    </div>
+</div>
+<footer role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="footerLinks">
+                    <ul>
+                        <li>
+                            <a href="https://open-sdg.org">Built using Open SDG</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/site/en/config">Configuration</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pieEustat">
+  <div class="marcopie">
+      <div class="enlaces">
+          <div class="centradomini">
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/about/links_i.html">
+                          Links
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/faq_i.html">
+                          FAQ
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/sitemap_i.html">
+                          Map
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_04" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/accesibilidad_i.html">
+                          Accessibility
+                      </a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="centradomini">
+              <div class="Prayamini"></div>
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/about/a_eustat_i.html">
+                          About Eustat
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://www.euskadi.eus/egoitza-elektronikoa/">
+                          Electronic Office
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://en.eustat.eus/privacidad_i.html">
+                          Privacy
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="piederecho">
+          <div class="logos-rrss-pie">
+              <div class="logos">
+                  <a id="ctl00_Pie_pieCOL03_07" data-ajax="false"
+                     href="https://eu.eustat.eus/about/aenor_i.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/aenor_2022_i.png"
+                          alt="AENOR"
+                          style="border-width:0px;">
+                  </a>
+
+                  <a id="ctl00_Pie_pieCOL03_07b" data-ajax="false"
+                     href="https://eu.eustat.eus/about/aenor_i.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/logo_ENS_2022.png"
+                          alt="ENS"
+                          style="border-width:0px;">
+                  </a>
+              </div>
+          </div>
+
+          <div class="piederecho-texto">
+              <p class="piederechop bold">Eustat - Basque Statistics Institute</p>
+              <p class="piederechop">Eustat is the public organization that develops, produces and distributes official statistical information of the Basque Country</p>
+              <p class="piederechop">
+                  c/Donostia - San Sebastián, 1<br>
+                  01010 Vitoria-Gasteiz<br>
+                  Phone: (+34) 945017500<br>
+                  Fax: (+34) 945017501<br>
+                  webmaster_eustat@eustat.eus
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script>translations['general'] = translations['general'] || {};
+    translations['general']['hide'] = 'hide';</script>
+
+<script>translations['search'] = translations['search'] || {};
+    translations['search']['search'] = '';</script>
+
+<script src='/site/assets/js/sdg.js?v=20261001105707'></script>
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],  // Permite $...$ y \(...\) para matemáticas en línea
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Permite $$...$$ y \[...\] para ecuaciones en bloque
+      tags: 'none'  // Desactiva la numeración automática de ecuaciones
+    },
+    svg: {
+      fontCache: 'global'  // Optimiza el rendimiento al reutilizar fuentes matemáticas
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+    
+    <script src="/site/assets/js/custom.js?v=20261001105707"></script><script>
+    new indicatorInit();
+    new accessibilitySwitcher();
+</script>
+
+
+</body>
+</html>
+
