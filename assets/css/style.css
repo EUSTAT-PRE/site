@@ -3752,3 +3752,43 @@ ul.iconillo {
 dt[data-ts-attribute="Progress"],
 dd[data-ts-attribute="Progress"] {
   display: none !important; }
+
+.main-content-pages details {
+  border-top: 2px solid #013161;
+  margin-bottom: 0;
+  padding: 0;
+  background: transparent; }
+  .main-content-pages details + details {
+    border-top: 1px solid #ccc; }
+  .main-content-pages details summary {
+    padding: 14px 0;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #013161;
+    font-family: Arial, sans-serif;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px; }
+    .main-content-pages details summary::-webkit-details-marker {
+      display: none; }
+    .main-content-pages details summary::before {
+      content: '+';
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #013161;
+      width: 16px;
+      flex-shrink: 0; }
+    .main-content-pages details summary:hover {
+      color: #0056b3; }
+  .main-content-pages details[open] > summary::before {
+    content: '−'; }
+  .main-content-pages details > *:not(summary) {
+    padding: 0 0 16px 24px; }
+  .main-content-pages details details {
+    border-top: 1px solid #ccc;
+    margin: 0; }
+    .main-content-pages details details summary {
+      font-size: 1em;
+      padding: 10px 0; }
