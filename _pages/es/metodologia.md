@@ -1,7 +1,7 @@
 ---
 title: Medición del progreso en los Objetivos de Desarrollo Sostenible
 language: es
-permalink: /metodologia/
+permalink: /es/metodologia/
 layout: page
 ---
 
