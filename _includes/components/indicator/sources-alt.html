@@ -66,7 +66,11 @@ file is controlled by the 'sources' indicator configuration option.
             <tr>
                 <th scope="row">{{ page.t.metadata_fields.source_url_1 }}</th>
                 {% if has_url %}
+                {% if source.url contains 'eustat.eus' %}
+                <td><a href="{{ source.url }}">{{ url_text | t }}</a></td>
+                {% else %}
                 <td><a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ url_text | t }}</a></td>
+                {% endif %}
                 {% else %}
                 <td>{{ placeholder }}</td>
                 {% endif %}

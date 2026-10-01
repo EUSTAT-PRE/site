@@ -17,7 +17,7 @@
  * Aplica target="_blank" a un enlace externo (URL absoluta que no sea eustat.eus).
  */
 function applyExternalLinkTarget(a) {
-  var href = a.getAttribute('href');
+  var href = (a.getAttribute('href') || '').trim();
   if (href && /^https?:\/\//i.test(href) && href.indexOf('eustat.eus') === -1) {
     a.setAttribute('target', '_blank');
     a.setAttribute('rel', 'noopener noreferrer');
@@ -42,6 +42,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   observer.observe(document.body, { childList: true, subtree: true });
+
+  // Al pulsar un enlace de índice que apunte a un <details>, abrirlo automáticamente.
+  // También abre el <details> padre si el objetivo está anidado.
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      // Abrir el propio elemento si es <details>
+      if (target.tagName === 'DETAILS') target.open = true;
+      // Abrir también cualquier <details> ancestro
+      var parent = target.parentElement;
+      while (parent) {
+        if (parent.tagName === 'DETAILS') parent.open = true;
+        parent = parent.parentElement;
+      }
+    });
+  });
 
   // Añade la clase is-sticky al wrapper de la barra ODS cuando está pegado al top,
   // para activar la sombra y el efecto visual de barra fija.
