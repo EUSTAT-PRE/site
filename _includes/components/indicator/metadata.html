@@ -35,9 +35,15 @@
             {% if placeholder_not_needed == false %}
               <span class="empty-metadata-placeholder">{{ metadata_content }}</span>
             {% elsif metadata_content contains "http" or metadata_content contains "mailto" %}
+              {% if metadata_content contains "eustat.eus" %}
+              <a href="{{ metadata_content }}">
+                {{ url_text }}
+              </a>
+              {% else %}
               <a href="{{ metadata_content }}" target="_blank" rel="noopener">
                 {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
+              {% endif %}
             {% else %}
               {% assign baseurl_end = site.baseurl | slice: -1 %}
               {% assign link_start = metadata_content | slice: 0 %}

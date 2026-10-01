@@ -12,7 +12,11 @@
                         {%- assign item_path = item.path | t -%}
                         <li>
                             {% if item_path contains ":" %}
+                            {% if item_path contains "eustat.eus" %}
+                            <a href="{{ item_path }}">{{ item.translation_key | t }}</a>
+                            {% else %}
                             <a href="{{ item_path }}" target="_blank">{{ item.translation_key | t }}</a>
+                            {% endif %}
                             {% else %}
                             {%- assign item_path_first = item_path | slice: 0 %}
                             {%- if item_path_first == '/' -%}

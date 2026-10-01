@@ -33,7 +33,7 @@
 
 {% if site.reporting_status.description %}
 <div class="reporting-status-description">
-  {{ site.reporting_status.description | t | markdownify }}
+  {{ site.reporting_status.description | t | replace: 'BASEURL', site.baseurl | markdownify }}
   <div class="progreso-action-icons progreso-action-icons-mobile">
     <a href="{{ site.remote_data_prefix }}progreso.csv"
        class="progreso-icon-btn progreso-download-btn-mobile"
