@@ -142,7 +142,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261015121602">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261016072655">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -400,9 +400,9 @@ data-event-label="high"
 diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazi eta ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.</p>
 
-<p>GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Eustat <a href="https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03">Eurostatek Europar Batasuneko GJHen adierazleetan izandako 
-aurrerapena neurtzeko erabiltzen duen metodologian</a> oinarritzen da, ebaluazio garden, 
-ulerterraz eta alderagarria egiteko.</p>
+<p>GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Ebaluazio garden, ulerterraz eta alderagarria egiteko 
+Eustat nagusiki <a href="https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03">Eurostatek Europar Batasuneko GJHen adierazleetan izandako aurrerapena neurtzeko erabiltzen duen metodologian</a> 
+oinarritzen da, xehetasun batzuk <a href="https://ine.es/ods/medicion_ods_2025.pdf">INEren metodologiatik</a> hartuz, eta zenbait egokitzapen eginez Euskal Autonomia Erkidegoko errealitatera moldatzeko.</p>
 
 <p>Ebaluaketak neurtzen du adierazlea 2030 Agendan ezarritako xedera hurbiltzen ari den edo hartatik urruntzen ari den, eta zein abiaduratan; denboran zehar egindako 
 aurrerapenean jartzen du arreta, ez egungo egoeran.</p>
@@ -411,7 +411,7 @@ aurrerapenean jartzen du arreta, ez egungo egoeran.</p>
 
 <p>Beste kasu batzuetan, Nazio Batuen Erakundeak ez du zehaztu zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazle horren balioaren joera desiragarria. 
 Norabide normatiboa “Igoera” denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa “Jaitsiera” denean, adierazlearen balioa txikiagotzea. Adierazle bakoitzerako 
-norabide normatiboa <a href="https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf">Nazio Batuen Estatistika Dibisioaren 2026ko aurrerapenaren neurketari buruzko ohar tekniko</a>tik 
+norabide normatiboa <a href="https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf">Nazio Batuen Estatistika Dibisioaren 2026ko aurrerapenaren neurketari buruzko ohar teknikotik</a> 
 hartu da.</p>
 
 <p>Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira kontuan hartzen aurrerapena neurtzean, guztizko datuak baino ez dira erabiltzen.</p>
@@ -581,11 +581,15 @@ Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:</p>
 
 <p>Ondoren, kalkulatutako CAGRa zuzentzen da, adierazlearen norabide desiragarriaren arabera:</p>
 
-<h4 id="norabide-desiragarria-jaitsiera-bada">Norabide desiragarria jaitsiera bada</h4>
+<ul>
+  <li>Norabide desiragarria jaitsiera bada</li>
+</ul>
 
 \[CAGR_{z} = CAGR_{a} \cdot(-1)\]
 
-<h4 id="norabide-desiragarria-igoera-bada">Norabide desiragarria igoera bada</h4>
+<ul>
+  <li>Norabide desiragarria igoera bada</li>
+</ul>
 
 \[CAGR_{z} = CAGR_{a}\]
 
@@ -617,12 +621,12 @@ Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:</p>
   .tarteak th:first-child,
   .tarteak td:first-child {
     text-align: center;
-    width: 25%;
+    width: 35%;
   }
 
   .tarteak th:nth-child(2),
   .tarteak td:nth-child(2) {
-    width: 75%;
+    width: 65%;
   }
 </style>
 
@@ -666,24 +670,17 @@ Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:</p>
 
 <p>Horretarako hiru urrats egiten dira:</p>
 
-<ol>
-  <li>
-    <p>Urteko hazkunde-tasa konposatua kalkulatu (ikus 3.1 puntuko formula)</p>
-  </li>
-  <li>
-    <p>Xedea lortzeko teorikoki beharko litzatekeen hazkunde-tasa kalkulatu</p>
-  </li>
-</ol>
+<p>1.Urteko hazkunde-tasa konposatua kalkulatu (ikus 3.1 puntuko formula)</p>
+
+<p>2.Xedea lortzeko teorikoki beharko litzatekeen hazkunde-tasa kalkulatu</p>
 
 \[CAGR_{r} = \left( \frac{X_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1\]
 
 <p>Non: 𝑏 = oinarri-urtea (normalean 2015), 𝑧 = xede-urtea (normalean 2030), 𝑣𝑏 = oinarri-balioa b urtean, 𝑥 = xedearen balioa xede-urtean</p>
 
-<ol>
-  <li>Behatutako hazkunde-tasaren eta behar den hazkunde-tasaren arteko ratioa kalkulatu</li>
-</ol>
+<p>3.Behatutako hazkunde-tasaren eta behar den hazkunde-tasaren arteko ratioa kalkulatu</p>
 
-\[R = \frac{CAGR_{a}{CAGR_{r}\]
+\[R = \frac{CAGR_{a}}{CAGR_{r}}\]
 
 <p>Ondoren, ratioa ondoko tarten arabera ebaluatzen da:</p>
 
@@ -719,10 +716,8 @@ Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:</p>
 <h3 id="33-azpiadierazle-bat-baino-gehiago-duten-adierazleak">3.3 Azpiadierazle bat baino gehiago duten adierazleak</h3>
 
 <p>Kasu batzuetan, adierazle batek maila bereko hainbat azpiadierazle ditu, ez dago nagusia den azpiadierazle bat. Kasu horietan, azpiadierazle 
-bakoitzaren aurrerapena kalkulatu eta guztiak bateratzen dira adierazlearen aurrerapena ebaluatzeko.</p>
-
-<p>Horretarako, azpiadierazle bakoitzaren aurrerapen-balioak (CAGR zuzendua zenbakizko xederik ez duten azpiadierazleentzat eta Ratioa zenbakizko 
-xedea dutenentzat) -5 eta +5 arteko puntuazio bat hartzen du, ondoko funtzioen arabera:</p>
+guztien aurrerapenaren batezbestekoa erabiltzen da adierazlearen aurrerapena ebaluatzeko. Azpiadierazleen aurrerapenaren batezbestekoa kalkulatu ahal izateko, 
+azpiadierazleen aurrerapen-balioak harmonizatu egiten dira -5 eta +5 arteko puntuazioa esleituz, ondoko funtzioen arabera:</p>
 
 <p>2030erako zenbakizko xederik ez duten adierazleak</p>
 <style type="text/css">
@@ -870,9 +865,10 @@ Kasu horietan kategoria bakoitzerako hazkunde-tasaren atalaseak zuzentzeko eskal
     <p>Besterik zehaztu ezean, 2030a hartuko da xede-urtetzat.</p>
   </li>
   <li>
-    <p>Adierazle bitarrei bi kategoria hauetako bat esleituko zaie:
+    <p>Adierazle bitarrek, Bai/Ez balioak bakarrik har ditzakete, adibidez 17.18.2 Estatistikei buruzko legeriak Estatistika Ofizialen Oinarrizko Printzipioak betetzen ditu. 
+Halako adierazleei aurrerapen-kategoria hauetako bat esleituko zaie:
   a. Baiezkoa bada, “Xedea lortuta”.
-  b. Ezezkoa bada, “Atzerakada nabarmena”.</p>
+  b. Ezezkoa bada, “Atzerakada xedearekiko”.</p>
   </li>
   <li>
     <p>Aurrerapen-estimazioek errealitatea gehiegi sinplifikatzen dute. Beharrezkoa da aurrerapenari testuingurua ematea beste informazio batzuekin.</p>
@@ -1031,7 +1027,7 @@ Kasu horietan, aurrerapenaren ebaluaketak berdin hartzen ditu kontuan idealareki
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Bilatu';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261015121602'></script>
+<script src='/site/assets/js/sdg.js?v=20261016072655'></script>
 
 
 <script>
@@ -1051,7 +1047,7 @@ Kasu horietan, aurrerapenaren ebaluaketak berdin hartzen ditu kontuan idealareki
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261015121602"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261016072655"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
