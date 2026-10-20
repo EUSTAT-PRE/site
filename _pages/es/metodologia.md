@@ -27,7 +27,7 @@ La Agenda 2030 fija para algunos indicadores un objetivo cuantitativo para 2030 
 en la Comunidad Autónoma de Euskadi.
 
 En otros casos, la Agenda no especifica una meta numérica, pero sí cuál es la dirección normativa, es decir, la tendencia deseable del valor de este indicador. Cuando la dirección normativa es "Ascenso" lo deseable es que el valor del indicador aumente, y cuando la 
-dirección normativa es "Descenso", lo deseable es que el valor del indicador disminuya. La dirección normativa para cada indicador se ha tomado de la [nota técnica de 2026 sobre la medición del progreso de la División de Estadística de las Naciones Unidas]https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
+dirección normativa es "Descenso", lo deseable es que el valor del indicador disminuya. La dirección normativa para cada indicador se ha tomado de la [nota técnica de 2026 sobre la medición del progreso de la División de Estadística de las Naciones Unidas](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
 
 Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc.) no se tienen en cuenta a la hora de medir el progreso, sólo se utilizan datos totales.
 
