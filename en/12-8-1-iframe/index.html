@@ -147,7 +147,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261023085638">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261023102447">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -316,13 +316,13 @@ layout-indicator-iframe
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="No data available" />
+                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
                 </div>
                 
                 
                     
                     <div class="progress-status-label">
-                        No data available
+                        Significant progress
                     </div>
                     
                 
@@ -351,26 +351,506 @@ layout-indicator-iframe
   data-charttitles="[]"
   data-measurementunit=""
   data-xaxislabel=""
-  data-showdata="false"
-  data-graphtype="line"
+  data-showdata="true"
+  data-graphtype="bar"
   data-graphtypes="null"
   data-geocoderegex=""
   data-showmap="false"
   data-startvalues="[]"
-  data-graphlimits="[]"
+  data-graphlimits="[{&quot;unit&quot;:&quot;Index&quot;,&quot;minimum&quot;:0,&quot;maximum&quot;:1}]"
   data-stackeddisaggregation=""
   data-graphannotations="[]"
   data-graphtargetlines="null"
   data-graphseriesbreaks="null"
   data-indicatordownloads="null"
-  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
+  data-dataschema="{&quot;fields&quot;:[{&quot;name&quot;:&quot;Year&quot;,&quot;type&quot;:&quot;integer&quot;,&quot;title&quot;:&quot;Year&quot;},{&quot;name&quot;:&quot;Series&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Extent to which GCED and ESD are mainstreamed in  education policies&quot;,&quot;Extent to which GCED and ESD are mainstreamed in curricula&quot;,&quot;Extent to which GCED and ESD are mainstreamed in teacher education&quot;,&quot;Extent to which GCED and ESD are mainstreamed in student assessment&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Series&quot;},{&quot;name&quot;:&quot;Units&quot;,&quot;type&quot;:&quot;string&quot;,&quot;constraints&quot;:{&quot;enum&quot;:[&quot;Index&quot;,&quot;&quot;]},&quot;title&quot;:&quot;Unit&quot;},{&quot;name&quot;:&quot;Value&quot;,&quot;type&quot;:&quot;number&quot;,&quot;title&quot;:&quot;Value&quot;}]}"
   data-compositebreakdownlabel=""
   data-precision="[]"
   data-proxy=""
   data-proxyseries="null"
 >
   
-  <div id="indicator-main" class="indicator-main col-md-12">
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-unit-status"></span>
+  <span role="status" class="visually-hidden" id="indicator-data-series-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    <div id="serieses"></div>
+<div id="units"></div>
+<div id="toolbar">
+  <span id="series-help">
+    <h4>Sub-categories</h4>
+    <p>Choose categories from the dropdowns below to see different breakdowns of the data. Some will not be available until a higher level is chosen.</p>
+  </span>
+  <div id="fields">
+    <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+  </div>
+</div>
+
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    
+
+
+
+
+<div id="headlineTable">
+
+  <div id="datatables">
+
+    
+    <a role="button" href="https://eustat-pre.github.io/data/en/headline/12-8-1.csv" class="btn btn-primary btn-download" download="indicator_12-8-1.csv" tabindex="0" role="button">Download headline data (.csv)</a>
+    
+    <a role="button" href="https://eustat-pre.github.io/data/en/data/12-8-1.csv" class="btn btn-primary btn-download" download='indicator_12-8-1.csv' tabindex='0' role='button'>Download source data (.csv)</a>
+
+    <p class="no-js-disaggregation-hint">Download source data for disaggregations (.csv)</p>
+
+    
+    <h3>Headline data</h3>
+    <table class="table-responsive table table-hover dataTable no-footer" role="grid">
+      <caption>Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment</caption>
+      <thead>
+        
+        
+        <th scope="col">Year</th>
+        
+        
+        
+        <th scope="col">Value</th>
+        
+        
+        
+        <th scope="col">Units</th>
+        
+        
+        
+        <th scope="col" class="table-value">Series</th>
+        
+        
+      </thead>
+      <tbody>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>1.0</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in  education policies</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2024</td>
+          
+          
+          
+          <td>1.0</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in  education policies</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>0.875</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in curricula</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2024</td>
+          
+          
+          
+          <td>0.922</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in curricula</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>0.95</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in teacher education</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2024</td>
+          
+          
+          
+          <td>0.95</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in teacher education</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2020</td>
+          
+          
+          
+          <td>1.0</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in student assessment</td>
+          
+          
+        </tr>
+        
+        <tr>
+          
+          
+          <td>2024</td>
+          
+          
+          
+          <td>1.0</td>
+          
+          
+          
+          <td>Index</td>
+          
+          
+          
+          <td class="table-value">Extent to which GCED and ESD are mainstreamed in student assessment</td>
+          
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+
+  
+  <div id="datatableFooter">
+    
+    
+    <p>Geographical Area: </p>
+    
+    
+    <p>Unit of Measurement: </p>
+    
+    
+    <p>Footnote: </p>
+    
+  </div>
+  
+
+</div>
+
+
+<section>
+
+  <p class="async-loading" data-img="/site/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    <div style="display: none;">
+    <span id="table-alternative">For tabular data alternative see Table tab.</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link active"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Chart tab"
+
+        
+      >Chart</button>
+    </li>
+    
+    <li role="presentation"
+      class="
+        nav-item
+        
+        
+      ">
+      <button
+        class="nav-link "
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          data-on="click"
+data-event-category="Tab change"
+data-event-action="Change data view"
+data-event-label="Change to Table tab"
+
+        
+      >Table</button>
+    </li>
+    
+  </ul>
+  
+    <div class="tab-content data-view">
+    
+      
+        <div role="tabpanel" class="tab-pane active" id="chartview">
+          
+
+    <div id="dataset-size-warning" style="display:none" role="alert">
+      <i class="fa fa-bolt"><span class="sr-only">Warning:</span></i>
+      There are too many datasets to show on the chart. Not all will be shown until you remove some selections.
+    </div>
+
+    
+    <div id="selectionsChart">
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">
+            Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment
+          </h4>
+          <div id="chart" class="plot-container">
+            <canvas
+    role="img"
+    aria-labelledby="chart-heading"
+    aria-describedby="table-alternative chart-annotations"
+    tabindex="0"
+ ></canvas>
+
+          </div>
+          <div id="plotLegend"></div>
+          
+
+
+
+<div id="selectionChartFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unit of Measurement:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Footnote:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Data last updated:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+        </div>
+      </figure>
+      <div id="chartSelectionDownload" class="clearfix">
+        <button
+          id="btnSave"
+          title="Download chart image as PNG"
+          aria-label="Download chart image as PNG"
+          class='btn btn-primary btn-download'>
+          Download chart image (.png)
+        </button><!--
+   --></div>
+    </div>
+
+
+
+        </div>
+      
+    
+      
+        <div role="tabpanel" class="tab-pane " id="tableview">
+          <div style="display: none;">
+            <span id="column-sort-info">Click to sort by this column</span>
+          </div>
+          <div id="selectionsTable"></div>
+<dl id="tableTargetLines" class="clearfix"></dl>
+
+
+
+
+<div id="selectionTableFooter" class="table-footer-text">
+  <h5 class="sr-only">Chart details</h5>
+    <dl>
+        
+
+        
+
+        <dt class="data-controlled-footer-field unit-from-data">Unit of Measurement:</dt>
+        <dd class="data-controlled-footer-field unit-from-data"></dd>
+
+        
+
+        
+
+        
+
+        
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        >Footnote:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        >Data last updated:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="DATA_LAST_UPDATE"
+        ></dd>
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        >:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="Progress"
+        ></dd>
+        
+        
+    </dl>
+    
+    <dl class="observation-attribute-list"></dl>
+    
+</div>
+
+<div id="tableSelectionDownload" class="clearfix"></div>
+
+        </div>
+      
+    
+  </div>
+  
+
+  </div>
+
+</section>
+
   
   <div class="mt-4">
 <ul class="nav nav-tabs" role="tablist">
@@ -471,7 +951,7 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Available indicator </th>
         <td>
           
-            <p>The Basque Country does not produce continuous official statistics using the indicator methodology.</p>
+            <p>Extent to which global citizenship education (GCED) and education for sustainable development (ESD) are mainstreamed in  education policies, curricula, teacher education and student assessment</p>
 
           
         </td>
@@ -491,6 +971,88 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
+      
+      <tr>
+        <th scope="row">Target </th>
+        <td>
+          
+            <p>12.8 By 2030, ensure that people everywhere have the relevant information and awareness for sustainable development and lifestyles in harmony with nature</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+    
+    
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Goal </th>
+        <td>
+          
+            <p>12- Ensure sustainable consumption and production patterns</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+    
+    
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Definition </th>
+        <td>
+          
+            
+<p>Scores obtained in each of the four sections of the UNESCO questionnaire on global citizenship 
+education (GCED) and education for sustainable development (ESD). Each section uses a scale of 0 to 1 to 
+measure the extent to which global citizenship education and education for sustainable development 
+are integrated into specific areas of the education system: education policies, curricula, 
+teacher education, and student assessment.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+    
+    
+      
+      
+      
+      
+      <tr>
+        <th scope="row">Theoretical formula </th>
+        <td>
+          
+            
+\[P^{t}_{area}\]
+
+<p>where:</p>
+
+<p>$P^{t}_{area} =$ Score obtained on the questionnaire for each area in year $t$</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
+    
+    
+      
+      
+      
         
           
     
@@ -498,29 +1060,19 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
-        
+      
+      <tr>
+        <th scope="row">Frequency </th>
+        <td>
           
-    
-    
-      
-      
-      
-        
+            <p>Four-yearly</p>
+
           
-    
-    
-      
-      
-      
+        </td>
+        </tr>
         
-          
-    
-    
       
-      
-      
-        
-          
+  
     
     
       
@@ -533,17 +1085,20 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       
-        
+      
+      <tr>
+        <th scope="row">OCECA </th>
+        <td>
           
-    
-    
-      
-      
-      
-        
+            <img src="/site/assets/img/oceca/ocecas_image.png" style="width: 200px; float: left; margin-right: 10px;" alt="Logo OCECAS">
+            
+<h1 id="metadatos-mundiales-descripción-del-indicador">Metadatos mundiales (Descripción del indicador)</h1>
+
           
-    
-    
+        </td>
+        </tr>
+        
+      
   
     
     
@@ -565,11 +1120,7 @@ data-event-label="Change to indicator.global_metadata tab"
   
     
     
-      
-      
-      
-        
-          
+  
     
     
       
@@ -647,10 +1198,27 @@ data-event-label="Change to indicator.global_metadata tab"
       
       
       <tr>
+        <th scope="row">Data last updated </th>
+        <td>
+          
+            2026/10/23
+          
+        </td>
+        </tr>
+        
+      
+  
+    
+    
+      
+      
+      
+      
+      <tr>
         <th scope="row">Metadata last updated </th>
         <td>
           
-            2025/06/06
+            2026/10/23
           
         </td>
         </tr>
@@ -745,22 +1313,28 @@ data-event-label="Change to indicator.global_metadata tab"
         <th scope="row">Rationale </th>
         <td>
           
-            <p>In order to achieve SDG targets 4.7, 12.8 and 13.3, it is necessary for governments 
-to ensure that ESD and GCED and their sub-themes are fully integrated in all aspects 
-of their education systems.</p>
+            
+<p>In order to achieve SDG targets 4.7, 12.8 and 13.3, it is necessary for 
+governments to ensure that ESD and GCED and their sub-themes are fully 
+integrated in all aspects of their education systems. Students will not 
+achieve the desired learning outcomes if Education for Sustainable Development 
+(ESD) and Global Citizenship Education (GCED) have not been identified as 
+priorities in education policies or laws, if curricula do not specifically 
+include the themes and sub-themes of ESD and GCED, and if teachers are not 
+trained to teach these topics across the curriculum.</p>
 
-<p>Students will not achieve the desired learning outcomes if Education for Sustainable 
-Development (ESD) and Global Citizenship Education (GCED) have not been identified 
-as priorities in education policies or laws, if curricula do not specifically include 
-the themes and sub-themes of ESD and GCED, and if teachers are not trained to teach 
-these topics across the curriculum.</p>
+<p>This indicator aims to give a simple assessment of whether the basic 
+infrastructure exists that would allow countries to deliver quality ESD and 
+GCED to learners, to ensure their populations have adequate information on 
+sustainable development and lifestyles in harmony with nature. Appropriate 
+education policies, curricula, teacher education, and student assessment are 
+key aspects of national commitment and effort to implement GCED and ESD effectively 
+and to provide a conducive learning environment.</p>
 
-<p>This indicator aims to give a simple assessment of whether the basic infrastructure 
-exists that would allow countries to deliver quality ESD and GCED to learners, to 
-ensure their populations have adequate information on sustainable development and 
-lifestyles in harmony with nature. Appropriate education policies, curricula, teacher 
-education, and student assessment are key aspects of national commitment and effort to 
-implement GCED and ESD effectively and to provide a conducive learning environment.</p>
+<p>Each component of the indicator is assessed on a scale of zero to one. The closer 
+to one the value, the better mainstreamed are ESD and GCED in that component. 
+By presenting results separately for each component, governments will be able to 
+identify in which areas more efforts may be needed.</p>
 
 <p>Source: United Nations Statistics Division</p>
 
@@ -775,8 +1349,19 @@ implement GCED and ESD effectively and to provide a conducive learning environme
       
       
       
-        
+      
+      <tr>
+        <th scope="row">Comparability between the available indicator and the UN indicator </th>
+        <td>
           
+            <p>The available indicator complies with the metadata of the United Nations indicator.</p>
+
+          
+        </td>
+        </tr>
+        
+      
+  
     
     
       
@@ -895,7 +1480,7 @@ implement GCED and ESD effectively and to provide a conducive learning environme
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261023085638'></script>
+<script src='/site/assets/js/sdg.js?v=20261023102447'></script>
 
 
 <script>
@@ -915,7 +1500,7 @@ implement GCED and ESD effectively and to provide a conducive learning environme
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261023085638"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261023102447"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
