@@ -611,7 +611,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/4-b-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "4-c-1",
@@ -883,7 +883,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/7-a-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "7-b-1",
@@ -1139,7 +1139,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/9-a-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "9-b-1",
@@ -1999,7 +1999,7 @@
         },
         {
           "id": "16-10-2",
-          "title": "global_indicators.16-10-2-titulo",
+          "title": "Informazioa publikoki eskuratzeko konstituzio-, lege- edo arau-bermeak hartzen eta aplikatzen dituzten herrialdeen kopurua",
           "description": "",
           "keywords": "",
           "href": "/site/16-10-2/",

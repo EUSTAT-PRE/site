@@ -611,7 +611,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/es/4-b-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "4-c-1",
@@ -883,7 +883,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/es/7-a-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "7-b-1",
@@ -1139,7 +1139,7 @@
           "description": "",
           "keywords": "",
           "href": "/site/es/9-a-1/",
-          "status": "notstarted"
+          "status": "complete"
         },
         {
           "id": "9-b-1",
@@ -1999,7 +1999,7 @@
         },
         {
           "id": "16-10-2",
-          "title": "global_indicators.16-10-2-titulo",
+          "title": "Número de países que adoptan y aplican garantías constitucionales, legales o normativas para el acceso público a la información",
           "description": "",
           "keywords": "",
           "href": "/site/es/16-10-2/",
