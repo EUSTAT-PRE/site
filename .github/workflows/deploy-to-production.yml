@@ -32,10 +32,10 @@ jobs:
     - uses: actions/checkout@v2
       with:
         persist-credentials: false
-    - name: Set up Ruby 3.2
+    - name: Set up Ruby 3.3
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2.2'
+        ruby-version: '3.3'
     - name: Download progreso.csv from data
       run: curl -f -o _data/csv/progreso.csv https://sdg.eustat.eus/sdg-data-prod/progreso.csv
     - name: Download progreso_indicadores.csv from data
