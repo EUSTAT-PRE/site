@@ -11,11 +11,11 @@ layout: page
 
 Aurrerapena informazio fidagarriarekin neurtu eta jarraipena egitea funtsezkoa da Euskal Autonomia Erkidegoa GJHak lortzeko bidean aurrera nola doan ulertzeko. 
 
-Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak erakusten du non ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
+Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak ahalbidetzen du 2030 Agendako xedeetatik zeinetan ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
 diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazi eta ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
-GJHen adierazleen aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Ebaluazio garden, ulerterraz eta alderagarria egiteko 
+GJHetarako aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Ebaluazio garden, ulerterraz eta alderagarria egiteko 
 Eustatek garatutako metodologia nagusiki [Eurostatek Europar Batasuneko GJHen adierazleetan izandako aurrerapena neurtzeko erabiltzen duen metodologian](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03) 
 oinarritzen da, xehetasun batzuk [INEren metodologiatik](https://ine.es/ods/medicion_ods_2025.pdf) hartuz, eta zenbait egokitzapen eginez Euskal Autonomia Erkidegoko errealitatera moldatzeko.  
 
@@ -31,7 +31,8 @@ hartu da.
 
 Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar) ez dira kontuan hartzen aurrerapena neurtzean, guztizko datuak baino ez dira erabiltzen.
 
-## 2. Aurrerapen-kategoriak
+
+### 2. Aurrerapen-kategoriak
 
 
 <style type="text/css">
@@ -162,28 +163,22 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
         Ez ebaluagarria. Ezin da aurrerapena modu fidagarrian ebaluatu, nahikoa datu ez dagoelako, norabide normatiboa ez dagoelako argi, edo bestelako arrazoiengatik.<br>
       </td>
     </tr>
-
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/notstarted.png" alt="Daturik ez eskuragarri">
+      </td>
+      <td colspan="2">
+        Daturik ez eskuragarri. Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari gara laster datuak eskaini ahal izateko.<br>
+      </td>
+    </tr>
   </tbody>
 
 </table>
 <br>
 <br>
-Gainera, Jarraipen Txostenean beste bi kategoria ere badaude:
 
 
-### Ez eskuragarria
-Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari gara laster datuak eskaini ahal izateko.
-
-
-### Ez aplikagarria
-Adierazle batzuk ezin dira Euskal Autonomia Erkidegoan aplikatu, hainbat arrazoi direla medio:
--	Ez dagokio, garapen-mailagatik: adibidez, 10.6.1 adierazlea Garapen bidean dauden herrialdetako kideen eta boto-eskubideen proportzioa nazioarteko erakundeetan, ez da egokia Euskadirentzat, ez baita garapen bidean dagoen herrialdea.
--	Euskadiri ez dagokion arau edo egitura instituzional bati buruzkoa da: adibidez, 12.4.1 adierazlea Hondakin arriskutsuei eta beste produktu kimiko batzuei buruzko nazioarteko ingurumen-akordio aldeaniztunetan konpromisoak eta informazioa transmititzeko betebeharrak betetzen dituzten alderdien kopurua, akordio horietako bakoitzean eskatzen den bezala, estatuek sinatutako nazioarteko akordio bati dagokio, eta, beraz, ezin zaio Euskadiri aplikatu.
--	Neurketa globaleko adierazleak dira: adibidez, 17.10.1 adierazlea Munduko batez besteko muga-zerga haztatua.
-<br><br>  
-
-
-## 3. Metodologia
+## 3. Adierazleen mailako aurrerapenaren ebaluazioa
 
 Aurrerapena neurtzeko metodoak desberdinak dira 2030erako zenbakizko xedea duten adierazle edo azpiadierazleentzat, eta halako xederik ez dutenentzat. Gainera, azpiadierazle bat baino gehiago duten adierazleen aurrerapena neurtzeko, kalkulu gehiagarri bat egiten da.
 
@@ -430,7 +425,7 @@ Azkenik, batezbesteko horren arabera adierazlearen aurrerapen-kategoria esleitze
 <table class="tarteak">
   <thead>
     <tr>
-      <th>Batezbeteko puntuazioa</th>
+      <th>Batezbesteko puntuazioa</th>
       <th>Aurrerapen-kategoria</th>
     </tr>
   </thead>
@@ -466,7 +461,7 @@ Datuen izaera dela eta, zenbait gogoeta eta salbuespen definitu dira:
  
 1. Azken urteko balioak helburua betetzen duenean, xedea lortu dela ulertuko da, azken urteetako joera gorabehera.
 
-2. Azken urteko balioa % 0 edo % 100 ingurukoa denean ( % 0.1eko gehieneko aldea), helburua hori izanik, xedea lortu dela ulertuko da.
+2. Azken urteko balioa % 0 edo % 100 ingurukoa denean (% 0.1eko gehieneko aldea), helburua hori izanik, xedea lortu dela ulertuko da.
 
 3. Kasu batzuetan, adierazleek gehienezko edo gutxienezko muga naturalak dituzte (adibidez 9.c.1 Sare mugikorreko estaldura duten 
 biztanleen proportzioa adierazleak ezin du % 100 baino handiagoa den balio bat izan. Oinarri-urtean adierazlearen balioa muga horretatik 
@@ -489,7 +484,22 @@ Kasu horietan, aurrerapenaren ebaluaketak berdin hartzen ditu kontuan idealareki
 9. Datuek politiken eragina islatzeko denbora behar da; denbora-seriea zenbat eta luzeagoa izan, orduan eta hobea izango da aurrerapena neurtzeko metodologia.
 
 
+## 4. Xedeen eta helburuen mailako aurrerapenaren ebaluazioa
 
+Xedeen aurrerapena ebaluatu aurretik, ondoko kontsiderazioak egin behar dira:
 
+- Xede bateko adierazle guztiek "Ez dago daturik eskuragarri" egoera dutenean, xedeari ere egoera hori esleitzen zaio.
+- Xede bateko adierazle guztiek "Ez aplikagarri" egoera dutenean, xedeari ere egoera hori esleitzen zaio.
+- Adierazle batean eskuragarri dagoen azken datua 2020koa edo lehenagokoa bada, adierazle hori ez da kontuan hartzen xedearen aurrerapena ebaluatzean.
+- Xedeko adierazleen % 50 baino gutxiagok baldin badute aurrerapena ebaluatua, xede horren aurrerapena ebaluatu ahal izateko nahikoa informazio ez dagoela kontsideratzen da, 
+  eta beraz "Ez ebaluagarri" egoera esleitzen zaio.
+
+Xedeen aurrerapena xedea osatzen duten adierazleen aurrerapenaren batezbesteko aritmetikoak ematen du. Horretarako jarraitzen den prozedura azpiadierazle bat baino gehiago dituzten adierazleen 
+aurrerapena kalkulatzeko erabiltzen den berbera da (ikus 3.3 atala), hau da, puntuazio-funtzioaren bidez adierazle bakoitzaren aurrerapen-balioa -5 eta +5 arteko puntuazio bilakatzen da, ondoren 
+horien arteko batezbestekoak xedearen aurrerapen-balioa emateko. Aurrerapen-kategoria esleitzeko erabiltzen diren tarteak ere azpiadierazle desberdinez osatutako adierazleentzat erabiltzen diren 
+berberak dira.
+
+Halaber, helburuen aurrerapena ebaluatzeko helburu bakoitzeko xedeen aurrerapenaren batezbesteko aritmetikoa kalkulatzen da, azpiadierazle bat baino gehiago dituzten adierazleentzat eta xedeentzat erabiltzen 
+den metodologia berberarekin (ikus 3.3 atala).
 
 

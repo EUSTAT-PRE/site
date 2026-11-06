@@ -27,8 +27,7 @@ normative direction is "Decrease" it is desirable for the indicator's value to l
 
 Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are not taken into account when measuring progress; only total data are used.
 
-## 2. Categorías de progreso
-
+## 2. Progress categories
 
 <style type="text/css">
   .aurrerapen-kategoriak {
@@ -158,28 +157,24 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
         Not evaluable. Progress cannot be reliably assessed because there is insufficient data, the desired direction is unclear, or for other reasons.<br>
       </td>
     </tr>
-
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/notstarted.png" alt="No data available">
+      </td>
+      <td colspan="2">
+        No data available. There is currently no data for this indicator, but various sources are being analyzed in order to provide data soon.<br>
+      </td>
+    </tr>
   </tbody>
-
 </table>
 <br>
 <br>
-There are two other categories in the Progress Report:
 
 
-### No data available
-There is currently no data for this indicator, but we are analyzing various sources in order to provide data soon.
+## 3. Assessment of progress at indicator level
 
-### Not applicable
-Certain indicators cannot be applied to the Basque Country for various reasons:
-- Not applicable, due to its level of development: For example, indicator 10.6.1 Proportion of members and voting rights of developing countries in international organizations is not appropriate for the Basque Country, since it is not a developing country.
-- It refers to a standard or institutional structure that does not apply to the Basque Country: for example, indicator 12.4.1 Number of parties to international multilateral environmental agreements on hazardous waste and other chemicals that comply with their commitments and obligations to transmit information as required by each of these agreements, refers to an international agreement signed by the states, so it cannot be applied to the Basque Country.
-- They are global measurement indicators: for example, indicator 17.10.1 Weighted average world tariff.
-<br><br>  
+The methods for asessment progress differ between indicators or sub-indicators that have a numerical target for 2030 and those that do not. Furthermore, for indicators composed of more than one sub-indicator, an additional calculation is performed in order to assess progress.
 
-## 3. Methodology
-
-The methods for measuring progress differ between indicators or sub-indicators that have a numerical target for 2030 and those that do not. Furthermore, for indicators composed of more than one sub-indicator, an additional calculation is performed in order to assess progress.
 
 ### 3.1 Indicators without quantitative targets
 
@@ -191,9 +186,7 @@ $$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
 
 Non: 𝑏 = base year (tipically 2015), 𝑡 = last year with available data (for example 2026), 𝑣𝑏 = value in base year 𝑏, 𝑣𝑡 = value in last year 𝑡
 
-Then 
-
-Next, the calculated $$CAGRa$$ is adjusted according to the desired direction of the indicator:
+Then, the calculated $$CAGRa$$ is adjusted according to the desired direction of the indicator:
 
 - If the desired direction is "Decreasing"
 
@@ -331,7 +324,6 @@ being predominant. In such instances, the progress of the indicator is evaluated
 of the progress of all its constituent sub-indicators. To calculate this mean, the following scoring 
 functions are used, which convert the progress values ​​of the sub-indicators (growth rate or ratio) into 
 scores ranging from -5 to +5:
-
 
 Sub-indicators without quantitative targets
 <style type="text/css">
@@ -484,7 +476,17 @@ from the ideal, in either direction. These include indicators 4.5.1, 5.4.1, 5.5.
 
 9. It takes time for data to reflect the impact of policies; the longer the time series, the better the methodology for measuring progress.  
 
+## 4. Assessment of progress at target and goal level 
 
+Before evaluating progress at target level, the following considerations must be taken into account:
+- When all indicators for a target have "Data not available" status, that same status is assigned to the target.
+- When all indicators for a target have "Not applicable" status, that same status is assigned to the target.
+- If the latest available data for an indicator is from 2020 or earlier, that indicator is not taken into account when assessing progress at target level.
+- If less than 50% of the indicators for a target have had their progress assessed, it is considered that there is insufficient information to assess the target's progress; therefore, it is assigned the category "Not evaluable."
 
+Progress at target level is determined by the arithmetic mean of the progress of the indicators that comprise each target. The procedure followed for this is the same as that used to calculate progress for indicators that consist of 
+more than one sub-indicator (see section 3.3). A scoring function is applied to transform the progress value of each indicator into a score between -5 and +5; the mean of these scores is then calculated to get 
+the progress score for the target. The intervals used to assign a progress category are the same as those used for indicators composed of multiple sub-indicators.
 
+Likewise, to assess progress at goal level, the arithmetic mean of the targets' progress score is calculated, using the same methodology applied to indicators with multiple sub-indicators and to the targets themselves (see section 3.3).
 

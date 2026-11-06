@@ -33,7 +33,6 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
 ## 2. Categorías de progreso
 
-
 <style type="text/css">
   .aurrerapen-kategoriak {
     width: 850px;
@@ -162,29 +161,24 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
         No evaluable. No se puede evaluar de manera fiable, porque no hay datos suficientes, porque la dirección deseada no está clara, o por otros motivos.<br>
       </td>
     </tr>
-
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/notstarted.png" alt="Datos no disponibles">
+      </td>
+      <td colspan="2">
+        Datos no disponibles. Actualmente no hay datos disponibles para este indicador, pero se están analizando diferentes fuentes para poder ofrecer datos en breve.<br>
+      </td>
+    </tr>
   </tbody>
-
 </table>
 <br>
 <br>
-Además, existen otra dos categorías en el Informe de Seguimiento:
-
-### Datos no disponibles
-Actualmente no hay datos para este indicador, pero estamos analizando diferentes fuentes para poder ofrecer datos en breve.
 
 
-### No aplicable
-Algunos indicadores no son aplicables a la Comunidad Autónoma de Euskadi por diversas razones:
-- No corresponde, por su nivel de desarrollo: por ejemplo, el indicador 10.6.1 Proporción de miembros y derechos de voto de los países en desarrollo en organizaciones internacionales, no es adecuado para Euskadi, ya que no es un país en desarrollo.
-- Se refiere a una norma o estructura institucional que no corresponde a Euskadi: por ejemplo, el indicador 12.4.1 Número de partes en los acuerdos ambientales multilaterales internacionales sobre desechos peligrosos y otros productos químicos que cumplen sus compromisos y obligaciones de transmitir información como se exige en cada uno de esos acuerdos, corresponde a un acuerdo internacional firmado por los estados, por lo que no es aplicable a Euskadi.
-- Son indicadores de medición global: por ejemplo, el indicador 17.10.1 Promedio arancelario mundial ponderado.
-<br><br>  
+## 3. Evaluación del progreso a nivel de indicadores
 
+Los métodos de medición del progreso son diferentes para los indicadores que tienen una meta numérica para 2030, y para aquellos que no la tienen. Además, para medir el progreso de los indicadores compuestos por varios subindicadores, se realiza un cálculo adicional.
 
-## 3. Metodología
-
-Los métodos de medición del progreso son diferentes para los indicadores o subindicadores que tienen una meta numérica para 2030, y para aquellos que no la tienen. Además, para medir el progreso de los indicadores compuestos por más de un subindicador, se realiza un cálculo adicional.
 
 ### 3.1 Indicadores sin meta numérica
 
@@ -194,7 +188,7 @@ Para ello se utiliza la tasa compuesta de crecimiento anual (CAGR, por sus inici
 
 $$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
 
-Non: 𝑏 = año base (normalmente 2015), 𝑡 = último año con datos dinponibles (por ejemplo 2026), 𝑣𝑏 = valor base en el año 𝑏, 𝑣𝑡 = valor del último año 𝑡
+Donde: 𝑏 = año base (normalmente 2015), 𝑡 = último año con datos disponibles (por ejemplo 2026), 𝑣𝑏 = valor base en el año 𝑏, 𝑣𝑡 = valor del último año 𝑡
 
 A continuación, se corrige el $$CAGRa$$ calculado, según la dirección deseable del indicador: 
 
@@ -202,7 +196,7 @@ A continuación, se corrige el $$CAGRa$$ calculado, según la dirección deseabl
 
 $$CAGR_{z} = CAGR_{a} * (-1)$$
 
-- Si la dirección deseable es el asecenso
+- Si la dirección deseable es el ascenso
 
 $$CAGR_{z} = CAGR_{a}$$
 
@@ -487,5 +481,19 @@ ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 
 9. Se necesita tiempo para que los datos reflejen el impacto de las políticas; cuanto más larga sea la serie temporal, mejor será la metodología para medir el progreso.  
 
 
+## 4. Evaluación del progreso a nivel de metas y objetivos
 
+Antes de evaluar el progreso de las metas, se deben hacer las siguientes consideraciones:
+
+- Cuando todos los indicadores de una meta están en estado "Datos no disponibles", se asigna ese mismo estado a la meta.
+- Cuando todos los indicadores de una meta están en estado "No aplicable", se asigna ese mismo estado a la meta.
+- Si el último dato disponible en un indicador es de 2020 o anterior, este indicador no se tiene en cuenta al evaluar el progreso de la meta.
+- Si menos del 50% de los indicadores de la meta tienen el progreso evaluado, se considera que no existe información suficiente para poder evaluar el progreso de la meta, por lo que se le asigna la categoría "No evaluable"
+
+El progreso de las metas viene dado por la media aritmética del progreso de los indicadores que componen la meta. El procedimiento que se sigue para ello es el mismo que se utiliza para calcular el progreso de los indicadores 
+con más de un subindicador (ver apartado 3.3). Es decir, se aplica una función de puntuación para transformar el valor de progreso de cada indicador en una puntuación de entre -5 y +5, y se calcula la media de esas puntuaciones 
+para obtener la puntuación del progreso de la meta. Los intervalos que se utilizan para asignar la categoría de progreso son los mismos que para los indicadores compuestos por varios subindicadores.
+
+Asimismo, para evaluar el progreso de los objetivos se calcula la media aritmética de la puntución del progreso de las metas de cada objetivo, con la misma metodología que se utiliza para los indicadores con varios subindicadores 
+y para las metas (ver apartado 3.3).
 
