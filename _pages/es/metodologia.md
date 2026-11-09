@@ -9,9 +9,9 @@ layout: page
 
 ## 1. Medición del progreso 
 
-Medir y hacer el seguimiento del progreso con información confiable es clave para comprender cómo avanza la Comunidad Autónoma de Euskadi hacia el logro de los ODS. 
+Medir el progreso y realizar su seguimiento con información confiable es clave para comprender cómo avanza la Comunidad Autónoma de Euskadi hacia el logro de los ODS. 
 
-Medir de cerca el avance de cada indicador muestra dónde estamos avanzando, en qué áreas no se están logrando avances y en qué deben centrarse los esfuerzos. Además, 
+Analizar de cerca el avance de cada indicador muestra dónde estamos avanzando, en qué áreas no se están logrando avances y en qué deben centrarse los esfuerzos. Además, 
 permite informar de forma abierta y transparente de cómo se está llevando a cabo la Agenda 2030 y ajustar o desarrollar políticas eficaces basadas en la evidencia, 
 contribuyendo así a garantizar la consecución de los objetivos.
 
@@ -26,8 +26,8 @@ situación actual.
 La Agenda 2030 fija para algunos indicadores un objetivo cuantitativo para 2030 a nivel global. En estos casos, dicha meta se explicita en la página de cada indicador en esta plataforma y se ha adoptado para medir el progreso del indicador 
 en la Comunidad Autónoma de Euskadi.
 
-En otros casos, la Agenda no especifica una meta numérica, pero sí cuál es la dirección normativa, es decir, la tendencia deseable del valor de este indicador. Cuando la dirección normativa es "Ascenso" lo deseable es que el valor del indicador aumente, y cuando la 
-dirección normativa es "Descenso", lo deseable es que el valor del indicador disminuya. La dirección normativa para cada indicador se ha tomado de la [nota técnica de 2026 sobre la medición del progreso de la División de Estadística de las Naciones Unidas](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
+En otros casos, la Agenda no especifica una meta numérica, pero sí cuál es la dirección normativa, es decir, la tendencia deseable del valor de este indicador. Cuando la dirección normativa es el "Ascenso" lo deseable es que el valor del indicador aumente, y cuando la 
+dirección normativa es el "Descenso", lo deseable es que el valor del indicador disminuya. La dirección normativa para cada indicador se ha tomado de la [nota técnica de 2026 sobre la medición del progreso de la División de Estadística de las Naciones Unidas](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
 
 Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc.) no se tienen en cuenta a la hora de medir el progreso, sólo se utilizan datos totales.
 
@@ -181,9 +181,9 @@ Los métodos de medición del progreso son diferentes para los indicadores que t
 
 ### 3.1 Indicadores sin meta numérica
 
-Cuando no existe una meta cuantitativa, lo que se evalúa es si el indicador se está moviendo en la dirección deseable o en la dirección opuesta, y a qué velocidad.
+Cuando no existe una meta cuantitativa, se evalúa si el indicador evoluciona en la dirección deseable o en la dirección opuesta, y a qué velocidad.
 
-Para ello se utiliza la tasa compuesta de crecimiento anual (CAGR, por sus iniciales en inglés). Tomando el dato del año base (normalmente 2015) y el último dato disponible, se calcula la tasa de crecimiento anual durante ese período (expresada en%).
+Para ello se utiliza la tasa compuesta de crecimiento anual (CAGR, por sus iniciales en inglés). Tomando el dato del año base (normalmente 2015) y el último dato disponible, se calcula la tasa de crecimiento anual durante ese período (expresada en %).
 
 $$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
 
@@ -249,19 +249,19 @@ Por último, se evalúa la tasa compuesta de crecimiento anual corregida, de acu
       <td>Progreso significativo</td>
     </tr>
     <tr>
-      <td>&lt; % 1 eta &gt; % 0.1</td>
+      <td>&lt; % 1 y &gt; % 0.1</td>
       <td>Progreso moderado</td>
     </tr>
     <tr>
-      <td>≤ % 0.1 eta ≥ % -0.1</td>
+      <td>≤ % 0.1 y ≥ % −0.1</td>
       <td>Estancamiento</td>
     </tr>
     <tr>
-      <td>&lt; % -0.1 eta &gt; % -1</td>
+      <td>&lt; % −0.1 y &gt; % −1</td>
       <td>Retroceso moderado</td>
     </tr>
     <tr>
-      <td>≤ % -1</td>
+      <td>≤ % −1</td>
       <td>Retroceso significativo</td>
     </tr>
   </tbody>
@@ -278,11 +278,11 @@ Para ello se siguen tres pasos:
 
 - Cálculo de la tasa de crecimiento anual compuesta (ver fórmula del punto 3.1)
 
-- Cálculo de la tasa de crecimiento teóricamente necesaria para alcanzar la meta:
+- Cálculo de la tasa de crecimiento necesaria para alcanzar la meta:
 
-$$CAGR_{r} = \left( \frac{X_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
+$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
 
-Non: 𝑏 = año base (normalmente 2015), 𝑧 = año de la meta (normalmente 2030), 𝑣𝑏 = valor base en el año 𝑏, 𝑥 = valor de la meta en el año de la meta
+Donde: 𝑏 = año base (normalmente 2015), 𝑧 = año de la meta (normalmente 2030), 𝑣𝑏 = valor base en el año 𝑏, 𝑥 = valor de la meta en el año de la meta
 
 
 - Cálculo del ratio entre la tasa de crecimiento observada y la tasa de crecimiento requerida:
@@ -304,11 +304,11 @@ A continuación, se evalúa el ratio de acuerdo con los siguientes intervalos:
       <td>Meta alcanzada o en vías de alcanzarla</td>
     </tr>
     <tr>
-      <td>&lt; % 95 eta ≥ % 60</td>
+      <td>&lt; % 95 y ≥ % 60</td>
       <td>Progreso moderado hacia la meta </td>
     </tr>
     <tr>
-      <td>&lt; % 60 eta ≥ % 0</td>
+      <td>&lt; % 60 y ≥ % 0</td>
       <td>Progreso insuficiente para alcanzar la meta</td>
     </tr>
     <tr>
@@ -325,7 +325,7 @@ A continuación, se evalúa el ratio de acuerdo con los siguientes intervalos:
 En algunos casos, un indicador tiene varios subindicadores del mismo nivel, no existe un subindicador predominante. En estos casos, el progreso 
 del indicador se evalúa con la media del progreso de todos los subindicadores que lo componen. Para poder calcular la media
 se utilizan las siguientes funciones de puntuación, que convierten los valores de progreso de los subindicadores (tasa de crecimiento o ratio) 
-en puntuaciones entre -5 y +5:
+en puntuaciones entre −5 y +5:
 
 Subindicadores sin meta numérica
 <style type="text/css">
@@ -376,12 +376,12 @@ Subindicadores sin meta numérica
       <td>5</td>
     </tr>
     <tr>
-      <td>&lt; % 2 eta &gt; % -2 </td>
+      <td>&lt; % 2 y &gt; % −2 </td>
       <td>\(CAGR_{z}\) * 2.5</td>
     </tr>
     <tr>
-      <td>≤ % -2</td>
-      <td>-5</td>
+      <td>≤ % −2</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
@@ -400,21 +400,21 @@ Subindicadores con meta numérica
       <td>5</td>
     </tr>
     <tr>
-      <td>&lt; % 130 eta ≥ % 60</td>
+      <td>&lt; % 130 y ≥ % 60</td>
       <td>0.0714 * (\(R\) - 60)</td>
     </tr>
     <tr>
-      <td>&lt; % 60 eta &gt; % -60</td>
+      <td>&lt; % 60 y &gt; % −60</td>
       <td>0.0416 * (\(R\) + 60)</td>
     </tr>
     <tr>
-      <td>≤ % -60</td>
-      <td>-5</td>
+      <td>≤ % −60</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
 <br>
-Una vez medido el progreso de todos los subindicadores por una puntuación entre -5 y +5, se calcula su media aritmética, dando el mismo peso a todos los subindicadores.
+Una vez medido el progreso de todos los subindicadores por una puntuación entre −5 y +5, se calcula su media aritmética, dando el mismo peso a todos los subindicadores.
 
 Finalmente se asigna la categoría de progreso correspondiente a la puntuación media, de acuerdo con los siguientes intervalos:
 
@@ -431,19 +431,19 @@ Finalmente se asigna la categoría de progreso correspondiente a la puntuación 
       <td>Progreso significativo</td>
     </tr>
     <tr>
-      <td>≤ 2.5 eta &gt; 0.25</td>
+      <td>≤ 2.5 y &gt; 0.25</td>
       <td>Progreso moderado</td>
     </tr>
     <tr>
-      <td>≤ 0.25 eta ≥ -0.25</td>
+      <td>≤ 0.25 y ≥ −0.25</td>
       <td>Estancamiento</td>
     </tr>
     <tr>
-      <td>&lt; -0.25 eta ≥ -2.5</td>
+      <td>&lt; −0.25 y ≥ −2.5</td>
       <td>Retroceso moderado</td>
     </tr>
     <tr>
-      <td>&lt; -2.5</td>
+      <td>&lt; −2.5</td>
       <td>Retroceso significativo</td>
     </tr>
   </tbody>
@@ -455,44 +455,46 @@ Finalmente se asigna la categoría de progreso correspondiente a la puntuación 
 
 Debido a la naturaleza de los datos, se han definido una serie de consideraciones y excepciones: 
 
-1. Cuando el valor del último año cumple con el objetivo, se considera que se ha alcanzado la meta, independientemente de la tendencia en los últimos años.
+- Cuando el valor del último año alcanza la meta, se considera que esta se ha alcanzado, independientemente de la tendencia observada en los últimos años.
 
-2. Cuando el valor del último año es cercano (diferencia máxima de 0.1%) al 0% o 100%, siendo éste el objetivo, se considera que se ha alcanzado la meta. 
+- Cuando el valor del último año es cercano (diferencia máxima de 0.1%) al 0% o 100%, siendo éste el objetivo, se considera que se ha alcanzado la meta. 
 
-3. En algunos casos, los indicadores tienen límites naturales máximos o mínimos (por ejemplo 9.c.1 La proporción de habitantes con cobertura 
-de red móvil no puede tener un valor superior al 100%. Si el valor del indicador en el año base está muy cerca de este límite, puede ser imposible 
-alcanzar la tasa de crecimiento requerida por la categoría "Progreso significativo".
-En estos casos se utiliza un factor de escala para corregir los umbrales de tasa de crecimiento para cada categoría.
+- En algunos casos, los indicadores tienen límites naturales máximos o mínimos (por ejemplo 9.c.1 La proporción de habitantes con cobertura 
+de red móvil no puede tener un valor superior al 100%). Si el valor del indicador en el año base está muy cerca de este límite, puede ser imposible 
+alcanzar la tasa de crecimiento requerida por la categoría "Progreso significativo". En estos casos se utiliza un factor de escala para corregir los umbrales de tasa de crecimiento para cada categoría.
 
-4. Cuando no hay datos en 2015, se utiliza como año base el primer año disponible posterior o anterior.   
+- Cuando no hay datos en 2015, se utiliza como año base el primer año disponible posterior o anterior.   
 
-5. Si el año meta no se especifica, se considera que es 2030.
+- Si el año meta no se especifica, se considera que es 2030.
 
-6. Los indicadores binarios solo pueden tomar los valores Sí/No (por ejemplo 17.18.2 La legislación sobre estadísticas cumple con los Principios Fundamentales de las Estadísticas Oficiales).
-A estos indicadores se les asignará una de las siguientes categorías de progreso: En caso afirmativo, "Meta alcanzada"; en caso negativo, "Retroceso con respecto a la meta".
+- Los indicadores binarios solo pueden tomar los valores Sí/No (por ejemplo 17.18.2 La legislación sobre estadísticas cumple con los Principios Fundamentales de las Estadísticas Oficiales).
+A estos indicadores se les asignará una de las siguientes categorías de progreso: En caso afirmativo, "Meta alcanzada o en vías de alcanzarla"; en caso negativo, "Retroceso con respecto a la meta".
 
-7. En algunos indicadores, es deseable alcanzar la meta, pero superarla puede tener consecuencias negativas. Por ejemplo, en los índices de paridad del indicador 4.5.1, la meta sería conseguir la 
+- En algunos indicadores, es deseable alcanzar la meta, pero superarla puede tener consecuencias negativas. Por ejemplo, en los índices de paridad del indicador 4.5.1, la meta sería conseguir la 
 mayor paridad posible (índice=1), y estar por encima o por debajo de esa meta sería igualmente negativo. En estos casos, la evaluación del progreso tiene en cuenta las desviaciones con respecto al ideal, 
 ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1 y 16.7.1.
 
-8. Las estimaciones de progreso simplifican demasiado la realidad. Es necesario dar contexto al progreso con otra información relevante.  
+- Las estimaciones de progreso simplifican demasiado la realidad. Es necesario dar contexto al progreso con otra información relevante.  
 
-9. Se necesita tiempo para que los datos reflejen el impacto de las políticas; cuanto más larga sea la serie temporal, mejor será la metodología para medir el progreso.  
+- Se necesita tiempo para que los datos reflejen el impacto de las políticas; cuanto más larga sea la serie temporal, mejor será la metodología para medir el progreso.  
 
 
 ## 4. Evaluación del progreso a nivel de metas y objetivos
 
-Antes de evaluar el progreso de las metas, se deben hacer las siguientes consideraciones:
+En la evaluación del progreso de las metas, se hacen las siguientes consideraciones:
 
 - Cuando todos los indicadores de una meta están en estado "Datos no disponibles", se asigna ese mismo estado a la meta.
+
 - Cuando todos los indicadores de una meta están en estado "No aplicable", se asigna ese mismo estado a la meta.
+
 - Si el último dato disponible en un indicador es de 2020 o anterior, este indicador no se tiene en cuenta al evaluar el progreso de la meta.
+
 - Si menos del 50% de los indicadores de la meta tienen el progreso evaluado, se considera que no existe información suficiente para poder evaluar el progreso de la meta, por lo que se le asigna la categoría "No evaluable"
 
-El progreso de las metas viene dado por la media aritmética del progreso de los indicadores que componen la meta. El procedimiento que se sigue para ello es el mismo que se utiliza para calcular el progreso de los indicadores 
-con más de un subindicador (ver apartado 3.3). Es decir, se aplica una función de puntuación para transformar el valor de progreso de cada indicador en una puntuación de entre -5 y +5, y se calcula la media de esas puntuaciones 
+El progreso de las metas se obtiene mediante la media aritmética del progreso de los indicadores que componen la meta. El procedimiento que se sigue para ello es el mismo que se utiliza para calcular el progreso de los indicadores 
+con más de un subindicador (ver apartado 3.3). Es decir, se aplica una función de puntuación para transformar el valor de progreso de cada indicador en una puntuación de entre −5 y +5, y se calcula la media de esas puntuaciones 
 para obtener la puntuación del progreso de la meta. Los intervalos que se utilizan para asignar la categoría de progreso son los mismos que para los indicadores compuestos por varios subindicadores.
 
-Asimismo, para evaluar el progreso de los objetivos se calcula la media aritmética de la puntución del progreso de las metas de cada objetivo, con la misma metodología que se utiliza para los indicadores con varios subindicadores 
+Asimismo, para evaluar el progreso de los objetivos se calcula la media aritmética de la puntuación del progreso de las metas de cada objetivo, con la misma metodología que se utiliza para los indicadores con varios subindicadores 
 y para las metas (ver apartado 3.3).
 
