@@ -9,10 +9,10 @@ layout: page
 
 ## 1. Aurrerapenaren neurketa 
 
-Aurrerapena informazio fidagarriarekin neurtu eta jarraipena egitea funtsezkoa da Euskal Autonomia Erkidegoa GJHak lortzeko bidean aurrera nola doan ulertzeko. 
+Aurrerapena datu fidagarrien bidez neurtu eta haren jarraipena egitea funtsezkoa da Euskal Autonomia Erkidegoa GJHak lortzeko bidean aurrera nola doan ulertzeko. 
 
-Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak ahalbidetzen du 2030 Agendako xedeetatik zeinetan ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
-diren ahaleginak. Horrez gain, aukera ematen du 2030 Agenda nola gauzatzean ari den modu ireki eta gardenean jakinarazi eta ebidentzian oinarritutako politika 
+Adierazle bakoitzaren aurrerapena hurbiletik neurtzeak aukera ematen du identifikatzeko 2030 Agendako xedeetatik zeinetan ari garen aurrera egiten, zer arlotan ez den aurrerapenik lortzen ari eta zertan zentratu behar 
+diren ahaleginak. Horrez gain, aukera ematen du 2030 Agendaren ezarpen-mailari buruz modu ireki eta gardenean informatzeko eta ebidentzian oinarritutako politika 
 eraginkorrak doitu edo garatu ahal izateko, eta hala, helburuak lortzen direla bermatzen laguntzeko.
 
 GJHetarako aurrerapena neurtzeko erakunde desberdinek garatutako metodologiak daude. Ebaluazio garden, ulerterraz eta alderagarria egiteko 
@@ -24,8 +24,8 @@ aurrerapenean jartzen du arreta, ez egungo egoeran.
 
 2030 Agendak adierazle batzuetarako mundu osorako xede kuantitatibo zehatza finkatu du. Kasu horietan, aurrerapena ebaluatzeko orduan Euskal Autonomia Erkidegorako xede hori bera hartu da.
 
-Beste kasu batzuetan, Agendak ez du zehazten zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazle horren balioaren joera desiragarria. 
-Norabide normatiboa "Igoera" denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa "Jaitsiera" denean, adierazlearen balioa txikiagotzea. Adierazle bakoitzerako 
+Beste kasu batzuetan, Agendak ez du zehazten zenbakizko xederik, baina bai zein den norabide normatiboa, hau da, zein den adierazlearen balioak izan beharko lukeen joera. 
+Norabide normatiboa "Igoera" denean adierazle horren balioa handitzea da desiragarria, eta norabide normatiboa "Jaitsiera" denean, adierazlearen balioa murriztea. Adierazle bakoitzerako 
 norabide normatiboa [Nazio Batuen Estatistika Dibisioaren 2026ko aurrerapenaren neurketari buruzko ohar teknikotik](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf) 
 hartu da. 
 
@@ -165,7 +165,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
     </tr>
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/notstarted.png" alt="Daturik ez eskuragarri">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.png" alt="Daturik ez eskuragarri">
       </td>
       <td colspan="2">
         Daturik ez eskuragarri. Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari gara laster datuak eskaini ahal izateko.<br>
@@ -180,7 +180,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
 ## 3. Adierazleen mailako aurrerapenaren ebaluazioa
 
-Aurrerapena neurtzeko metodoak desberdinak dira 2030erako zenbakizko xedea duten adierazle edo azpiadierazleentzat, eta halako xederik ez dutenentzat. Gainera, azpiadierazle bat baino gehiago duten adierazleen aurrerapena neurtzeko, kalkulu gehiagarri bat egiten da.
+Aurrerapena neurtzeko metodoak desberdinak dira 2030erako zenbakizko xedea duten adierazle edo azpiadierazleentzat, eta zenbakizko xederik ez dutenentzat. Gainera, azpiadierazle bat baino gehiago duten adierazleen aurrerapena neurtzeko, kalkulu osagarri bat egiten da.
 
 
 ### 3.1 Zenbakizko xederik ez duten adierazleak
@@ -258,15 +258,15 @@ Azkenik, zuzendutako urteko hazkunde-tasa konposatua ondoko tarteen arabera ebal
       <td>Neurrizko aurrerapena</td>
     </tr>
     <tr>
-      <td>≤ % 0.1 eta ≥ % -0.1</td>
+      <td>≤ % 0.1 eta ≥ % −0.1</td>
       <td>Geldialdia</td>
     </tr>
     <tr>
-      <td>&lt; % -0.1 eta &gt; % -1</td>
+      <td>&lt; % −0.1 eta &gt; % −1</td>
       <td>Neurrizko atzerakada</td>
     </tr>
     <tr>
-      <td>≤ % -1</td>
+      <td>≤ % −1</td>
       <td>Atzerakada nabarmena</td>
     </tr>
   </tbody>
@@ -283,9 +283,9 @@ Horretarako hiru urrats egiten dira:
 
 - Urteko hazkunde-tasa konposatua kalkulatu (ikus 3.1 puntuko formula)
 
-- Xedea lortzeko teorikoki beharko litzatekeen hazkunde-tasa kalkulatu:
+- Xedea lortzeko beharko litzatekeen hazkunde-tasa kalkulatu:
 
-$$CAGR_{r} = \left( \frac{X_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
+$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
 
 Non: 𝑏 = oinarri-urtea (normalean 2015), 𝑧 = xede-urtea (normalean 2030), 𝑣𝑏 = oinarri-balioa 𝑏 urtean, 𝑥 = xedearen balioa xede-urtean
 
@@ -329,7 +329,7 @@ Ondoren, ratioa ondoko tarteen arabera ebaluatzen da:
 
 Kasu batzuetan, adierazle batek maila bereko hainbat azpiadierazle ditu, ez dago nagusia den azpiadierazle bat. Kasu horietan, azpiadierazle 
 guztien aurrerapenaren batezbestekoa erabiltzen da adierazlearen aurrerapena ebaluatzeko. Batezbestekoa kalkulatu ahal izateko, 
-ondoko puntuazio funtzioak erabiliz, azpiadierazleen aurrerapen-balioak (hazkunde-tasa edo ratioa) -5 eta +5 arteko puntuazio bihurtzen dira: 
+ondoko puntuazio funtzioak erabiliz, azpiadierazleen aurrerapen-balioak (hazkunde-tasa edo ratioa) −5 eta +5 arteko puntuazio bihurtzen dira: 
 
 Zenbakizko xederik ez duten azpiadierazleak
 <style type="text/css">
@@ -380,12 +380,12 @@ Zenbakizko xederik ez duten azpiadierazleak
       <td>5</td>
     </tr>
     <tr>
-      <td>&lt; % 2 eta &gt; % -2 </td>
+      <td>&lt; % 2 eta &gt; % −2 </td>
       <td>\(CAGR_{z}\) * 2.5</td>
     </tr>
     <tr>
-      <td>≤ % -2</td>
-      <td>-5</td>
+      <td>≤ % −2</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
@@ -408,17 +408,17 @@ Zenbakizko xedea duten azpiadierazleak
       <td>0.0714 * (\(R\) - 60)</td>
     </tr>
     <tr>
-      <td>&lt; % 60 eta &gt; % -60</td>
+      <td>&lt; % 60 eta &gt; % −60</td>
       <td>0.0416 * (\(R\) + 60)</td>
     </tr>
     <tr>
-      <td>≤ % -60</td>
-      <td>-5</td>
+      <td>≤ % −60</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
 <br>
-Behin azpiadierazle guztien aurrerapena -5 eta +5 arteko puntuazioaren arabera neurtuta, horien batezbesteko aritmetikoa kalkulatzen da, azpiadierazle guztiei pisu berbera emanez.
+Behin azpiadierazle guztien aurrerapena −5 eta +5 arteko puntuazioaren arabera neurtuta, horien batezbesteko aritmetikoa kalkulatzen da, azpiadierazle guztiei pisu berbera emanez.
 
 Azkenik, batezbesteko horren arabera adierazlearen aurrerapen-kategoria esleitzen da, ondoko tarteen arabera:
 
@@ -439,15 +439,15 @@ Azkenik, batezbesteko horren arabera adierazlearen aurrerapen-kategoria esleitze
       <td>Neurrizko aurrerapena</td>
     </tr>
     <tr>
-      <td>≤ 0.25 eta ≥ -0.25</td>
+      <td>≤ 0.25 eta ≥ −0.25</td>
       <td>Geldialdia</td>
     </tr>
     <tr>
-      <td>&lt; -0.25 eta ≥ -2.5</td>
+      <td>&lt; −0.25 eta ≥ −2.5</td>
       <td>Neurrizko atzerakada</td>
     </tr>
     <tr>
-      <td>&lt; -2.5</td>
+      <td>&lt; −2.5</td>
       <td>Atzerakada nabarmena</td>
     </tr>
   </tbody>
@@ -459,43 +459,46 @@ Azkenik, batezbesteko horren arabera adierazlearen aurrerapen-kategoria esleitze
 
 Datuen izaera dela eta, zenbait gogoeta eta salbuespen definitu dira: 
  
-1. Azken urteko balioak helburua betetzen duenean, xedea lortu dela ulertuko da, azken urteetako joera gorabehera.
+- Azken urteko balioak helburua betetzen duenean, xedea lortu dela ulertuko da, azken urteetako joera gorabehera.
 
-2. Azken urteko balioa % 0 edo % 100 ingurukoa denean (% 0.1eko gehieneko aldea), helburua hori izanik, xedea lortu dela ulertuko da.
+- Azken urteko balioa % 0 edo % 100 ingurukoa denean (% 0.1eko gehieneko aldea), helburua hori izanik, xedea lortu dela ulertuko da.
 
-3. Kasu batzuetan, adierazleek gehienezko edo gutxienezko muga naturalak dituzte (adibidez 9.c.1 Sare mugikorreko estaldura duten 
-biztanleen proportzioa adierazleak ezin du % 100 baino handiagoa den balio bat izan. Oinarri-urtean adierazlearen balioa muga horretatik 
-oso gertu baldin badago, ezinezkoa izan daiteke "Aurrerapen nabarmena" kategoriak eskatzen duen hazkunde-tasa lortzea. 
-Kasu horietan kategoria bakoitzerako hazkunde-tasaren atalaseak zuzentzeko eskala-faktore bat erabiltzen da.
+- Kasu batzuetan, adierazleek gehienezko edo gutxienezko muga naturalak dituzte (adibidez 9.c.1 Sare mugikorreko estaldura duten 
+biztanleen proportzioa adierazleak ezin du % 100 baino handiagoa den balio bat izan). Oinarri-urtean adierazlearen balioa muga horretatik 
+oso gertu baldin badago, ezinezkoa izan daiteke "Aurrerapen nabarmena" kategoriak eskatzen duen hazkunde-tasa lortzea. Kasu horietan kategoria 
+bakoitzerako hazkunde-tasaren atalaseak zuzentzeko eskala-faktore bat erabiltzen da.
 
-4. 2015ean daturik ez dagoenean, 2015aren ondoren edo aurretik eskuragarri dagoen lehen urtea erabiltzen da oinarri-urte bezala.
+- 2015ean daturik ez dagoenean, 2015aren ondoren edo aurretik eskuragarri dagoen lehen urtea erabiltzen da oinarri-urte bezala.
 
-5. Besterik zehaztu ezean, 2030a hartuko da xede-urtetzat.
+- Besterik zehaztu ezean, 2030a hartuko da xede-urtetzat.
 
-6. Adierazle bitarrek Bai/Ez balioak bakarrik har ditzakete (adibidez 17.18.2 Estatistikei buruzko legeriak Estatistika Ofizialen Oinarrizko Printzipioak betetzen ditu). 
-Halako adierazleei aurrerapen-kategoria hauetako bat esleituko zaie: Baiezkoa bada, "Xedea lortuta"; Ezezkoa bada, "Atzerakada xedearekiko".
+- Adierazle bitarrek Bai/Ez balioak bakarrik har ditzakete (adibidez 17.18.2 Estatistikei buruzko legeriak Estatistika Ofizialen Oinarrizko Printzipioak betetzen ditu). 
+Halako adierazleei aurrerapen-kategoria hauetako bat esleituko zaie: Baiezkoa bada, "Xedea lortuta edo lortzeko bidean"; ezezkoa bada, "Atzerakada xedearekiko".
 
-7. Adierazle batzuetan, desiragarria da xedea lortzea, baina gainditzeak ondorio negatiboak izan ditzake. Adibidez 4.5.1 adierazleko parekotasun-indizeetan, 
+- Adierazle batzuetan, desiragarria da xedea lortzea, baina gainditzeak ondorio negatiboak izan ditzake. Adibidez 4.5.1 adierazleko parekotasun-indizeetan, 
 ahalik eta parekotasun handiena lortzea litzateke xedea (indizea=1), eta xede horren gainetik edo azpitik egotea berdin litzateke negatiboa.
 Kasu horietan, aurrerapenaren ebaluaketak berdin hartzen ditu kontuan idealarekiko desbideraketak, norabide batean edo bestean izan. Halakoak dira 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1 eta 16.7.1 adierazleak.
 
-8. Aurrerapen-estimazioek errealitatea gehiegi sinplifikatzen dute. Beharrezkoa da aurrerapenari testuingurua ematea beste informazio batzuekin.
+- Aurrerapen-estimazioek errealitatea gehiegi sinplifikatzen dute. Beharrezkoa da aurrerapenari testuingurua ematea beste informazio batzuekin.
 
-9. Datuek politiken eragina islatzeko denbora behar da; denbora-seriea zenbat eta luzeagoa izan, orduan eta hobea izango da aurrerapena neurtzeko metodologia.
+- Datuek politiken eragina islatzeko denbora behar da; denbora-seriea zenbat eta luzeagoa izan, orduan eta hobea izango da aurrerapena neurtzeko metodologia.
 
 
 ## 4. Xedeen eta helburuen mailako aurrerapenaren ebaluazioa
 
-Xedeen aurrerapena ebaluatu aurretik, ondoko kontsiderazioak egin behar dira:
+Xedeen aurrerapena ebaluatzean, ondoko irizpideak hartzen dira kontuan:
 
 - Xede bateko adierazle guztiek "Ez dago daturik eskuragarri" egoera dutenean, xedeari ere egoera hori esleitzen zaio.
+
 - Xede bateko adierazle guztiek "Ez aplikagarri" egoera dutenean, xedeari ere egoera hori esleitzen zaio.
+
 - Adierazle batean eskuragarri dagoen azken datua 2020koa edo lehenagokoa bada, adierazle hori ez da kontuan hartzen xedearen aurrerapena ebaluatzean.
+
 - Xedeko adierazleen % 50 baino gutxiagok baldin badute aurrerapena ebaluatua, xede horren aurrerapena ebaluatu ahal izateko nahikoa informazio ez dagoela kontsideratzen da, 
   eta beraz "Ez ebaluagarri" egoera esleitzen zaio.
 
 Xedeen aurrerapena xedea osatzen duten adierazleen aurrerapenaren batezbesteko aritmetikoak ematen du. Horretarako jarraitzen den prozedura azpiadierazle bat baino gehiago dituzten adierazleen 
-aurrerapena kalkulatzeko erabiltzen den berbera da (ikus 3.3 atala), hau da, puntuazio-funtzioaren bidez adierazle bakoitzaren aurrerapen-balioa -5 eta +5 arteko puntuazio bilakatzen da, ondoren 
+aurrerapena kalkulatzeko erabiltzen den berbera da (ikus 3.3 atala), hau da, puntuazio-funtzioaren bidez adierazle bakoitzaren aurrerapen-balioa −5 eta +5 arteko puntuazio bilakatzen da, ondoren 
 horien arteko batezbestekoak xedearen aurrerapen-balioa emateko. Aurrerapen-kategoria esleitzeko erabiltzen diren tarteak ere azpiadierazle desberdinez osatutako adierazleentzat erabiltzen diren 
 berberak dira.
 
