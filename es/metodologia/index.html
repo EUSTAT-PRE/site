@@ -142,7 +142,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261109081119">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261109084835">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -545,29 +545,22 @@ dirección normativa es “Descenso”, lo deseable es que el valor del indicado
         No evaluable. No se puede evaluar de manera fiable, porque no hay datos suficientes, porque la dirección deseada no está clara, o por otros motivos.<br />
       </td>
     </tr>
-
+    <tr>
+      <td>
+        <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+      </td>
+      <td colspan="2">
+        Datos no disponibles. Actualmente no hay datos disponibles para este indicador, pero se están analizando diferentes fuentes para poder ofrecer datos en breve.<br />
+      </td>
+    </tr>
   </tbody>
-
 </table>
 <p><br />
-<br />
-Además, existen otra dos categorías en el Informe de Seguimiento:</p>
+<br /></p>
 
-<h3 id="datos-no-disponibles">Datos no disponibles</h3>
-<p>Actualmente no hay datos para este indicador, pero estamos analizando diferentes fuentes para poder ofrecer datos en breve.</p>
+<h2 id="3-evaluación-del-progreso-a-nivel-de-indicadores">3. Evaluación del progreso a nivel de indicadores</h2>
 
-<h3 id="no-aplicable">No aplicable</h3>
-<p>Algunos indicadores no son aplicables a la Comunidad Autónoma de Euskadi por diversas razones:</p>
-<ul>
-  <li>No corresponde, por su nivel de desarrollo: por ejemplo, el indicador 10.6.1 Proporción de miembros y derechos de voto de los países en desarrollo en organizaciones internacionales, no es adecuado para Euskadi, ya que no es un país en desarrollo.</li>
-  <li>Se refiere a una norma o estructura institucional que no corresponde a Euskadi: por ejemplo, el indicador 12.4.1 Número de partes en los acuerdos ambientales multilaterales internacionales sobre desechos peligrosos y otros productos químicos que cumplen sus compromisos y obligaciones de transmitir información como se exige en cada uno de esos acuerdos, corresponde a un acuerdo internacional firmado por los estados, por lo que no es aplicable a Euskadi.</li>
-  <li>Son indicadores de medición global: por ejemplo, el indicador 17.10.1 Promedio arancelario mundial ponderado.
-<br /><br /></li>
-</ul>
-
-<h2 id="3-metodología">3. Metodología</h2>
-
-<p>Los métodos de medición del progreso son diferentes para los indicadores o subindicadores que tienen una meta numérica para 2030, y para aquellos que no la tienen. Además, para medir el progreso de los indicadores compuestos por más de un subindicador, se realiza un cálculo adicional.</p>
+<p>Los métodos de medición del progreso son diferentes para los indicadores que tienen una meta numérica para 2030, y para aquellos que no la tienen. Además, para medir el progreso de los indicadores compuestos por varios subindicadores, se realiza un cálculo adicional.</p>
 
 <h3 id="31-indicadores-sin-meta-numérica">3.1 Indicadores sin meta numérica</h3>
 
@@ -577,7 +570,7 @@ Además, existen otra dos categorías en el Informe de Seguimiento:</p>
 
 \[CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1\]
 
-<p>Non: 𝑏 = año base (normalmente 2015), 𝑡 = último año con datos dinponibles (por ejemplo 2026), 𝑣𝑏 = valor base en el año 𝑏, 𝑣𝑡 = valor del último año 𝑡</p>
+<p>Donde: 𝑏 = año base (normalmente 2015), 𝑡 = último año con datos disponibles (por ejemplo 2026), 𝑣𝑏 = valor base en el año 𝑏, 𝑣𝑡 = valor del último año 𝑡</p>
 
 <p>A continuación, se corrige el \(CAGRa\) calculado, según la dirección deseable del indicador:</p>
 
@@ -588,7 +581,7 @@ Además, existen otra dos categorías en el Informe de Seguimiento:</p>
 \[CAGR_{z} = CAGR_{a} * (-1)\]
 
 <ul>
-  <li>Si la dirección deseable es el asecenso</li>
+  <li>Si la dirección deseable es el ascenso</li>
 </ul>
 
 \[CAGR_{z} = CAGR_{a}\]
@@ -891,6 +884,24 @@ ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 
   </li>
 </ol>
 
+<h2 id="4-evaluación-del-progreso-a-nivel-de-metas-y-objetivos">4. Evaluación del progreso a nivel de metas y objetivos</h2>
+
+<p>Antes de evaluar el progreso de las metas, se deben hacer las siguientes consideraciones:</p>
+
+<ul>
+  <li>Cuando todos los indicadores de una meta están en estado “Datos no disponibles”, se asigna ese mismo estado a la meta.</li>
+  <li>Cuando todos los indicadores de una meta están en estado “No aplicable”, se asigna ese mismo estado a la meta.</li>
+  <li>Si el último dato disponible en un indicador es de 2020 o anterior, este indicador no se tiene en cuenta al evaluar el progreso de la meta.</li>
+  <li>Si menos del 50% de los indicadores de la meta tienen el progreso evaluado, se considera que no existe información suficiente para poder evaluar el progreso de la meta, por lo que se le asigna la categoría “No evaluable”</li>
+</ul>
+
+<p>El progreso de las metas viene dado por la media aritmética del progreso de los indicadores que componen la meta. El procedimiento que se sigue para ello es el mismo que se utiliza para calcular el progreso de los indicadores 
+con más de un subindicador (ver apartado 3.3). Es decir, se aplica una función de puntuación para transformar el valor de progreso de cada indicador en una puntuación de entre -5 y +5, y se calcula la media de esas puntuaciones 
+para obtener la puntuación del progreso de la meta. Los intervalos que se utilizan para asignar la categoría de progreso son los mismos que para los indicadores compuestos por varios subindicadores.</p>
+
+<p>Asimismo, para evaluar el progreso de los objetivos se calcula la media aritmética de la puntución del progreso de las metas de cada objetivo, con la misma metodología que se utiliza para los indicadores con varios subindicadores 
+y para las metas (ver apartado 3.3).</p>
+
 
 
 
@@ -1035,7 +1046,7 @@ ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261109081119'></script>
+<script src='/site/assets/js/sdg.js?v=20261109084835'></script>
 
 
 <script>
@@ -1055,7 +1066,7 @@ ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261109081119"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261109084835"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
