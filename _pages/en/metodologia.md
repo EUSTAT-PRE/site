@@ -18,7 +18,7 @@ Various organizations have developed methodologies to measure progress on SDG in
 on the one used by [Eurostat to measure progress on the European Union’s SDG indicators](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03), incorporating elements from 
 [INE’s methodology](https://ine.es/ods/medicion_ods_2025.pdf), along with specific modifications to adapt the assessment to the reality of the Basque Autonomous Community.
 
-The assessment method considers whether an indicator has moved towards or away from the target set in the 2030 Agenda, as well as the speed of this movement. The method focuses on progress over time and not on the current status.
+The assessment method considers whether an indicator has progressed towards or moved away from the target set in the 2030 Agenda, as well as the speed of this movement. The method focuses on progress over time and not on the current status.
 
 For some indicators, the 2030 Agenda established global quantitative targets to be achieved by 2030. In these cases, the target has been adopted to measure progress on the indicator within the Basque Autonomous Community.
 
@@ -26,7 +26,7 @@ In other cases, the Agenda does not specify a numerical target, but it does indi
 indicator value to rise; when the normative direction is "Decrease", it is desirable for the indicator value to decline. The normative direction for each indicator has been drawn from the [2026 Technical Note for Progress Assessment 
 by the United Nations Statistics Division](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
 
-Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are not taken into account when measuring progress; only aggregate data are used..
+Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are not taken into account when measuring progress; only aggregate data are used.
 
 ## 2. Progress categories
 
@@ -189,11 +189,11 @@ Where: 𝑏 = base year (typically 2015), 𝑡 = last year with available data (
 
 Then, the calculated $$CAGRa$$ is adjusted according to the desired direction of the indicator:
 
-- If the desired direction is "Decreasing"
+- If the desired direction is "Decrease"
 
 $$CAGR_{z} = CAGR_{a} * (-1)$$
 
-- If the desired direction is "Increasing"
+- If the desired direction is "Increase"
 
 $$CAGR_{z} = CAGR_{a}$$
 
@@ -247,19 +247,19 @@ Finally, the adjusted compound annual growth rate is evaluated according to the 
       <td>Significant progress</td>
     </tr>
     <tr>
-      <td>&lt; % 1 eta &gt; % 0.1</td>
+      <td>&lt; % 1 and &gt; % 0.1</td>
       <td>Moderate progress</td>
     </tr>
     <tr>
-      <td>≤ % 0.1 eta ≥ % -0.1</td>
+      <td>≤ % 0.1 and ≥ % −0.1</td>
       <td>Stagnation</td>
     </tr>
     <tr>
-      <td>&lt; % -0.1 eta &gt; % -1</td>
+      <td>&lt; % −0.1 and &gt; % −1</td>
       <td>Moderate deterioration</td>
     </tr>
     <tr>
-      <td>≤ % -1</td>
+      <td>≤ % −1</td>
       <td>Significant deterioration</td>
     </tr>
   </tbody>
@@ -278,9 +278,9 @@ Three steps are followed:
 
 - Calculation of the growth rate required to achieve the target:
 
-$$CAGR_{r} = \left( \frac{X_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
+$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
 
-Non: 𝑏 = base year (tipically 2015), 𝑧 = target year (tipically 2030), 𝑣𝑏 = base value in year 𝑏, 𝑥 = target value in target year
+Where: 𝑏 = base year (typically 2015), 𝑧 = target year (typically 2030), 𝑣𝑏 = base value in year 𝑏, 𝑥 = target value in target year
 
 
 - Calculation of the ratio between the observed growth rate and the required growth rate:
@@ -302,11 +302,11 @@ Next, the ratio is evaluated according to the following intervals:
       <td>Target met or on track</td>
     </tr>
     <tr>
-      <td>&lt; % 95 eta ≥ % 60</td>
+      <td>&lt; % 95 and ≥ % 60</td>
       <td>Moderate progress towards target</td>
     </tr>
     <tr>
-      <td>&lt; % 60 eta ≥ % 0</td>
+      <td>&lt; % 60 and ≥ % 0</td>
       <td>Insufficient progress towards target</td>
     </tr>
     <tr>
@@ -375,12 +375,12 @@ Sub-indicators without quantitative targets
       <td>5</td>
     </tr>
     <tr>
-      <td>&lt; % 2 eta &gt; % -2 </td>
+      <td>&lt; % 2 and &gt; % −2 </td>
       <td>\(CAGR_{z}\) * 2.5</td>
     </tr>
     <tr>
-      <td>≤ % -2</td>
-      <td>-5</td>
+      <td>≤ % −2</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
@@ -399,21 +399,21 @@ Sub-indicators with quantitative targets
       <td>5</td>
     </tr>
     <tr>
-      <td>&lt; % 130 eta ≥ % 60</td>
+      <td>&lt; % 130 and ≥ % 60</td>
       <td>0.0714 * (\(R\) - 60)</td>
     </tr>
     <tr>
-      <td>&lt; % 60 eta &gt; % -60</td>
+      <td>&lt; % 60 and &gt; % −60</td>
       <td>0.0416 * (\(R\) + 60)</td>
     </tr>
     <tr>
-      <td>≤ % -60</td>
-      <td>-5</td>
+      <td>≤ % −60</td>
+      <td>−5</td>
     </tr>
   </tbody>
 </table>
 <br>
-Once the progress of all sub-indicators has been measured using a score between -5 and +5, their arithmetic mean is calculated, assigning equal weight to all sub-indicators.
+Once the progress of all sub-indicators has been measured using a score between −5 and +5, their arithmetic mean is calculated, assigning equal weight to all sub-indicators.
 
 Finally, the progress category corresponding to the mean score is assigned, in accordance with the following intervals:
 
@@ -430,19 +430,19 @@ Finally, the progress category corresponding to the mean score is assigned, in a
       <td>Significant progress</td>
     </tr>
     <tr>
-      <td>≤ 2.5 eta &gt; 0.25</td>
+      <td>≤ 2.5 and &gt; 0.25</td>
       <td>Moderate progress</td>
     </tr>
     <tr>
-      <td>≤ 0.25 eta ≥ -0.25</td>
+      <td>≤ 0.25 and ≥ −0.25</td>
       <td>Stagnation</td>
     </tr>
     <tr>
-      <td>&lt; -0.25 eta ≥ -2.5</td>
+      <td>&lt; −0.25 and ≥ -2.5</td>
       <td>Moderate deterioration</td>
     </tr>
     <tr>
-      <td>&lt; -2.5</td>
+      <td>&lt; −2.5</td>
       <td>Significant deterioration</td>
     </tr>
   </tbody>
@@ -454,39 +454,43 @@ Finally, the progress category corresponding to the mean score is assigned, in a
 
 Owing to the nature of the data, a number of considerations and exceptions have been defined: 
 
-1. When the value of the last year meets the target, the target is considered to have been reached, regardless of the trend in recent years.
+- When the value of the last year meets the target, the target is considered to have been reached, regardless of the trend in recent years.
 
-2. When the value of the last year is close (maximum difference of 0.1%) to 0% or 100%, this being the objective, it is considered that the target has been reached. 
+- When the value of the last year is close (maximum difference of 0.1%) to 0% or 100%, this being the objective, it is considered that the target has been reached. 
 
-3. In some cases, indicators have natural maximum or minimum limits (for example, indicator 9.c.1, the proportion of the population covered by a mobile network, cannot exceed 100%). If the indicator value 
-in the base year is very close to this limit, it may be impossible to achieve the growth rate required for the "Significant progress" category.
-In such cases, a scaling factor is used to adjust the growth rate thresholds for each category.
+- In some cases, indicators have natural maximum or minimum limits (for example, indicator 9.c.1, the proportion of the population covered by a mobile network, cannot exceed 100%). If the indicator value 
+in the base year is very close to this limit, it may be impossible to achieve the growth rate required for the "Significant progress" category. In such cases, a scaling factor is used to 
+adjust the growth rate thresholds for each category.
 
-4. When data for 2015 are unavailable, the first available year—either following or preceding 2015—is used as the base year.  
+- When data for 2015 are unavailable, the first available year—either following or preceding 2015—is used as the base year.  
 
-5. In the absence of a specified target date, 2030 is assumed to be the target period.
+- In the absence of a specified target date, 2030 is assumed to be the target period.
 
-6. Binary indicators can only take two possible values (Yes/No) ​​(for example, 17.18.2: The legislation on statistics complies with the Fundamental Principles of Official Statistics).
-These indicators will be assigned one of the following progress categories: if the answer is "Yes," "Target achieved"; if the answer is "No," "Movement away from target.".
+- Binary indicators can only take two possible values (Yes/No) ​​(for example, 17.18.2: The legislation on statistics complies with the Fundamental Principles of Official Statistics).
+These indicators will be assigned one of the following progress categories: if the answer is "Yes," "Target met or on track"; if the answer is "No," "Movement away from target".
 
-7. For some indicators, reaching the target is desirable, but exceeding it can have negative consequences. For example, regarding the parity indices for indicator 4.5.1, the target is to achieve 
+- For some indicators, reaching the target is desirable, but exceeding it can have negative consequences. For example, regarding the parity indices for indicator 4.5.1, the target is to achieve 
 the highest possible level of parity (index = 1); deviations above or below this target would be equally undesirable. In such cases, the assessment of progress takes into account deviations 
 from the ideal, in either direction. These include indicators 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1, and 16.7.1.
 
-8. Progress estimates inevitably simplify reality. Progress needs to be contextualized with other relevant information.  
+- Progress estimates inevitably simplify reality. Progress needs to be contextualized with other relevant information.  
 
-9. It takes time for data to reflect the impact of policies; the longer the time series, the better the methodology for measuring progress.  
+- It takes time for data to reflect the impact of policies; the longer the time series, the better the methodology for measuring progress.  
 
 ## 4. Assessment of progress at target and goal level 
 
 The following considerations are taken into account when assessing progress at the target level:
+
 - When all indicators for a target have "Data not available" status, that same status is assigned to the target.
+
 - When all indicators for a target have "Not applicable" status, that same status is assigned to the target.
+
 - If the latest available data for an indicator is from 2020 or earlier, that indicator is not taken into account when assessing progress at target level.
+
 - If less than 50% of the indicators for a target have had their progress assessed, it is considered that there is insufficient information to assess progress towards the target; therefore, it is assigned the category "Not evaluable."
 
 Progress at target level is determined by the arithmetic mean of the progress of the indicators that comprise each target. The procedure followed for this is the same as that used to calculate progress for indicators that consist of 
-more than one sub-indicator (see section 3.3). A scoring function is applied to transform the progress value of each indicator into a score between -5 and +5; the mean of these scores is then calculated to get 
+more than one sub-indicator (see section 3.3). A scoring function is applied to transform the progress value of each indicator into a score between −5 and +5; the mean of these scores is then calculated to get 
 the progress score for the target. The intervals used to assign a progress category are the same as those used for indicators composed of multiple sub-indicators.
 
 Likewise, to assess progress at goal level, the arithmetic mean of the targets' progress score is calculated, using the same methodology applied to indicators with multiple sub-indicators and to the targets themselves (see section 3.3).
