@@ -5,276 +5,496 @@ permalink: /es/metodologia/
 layout: page
 ---
 
-## Índice
 
-- [1. Medición del progreso](#medicion)
-- [2. Metodología](#metodologia)
-  - [2.1 Indicadores con valores objetivo para 2030](#con-objetivo)
-  - [2.2 Indicadores sin valores objetivo numéricos](#sin-objetivo)
-  - [2.3 Categorías de progreso](#categorias)
-  - [2.4 Consideraciones y excepciones](#consideraciones)
 
----
+## 1. Medición del progreso 
 
-<details id="medicion" open>
-<summary>1. Medición del progreso</summary>
+Medir el progreso y realizar su seguimiento con información confiable es clave para comprender cómo avanza la Comunidad Autónoma de Euskadi hacia el logro de los ODS. 
 
-Medir y hacer el seguimiento del progreso con información confiable es clave para comprender cómo avanza la Comunidad Autónoma de Euskadi hacia el logro de los ODS.  
+Analizar de cerca el avance de cada indicador muestra dónde estamos avanzando, en qué áreas no se están logrando avances y en qué deben centrarse los esfuerzos. Además, 
+permite informar de forma abierta y transparente de cómo se está llevando a cabo la Agenda 2030 y ajustar o desarrollar políticas eficaces basadas en la evidencia, 
+contribuyendo así a garantizar la consecución de los objetivos.
 
-Medir de cerca el progreso de cada indicador no solo ilustra dónde se está progresando, o en qué áreas no se están logrando avances y se pueden concentrar los esfuerzos, sino que además permite comunicar cómo le está yendo a la Comunidad Autónoma de Euskadi en la ejecución de la Agenda 2030 de una manera abierta y transparente. El informe de seguimiento puede constituir una herramienta para comprender mejor el éxito de las políticas y acciones para alcanzar las distintas metas. También puede actuar como una señal clara para que se puedan reajustar o desarrollar políticas efectivas basadas en evidencia para ayudar a garantizar que se alcancen los objetivos.
+Existen metodologías desarrolladas por diferentes organizaciones para medir el progreso de los indicadores de los ODS. Con el fin de realizar una evaluación transparente, 
+comprensible y comparable, Eustat ha desarrollado una metodología basada fundamentalmente en la [utilizada por Eurostat para medir el avance en los indicadores ODS de la Unión 
+Europea](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03), con algunas aportaciones de la [metodología del INE](https://ine.es/ods/medicion_ods_2025.pdf) 
+y ciertas modificaciones para adaptar la medición a la realidad de la Comunidad Autónoma de Euskadi.   
 
-</details>
+La evaluación del progreso mide si el indicador se acerca o se aleja de la meta establecida en la Agenda 2030 y a qué velocidad lo hace, centrándose en el avance en el tiempo y no en la 
+situación actual.
 
-<details id="metodologia">
-<summary>2. Metodología</summary>
+La Agenda 2030 fija para algunos indicadores un objetivo cuantitativo para 2030 a nivel global. En estos casos, dicha meta se explicita en la página de cada indicador en esta plataforma y se ha adoptado para medir el progreso del indicador 
+en la Comunidad Autónoma de Euskadi.
 
-Con la intención de realizar una evaluación simple y transparente, se ha desarrollado una metodología basada en la
-[nota técnica sobre la medición del progreso de 2023](https://unstats.un.org/sdgs/files/report/2023/Progress_Chart_Technical_Note_2023.pdf) utilizada por la División de Estadística de Naciones Unidas.
+En otros casos, la Agenda no especifica una meta numérica, pero sí cuál es la dirección normativa, es decir, la tendencia deseable del valor de este indicador. Cuando la dirección normativa es el "Ascenso" lo deseable es que el valor del indicador aumente, y cuando la 
+dirección normativa es el "Descenso", lo deseable es que el valor del indicador disminuya. La dirección normativa para cada indicador se ha tomado de la [nota técnica de 2026 sobre la medición del progreso de la División de Estadística de las Naciones Unidas](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
 
-Al evaluar el progreso de los ODS, la dirección normativa de una serie de datos indica el resultado deseable para su valor. Un valor más alto es deseable para series de datos con una dirección normativa creciente; lo contrario ocurre con aquellas con una dirección normativa decreciente. La dirección deseada para cada indicador o serie se ha tomado de la [nota técnica sobre la medición del progreso de 2024](https://unstats.un.org/sdgs/files/report/2024/Technical_Note_for_Progress_Assessment_2024.pdf)
+Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc.) no se tienen en cuenta a la hora de medir el progreso, sólo se utilizan datos totales.
 
-Un indicador puede contener múltiples series de datos y/o desgloses por diferentes dimensiones (como edad, sexo, ubicación, etc.). En estos casos, para la evaluación del progreso solo se seleccionan los datos de las series y desgloses que mejor representan a toda la población de de la Comunidad Autónoma de Euskadi.
+## 2. Categorías de progreso
 
-Se aplica a nivel de C.A. de Euskadi el objetivo marcado por Naciones Unidas para el conjunto del mundo. 
+<style type="text/css">
+  .aurrerapen-kategoriak {
+    width: 850px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
 
-La evaluación otorga una puntuación a cada uno de los indicadores. Se distingue entre indicadores que tienen objetivos numéricos para 2030 y aquellos que no los tienen.  
+  .aurrerapen-kategoriak th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+  }
 
-<details id="con-objetivo">
-<summary>2.1 Indicadores con valores objetivo para 2030</summary>
+  .aurrerapen-kategoriak th:first-child {
+    text-align: center;
+    width: 15%;
+  }
 
-Para los indicadores que tienen valores objetivo para 2030 y al menos dos puntos de datos diferentes (uno para la línea de base, normalmente 2015, y otro para el último año), se asigna una puntuación mediante el cálculo de tasas de crecimiento. Primero, se calcula la tasa de crecimiento anual compuesta real (𝐶𝐴𝐺𝑅𝑎) entre el año de referencia (b) y el último año (t) para el cual hay datos disponibles:
+  .aurrerapen-kategoriak th:nth-child(2) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak th:nth-child(3) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+
+  .aurrerapen-kategoriak td:first-child {
+    text-align: center;
+  }
+
+  .aurrerapen-kategoriak img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+</style>
+
+
+<table class="aurrerapen-kategoriak">
+
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Con meta numérica</th>
+      <th>Sin meta numérica</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Progreso significativo">
+      </td>
+      <td>
+        Meta alcanzada o en vías de alcanzarla. Se ha alcanzado la meta o, si se progresa como hasta ahora, estará alcanzada en 2030. 
+      </td>
+      <td>
+        Progreso significativo. Está avanzando significativamente en la dirección deseada.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="Progreso moderado">
+      </td>
+      <td>
+        Progreso moderado hacia la meta. Se está acercando a la meta, pero es necesario acelerar algo para poder alcanzar la meta en 2030.
+      </td>
+      <td>
+        Progreso moderado. Avanza moderadamente en la dirección deseada.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.webp" alt="Estancamiento">
+      </td>
+      <td>
+        [Categoría no aplicable]
+      </td>
+      <td>
+        Estancamiento. No avanza ni retrocede.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Retroceso moderado">
+      </td>
+      <td>
+        Progreso insuficiente para alcanzar la meta. Hay cierto avance hacia la meta, pero sería necesario acelerar mucho para alcanzarla en 2030.
+      </td>
+      <td>
+        Retroceso moderado. Se mueve moderadamente en la dirección contraria a la deseada.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.webp" alt="Retroceso significativo">
+      </td>
+      <td>
+        Retroceso con respecto a la meta. Se aleja de la meta.
+      </td>
+      <td>
+        Retroceso significativo. Se mueve significativamente en la dirección contraria a la deseada.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="No evaluable">
+      </td>
+      <td colspan="2">
+        No evaluable. No se puede evaluar de manera fiable, porque no hay datos suficientes, porque la dirección deseada no está clara, o por otros motivos.<br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles">
+      </td>
+      <td colspan="2">
+        Datos no disponibles. Actualmente no hay datos disponibles para este indicador, pero se están analizando diferentes fuentes para poder ofrecer datos en breve.<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+## 3. Evaluación del progreso a nivel de indicadores
+
+Los métodos de medición del progreso son diferentes para los indicadores que tienen una meta numérica para 2030, y para aquellos que no la tienen. Además, para medir el progreso de los indicadores compuestos por varios subindicadores, se realiza un cálculo adicional.
+
+
+### 3.1 Indicadores sin meta numérica
+
+Cuando no existe una meta cuantitativa, se evalúa si el indicador evoluciona en la dirección deseable o en la dirección opuesta, y a qué velocidad.
+
+Para ello se utiliza la tasa compuesta de crecimiento anual (CAGR, por sus iniciales en inglés). Tomando el dato del año base (normalmente 2015) y el último dato disponible, se calcula la tasa de crecimiento anual durante ese período (expresada en %).
 
 $$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
 
-<p>A continuación, se utiliza la 𝐶𝐴𝐺𝑅𝑎 del paso anterior para extrapolar el valor esperado (𝑣2030𝑒) para la serie en 2030, suponiendo que se mantenga el ritmo de progreso actual:</p>
+Donde: 𝑏 = año base (normalmente 2015), 𝑡 = último año con datos disponibles (por ejemplo 2026), 𝑣𝑏 = valor base en el año 𝑏, 𝑣𝑡 = valor del último año 𝑡
 
-$$v_{2030}^{e} = v_{t} \times (1 + CAGR_{a})^{2030 - t}$$
+A continuación, se corrige el $$CAGRa$$ calculado, según la dirección deseable del indicador: 
 
-Por último, se asigna una puntuación a la serie según los siguientes criterios:
+- Si la dirección deseable es el descenso
 
+$$CAGR_{z} = CAGR_{a} * (-1)$$
+
+- Si la dirección deseable es el ascenso
+
+$$CAGR_{z} = CAGR_{a}$$
+
+Por último, se evalúa la tasa compuesta de crecimiento anual corregida, de acuerdo a los siguientes intervalos:
 
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+  .tarteak {
+    width: 550px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .tarteak th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .tarteak td {
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .tarteak th:first-child,
+  .tarteak td:first-child {
+    text-align: center;
+    width: 35%;
+  }
+
+  .tarteak th:nth-child(2),
+  .tarteak td:nth-child(2) {
+    width: 65%;
+  }
 </style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Puntuación</th>
-    <th class="tg-fymr">Condición</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} \geq 0.95$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$0.10 \leq \frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} < 0.95$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} < 0.10$</td>
-  </tr>
-</tbody>
-</table>
-<br><br>  
-Donde:
-<br><br> 
-$𝑏$ es el año base (normalmente 2015)<br>
-$𝑡$ es el último año para el que hay dato (por ejemplo: 2022)<br>
-$𝑣_{b}$ es el valor base en el año b<br>
-$𝑣_{𝑡}$ es el valor del último año 𝑡<br>
-$𝑣_{2030}$ es el valor objetivo para 2030<br>
-$𝑣_{2030}^{e}$ es el valor esperado para 2030
-<br><br>
-</details>
 
-<details id="sin-objetivo">
-<summary>2.2 Indicadores sin valores objetivo numéricos</summary>
-
-Se asigna una puntuación a los indicadores que no tienen valores objetivo para 2030, y que cuentan con al menos dos puntos de datos, mediante el cálculo de la tasa de crecimiento anual compuesta. Primero, se calcula la tasa de crecimiento anual compuesta real (𝐶𝐴𝐺𝑅𝑎) entre la línea de base (b) y el último año (t) para el cual hay datos disponibles:
-
-$$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t - b}} - 1$$
-
-A continuación, se asigna una puntuación al indicador según los siguientes criterios:
-
-<p>Si el aumento es deseable:</p>
-
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Puntuación</th>
-    <th class="tg-fymr">Condición</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} \geq 0.02$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$0.005 \leq \text{CAGR}_{a} < 0.02$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} < 0.005$</td>
-  </tr>
-</tbody>
-</table>
-
-<br><br> 
-<p>Si el descenso es deseable:</p>
-
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Puntuación</th>
-    <th class="tg-fymr">Condición</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} \leq -0.02$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$-0.02 < \text{CAGR}_{a} \leq -0.005$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} > -0.005$</td>
-  </tr>
-</tbody>
-</table>
-
-<br><br>
-En algunos casos, los valores de la serie son tasas de crecimiento (por ejemplo, Indicador 8.1.1: Tasa de crecimiento anual del PIB per cápita). Calcular la CAGR de las tasas de crecimiento no tendría sentido y se utiliza el criterio experto para asignar la puntuación.
-
-</details>
-
-<details id="categorias">
-<summary>2.3 Categorías de progreso</summary>
-
-Las categorías de progreso asignadas se describen a continuación:
-
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Puntuación</th>
-    <th class="tg-fymr">Categoría</th>
-    <th class="tg-fymr">Símbolo</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">Meta alcanzada o en vías de alcanzarla</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Alcanzado" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">Progreso razonable, pero es necesario acelerarlo</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="En progreso" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">Estancamiento o retroceso</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Retroceso" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"> - </td>
-    <td class="tg-0pky"> No evaluado </td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="No evaluado" width="150"></td>
-  </tr>
-</tbody>
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>\(CAGR_{z}\)</th>
+      <th>Categoría de progreso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 1</td>
+      <td>Progreso significativo</td>
+    </tr>
+    <tr>
+      <td>&lt; % 1 y &gt; % 0.1</td>
+      <td>Progreso moderado</td>
+    </tr>
+    <tr>
+      <td>≤ % 0.1 y ≥ % −0.1</td>
+      <td>Estancamiento</td>
+    </tr>
+    <tr>
+      <td>&lt; % −0.1 y &gt; % −1</td>
+      <td>Retroceso moderado</td>
+    </tr>
+    <tr>
+      <td>≤ % −1</td>
+      <td>Retroceso significativo</td>
+    </tr>
+  </tbody>
 </table>
 
 <br>
+<br>
 
-**2.3.1 Meta alcanzada o en vías de alcanzarla**
+### 3.2 Indicadores con meta numérica
 
-La meta está alcanzada o está en vías de alcanzarla para 2030.
+En los casos en los que existe una meta cuantitativa, se compara la evolución del indicador con la requerida para alcanzar esa meta.
 
-**2.3.2 Progreso razonable, pero es necesario acelerarlo**
+Para ello se siguen tres pasos:
 
-Ha habido un progreso en el indicador, pero para alcanzar la meta en 2030 es necesario acelerar el progreso.
+- Cálculo de la tasa de crecimiento anual compuesta (ver fórmula del punto 3.1)
 
-**2.3.3 Estancamiento o retroceso**
+- Cálculo de la tasa de crecimiento necesaria para alcanzar la meta:
 
-No ha habido progreso o se ha retrocedido y es improbable que se alcance la meta en 2030.
+$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
 
-**2.3.4 No evaluado**
-
-En algunos casos no es posible medir el progreso de manera fiable u objetiva:
-
-- Cuando el indicador disponible para la CA de Euskadi no está alineado con la metodología del indicador oficial de las Naciones Unidas. En estos casos se utiliza un proxy o medición sustitutiva, pero en ocasiones no mide lo mismo.
-- Cuando no existe una serie temporal suficiente para evaluar el progreso.
-- Cuando la evaluación descontextualizada no es posible, dada la complejidad del tema. Por ejemplo, es el caso del indicador 2.c.1 Indicador de anomalías en los precios de los alimentos. Este indicador pretende medir la actuación de un país para mantener estables los precios de los mercados, pero cuando los precios aumentan mucho por la situación internacional (por ejemplo, en 2023-2024), el país no tiene gran capacidad para mantener los precios.
-
-**2.3.5 Datos no disponibles**
-
-Actualmente no existen datos para este indicador, pero se están estudiando distintas fuentes para ofrecer datos próximamente.
-
-**2.3.6 No aplicable**
-
-Ciertos indicadores no se pueden aplicar a la CA de Euskadi, por distintos motivos:
-
--	No corresponde, por su nivel de desarrollo: Por ejemplo, el indicador 10.6.1 Proporción de miembros y derechos de voto de los países en desarrollo en organizaciones internacionales no es adecuado para Euskadi, ya que no es un país en desarrollo.
--	Se refiere a una norma o estructura institucional que no corresponde a Euskadi: por ejemplo, el indicador 12.4.1 Número de partes en los acuerdos ambientales multilaterales internacionales sobre desechos peligrosos y otros productos químicos que cumplen sus compromisos y obligaciones de transmitir información como se exige en cada uno de esos acuerdos, se refiere a un acuerdo internacional suscrito por los estados, por lo que no se puede aplicar a Euskadi.
--	Se trata de indicadores de medición global: por ejemplo, el indicador 17.10.1 Promedio arancelario mundial ponderado.
-<br><br>  
-</details>
-
-<details id="consideraciones">
-<summary>2.4 Consideraciones y excepciones</summary>
-
-Debido a la naturaleza de los datos, se han definido una serie de consideraciones y excepciones:
-
-1. Cuando el valor del último año cumple con el objetivo, se considera que se ha alcanzado la meta, independientemente de la tendencia en los últimos años.
-2. Cuando el valor del último año es cercano (diferencia máxima de 1%) al 0% o 100%, siendo éste el objetivo, se considera que se ha alcanzado la meta. 
-3. Cuando no hay datos en 2015, se utiliza el primer año disponible después o antes de 2015 que permita tener al menos 2 valores.   
-4. A falta de una fecha objetivo especificada, se supone que 2030 es el período objetivo.   
-5. Si el año objetivo fuera pasado, se evalua utilizando la metodología con meta hasta el año de la meta (*y*).  
-6. Se requiere un mínimo de dos años de datos para calcular la medida de progreso. 
-7. Las estimaciones de progreso simplifican demasiado la realidad. Es necesario dar contexto al progreso con otra información relevante.  
-8. Se necesita tiempo para que los datos reflejen el impacto de las políticas; cuanto más larga sea la serie temporal, mejor será la metodología para medir el progreso.  
-9. A los indicadores binarios se les asignará una de estas 2 categorías:  
-   a. “Meta alcanzada” en caso afirmativo.   
-   b. “Estancamiento o retroceso” si es “no”.  
-10. Excepciones específicas:
+Donde: 𝑏 = año base (normalmente 2015), 𝑧 = año de la meta (normalmente 2030), 𝑣𝑏 = valor base en el año 𝑏, 𝑥 = valor de la meta en el año de la meta
 
 
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">nº indicador</th>
-    <th class="tg-fymr">Título del indicador</th>
-    <th class="tg-fymr">Meta</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">1.a.2</td>
-    <td class="tg-0pky">Proporción del gasto público total que se dedica a servicios esenciales (educación, salud y protección social)   </td>
-    <td class="tg-0pky">Se ha considerado como meta la media de la UE para el indicador </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">5.4.1 </td>
-    <td class="tg-0pky">Proporción de tiempo dedicado al trabajo doméstico y asistencial no remunerado, desglosada por sexo, edad y ubicación </td>
-    <td class="tg-0pky">Para poder calcular el progreso hacia el objetivo de reparto equitativo de las funciones parentales y las responsabilidades familiares, se valora la relación entre la proporción de tiempo de las mujeres y el de los hombres, con un objetivo deseado de 1</td>
-  </tr>
-</tbody>
+- Cálculo del ratio entre la tasa de crecimiento observada y la tasa de crecimiento requerida:
+
+$$R = \frac{CAGR_{a}}{CAGR_{r}}$$
+
+A continuación, se evalúa el ratio de acuerdo con los siguientes intervalos:
+
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>\(R\)</th>
+      <th>Categoría de progreso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 95</td>
+      <td>Meta alcanzada o en vías de alcanzarla</td>
+    </tr>
+    <tr>
+      <td>&lt; % 95 y ≥ % 60</td>
+      <td>Progreso moderado hacia la meta </td>
+    </tr>
+    <tr>
+      <td>&lt; % 60 y ≥ % 0</td>
+      <td>Progreso insuficiente para alcanzar la meta</td>
+    </tr>
+    <tr>
+      <td>&lt; % 0</td>
+      <td>Retroceso con respecto a la meta</td>
+    </tr>
+  </tbody>
 </table>
+<br>
+<br>
 
-</details>
+### 3.3 Indicadores compuestos por varios subindicadores
 
-</details>
+En algunos casos, un indicador tiene varios subindicadores del mismo nivel, no existe un subindicador predominante. En estos casos, el progreso 
+del indicador se evalúa con la media del progreso de todos los subindicadores que lo componen. Para poder calcular la media
+se utilizan las siguientes funciones de puntuación, que convierten los valores de progreso de los subindicadores (tasa de crecimiento o ratio) 
+en puntuaciones entre −5 y +5:
+
+Subindicadores sin meta numérica
+<style type="text/css">
+  .puntuazioa {
+    width: 450px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .puntuazioa th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .puntuazioa td {
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .puntuazioa th:first-child,
+  .puntuazioa td:first-child {
+    text-align: center;
+    width: 50%;
+  }
+
+  .puntuazioa th:nth-child(2),
+  .puntuazioa td:nth-child(2) {
+    width: 50%;
+  }
+</style>
+
+<table class="puntuazioa">
+  <thead>
+    <tr>
+      <th>\(CAGR_{z}\)</th>
+      <th>Puntuación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&lt; % 2 y &gt; % −2 </td>
+      <td>\(CAGR_{z}\) * 2.5</td>
+    </tr>
+    <tr>
+      <td>≤ % −2</td>
+      <td>−5</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Subindicadores con meta numérica
+<table class="puntuazioa">
+  <thead>
+    <tr>
+      <th>\(R\)</th>
+      <th>Puntuación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 130</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&lt; % 130 y ≥ % 60</td>
+      <td>0.0714 * (\(R\) - 60)</td>
+    </tr>
+    <tr>
+      <td>&lt; % 60 y &gt; % −60</td>
+      <td>0.0416 * (\(R\) + 60)</td>
+    </tr>
+    <tr>
+      <td>≤ % −60</td>
+      <td>−5</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Una vez medido el progreso de todos los subindicadores por una puntuación entre −5 y +5, se calcula su media aritmética, dando el mismo peso a todos los subindicadores.
+
+Finalmente se asigna la categoría de progreso correspondiente a la puntuación media, de acuerdo con los siguientes intervalos:
+
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>Puntuación media</th>
+      <th>Categoría de progreso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&gt; 2.5</td>
+      <td>Progreso significativo</td>
+    </tr>
+    <tr>
+      <td>≤ 2.5 y &gt; 0.25</td>
+      <td>Progreso moderado</td>
+    </tr>
+    <tr>
+      <td>≤ 0.25 y ≥ −0.25</td>
+      <td>Estancamiento</td>
+    </tr>
+    <tr>
+      <td>&lt; −0.25 y ≥ −2.5</td>
+      <td>Retroceso moderado</td>
+    </tr>
+    <tr>
+      <td>&lt; −2.5</td>
+      <td>Retroceso significativo</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+### 3.4 Consideraciones y excepciones
+
+Debido a la naturaleza de los datos, se han definido una serie de consideraciones y excepciones: 
+
+- Cuando el valor del último año alcanza la meta, se considera que esta se ha alcanzado, independientemente de la tendencia observada en los últimos años.
+
+- Cuando el valor del último año es cercano (diferencia máxima de 0.1%) al 0% o 100%, siendo éste el objetivo, se considera que se ha alcanzado la meta. 
+
+- En algunos casos, los indicadores tienen límites naturales máximos o mínimos (por ejemplo 9.c.1 La proporción de habitantes con cobertura 
+de red móvil no puede tener un valor superior al 100%). Si el valor del indicador en el año base está muy cerca de este límite, puede ser imposible 
+alcanzar la tasa de crecimiento requerida por la categoría "Progreso significativo". En estos casos se utiliza un factor de escala para corregir los umbrales de tasa de crecimiento para cada categoría.
+
+- Cuando no hay datos en 2015, se utiliza como año base el primer año disponible posterior o anterior.   
+
+- Si el año meta no se especifica, se considera que es 2030.
+
+- Los indicadores binarios solo pueden tomar los valores Sí/No (por ejemplo 17.18.2 La legislación sobre estadísticas cumple con los Principios Fundamentales de las Estadísticas Oficiales).
+A estos indicadores se les asignará una de las siguientes categorías de progreso: En caso afirmativo, "Meta alcanzada o en vías de alcanzarla"; en caso negativo, "Retroceso con respecto a la meta".
+
+- En algunos indicadores, es deseable alcanzar la meta, pero superarla puede tener consecuencias negativas. Por ejemplo, en los índices de paridad del indicador 4.5.1, la meta sería conseguir la 
+mayor paridad posible (índice=1), y estar por encima o por debajo de esa meta sería igualmente negativo. En estos casos, la evaluación del progreso tiene en cuenta las desviaciones con respecto al ideal, 
+ya sea en una dirección u otra. Estos son los indicadores 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1 y 16.7.1.
+
+- Las estimaciones de progreso simplifican demasiado la realidad. Es necesario dar contexto al progreso con otra información relevante.  
+
+- Se necesita tiempo para que los datos reflejen el impacto de las políticas; cuanto más larga sea la serie temporal, mejor será la metodología para medir el progreso.  
+
+
+## 4. Evaluación del progreso a nivel de metas y objetivos
+
+En la evaluación del progreso de las metas, se hacen las siguientes consideraciones:
+
+- Cuando todos los indicadores de una meta están en estado "Datos no disponibles", se asigna ese mismo estado a la meta.
+
+- Cuando todos los indicadores de una meta están en estado "No aplicable", se asigna ese mismo estado a la meta.
+
+- Si el último dato disponible en un indicador es de 2020 o anterior, este indicador no se tiene en cuenta al evaluar el progreso de la meta.
+
+- Si menos del 50% de los indicadores de la meta tienen el progreso evaluado, se considera que no existe información suficiente para poder evaluar el progreso de la meta, por lo que se le asigna la categoría "No evaluable"
+
+El progreso de las metas se obtiene mediante la media aritmética del progreso de los indicadores que componen la meta. El procedimiento que se sigue para ello es el mismo que se utiliza para calcular el progreso de los indicadores 
+con más de un subindicador (ver apartado 3.3). Es decir, se aplica una función de puntuación para transformar el valor de progreso de cada indicador en una puntuación de entre −5 y +5, y se calcula la media de esas puntuaciones 
+para obtener la puntuación del progreso de la meta. Los intervalos que se utilizan para asignar la categoría de progreso son los mismos que para los indicadores compuestos por varios subindicadores.
+
+Asimismo, para evaluar el progreso de los objetivos se calcula la media aritmética de la puntuación del progreso de las metas de cada objetivo, con la misma metodología que se utiliza para los indicadores con varios subindicadores 
+y para las metas (ver apartado 3.3).
+

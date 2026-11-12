@@ -12,6 +12,12 @@ deploy_key*
 deploy_key*.pub
 *.keybase
 
+# Archivos locales varios
+Progress Measurement for Canada's Sustainable Development Goals - Canada Indicators For The Sustainable Development Goals.html
+Progress Measurement for Canada's Sustainable Development Goals - Canada Indicators For The Sustainable Development Goals_files/
+EU SDG assessment approach 2025 final.pdf
+EU SDG assessment approach 2025 final version copiada.md
+
 # Kiro IDE
 .kiro/
 
@@ -20,3 +26,6 @@ Dockerfile
 docker-serve.sh
 .dockerignore
 docker-compose.override.yml
+
+# CSVs generados por DATA (descargados en CI)
+_data/csv/progreso.csv

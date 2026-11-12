@@ -5,246 +5,493 @@ permalink: /en/metodologia/
 layout: page
 ---
 
-## 1. Progress measurement  
-
-Measuring and tracking progress with reliable information is key to understanding how the Basque Country is progressing toward achieving the SDGs. 
 
 
-Closely measuring the progress of each indicator not only illustrates where progress is being made, or in which areas progress is lacking and efforts can be focused, but also allows for open and transparent communication on how the Basque Autonomous Community is doing in implementing the 2030 Agenda. The monitoring report can serve as a tool to better understand the success of policies and actions in achieving the various goals. It can also act as a clear signal so that effective, evidence-based policies can be adjusted or developed to help ensure the objectives are met.  
- 
-## 2. Methodology   
-   
-In order to provide a simple and transparent assessment, a methodology has been developed based on the [2023 Progress Chart Technical Note](https://unstats.un.org/sdgs/files/report/2023/Progress_Chart_Technical_Note_2023.pdf) used by the United Nations Statistics Division. 
+## 1. Progress assessment 
 
-When assessing SDG progress, the normative direction of a data series indicates the desirable outcome for its value. A higher value is desirable for data series with an increasing normative direction; the opposite is true for those with a decreasing normative direction. The desired direction for each indicator or series is taken from the [Technical Note on Progress Assessment 2024](https://unstats.un.org/sdgs/files/report/2024/Technical_Note_for_Progress_Assessment_2024.pdf) 
+Measuring and tracking progress using reliable data is essential to understanding how the Basque Country is advancing towards the achievement of the SDGs. 
 
-An indicator may contain multiple data series and/or breakdowns by different dimensions (such as age, sex, location, etc.). In these cases, only the data from the series and breakdowns that best represent the entire population of the Basque Autonomous Community are selected to assess progress. 
+Closely monitoring the progress of each indicator reveals where progress is being made and where efforts should be focused. Furthermore, it enables open and transparent 
+reporting on the implementation of the 2030 Agenda and supports the design and adjustment of effective, evidence-based policies, thereby helping to achieve the Goals.
 
-The objective set globally by the United Nations is being applied at the level of the Basque Country.
+Various organizations have developed methodologies to measure progress on SDG indicators. In order to ensure a transparent, clear, and comparable assessment, Eustat has developed a methodology based primarily 
+on the one used by [Eurostat to measure progress on the European Union’s SDG indicators](https://ec.europa.eu/eurostat/documents/d/sdi/eu-dg-assessment-approach-2026-06-03), incorporating elements from 
+[INE’s methodology](https://ine.es/ods/medicion_ods_2025.pdf), along with specific modifications to adapt the assessment to the reality of the Basque Autonomous Community.
 
-The assessment assigns a score to each indicator. A distinction is made between indicators that have numerical targets for 2030 and those that do not. 
+The assessment method considers whether an indicator has progressed towards or moved away from the target set in the 2030 Agenda, as well as the speed of this movement. The method focuses on progress over time and not on the current status.
 
-### 2.1 Indicators with target values ​​for 2030 
+For some indicators, the 2030 Agenda established global quantitative targets to be achieved by 2030. In these cases, the target has been adopted to measure progress on the indicator within the Basque Autonomous Community.
 
-For indicators with target values ​​for 2030 and at least two different data points (one for the baseline, usually 2015, and one for the latest year), a score is assigned by calculating growth rates. First, the actual compound annual growth rate (𝐶𝐴𝐺𝑅𝑎) is calculated between the reference year (b) and the latest year (t) for which data are available:
+In other cases, the Agenda does not specify a numerical target, but it does indicate the normative direction —that is, the desirable trend for the indicator's value. When the normative direction is "Increase", it is desirable for the 
+indicator value to rise; when the normative direction is "Decrease", it is desirable for the indicator value to decline. The normative direction for each indicator has been drawn from the [2026 Technical Note for Progress Assessment 
+by the United Nations Statistics Division](https://unstats.un.org/sdgs/files/report/2026/Technical_Note_for_Progress_Assessment_2026.pdf).
 
-$$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$ 
+Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are not taken into account when measuring progress; only aggregate data are used.
 
-<p>The 𝐶𝐴𝐺𝑅𝑎 from the previous step is then used to extrapolate the expected value (𝑣2030𝑒) for the series in 2030, assuming the current rate of progress is maintained:</p>
-
-$$v_{2030}^{e} = v_{t} \times (1 + CAGR_{a})^{2030 - t}$$
-
-Finally, a score is assigned to the series according to the following criteria:
-
+## 2. Progress categories
 
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+  .aurrerapen-kategoriak {
+    width: 850px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .aurrerapen-kategoriak th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+  }
+
+  .aurrerapen-kategoriak th:first-child {
+    text-align: center;
+    width: 15%;
+  }
+
+  .aurrerapen-kategoriak th:nth-child(2) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak th:nth-child(3) {
+    width: 42.5%;
+  }
+
+  .aurrerapen-kategoriak td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+  }
+
+  .aurrerapen-kategoriak td:first-child {
+    text-align: center;
+  }
+
+  .aurrerapen-kategoriak img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
 </style>
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Score</th>
-    <th class="tg-fymr">Condition</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} \geq 0.95$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$0.10 \leq \frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} < 0.95$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\frac{v_{2030}^{e} - v_{b}}{v_{2030} - v_{b}} < 0.10$</td>
-  </tr>
-</tbody>
+
+
+<table class="aurrerapen-kategoriak">
+
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>With quantitative target</th>
+      <th>Without quantitative target</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Significant progress">
+      </td>
+      <td>
+        Target met or on track. The target has been reached, or —if progress continues as it has so far— it will be reached by 2030. 
+      </td>
+      <td>
+        Significant progress. Significant progress made in the desired direction.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="Moderate progress">
+      </td>
+      <td>
+        Moderate progress towards the target. It is approaching the target, but some acceleration is needed in order to reach it by 2030.
+      </td>
+      <td>
+        Moderate progress. Moderate progress made in the desired direction.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.webp" alt="Stagnation">
+      </td>
+      <td>
+        [Category not applicable]
+      </td>
+      <td>
+        Stagnation. No progress nor deterioration.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Moderate deterioration">
+      </td>
+      <td>
+        Insufficient progress towards the target. Progress made towards the target, but significant acceleration required to reach it by 2030.
+      </td>
+      <td>
+        Moderate deterioration. Moderately moving in the direction opposite to the desired one.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.webp" alt="Significant deterioration">
+      </td>
+      <td>
+        Movement away from target. Getting further away from the target.  
+      </td>
+      <td>
+        Significant deterioration. Significantly moving in the direction opposite to the desired one.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="Not evaluable">
+      </td>
+      <td colspan="2">
+        Not evaluable. Progress cannot be reliably assessed because there is insufficient data, the desired direction is unclear, or for other reasons.<br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.webp" alt="No data available">
+      </td>
+      <td colspan="2">
+        No data available. There is currently no data for this indicator, but various sources are being analyzed in order to provide data soon.<br>
+      </td>
+    </tr>
+  </tbody>
 </table>
-<br><br>  
-Where:
-<br><br> 
-$𝑏$ is the base year (usually 2015)<br>
-$𝑡$ is the last year for which there is data (for example: 2022)<br>
-$𝑣_{b}$ is the base value in year b<br>
-$𝑣_{𝑡}$ is the value of the last year 𝑡<br>
-$𝑣_{2030}$ is the target value for 2030<br>
-$𝑣_{2030}^{e}$ is the expected value for 2030
-<br><br> 
-### 2.2 Indicators without numerical target values 
-
-Indicators without target values ​​for 2030, and with at least two data points, are scored by calculating the compound annual growth rate. First, the actual compound annual growth rate (𝐶𝐴𝐺𝑅𝑎) is calculated between the baseline (b) and the last year (t) for which data are available: 
-
-$$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t - b}} - 1$$
-
-The indicator is then scored according to the following criteria: 
-
-<p>If an increase is desirable:</p>
-
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Score</th>
-    <th class="tg-fymr">Condition</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} \geq 0.02$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$0.005 \leq \text{CAGR}_{a} < 0.02$</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} < 0.005$</td>
-  </tr>
-</tbody>
-</table>
-
-<br><br> 
-<p>If a decrease is desirable:</p>
-
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Score</th>
-    <th class="tg-fymr">Condition</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} \leq -0.02$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">$-0.02 < \text{CAGR}_{a} \leq -0.005$ </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">$\text{CAGR}_{a} > -0.005$</td>
-  </tr>
-</tbody>
-</table>
-
-<br><br>
-In some cases, the series values ​​are growth rates (e.g., Indicator 8.1.1: Annual growth rate of GDP per capita). Calculating the CAGR from growth rates would be meaningless, and expert judgment is used to assign scores. 
+<br>
+<br>
 
 
-### 2.3 Progress Categories
+## 3. Assessment of progress at indicator level
 
-The assigned progress categories are described below: 
+The methods for assessing progress differ between indicators or sub-indicators that have a numerical target for 2030 and those that do not. Furthermore, for indicators composed of more than one sub-indicator, an additional calculation is performed in order to assess progress.
 
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Score</th>
-    <th class="tg-fymr">Category</th>
-    <th class="tg-fymr">Symbol</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">3</td>
-    <td class="tg-0pky">On track or target met</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Alcanzado" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">2</td>
-    <td class="tg-0pky">Fair progress, but acceleration needed</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="En progreso" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">1</td>
-    <td class="tg-0pky">Stagnation or regression</td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Retroceso" width="150"></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky"> - </td>
-    <td class="tg-0pky"> No assessment </td>
-    <td class="tg-0pky"><img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="No evaluado" width="150"></td>
-  </tr>
-</tbody>
+
+### 3.1 Indicators without quantitative targets
+
+When there is no quantitative target, the assessment is based on whether the indicator is moving in the desired direction or in the opposite direction, and at what pace.
+
+For this purpose, the compound annual growth rate (CAGR) is used. Using the value for the base year (typically 2015) and the most recent available figure, the annual growth rate over that period is calculated (expressed as a percentage).
+
+$$CAGR_{a} = \left( \frac{v_{t}}{v_{b}} \right)^{\frac{1}{t-b}} - 1$$
+
+Where: 𝑏 = base year (typically 2015), 𝑡 = last year with available data (for example 2026), 𝑣𝑏 = value in base year 𝑏, 𝑣𝑡 = value in last year 𝑡
+
+Then, the calculated $$CAGRa$$ is adjusted according to the desired direction of the indicator:
+
+- If the desired direction is "Decrease"
+
+$$CAGR_{z} = CAGR_{a} * (-1)$$
+
+- If the desired direction is "Increase"
+
+$$CAGR_{z} = CAGR_{a}$$
+
+Finally, the adjusted compound annual growth rate is evaluated according to the following intervals:
+
+<style type="text/css">
+  .tarteak {
+    width: 550px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .tarteak th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .tarteak td {
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .tarteak th:first-child,
+  .tarteak td:first-child {
+    text-align: center;
+    width: 35%;
+  }
+
+  .tarteak th:nth-child(2),
+  .tarteak td:nth-child(2) {
+    width: 65%;
+  }
+</style>
+
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>\(CAGR_{z}\)</th>
+      <th>Progress category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 1</td>
+      <td>Significant progress</td>
+    </tr>
+    <tr>
+      <td>&lt; % 1 and &gt; % 0.1</td>
+      <td>Moderate progress</td>
+    </tr>
+    <tr>
+      <td>≤ % 0.1 and ≥ % −0.1</td>
+      <td>Stagnation</td>
+    </tr>
+    <tr>
+      <td>&lt; % −0.1 and &gt; % −1</td>
+      <td>Moderate deterioration</td>
+    </tr>
+    <tr>
+      <td>≤ % −1</td>
+      <td>Significant deterioration</td>
+    </tr>
+  </tbody>
 </table>
 
 <br>
-#### 2.3.1 On track or target met 
-The goal has been achieved or is on track to be achieved by 2030. 
+<br>
 
-#### 2.3.2 Fair progress, but acceleration needed 
-There has been progress on the indicator, but to reach the target by 2030 it is necessary to accelerate progress. 
+### 3.2 Indicators with quantitative targets
 
-#### 2.3.3 Stagnation or regression
-There has been no progress or regression and it is unlikely that the target will be reached by 2030. 
+In cases where a quantitative target exists, the observed progress of the indicator is compared with the progress required to reach that target.
 
-#### 2.3.4 No assessment
+Three steps are followed:
 
-In some cases it is not possible to measure progress reliably or objectively:
+- Calculation of the compound annual growth rate (see formula in section 3.1)
 
--	When the indicator available for the Basque Country is not aligned with the official United Nations indicator methodology. In these cases, a proxy or substitute measurement is used, but sometimes it does not measure the same thing. 
--	When there is not enough time series to assess progress. 
--	When a decontextualized assessment is not possible, given the complexity of the issue. For example, this is the case with indicator 2.c.1, Food Price Anomaly Indicator. This indicator aims to measure a country's performance in maintaining stable market prices, but when prices rise sharply due to the international situation (for example, in 2023-2024), the country does not have much capacity to maintain prices.  
+- Calculation of the growth rate required to achieve the target:
 
-#### 2.3.5 No data available 
+$$CAGR_{r} = \left( \frac{x_{z}}{v_{b}} \right)^{\frac{1}{z-b}} - 1$$
 
-There is currently no data for this indicator, but various sources are being studied to provide data in the near future. 
-
-#### 2.3.6 Not applicable 
-
-Certain indicators cannot be applied to the Basque Country for various reasons:
-
--	Not applicable, due to its level of development: For example, indicator 10.6.1 Proportion of members and voting rights of developing countries in international organizations is not appropriate for the Basque Country, since it is not a developing country. 
--	It refers to a standard or institutional structure that does not apply to the Basque Country: for example, indicator 12.4.1 Number of parties to international multilateral environmental agreements on hazardous waste and other chemicals that comply with their commitments and obligations to transmit information as required by each of these agreements, refers to an international agreement signed by the states, so it cannot be applied to the Basque Country. 
--	They are global measurement indicators: for example, indicator 17.10.1 Weighted average world tariff.
-
-<br><br>    
-
-### 2.4 Considerations and exceptions    
-Due to the nature of the data, a number of considerations and exceptions have been defined:  
-
-1. When the value of the last year meets the target, the goal is considered to have been reached, regardless of the trend in recent years. 
-2. When the value of the last year is close (maximum difference of 1%) to 0% or 100%, this being the objective, it is considered that the target has been reached. 
-3. When there is no data in 2015, the first available year after or before 2015 that allows having at least 2 values ​​is used.   
-4. In the absence of a specified target date, 2030 is assumed to be the target period.   
-5. If the target year is in the past, it is evaluated using the methodology with a target up to the target year  (*y*).  
-6. A minimum of two years of data is required to calculate the progress measure.  
-7. Progress estimates oversimplify reality. Progress needs to be contextualized with other relevant information.  
-8. It takes time for data to reflect the impact of policies; the longer the time series, the better the methodology for measuring progress.  
-9. Binary indicators will be assigned one of these 2 categories:  
-   a. “Target met” if "yes".   
-   b. “Stagnation or regression” if “no”.  
-10. Specific exceptions:
+Where: 𝑏 = base year (typically 2015), 𝑧 = target year (typically 2030), 𝑣𝑏 = base value in year 𝑏, 𝑥 = target value in target year
 
 
-<table class="tg">
-<thead>
-  <tr>
-    <th class="tg-fymr">Indicator number</th>
-    <th class="tg-fymr">Indicator title</th>
-    <th class="tg-fymr">Target</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">1.a.2</td>
-    <td class="tg-0pky">Proportion of total government spending on essential services (education, health and social protection)   </td>
-    <td class="tg-0pky">The EU average has been considered as a target for the indicator </td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">5.4.1 </td>
-    <td class="tg-0pky">Proportion of time spent on unpaid domestic and care work, by sex, age and location </td>
-    <td class="tg-0pky">In order to calculate progress towards the goal of equitable sharing of parental roles and family responsibilities, the ratio of women's time to men's time is assessed, with a desired target of 1</td>
-  </tr>
-</tbody>
+- Calculation of the ratio between the observed growth rate and the required growth rate:
+
+$$R = \frac{CAGR_{a}}{CAGR_{r}}$$
+
+Next, the ratio is evaluated according to the following intervals:
+
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>\(R\)</th>
+      <th>Progress category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 95</td>
+      <td>Target met or on track</td>
+    </tr>
+    <tr>
+      <td>&lt; % 95 and ≥ % 60</td>
+      <td>Moderate progress towards target</td>
+    </tr>
+    <tr>
+      <td>&lt; % 60 and ≥ % 0</td>
+      <td>Insufficient progress towards target</td>
+    </tr>
+    <tr>
+      <td>&lt; % 0</td>
+      <td>Movement away from target</td>
+    </tr>
+  </tbody>
 </table>
+<br>
+<br>
+
+### 3.3 Indicators composed of several sub-indicators
+
+In some cases, an indicator comprises several sub-indicators at the same level, with no single sub-indicator 
+being predominant. In such instances, the progress of the indicator is evaluated by taking the mean 
+of the progress of all its constituent sub-indicators. To calculate this mean, the following scoring 
+functions are used, which convert the progress values ​​of the sub-indicators (growth rate or ratio) into 
+scores ranging from −5 to +5:
+
+Sub-indicators without quantitative targets
+<style type="text/css">
+  .puntuazioa {
+    width: 450px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .puntuazioa th {
+    background-color: #d9e2f3;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .puntuazioa td {
+    padding: 7px 10px;
+    border: 1px solid #bfbfbf;
+  }
+
+  .puntuazioa th:first-child,
+  .puntuazioa td:first-child {
+    text-align: center;
+    width: 50%;
+  }
+
+  .puntuazioa th:nth-child(2),
+  .puntuazioa td:nth-child(2) {
+    width: 50%;
+  }
+</style>
+
+<table class="puntuazioa">
+  <thead>
+    <tr>
+      <th>\(CAGR_{z}\)</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&lt; % 2 and &gt; % −2 </td>
+      <td>\(CAGR_{z}\) * 2.5</td>
+    </tr>
+    <tr>
+      <td>≤ % −2</td>
+      <td>−5</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Sub-indicators with quantitative targets
+<table class="puntuazioa">
+  <thead>
+    <tr>
+      <th>\(R\)</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ % 130</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>&lt; % 130 and ≥ % 60</td>
+      <td>0.0714 * (\(R\) - 60)</td>
+    </tr>
+    <tr>
+      <td>&lt; % 60 and &gt; % −60</td>
+      <td>0.0416 * (\(R\) + 60)</td>
+    </tr>
+    <tr>
+      <td>≤ % −60</td>
+      <td>−5</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Once the progress of all sub-indicators has been measured using a score between −5 and +5, their arithmetic mean is calculated, assigning equal weight to all sub-indicators.
+
+Finally, the progress category corresponding to the mean score is assigned, in accordance with the following intervals:
+
+<table class="tarteak">
+  <thead>
+    <tr>
+      <th>Mean score</th>
+      <th>Progress category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&gt; 2.5</td>
+      <td>Significant progress</td>
+    </tr>
+    <tr>
+      <td>≤ 2.5 and &gt; 0.25</td>
+      <td>Moderate progress</td>
+    </tr>
+    <tr>
+      <td>≤ 0.25 and ≥ −0.25</td>
+      <td>Stagnation</td>
+    </tr>
+    <tr>
+      <td>&lt; −0.25 and ≥ -2.5</td>
+      <td>Moderate deterioration</td>
+    </tr>
+    <tr>
+      <td>&lt; −2.5</td>
+      <td>Significant deterioration</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+### 3.4 Considerations and exceptions 
+
+Owing to the nature of the data, a number of considerations and exceptions have been defined: 
+
+- When the value of the last year meets the target, the target is considered to have been reached, regardless of the trend in recent years.
+
+- When the value of the last year is close (maximum difference of 0.1%) to 0% or 100%, this being the objective, it is considered that the target has been reached. 
+
+- In some cases, indicators have natural maximum or minimum limits (for example, indicator 9.c.1, the proportion of the population covered by a mobile network, cannot exceed 100%). If the indicator value 
+in the base year is very close to this limit, it may be impossible to achieve the growth rate required for the "Significant progress" category. In such cases, a scaling factor is used to 
+adjust the growth rate thresholds for each category.
+
+- When data for 2015 are unavailable, the first available year—either following or preceding 2015—is used as the base year.  
+
+- In the absence of a specified target date, 2030 is assumed to be the target period.
+
+- Binary indicators can only take two possible values (Yes/No) ​​(for example, 17.18.2: The legislation on statistics complies with the Fundamental Principles of Official Statistics).
+These indicators will be assigned one of the following progress categories: if the answer is "Yes," "Target met or on track"; if the answer is "No," "Movement away from target".
+
+- For some indicators, reaching the target is desirable, but exceeding it can have negative consequences. For example, regarding the parity indices for indicator 4.5.1, the target is to achieve 
+the highest possible level of parity (index = 1); deviations above or below this target would be equally undesirable. In such cases, the assessment of progress takes into account deviations 
+from the ideal, in either direction. These include indicators 4.5.1, 5.4.1, 5.5.1, 5.a.1, 16.6.1, and 16.7.1.
+
+- Progress estimates inevitably simplify reality. Progress needs to be contextualized with other relevant information.  
+
+- It takes time for data to reflect the impact of policies; the longer the time series, the better the methodology for measuring progress.  
+
+## 4. Assessment of progress at target and goal level 
+
+The following considerations are taken into account when assessing progress at the target level:
+
+- When all indicators for a target have "Data not available" status, that same status is assigned to the target.
+
+- When all indicators for a target have "Not applicable" status, that same status is assigned to the target.
+
+- If the latest available data for an indicator is from 2020 or earlier, that indicator is not taken into account when assessing progress at target level.
+
+- If less than 50% of the indicators for a target have had their progress assessed, it is considered that there is insufficient information to assess progress towards the target; therefore, it is assigned the category "Not evaluable."
+
+Progress at target level is determined by the arithmetic mean of the progress of the indicators that comprise each target. The procedure followed for this is the same as that used to calculate progress for indicators that consist of 
+more than one sub-indicator (see section 3.3). A scoring function is applied to transform the progress value of each indicator into a score between −5 and +5; the mean of these scores is then calculated to get 
+the progress score for the target. The intervals used to assign a progress category are the same as those used for indicators composed of multiple sub-indicators.
+
+Likewise, to assess progress at goal level, the arithmetic mean of the targets' progress score is calculated, using the same methodology applied to indicators with multiple sub-indicators and to the targets themselves (see section 3.3).
 
