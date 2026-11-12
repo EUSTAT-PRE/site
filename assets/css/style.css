@@ -3102,13 +3102,13 @@ ul.iconillo {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* Centra los íconos */ }
+  /* Centra los Ã­conos */ }
 
 .ods-item {
   text-align: center;
   opacity: 0.5;
   flex: 0 0 auto;
-  /* Ajuste para que los íconos ocupen solo el espacio necesario */
+  /* Ajuste para que los Ã­conos ocupen solo el espacio necesario */
   transition: opacity 0.3s ease, border 0.3s ease;
   /* Transiciones suaves */
   border: 2px solid transparent;
@@ -3116,12 +3116,12 @@ ul.iconillo {
 
 .ods-item img {
   width: 60px;
-  /* Tamaño del ícono */
+  /* TamaÃ±o del Ã­cono */
   height: auto;
   filter: grayscale(100%);
   /* Aplica un filtro gris */
   transition: filter 0.3s ease;
-  /* Transición suave para el color */ }
+  /* TransiciÃ³n suave para el color */ }
 
 .ods-item:hover {
   opacity: 1; }
@@ -3135,26 +3135,51 @@ ul.iconillo {
 
 .ods-selected img {
   filter: grayscale(0);
-  /* Mantiene el color original del ícono seleccionado */ }
+  /* Mantiene el color original del Ã­cono seleccionado */ }
 
 @media only screen and (min-width: 1200px) {
   .ods-navigation {
     justify-content: space-between;
-    /* Asegura que todos los íconos se distribuyan en una línea en pantallas grandes */ }
+    /* Asegura que todos los Ã­conos se distribuyan en una lÃ­nea en pantallas grandes */ }
 
   .ods-item {
     flex: 1;
-    /* Asegura que los íconos ocupen todo el ancho disponible */
+    /* Asegura que los Ã­conos ocupen todo el ancho disponible */
     max-width: 6%;
-    /* Aproximadamente 20 íconos por línea en pantallas grandes */ } }
+    /* Aproximadamente 20 Ã­conos por lÃ­nea en pantallas grandes */ } }
 @media only screen and (min-width: 1400px) {
   .ods-item {
     max-width: 5%;
-    /* Aproximadamente 20 íconos por línea en pantallas grandes */ } }
+    /* Aproximadamente 20 Ã­conos por lÃ­nea en pantallas grandes */ } }
 @media only screen and (max-width: 768px) {
   .ods-item {
     flex: 0 0 11%;
-    /* Aproximadamente 9 íconos por línea en pantallas pequeñas */ } }
+    /* Aproximadamente 9 Ã­conos por lÃ­nea en pantallas pequeÃ±as */ }
+
+  .ods-item img {
+    width: 50px;
+    /* >510px */ }
+
+  .ods-navigation {
+    padding: 4px 0; } }
+@media only screen and (max-width: 510px) {
+  .ods-item img {
+    width: 40px;
+    /* 431pxâ€“510px */ } }
+@media only screen and (max-width: 430px) {
+  .ods-item img {
+    width: 35px;
+    /* â‰¤430px */ } }
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .ods-item {
+    flex: 0 0 6%;
+    /* Una sola fila en landscape */ }
+
+  .ods-item img {
+    width: 32px; }
+
+  .ods-navigation {
+    padding: 2px 0; } }
 .alcanzado {
   background-color: #45ba80;
   background: #45ba80; }
@@ -3187,24 +3212,24 @@ ul.iconillo {
   background-color: #ccd5dd;
   background: #ccd5dd; }
 
-.layout-progrestatus .reporting-status-description {
+.layout-progrestatus .reporting-status-description, .layout-progrestatus-metas .reporting-status-description, .layout-progrestatus-objetivos .reporting-status-description {
   margin-bottom: 25px; }
-.layout-progrestatus #main-content .statuses strong {
+.layout-progrestatus #main-content .statuses strong, .layout-progrestatus-metas #main-content .statuses strong, .layout-progrestatus-objetivos #main-content .statuses strong {
   font-weight: normal; }
-.layout-progrestatus #main-content .statuses .status-category-link {
+.layout-progrestatus #main-content .statuses .status-category-link, .layout-progrestatus-metas #main-content .statuses .status-category-link, .layout-progrestatus-objetivos #main-content .statuses .status-category-link {
   font-weight: normal;
   color: #0b0c0c;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 2px; }
-  .layout-progrestatus #main-content .statuses .status-category-link:hover {
+  .layout-progrestatus #main-content .statuses .status-category-link:hover, .layout-progrestatus-metas #main-content .statuses .status-category-link:hover, .layout-progrestatus-objetivos #main-content .statuses .status-category-link:hover {
     color: #0056b3;
     text-decoration-style: solid; }
-.layout-progrestatus #main-content .statuses > div {
+.layout-progrestatus #main-content .statuses > div, .layout-progrestatus-metas #main-content .statuses > div, .layout-progrestatus-objetivos #main-content .statuses > div {
   display: inline-block;
   margin-bottom: 5px;
   margin-right: 10px; }
-  .layout-progrestatus #main-content .statuses > div .status {
+  .layout-progrestatus #main-content .statuses > div .status, .layout-progrestatus-metas #main-content .statuses > div .status, .layout-progrestatus-objetivos #main-content .statuses > div .status {
     color: #0b0c0c;
     font-weight: normal;
     border: none;
@@ -3217,111 +3242,111 @@ ul.iconillo {
     width: 40px;
     text-align: center;
     font-size: 16px; }
-    .layout-progrestatus #main-content .statuses > div .status .status-inner {
+    .layout-progrestatus #main-content .statuses > div .status .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status .status-inner {
       padding: 0 2px;
       border-radius: 5px; }
-    .layout-progrestatus #main-content .statuses > div .status.complete {
+    .layout-progrestatus #main-content .statuses > div .status.complete, .layout-progrestatus-metas #main-content .statuses > div .status.complete, .layout-progrestatus-objetivos #main-content .statuses > div .status.complete {
       color: white;
       border: 1px solid transparent;
       background-color: #2B2B2B;
       background: #2B2B2B; }
-      .layout-progrestatus #main-content .statuses > div .status.complete .status-inner {
+      .layout-progrestatus #main-content .statuses > div .status.complete .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status.complete .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status.complete .status-inner {
         background-color: #2B2B2B;
         background: #2B2B2B; }
-    .layout-progrestatus #main-content .statuses > div .status.inprogress {
+    .layout-progrestatus #main-content .statuses > div .status.inprogress, .layout-progrestatus-metas #main-content .statuses > div .status.inprogress, .layout-progrestatus-objetivos #main-content .statuses > div .status.inprogress {
       color: white;
       border: 1px solid transparent;
       background-color: #757575;
       background: #757575; }
-      .layout-progrestatus #main-content .statuses > div .status.inprogress .status-inner {
+      .layout-progrestatus #main-content .statuses > div .status.inprogress .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status.inprogress .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status.inprogress .status-inner {
         background-color: #757575;
         background: #757575; }
-    .layout-progrestatus #main-content .statuses > div .status.notstarted {
+    .layout-progrestatus #main-content .statuses > div .status.notstarted, .layout-progrestatus-metas #main-content .statuses > div .status.notstarted, .layout-progrestatus-objetivos #main-content .statuses > div .status.notstarted {
       color: #0b0c0c;
       border: 1px solid #0b0c0c;
       background-color: white;
       background: white; }
-      .layout-progrestatus #main-content .statuses > div .status.notstarted .status-inner {
+      .layout-progrestatus #main-content .statuses > div .status.notstarted .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status.notstarted .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status.notstarted .status-inner {
         background-color: white;
         background: white; }
-    .layout-progrestatus #main-content .statuses > div .status.notapplicable {
+    .layout-progrestatus #main-content .statuses > div .status.notapplicable, .layout-progrestatus-metas #main-content .statuses > div .status.notapplicable, .layout-progrestatus-objetivos #main-content .statuses > div .status.notapplicable {
       color: #0b0c0c;
       border: 1px solid #0b0c0c;
       background-color: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px);
       background: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px); }
-      .layout-progrestatus #main-content .statuses > div .status.notapplicable .status-inner {
+      .layout-progrestatus #main-content .statuses > div .status.notapplicable .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status.notapplicable .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status.notapplicable .status-inner {
         background-color: rgba(255, 255, 255, 0.8);
         background: rgba(255, 255, 255, 0.8); }
-    .layout-progrestatus #main-content .statuses > div .status.notapplicable {
+    .layout-progrestatus #main-content .statuses > div .status.notapplicable, .layout-progrestatus-metas #main-content .statuses > div .status.notapplicable, .layout-progrestatus-objetivos #main-content .statuses > div .status.notapplicable {
       border: none; }
-    .layout-progrestatus #main-content .statuses > div .status.not-available {
+    .layout-progrestatus #main-content .statuses > div .status.not-available, .layout-progrestatus-metas #main-content .statuses > div .status.not-available, .layout-progrestatus-objetivos #main-content .statuses > div .status.not-available {
       background-color: #ccd5dd;
       background: #ccd5dd;
       border-color: #ccd5dd; }
-    .layout-progrestatus #main-content .statuses > div .status .status-inner {
+    .layout-progrestatus #main-content .statuses > div .status .status-inner, .layout-progrestatus-metas #main-content .statuses > div .status .status-inner, .layout-progrestatus-objetivos #main-content .statuses > div .status .status-inner {
       padding: 0 2px;
       border-radius: 5px;
       color: #000; }
-.layout-progrestatus #main-content .value {
+.layout-progrestatus #main-content .value, .layout-progrestatus-metas #main-content .value, .layout-progrestatus-objetivos #main-content .value {
   color: #0b0c0c;
   font-weight: bold;
   margin-left: 3px; }
-.layout-progrestatus #main-content .goal-stats {
+.layout-progrestatus #main-content .goal-stats, .layout-progrestatus-metas #main-content .goal-stats, .layout-progrestatus-objetivos #main-content .goal-stats {
   border: 1px solid #0b0c0c;
   font-size: 0;
   margin-top: 10px; }
   @media (-ms-high-contrast: active), (forced-colors: active) {
-    .layout-progrestatus #main-content .goal-stats {
+    .layout-progrestatus #main-content .goal-stats, .layout-progrestatus-metas #main-content .goal-stats, .layout-progrestatus-objetivos #main-content .goal-stats {
       -ms-high-contrast-adjust: none;
       forced-color-adjust: none; } }
-  .layout-progrestatus #main-content .goal-stats .notapplicable {
+  .layout-progrestatus #main-content .goal-stats .notapplicable, .layout-progrestatus-metas #main-content .goal-stats .notapplicable, .layout-progrestatus-objetivos #main-content .goal-stats .notapplicable {
     background-color: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px);
     background: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px); }
-  .layout-progrestatus #main-content .goal-stats .notstarted {
+  .layout-progrestatus #main-content .goal-stats .notstarted, .layout-progrestatus-metas #main-content .goal-stats .notstarted, .layout-progrestatus-objetivos #main-content .goal-stats .notstarted {
     background-color: white;
     background: white; }
-  .layout-progrestatus #main-content .goal-stats .alcanzado {
+  .layout-progrestatus #main-content .goal-stats .alcanzado, .layout-progrestatus-metas #main-content .goal-stats .alcanzado, .layout-progrestatus-objetivos #main-content .goal-stats .alcanzado {
     background-color: #45ba80;
     background: #45ba80; }
-  .layout-progrestatus #main-content .goal-stats .progreso {
+  .layout-progrestatus #main-content .goal-stats .progreso, .layout-progrestatus-metas #main-content .goal-stats .progreso, .layout-progrestatus-objetivos #main-content .goal-stats .progreso {
     background-color: #b3d37a;
     background: #b3d37a; }
-  .layout-progrestatus #main-content .goal-stats .retroceso {
+  .layout-progrestatus #main-content .goal-stats .retroceso, .layout-progrestatus-metas #main-content .goal-stats .retroceso, .layout-progrestatus-objetivos #main-content .goal-stats .retroceso {
     background-color: #ff7f27;
     background: #ff7f27; }
-  .layout-progrestatus #main-content .goal-stats .noevaluado {
+  .layout-progrestatus #main-content .goal-stats .noevaluado, .layout-progrestatus-metas #main-content .goal-stats .noevaluado, .layout-progrestatus-objetivos #main-content .goal-stats .noevaluado {
     background-color: #ccd5dd;
     background: #ccd5dd; }
-  .layout-progrestatus #main-content .goal-stats .significant-progress {
+  .layout-progrestatus #main-content .goal-stats .significant-progress, .layout-progrestatus-metas #main-content .goal-stats .significant-progress, .layout-progrestatus-objetivos #main-content .goal-stats .significant-progress {
     background-color: #45ba80;
     background: #45ba80; }
-  .layout-progrestatus #main-content .goal-stats .moderate-progress {
+  .layout-progrestatus #main-content .goal-stats .moderate-progress, .layout-progrestatus-metas #main-content .goal-stats .moderate-progress, .layout-progrestatus-objetivos #main-content .goal-stats .moderate-progress {
     background-color: #b3d37a;
     background: #b3d37a; }
-  .layout-progrestatus #main-content .goal-stats .no-progress {
+  .layout-progrestatus #main-content .goal-stats .no-progress, .layout-progrestatus-metas #main-content .goal-stats .no-progress, .layout-progrestatus-objetivos #main-content .goal-stats .no-progress {
     background-color: #fec329;
     background: #fec329; }
-  .layout-progrestatus #main-content .goal-stats .moderate-deterioration {
+  .layout-progrestatus #main-content .goal-stats .moderate-deterioration, .layout-progrestatus-metas #main-content .goal-stats .moderate-deterioration, .layout-progrestatus-objetivos #main-content .goal-stats .moderate-deterioration {
     background-color: #ff7f27;
     background: #ff7f27; }
-  .layout-progrestatus #main-content .goal-stats .significant-deterioration {
+  .layout-progrestatus #main-content .goal-stats .significant-deterioration, .layout-progrestatus-metas #main-content .goal-stats .significant-deterioration, .layout-progrestatus-objetivos #main-content .goal-stats .significant-deterioration {
     background-color: #db405a;
     background: #db405a; }
-  .layout-progrestatus #main-content .goal-stats .not-available {
+  .layout-progrestatus #main-content .goal-stats .not-available, .layout-progrestatus-metas #main-content .goal-stats .not-available, .layout-progrestatus-objetivos #main-content .goal-stats .not-available {
     background-color: #ccd5dd;
     background: #ccd5dd; }
-.layout-progrestatus #main-content .goal-overall .goal-stats span {
+.layout-progrestatus #main-content .goal-overall .goal-stats span, .layout-progrestatus-metas #main-content .goal-overall .goal-stats span, .layout-progrestatus-objetivos #main-content .goal-overall .goal-stats span {
   display: inline-block;
   height: 10px;
   font-weight: bold; }
-.layout-progrestatus #main-content .divider {
+.layout-progrestatus #main-content .divider, .layout-progrestatus-metas #main-content .divider, .layout-progrestatus-objetivos #main-content .divider {
   height: 15px; }
-.layout-progrestatus #main-content .goal {
+.layout-progrestatus #main-content .goal, .layout-progrestatus-metas #main-content .goal, .layout-progrestatus-objetivos #main-content .goal {
   clear: left;
   margin-bottom: 4px;
   padding-bottom: 16px;
   border-bottom: 1px solid #ccc; }
-  .layout-progrestatus #main-content .goal .total {
+  .layout-progrestatus #main-content .goal .total, .layout-progrestatus-metas #main-content .goal .total, .layout-progrestatus-objetivos #main-content .goal .total {
     line-height: 1.2;
     font-size: 16px;
     width: auto;
@@ -3334,44 +3359,44 @@ ul.iconillo {
     border: 1px solid #ccc;
     margin-left: 10px; }
     @media screen and (min-width: 520px) {
-      .layout-progrestatus #main-content .goal .total {
+      .layout-progrestatus #main-content .goal .total, .layout-progrestatus-metas #main-content .goal .total, .layout-progrestatus-objetivos #main-content .goal .total {
         margin-left: 10px; } }
-.layout-progrestatus #main-content .frame {
+.layout-progrestatus #main-content .frame, .layout-progrestatus-metas #main-content .frame, .layout-progrestatus-objetivos #main-content .frame {
   width: 115px;
   float: left;
   min-height: 1px; }
-  .layout-progrestatus #main-content .frame > a {
+  .layout-progrestatus #main-content .frame > a, .layout-progrestatus-metas #main-content .frame > a, .layout-progrestatus-objetivos #main-content .frame > a {
     display: block;
     width: calc(100% - 15px); }
-    .layout-progrestatus #main-content .frame > a:focus {
+    .layout-progrestatus #main-content .frame > a:focus, .layout-progrestatus-metas #main-content .frame > a:focus, .layout-progrestatus-objetivos #main-content .frame > a:focus {
       outline: 2px #0b0c0c solid !important; }
-      .layout-progrestatus #main-content .frame > a:focus .goal-icon-image {
+      .layout-progrestatus #main-content .frame > a:focus .goal-icon-image, .layout-progrestatus-metas #main-content .frame > a:focus .goal-icon-image, .layout-progrestatus-objetivos #main-content .frame > a:focus .goal-icon-image {
         outline: 8px #ffdd00 solid !important; }
-.layout-progrestatus #main-content .details {
+.layout-progrestatus #main-content .details, .layout-progrestatus-metas #main-content .details, .layout-progrestatus-objetivos #main-content .details {
   width: calc(100% - 125px);
   float: left; }
-  .layout-progrestatus #main-content .details h2 {
+  .layout-progrestatus #main-content .details h2, .layout-progrestatus-metas #main-content .details h2, .layout-progrestatus-objetivos #main-content .details h2 {
     margin-top: 0; }
     @media screen and (min-width: 520px) {
-      .layout-progrestatus #main-content .details h2 {
+      .layout-progrestatus #main-content .details h2, .layout-progrestatus-metas #main-content .details h2, .layout-progrestatus-objetivos #main-content .details h2 {
         display: inline-block; } }
-  .layout-progrestatus #main-content .details h3 {
+  .layout-progrestatus #main-content .details h3, .layout-progrestatus-metas #main-content .details h3, .layout-progrestatus-objetivos #main-content .details h3 {
     margin-top: 2px;
     line-height: 1.2; }
     @media screen and (min-width: 520px) {
-      .layout-progrestatus #main-content .details h3 {
+      .layout-progrestatus #main-content .details h3, .layout-progrestatus-metas #main-content .details h3, .layout-progrestatus-objetivos #main-content .details h3 {
         display: inline-block; } }
     @media only screen and (max-width: 720px) {
-      .layout-progrestatus #main-content .details h3 {
+      .layout-progrestatus #main-content .details h3, .layout-progrestatus-metas #main-content .details h3, .layout-progrestatus-objetivos #main-content .details h3 {
         margin-top: 3px; } }
     @media only screen and (max-width: 520px) {
-      .layout-progrestatus #main-content .details h3 {
+      .layout-progrestatus #main-content .details h3, .layout-progrestatus-metas #main-content .details h3, .layout-progrestatus-objetivos #main-content .details h3 {
         margin-bottom: 3px; } }
-.layout-progrestatus #main-content [data-extra-field] .details {
+.layout-progrestatus #main-content [data-extra-field] .details, .layout-progrestatus-metas #main-content [data-extra-field] .details, .layout-progrestatus-objetivos #main-content [data-extra-field] .details {
   width: 100%; }
-.layout-progrestatus #main-content .goal-overall {
+.layout-progrestatus #main-content .goal-overall, .layout-progrestatus-metas #main-content .goal-overall, .layout-progrestatus-objetivos #main-content .goal-overall {
   margin-bottom: 20px; }
-.layout-progrestatus #main-content .reporting-status-item .goal-stats span {
+.layout-progrestatus #main-content .reporting-status-item .goal-stats span, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span {
   display: inline-block;
   font-size: 16px;
   text-align: center;
@@ -3380,18 +3405,18 @@ ul.iconillo {
   cursor: default;
   font-weight: normal;
   padding: 4px 0; }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span .status-inner {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span .status-inner, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span .status-inner, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span .status-inner {
     padding: 0 2px;
     border-radius: 5px;
     position: relative;
     z-index: 2; }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span.notapplicable .status-inner {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span.notapplicable .status-inner, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span.notapplicable .status-inner, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span.notapplicable .status-inner {
     background: rgba(255, 255, 255, 0.8); }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span[title]::before {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span[title]::before, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span[title]::before, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span[title]::before {
     content: none; }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span[title]::after {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span[title]::after, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span[title]::after, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span[title]::after {
     content: none; }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip {
     display: none;
     position: absolute;
     bottom: calc(100% + 12px);
@@ -3407,7 +3432,7 @@ ul.iconillo {
     pointer-events: none;
     z-index: 100;
     line-height: 25px; }
-    .layout-progrestatus #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip::after {
+    .layout-progrestatus #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip::after, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip::after, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span .goal-bar-tooltip::after {
       content: "";
       position: absolute;
       top: 100%;
@@ -3415,136 +3440,140 @@ ul.iconillo {
       transform: translateX(-50%);
       border: 5px solid transparent;
       border-top-color: rgba(0, 0, 0, 0.85); }
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span:hover .goal-bar-tooltip {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span:hover .goal-bar-tooltip, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span:hover .goal-bar-tooltip, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span:hover .goal-bar-tooltip {
     display: block; }
-.layout-progrestatus #main-content .reporting-status-item {
+.layout-progrestatus #main-content .reporting-status-item, .layout-progrestatus-metas #main-content .reporting-status-item, .layout-progrestatus-objetivos #main-content .reporting-status-item {
   margin-bottom: 20px; }
 @media only screen and (max-width: 576px) {
-  .layout-progrestatus #main-content .goal-overall {
+  .layout-progrestatus #main-content .goal-overall, .layout-progrestatus-metas #main-content .goal-overall, .layout-progrestatus-objetivos #main-content .goal-overall {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start; }
-  .layout-progrestatus #main-content .goal-overall .frame {
+  .layout-progrestatus #main-content .goal-overall .frame, .layout-progrestatus-metas #main-content .goal-overall .frame, .layout-progrestatus-objetivos #main-content .goal-overall .frame {
     width: auto;
     float: none;
     display: inline-block;
     margin-bottom: 5px; }
-    .layout-progrestatus #main-content .goal-overall .frame img {
+    .layout-progrestatus #main-content .goal-overall .frame img, .layout-progrestatus-metas #main-content .goal-overall .frame img, .layout-progrestatus-objetivos #main-content .goal-overall .frame img {
       width: 60px;
       height: 60px; }
-  .layout-progrestatus #main-content .goal-overall .details {
+  .layout-progrestatus #main-content .goal-overall .details, .layout-progrestatus-metas #main-content .goal-overall .details, .layout-progrestatus-objetivos #main-content .goal-overall .details {
     flex: 1;
     min-width: 0;
     float: none;
     margin-left: 10px; }
-    .layout-progrestatus #main-content .goal-overall .details h2 {
+    .layout-progrestatus #main-content .goal-overall .details h2, .layout-progrestatus-metas #main-content .goal-overall .details h2, .layout-progrestatus-objetivos #main-content .goal-overall .details h2 {
       margin-top: 0;
       margin-left: 0;
       display: block; }
-  .layout-progrestatus #main-content .goal-overall > .summary,
-  .layout-progrestatus #main-content .goal-overall > .goal-stats {
+  .layout-progrestatus #main-content .goal-overall > .summary, .layout-progrestatus-metas #main-content .goal-overall > .summary, .layout-progrestatus-objetivos #main-content .goal-overall > .summary,
+  .layout-progrestatus #main-content .goal-overall > .goal-stats,
+  .layout-progrestatus-metas #main-content .goal-overall > .goal-stats,
+  .layout-progrestatus-objetivos #main-content .goal-overall > .goal-stats {
     width: 100%;
     clear: both; }
-  .layout-progrestatus #main-content .goal-overall > .summary .statuses {
+  .layout-progrestatus #main-content .goal-overall > .summary .statuses, .layout-progrestatus-metas #main-content .goal-overall > .summary .statuses, .layout-progrestatus-objetivos #main-content .goal-overall > .summary .statuses {
     width: 100%; }
-  .layout-progrestatus #main-content .goal-overall > .statuses {
+  .layout-progrestatus #main-content .goal-overall > .statuses, .layout-progrestatus-metas #main-content .goal-overall > .statuses, .layout-progrestatus-objetivos #main-content .goal-overall > .statuses {
     width: 100%;
     box-sizing: border-box; }
-  .layout-progrestatus #main-content .goal-overall > .statuses > div,
-  .layout-progrestatus #main-content .goal-overall .statuses > div {
+  .layout-progrestatus #main-content .goal-overall > .statuses > div, .layout-progrestatus-metas #main-content .goal-overall > .statuses > div, .layout-progrestatus-objetivos #main-content .goal-overall > .statuses > div,
+  .layout-progrestatus #main-content .goal-overall .statuses > div,
+  .layout-progrestatus-metas #main-content .goal-overall .statuses > div,
+  .layout-progrestatus-objetivos #main-content .goal-overall .statuses > div {
     display: block;
     margin-left: 5px;
     margin-top: 10px; }
-  .layout-progrestatus #main-content .reporting-status-item {
+  .layout-progrestatus #main-content .reporting-status-item, .layout-progrestatus-metas #main-content .reporting-status-item, .layout-progrestatus-objetivos #main-content .reporting-status-item {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start; }
-  .layout-progrestatus #main-content .reporting-status-item .frame {
+  .layout-progrestatus #main-content .reporting-status-item .frame, .layout-progrestatus-metas #main-content .reporting-status-item .frame, .layout-progrestatus-objetivos #main-content .reporting-status-item .frame {
     width: auto;
     float: none;
     display: inline-block;
     margin-bottom: 5px; }
-    .layout-progrestatus #main-content .reporting-status-item .frame img {
+    .layout-progrestatus #main-content .reporting-status-item .frame img, .layout-progrestatus-metas #main-content .reporting-status-item .frame img, .layout-progrestatus-objetivos #main-content .reporting-status-item .frame img {
       width: 60px;
       height: 60px; }
-  .layout-progrestatus #main-content .reporting-status-item .details {
+  .layout-progrestatus #main-content .reporting-status-item .details, .layout-progrestatus-metas #main-content .reporting-status-item .details, .layout-progrestatus-objetivos #main-content .reporting-status-item .details {
     flex: 1;
     min-width: 0;
     float: none;
     margin-left: 10px; }
-    .layout-progrestatus #main-content .reporting-status-item .details h3 {
+    .layout-progrestatus #main-content .reporting-status-item .details h3, .layout-progrestatus-metas #main-content .reporting-status-item .details h3, .layout-progrestatus-objetivos #main-content .reporting-status-item .details h3 {
       font-size: 20px;
       margin-top: 0;
       margin-left: 0; }
-  .layout-progrestatus #main-content .reporting-status-item > .goal-stats {
+  .layout-progrestatus #main-content .reporting-status-item > .goal-stats, .layout-progrestatus-metas #main-content .reporting-status-item > .goal-stats, .layout-progrestatus-objetivos #main-content .reporting-status-item > .goal-stats {
     width: 100%;
     clear: both; }
-  .layout-progrestatus #main-content a[href="#top"] {
+  .layout-progrestatus #main-content a[href="#top"], .layout-progrestatus-metas #main-content a[href="#top"], .layout-progrestatus-objetivos #main-content a[href="#top"] {
     width: auto; } }
-.layout-progrestatus.contrast-high #main-content .goal-tiles img {
+.layout-progrestatus.contrast-high #main-content .goal-tiles img, .contrast-high.layout-progrestatus-metas #main-content .goal-tiles img, .contrast-high.layout-progrestatus-objetivos #main-content .goal-tiles img {
   background-color: black !important; }
-.layout-progrestatus.contrast-high #main-content .goal-stats {
+.layout-progrestatus.contrast-high #main-content .goal-stats, .contrast-high.layout-progrestatus-metas #main-content .goal-stats, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats {
   border: 1px solid white !important; }
-  .layout-progrestatus.contrast-high #main-content .goal-stats .notapplicable {
+  .layout-progrestatus.contrast-high #main-content .goal-stats .notapplicable, .contrast-high.layout-progrestatus-metas #main-content .goal-stats .notapplicable, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats .notapplicable {
     background-color: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px);
     background: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px); }
-  .layout-progrestatus.contrast-high #main-content .goal-stats .notstarted {
+  .layout-progrestatus.contrast-high #main-content .goal-stats .notstarted, .contrast-high.layout-progrestatus-metas #main-content .goal-stats .notstarted, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats .notstarted {
     background-color: black;
     background: black; }
-  .layout-progrestatus.contrast-high #main-content .goal-stats .inprogress {
+  .layout-progrestatus.contrast-high #main-content .goal-stats .inprogress, .contrast-high.layout-progrestatus-metas #main-content .goal-stats .inprogress, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats .inprogress {
     background-color: #767676;
     background: #767676; }
-  .layout-progrestatus.contrast-high #main-content .goal-stats .complete {
+  .layout-progrestatus.contrast-high #main-content .goal-stats .complete, .contrast-high.layout-progrestatus-metas #main-content .goal-stats .complete, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats .complete {
     background-color: white;
     background: white; }
-  .layout-progrestatus.contrast-high #main-content .goal-stats .not-available {
+  .layout-progrestatus.contrast-high #main-content .goal-stats .not-available, .contrast-high.layout-progrestatus-metas #main-content .goal-stats .not-available, .contrast-high.layout-progrestatus-objetivos #main-content .goal-stats .not-available {
     background-color: #ccd5dd !important;
     background: #ccd5dd !important; }
-.layout-progrestatus.contrast-high #main-content .statuses strong {
+.layout-progrestatus.contrast-high #main-content .statuses strong, .contrast-high.layout-progrestatus-metas #main-content .statuses strong, .contrast-high.layout-progrestatus-objetivos #main-content .statuses strong {
   color: white; }
-.layout-progrestatus.contrast-high #main-content .statuses .value {
+.layout-progrestatus.contrast-high #main-content .statuses .value, .contrast-high.layout-progrestatus-metas #main-content .statuses .value, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .value {
   color: white !important; }
-.layout-progrestatus.contrast-high #main-content .statuses .status {
+.layout-progrestatus.contrast-high #main-content .statuses .status, .contrast-high.layout-progrestatus-metas #main-content .statuses .status, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status {
   border: none !important; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.complete {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.complete, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.complete, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.complete {
     border: 1px solid transparent;
     background-color: white;
     background: white;
     color: black !important; }
-    .layout-progrestatus.contrast-high #main-content .statuses .status.complete .status-inner {
+    .layout-progrestatus.contrast-high #main-content .statuses .status.complete .status-inner, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.complete .status-inner, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.complete .status-inner {
       background-color: white !important;
       background: white !important;
       color: black !important; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.inprogress {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.inprogress, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.inprogress, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.inprogress {
     border: 1px solid transparent;
     background-color: #767676;
     background: #767676;
     color: white; }
-    .layout-progrestatus.contrast-high #main-content .statuses .status.inprogress .status-inner {
+    .layout-progrestatus.contrast-high #main-content .statuses .status.inprogress .status-inner, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.inprogress .status-inner, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.inprogress .status-inner {
       background-color: #767676 !important;
       background: #767676 !important;
       color: white; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.notstarted, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.notstarted {
     border: 1px solid white;
     background-color: black;
     background: black;
     color: white !important; }
-    .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted .status-inner {
+    .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted .status-inner, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.notstarted .status-inner, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.notstarted .status-inner {
       background-color: black !important;
       background: black !important;
       color: white !important; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.notapplicable {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.notapplicable, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.notapplicable, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.notapplicable {
     border: 1px solid white;
     background-color: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px);
     background: repeating-linear-gradient(135deg, #757575, white 10px, #757575 10px, white 20px);
     color: black !important; }
-    .layout-progrestatus.contrast-high #main-content .statuses .status.notapplicable .status-inner {
+    .layout-progrestatus.contrast-high #main-content .statuses .status.notapplicable .status-inner, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.notapplicable .status-inner, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.notapplicable .status-inner {
       background-color: rgba(255, 255, 255, 0.8) !important;
       background: rgba(255, 255, 255, 0.8) !important;
       color: black !important; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.notstarted, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.notstarted, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.notstarted {
     border: 1px solid white !important; }
-  .layout-progrestatus.contrast-high #main-content .statuses .status.not-available {
+  .layout-progrestatus.contrast-high #main-content .statuses .status.not-available, .contrast-high.layout-progrestatus-metas #main-content .statuses .status.not-available, .contrast-high.layout-progrestatus-objetivos #main-content .statuses .status.not-available {
     background-color: #ccd5dd !important;
     background: #ccd5dd !important;
     border-color: #ccd5dd !important; }
@@ -3561,12 +3590,12 @@ ul.iconillo {
   .progreso-intro-header h1 {
     margin: 0; }
 
-.layout-progrestatus .progreso-action-icons {
+.layout-progrestatus .progreso-action-icons, .layout-progrestatus-metas .progreso-action-icons, .layout-progrestatus-objetivos .progreso-action-icons {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-shrink: 0; }
-.layout-progrestatus .progreso-icon-btn {
+.layout-progrestatus .progreso-icon-btn, .layout-progrestatus-metas .progreso-icon-btn, .layout-progrestatus-objetivos .progreso-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3580,31 +3609,37 @@ ul.iconillo {
   text-decoration: none;
   padding: 0;
   box-shadow: 0 2px 0 #002d18; }
-  .layout-progrestatus .progreso-icon-btn:hover {
+  .layout-progrestatus .progreso-icon-btn:hover, .layout-progrestatus-metas .progreso-icon-btn:hover, .layout-progrestatus-objetivos .progreso-icon-btn:hover {
     background: #005a30;
     color: white; }
-  .layout-progrestatus .progreso-icon-btn:focus {
+  .layout-progrestatus .progreso-icon-btn:focus, .layout-progrestatus-metas .progreso-icon-btn:focus, .layout-progrestatus-objetivos .progreso-icon-btn:focus {
     background: #fd0;
     color: #0b0c0c;
     outline: none; }
-.layout-progrestatus .progreso-action-icons-mobile {
+.layout-progrestatus .progreso-action-icons-mobile, .layout-progrestatus-metas .progreso-action-icons-mobile, .layout-progrestatus-objetivos .progreso-action-icons-mobile {
   display: none;
   margin-top: 12px; }
 @media (max-width: 992px) {
-  .layout-progrestatus .progreso-intro-header .progreso-action-icons {
+  .layout-progrestatus .progreso-intro-header .progreso-action-icons, .layout-progrestatus-metas .progreso-intro-header .progreso-action-icons, .layout-progrestatus-objetivos .progreso-intro-header .progreso-action-icons {
     display: none; }
-  .layout-progrestatus .progreso-action-icons-mobile {
+  .layout-progrestatus .progreso-action-icons-mobile, .layout-progrestatus-metas .progreso-action-icons-mobile, .layout-progrestatus-objetivos .progreso-action-icons-mobile {
     display: flex; } }
 
 @media print {
-  .layout-progrestatus {
+  .layout-progrestatus, .layout-progrestatus-metas, .layout-progrestatus-objetivos {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact; }
 
-  .layout-progrestatus .progreso-action-icons,
+  .layout-progrestatus .progreso-action-icons, .layout-progrestatus-metas .progreso-action-icons, .layout-progrestatus-objetivos .progreso-action-icons,
   .layout-progrestatus .progreso-action-icons-mobile,
+  .layout-progrestatus-metas .progreso-action-icons-mobile,
+  .layout-progrestatus-objetivos .progreso-action-icons-mobile,
   .layout-progrestatus #back-to-top,
+  .layout-progrestatus-metas #back-to-top,
+  .layout-progrestatus-objetivos #back-to-top,
   .layout-progrestatus .goal-bar-tooltip,
+  .layout-progrestatus-metas .goal-bar-tooltip,
+  .layout-progrestatus-objetivos .goal-bar-tooltip,
   .header-search-bar,
   .language-toggle-container,
   [data-contrast-switch-to],
@@ -3612,22 +3647,22 @@ ul.iconillo {
   a[href="#top"] {
     display: none !important; }
 
-  .layout-progrestatus #main-content .reporting-status-item {
+  .layout-progrestatus #main-content .reporting-status-item, .layout-progrestatus-metas #main-content .reporting-status-item, .layout-progrestatus-objetivos #main-content .reporting-status-item {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: flex-start !important; }
 
-  .layout-progrestatus #main-content .frame {
+  .layout-progrestatus #main-content .frame, .layout-progrestatus-metas #main-content .frame, .layout-progrestatus-objetivos #main-content .frame {
     width: auto !important;
     float: none !important;
     display: inline-block !important;
     margin-bottom: 4px !important; }
 
-  .layout-progrestatus #main-content .frame img {
+  .layout-progrestatus #main-content .frame img, .layout-progrestatus-metas #main-content .frame img, .layout-progrestatus-objetivos #main-content .frame img {
     width: 60px !important;
     height: 60px !important; }
 
-  .layout-progrestatus #main-content .details {
+  .layout-progrestatus #main-content .details, .layout-progrestatus-metas #main-content .details, .layout-progrestatus-objetivos #main-content .details {
     flex: 1 !important;
     min-width: 0 !important;
     float: none !important;
@@ -3639,54 +3674,89 @@ ul.iconillo {
     align-items: center !important;
     gap: 6px !important; }
 
-  .layout-progrestatus #main-content .details h3 {
+  .layout-progrestatus #main-content .details h3, .layout-progrestatus-metas #main-content .details h3, .layout-progrestatus-objetivos #main-content .details h3 {
     font-size: 15px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     display: inline !important; }
 
-  .layout-progrestatus #main-content .details .total {
+  .layout-progrestatus #main-content .details .total, .layout-progrestatus-metas #main-content .details .total, .layout-progrestatus-objetivos #main-content .details .total {
     margin-left: 0 !important;
     margin-bottom: 0 !important;
     display: inline !important;
     font-size: 11px !important; }
 
-  .layout-progrestatus #main-content .details .goal-stats {
+  .layout-progrestatus #main-content .details .goal-stats, .layout-progrestatus-metas #main-content .details .goal-stats, .layout-progrestatus-objetivos #main-content .details .goal-stats {
     width: 100% !important;
     flex-basis: 100% !important;
     margin-top: 4px !important; }
 
-  .layout-progrestatus #main-content .reporting-status-item .goal-stats span {
+  .layout-progrestatus #main-content .reporting-status-item .goal-stats span, .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span, .layout-progrestatus-objetivos #main-content .reporting-status-item .goal-stats span {
     padding: 4px 0 !important;
     font-size: 11px !important; }
 
-  .layout-progrestatus #main-content .reporting-status-item > .goal-stats {
+  .layout-progrestatus #main-content .reporting-status-item > .goal-stats, .layout-progrestatus-metas #main-content .reporting-status-item > .goal-stats, .layout-progrestatus-objetivos #main-content .reporting-status-item > .goal-stats {
     width: 100% !important;
     clear: both !important;
     margin-top: 4px !important; }
 
-  .layout-progrestatus #main-content .goal-overall {
+  .layout-progrestatus #main-content .goal-overall, .layout-progrestatus-metas #main-content .goal-overall, .layout-progrestatus-objetivos #main-content .goal-overall {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: flex-start !important; }
 
-  .layout-progrestatus #main-content .goal-overall .frame img {
+  .layout-progrestatus #main-content .goal-overall .frame img, .layout-progrestatus-metas #main-content .goal-overall .frame img, .layout-progrestatus-objetivos #main-content .goal-overall .frame img {
     width: 48px !important;
     height: 48px !important; }
 
-  .layout-progrestatus #main-content .goal-overall .details {
+  .layout-progrestatus #main-content .goal-overall .details, .layout-progrestatus-metas #main-content .goal-overall .details, .layout-progrestatus-objetivos #main-content .goal-overall .details {
     flex: 1 !important;
     float: none !important;
     margin-left: 8px !important;
     width: auto !important; }
 
-  .layout-progrestatus #main-content .goal-overall > .goal-stats {
+  .layout-progrestatus #main-content .goal-overall > .goal-stats, .layout-progrestatus-metas #main-content .goal-overall > .goal-stats, .layout-progrestatus-objetivos #main-content .goal-overall > .goal-stats {
     width: 100% !important;
     clear: both !important; }
 
-  .layout-progrestatus .reporting-status-item {
+  .layout-progrestatus .reporting-status-item, .layout-progrestatus-metas .reporting-status-item, .layout-progrestatus-objetivos .reporting-status-item {
     page-break-inside: avoid;
     break-inside: avoid; } }
+.progress-column-header {
+  text-align: right;
+  font-weight: 600;
+  font-size: .85rem;
+  color: #555;
+  padding-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px; }
+
+.progress-info-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #888;
+  font-size: .7rem;
+  font-weight: 700;
+  color: #555;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0; }
+  .progress-info-link:hover {
+    border-color: #0056b3;
+    color: #0056b3; }
+
+.goal-page-target-progress,
+.goal-page-indicator-progress {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+
 .progress-status-inline {
   display: flex;
   align-items: center;
@@ -3699,56 +3769,59 @@ ul.iconillo {
   .progress-status-inline .progress-status-label {
     line-height: 1.3; }
 
-.layout-progrestatus-categoria {
-  padding-top: 20px; }
-  .layout-progrestatus-categoria .back-link {
-    color: #0056b3;
-    text-decoration: none;
-    font-size: 14px; }
-    .layout-progrestatus-categoria .back-link:hover {
-      text-decoration: underline; }
-  .layout-progrestatus-categoria .total {
-    line-height: 1.2;
-    font-size: 16px;
-    width: auto;
-    padding-left: 4px;
-    padding-right: 4px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 4px;
-    border: 1px solid #ccc; }
-  .layout-progrestatus-categoria .categoria-goal-block {
-    padding-bottom: 0;
-    border-bottom: none;
-    margin-bottom: 0; }
-  .layout-progrestatus-categoria .categoria-separator {
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 20px 0; }
-  .layout-progrestatus-categoria .categoria-indicator-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px 0; }
-    .layout-progrestatus-categoria .categoria-indicator-list li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 14px; }
-      .layout-progrestatus-categoria .categoria-indicator-list li .indicator-number {
-        flex-shrink: 0;
-        min-width: 60px;
-        color: #555;
-        font-size: 14px; }
-      .layout-progrestatus-categoria .categoria-indicator-list li a {
-        text-decoration: underline;
-        color: #0056b3;
-        flex-grow: 1; }
-        .layout-progrestatus-categoria .categoria-indicator-list li a:hover {
-          color: #003d80; }
+.goal-page-indicator-progress .progress-status-image {
+  max-width: 110px; }
+  .goal-page-indicator-progress .progress-status-image img {
+    max-width: 100%; }
 
-/* Goldilocks — ocultar columna Progress del footer del indicador.
+.layout-progrestatus-categoria .back-link, .layout-progrestatus-metas-categoria .back-link {
+  color: #0056b3;
+  text-decoration: none;
+  font-size: 14px; }
+  .layout-progrestatus-categoria .back-link:hover, .layout-progrestatus-metas-categoria .back-link:hover {
+    text-decoration: underline; }
+.layout-progrestatus-categoria .total, .layout-progrestatus-metas-categoria .total {
+  line-height: 1.2;
+  font-size: 16px;
+  width: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #ccc; }
+.layout-progrestatus-categoria .categoria-goal-block, .layout-progrestatus-metas-categoria .categoria-goal-block {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0; }
+.layout-progrestatus-categoria .categoria-separator, .layout-progrestatus-metas-categoria .categoria-separator {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0; }
+.layout-progrestatus-categoria .categoria-indicator-list, .layout-progrestatus-metas-categoria .categoria-indicator-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0; }
+  .layout-progrestatus-categoria .categoria-indicator-list li, .layout-progrestatus-metas-categoria .categoria-indicator-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px; }
+    .layout-progrestatus-categoria .categoria-indicator-list li .indicator-number, .layout-progrestatus-metas-categoria .categoria-indicator-list li .indicator-number {
+      flex-shrink: 0;
+      min-width: 60px;
+      color: #555;
+      font-size: 14px; }
+    .layout-progrestatus-categoria .categoria-indicator-list li a, .layout-progrestatus-metas-categoria .categoria-indicator-list li a {
+      text-decoration: underline;
+      color: #0056b3;
+      flex-grow: 1; }
+      .layout-progrestatus-categoria .categoria-indicator-list li a:hover, .layout-progrestatus-metas-categoria .categoria-indicator-list li a:hover {
+        color: #003d80; }
+
+/* Goldilocks â€” ocultar columna Progress del footer del indicador.
    Open SDG la registra como time_series_attribute y muestra su valor
-   numérico (resultado de la fórmula goldilocks) bajo la leyenda de unidades.
-   La columna es solo para cálculo interno; no debe ser visible. */
+   numÃ©rico (resultado de la fÃ³rmula goldilocks) bajo la leyenda de unidades.
+   La columna es solo para cÃ¡lculo interno; no debe ser visible. */
 dt[data-ts-attribute="Progress"],
 dd[data-ts-attribute="Progress"] {
   display: none !important; }
@@ -3783,7 +3856,7 @@ dd[data-ts-attribute="Progress"] {
     .main-content-pages details summary:hover {
       color: #0056b3; }
   .main-content-pages details[open] > summary::before {
-    content: '−'; }
+    content: 'âˆ’'; }
   .main-content-pages details > *:not(summary) {
     padding: 0 0 16px 24px; }
   .main-content-pages details details {
@@ -3792,3 +3865,448 @@ dd[data-ts-attribute="Progress"] {
     .main-content-pages details details summary {
       font-size: 1em;
       padding: 10px 0; }
+
+.goal-page-target-name .target-name {
+  font-size: 1.1em; }
+
+.goal-page-target-number .target-number {
+  font-size: 1.15em; }
+
+div.goal-target {
+  cursor: pointer;
+  user-select: none; }
+  div.goal-target:hover {
+    opacity: 0.85; }
+  div.goal-target:focus {
+    outline: none !important; }
+
+.target-chevron {
+  font-size: 0.9em;
+  color: #444;
+  margin-right: 6px;
+  display: inline;
+  vertical-align: middle; }
+
+.layout-goal .goal-page-target-progress {
+  margin-left: 60px;
+  margin-top: 6px;
+  margin-bottom: 2px; }
+
+@media print {
+  .layout-progrestatus-metas {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact; }
+
+  .layout-progrestatus-metas .progreso-action-icons,
+  .layout-progrestatus-metas .progreso-action-icons-mobile,
+  .layout-progrestatus-metas #back-to-top,
+  .layout-progrestatus-metas .goal-bar-tooltip {
+    display: none !important; }
+
+  .layout-progrestatus-metas #main-content .reporting-status-item {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important; }
+
+  .layout-progrestatus-metas #main-content .frame {
+    width: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    margin-bottom: 4px !important; }
+
+  .layout-progrestatus-metas #main-content .frame img {
+    width: 60px !important;
+    height: 60px !important; }
+
+  .layout-progrestatus-metas #main-content .details {
+    flex: 1 !important;
+    min-width: 0 !important;
+    float: none !important;
+    margin-left: 8px !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 6px !important; }
+
+  .layout-progrestatus-metas #main-content .details h3 {
+    font-size: 15px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: inline !important; }
+
+  .layout-progrestatus-metas #main-content .details .total {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+    display: inline !important;
+    font-size: 11px !important; }
+
+  .layout-progrestatus-metas #main-content .details .goal-stats {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-top: 4px !important; }
+
+  .layout-progrestatus-metas #main-content .reporting-status-item .goal-stats span {
+    padding: 4px 0 !important;
+    font-size: 11px !important; }
+
+  .layout-progrestatus-metas #main-content .reporting-status-item > .goal-stats {
+    width: 100% !important;
+    clear: both !important;
+    margin-top: 4px !important; }
+
+  .layout-progrestatus-metas #main-content .goal-overall {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important; }
+
+  .layout-progrestatus-metas #main-content .goal-overall .frame img {
+    width: 48px !important;
+    height: 48px !important; }
+
+  .layout-progrestatus-metas #main-content .goal-overall .details {
+    flex: 1 !important;
+    float: none !important;
+    margin-left: 8px !important;
+    width: auto !important; }
+
+  .layout-progrestatus-metas #main-content .goal-overall > .goal-stats {
+    width: 100% !important;
+    clear: both !important; }
+
+  .layout-progrestatus-metas .reporting-status-item {
+    page-break-inside: avoid;
+    break-inside: avoid; } }
+.layout-progrestatus-objetivos {
+  padding-bottom: 60px; }
+  .layout-progrestatus-objetivos .om-overview-title {
+    margin-bottom: 24px; }
+  .layout-progrestatus-objetivos .om-overview-section {
+    margin-top: 16px;
+    padding-top: 8px; }
+  .layout-progrestatus-objetivos .om-overview-track {
+    position: relative;
+    height: 70px;
+    background: linear-gradient(to right, #db405a 0%, #db405a 25%, #ff7f27 25%, #ff7f27 47.5%, #fec329 47.5%, #fec329 52.5%, #b3d37a 52.5%, #b3d37a 75%, #45ba80 75%, #45ba80 100%);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    border: 4px solid #ddd;
+    overflow: visible; }
+  .layout-progrestatus-objetivos .om-bar-zone {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    cursor: default; }
+  .layout-progrestatus-objetivos .om-bar-zone:hover .om-zone-label {
+    display: block; }
+  .layout-progrestatus-objetivos .om-zone-label {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-size: .85rem;
+    font-weight: normal;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 200;
+    line-height: 1.5; }
+  .layout-progrestatus-objetivos .om-tick {
+    position: absolute;
+    width: 2px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    opacity: 0.9;
+    z-index: 1;
+    transition: width .25s ease, height .25s ease, top .25s ease; }
+  .layout-progrestatus-objetivos .om-tick--active {
+    width: 4px !important;
+    opacity: 1 !important;
+    z-index: 5 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important; }
+  .layout-progrestatus-objetivos .om-tick-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 28px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: none;
+    transition: width .15s ease, height .15s ease, top .15s ease; }
+  .layout-progrestatus-objetivos .om-tick-dot--active {
+    width: 12px !important;
+    height: 12px !important;
+    top: 26px !important;
+    z-index: 6 !important; }
+  .layout-progrestatus-objetivos .om-tick-icon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+    transition: width .25s ease, height .25s ease, top .25s ease; }
+  .layout-progrestatus-objetivos .om-icon--active {
+    outline: 3px solid #1a3a5c;
+    outline-offset: 1px;
+    border-radius: 4px;
+    z-index: 6;
+    width: 100px;
+    height: 100px; }
+  .layout-progrestatus-objetivos .objetivo-medidor-panel {
+    padding: 20px 24px;
+    background: #f7fafd;
+    border: 1px solid #d0dce9;
+    border-radius: 10px;
+    margin-top: 20px; }
+  .layout-progrestatus-objetivos .objetivo-panel-layout {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "icon  title" "icon  sections";
+    gap: 12px 20px;
+    align-items: start; }
+    .layout-progrestatus-objetivos .objetivo-panel-layout .objetivo-panel-icon-wrap {
+      grid-area: icon; }
+      .layout-progrestatus-objetivos .objetivo-panel-layout .objetivo-panel-icon-wrap img {
+        width: 120px;
+        height: 120px; }
+      .layout-progrestatus-objetivos .objetivo-panel-layout .objetivo-panel-icon-wrap a {
+        display: block;
+        border-radius: 4px;
+        outline-offset: 3px; }
+  .layout-progrestatus-objetivos .objetivo-panel-title-row {
+    grid-area: title;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px; }
+    .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-title {
+      font-size: 1.2rem;
+      color: #1a3a5c;
+      margin: 0;
+      line-height: 1.3; }
+    .layout-progrestatus-objetivos .objetivo-panel-title-row #om-goal-link-title {
+      text-decoration: none;
+      color: inherit; }
+      .layout-progrestatus-objetivos .objetivo-panel-title-row #om-goal-link-title:hover .objetivo-panel-title {
+        text-decoration: underline; }
+    .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap; }
+      .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-status .om-status-img {
+        width: 130px;
+        height: auto; }
+      .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-status .om-status-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #222; }
+  .layout-progrestatus-objetivos .om-panel-sections {
+    grid-area: sections; }
+  .layout-progrestatus-objetivos .om-panel-section-compact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 11px; }
+  .layout-progrestatus-objetivos .om-section-label {
+    font-size: .78rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    flex-shrink: 0;
+    width: 7.5rem; }
+  .layout-progrestatus-objetivos .om-panel-section-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0; }
+    .layout-progrestatus-objetivos .om-panel-section-body .total {
+      font-size: 16px;
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      min-width: 2rem;
+      text-align: center; }
+    .layout-progrestatus-objetivos .om-panel-section-body .goal-stats {
+      flex: 1;
+      border: 1px solid #0b0c0c;
+      font-size: 0;
+      overflow: visible;
+      white-space: nowrap;
+      min-width: 0;
+      margin-top: 0 !important; }
+      @media (-ms-high-contrast: active), (forced-colors: active) {
+        .layout-progrestatus-objetivos .om-panel-section-body .goal-stats {
+          -ms-high-contrast-adjust: none;
+          forced-color-adjust: none; } }
+      .layout-progrestatus-objetivos .om-panel-section-body .goal-stats span {
+        display: inline-block;
+        padding: 3px 0;
+        font-size: 16px;
+        text-align: center;
+        color: #000;
+        position: relative;
+        cursor: default; }
+        .layout-progrestatus-objetivos .om-panel-section-body .goal-stats span .status-inner {
+          padding: 0 2px;
+          border-radius: 5px;
+          position: relative;
+          z-index: 2; }
+        .layout-progrestatus-objetivos .om-panel-section-body .goal-stats span .goal-bar-tooltip {
+          display: none;
+          position: absolute;
+          bottom: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.85);
+          color: #fff;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: normal;
+          white-space: nowrap;
+          pointer-events: none;
+          z-index: 100;
+          line-height: 25px; }
+          .layout-progrestatus-objetivos .om-panel-section-body .goal-stats span .goal-bar-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: var(--arrow-offset, 50%);
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.85); }
+        .layout-progrestatus-objetivos .om-panel-section-body .goal-stats span:hover .goal-bar-tooltip {
+          display: block; }
+  @media (max-width: 768px) {
+    .layout-progrestatus-objetivos .objetivo-medidor-panel {
+      padding: 16px; }
+    .layout-progrestatus-objetivos .objetivo-panel-layout {
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "icon   title" "sections sections"; }
+    .layout-progrestatus-objetivos .om-panel-sections {
+      width: 100%; }
+    .layout-progrestatus-objetivos .om-panel-section-compact {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      margin-top: 12px; }
+    .layout-progrestatus-objetivos .om-section-label {
+      width: auto; }
+    .layout-progrestatus-objetivos .om-panel-section-body {
+      width: 100%; }
+    .layout-progrestatus-objetivos .objetivo-panel-title-row {
+      flex-wrap: wrap; }
+    .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-status {
+      flex-wrap: wrap; }
+      .layout-progrestatus-objetivos .objetivo-panel-title-row .objetivo-panel-status .om-status-label {
+        white-space: normal; } }
+  @media (max-width: 576px) {
+    .layout-progrestatus-objetivos .om-tick {
+      width: 2px; }
+    .layout-progrestatus-objetivos .om-tick--active {
+      width: 4px !important; }
+    .layout-progrestatus-objetivos .objetivo-panel-layout {
+      grid-template-columns: 80px 1fr; }
+    .layout-progrestatus-objetivos .objetivo-panel-icon-wrap img {
+      width: 80px !important;
+      height: 80px !important; }
+    .layout-progrestatus-objetivos .om-tick-icon {
+      width: 70px;
+      height: 70px; } }
+  .layout-progrestatus-objetivos .om-informe-section {
+    margin-top: 100px; }
+    .layout-progrestatus-objetivos .om-informe-section > h2 {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px; }
+    .layout-progrestatus-objetivos .om-informe-section .goal-overall .frame.goal-tiles {
+      margin-left: 27px;
+      margin-right: 23px; }
+    .layout-progrestatus-objetivos .om-informe-section .goal-overall .frame.goal-tiles img {
+      width: 120px !important;
+      height: 120px !important; }
+  .layout-progrestatus-objetivos .total-inline {
+    font-size: .85rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-weight: normal;
+    vertical-align: middle; }
+  .layout-progrestatus-objetivos .om-goals-detail {
+    margin-top: 20px; }
+    .layout-progrestatus-objetivos .om-goals-detail > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #013161;
+      user-select: none; }
+      .layout-progrestatus-objetivos .om-goals-detail > summary::-webkit-details-marker {
+        display: none; }
+      .layout-progrestatus-objetivos .om-goals-detail > summary::before {
+        content: '▶';
+        font-size: .75em;
+        margin-right: 8px;
+        display: inline-block;
+        transition: transform .2s; }
+      .layout-progrestatus-objetivos .om-goals-detail > summary:hover {
+        color: #0056b3; }
+    .layout-progrestatus-objetivos .om-goals-detail[open] > summary::before {
+      transform: rotate(90deg); }
+    .layout-progrestatus-objetivos .om-goals-detail .reporting-status-item:first-child,
+    .layout-progrestatus-objetivos .om-goals-detail .goal:first-child {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0; }
+  body.contrast-high .layout-progrestatus-objetivos .objetivo-medidor-panel {
+    background: #000;
+    border-color: #fff; }
+  body.contrast-high .layout-progrestatus-objetivos .objetivo-panel-title,
+  body.contrast-high .layout-progrestatus-objetivos .objetivo-panel-num,
+  body.contrast-high .layout-progrestatus-objetivos .om-panel-section-title {
+    color: #fff; }
+  body.contrast-high .layout-progrestatus-objetivos .om-status-label {
+    color: #ccc; }
+  body.contrast-high .layout-progrestatus-objetivos .om-icon--active {
+    outline-color: #fff; }
+
+.goal-target {
+  scroll-margin-top: 100px; }
+
+.layout-progrestatus-objetivos #main-content .goal-overall .details {
+  width: calc(100% - 170px);
+  float: left; }
+
+.layout-progrestatus-objetivos #main-content .reporting-status-item {
+  margin-bottom: 20px;
+  margin-left: 37px; }
+
+@media only screen and (max-width: 576px) {
+  .layout-progrestatus-objetivos #main-content .goal-overall .details {
+    width: 100%;
+    min-width: 0;
+    float: none;
+    margin-left: 10px; }
+
+  .layout-progrestatus-objetivos .om-informe-section .goal-overall .frame.goal-tiles {
+    float: none;
+    margin-left: 0;
+    margin-right: 0; } }

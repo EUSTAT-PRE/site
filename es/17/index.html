@@ -144,7 +144,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261109124022">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261112153624">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
     <a class="nav-link" href="/site/es/">Inicio</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/es/jarraipen-txostena">Informe de seguimiento</a>
+    <a class="nav-link" href="/site/es/helburu-jarraipen-txostena">Estadísticas de progreso</a>
 </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Datos desagregados
                 </a>
@@ -519,15 +519,20 @@ data-event-label="high"
         <h2 class="goal-page-heading">Metas e indicadores</h2>
       </div>
       
+      
       <div class="col-lg-2 d-none d-lg-block progress-column-header">
-        <span aria-hidden="true"><b>Seguimiento</b></span>
+        <span aria-hidden="true"><b>Progreso</b></span>
+        <a href="/site/es/metodologia/"
+           class="progress-info-link"
+           title="Medición del progreso en los Objetivos de Desarrollo Sostenible"
+           aria-label="Medición del progreso en los Objetivos de Desarrollo Sostenible">i</a>
       </div>
       
     </div>
     <hr class="goal-page-column-header-rule">
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.1">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.1</span>
@@ -537,7 +542,21 @@ data-event-label="high"
             <span class="target-name">Fortalecer la movilización de recursos internos, incluso mediante la prestación de apoyo internacional a los países en desarrollo, con el fin de mejorar la capacidad nacional para recaudar ingresos fiscales y de otra índole</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Avance moderado hacia los objetivos" title="Avance moderado hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -566,7 +585,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -580,7 +599,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/en_progreso.png" alt="Progreso moderado" />
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Progreso moderado" />
                 </div>
                 
                 
@@ -619,7 +638,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -633,7 +652,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/en_progreso.png" alt="Progreso moderado" />
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Progreso moderado" />
                 </div>
                 
                 
@@ -650,7 +669,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.2">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.2</span>
@@ -660,7 +679,21 @@ data-event-label="high"
             <span class="target-name">Velar por que los países desarrollados cumplan plenamente sus compromisos en relación con la asistencia oficial para el desarrollo, incluido el compromiso de numerosos países desarrollados de alcanzar el objetivo de destinar el 0,7% del ingreso nacional bruto a la asistencia oficial para el desarrollo de los países en desarrollo y entre el 0,15% y el 0,20% del ingreso nacional bruto a la asistencia oficial para el desarrollo de los países menos adelantados; se alienta a los proveedores de asistencia oficial para el desarrollo a que consideren la posibilidad de fijar una meta para destinar al menos el 0,20% del ingreso nacional bruto a la asistencia oficial para el desarrollo de los países menos adelantados</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Avance moderado hacia los objetivos" title="Avance moderado hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -689,7 +722,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -703,7 +736,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/en_progreso.png" alt="Progreso moderado" />
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Progreso moderado" />
                 </div>
                 
                 
@@ -720,7 +753,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.3">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.3</span>
@@ -730,7 +763,21 @@ data-event-label="high"
             <span class="target-name">Movilizar recursos financieros adicionales de múltiples fuentes para los países en desarrollo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -759,7 +806,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -773,7 +820,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -812,7 +859,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -826,7 +873,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -843,7 +890,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.4">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.4</span>
@@ -853,7 +900,13 @@ data-event-label="high"
             <span class="target-name">Ayudar a los países en desarrollo a lograr la sostenibilidad de la deuda a largo plazo con políticas coordinadas orientadas a fomentar la financiación, el alivio y la reestructuración de la deuda, según proceda, y hacer frente a la deuda externa de los países pobres muy endeudados a fin de reducir el endeudamiento excesivo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -895,7 +948,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -922,7 +975,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.5">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.5</span>
@@ -932,7 +985,21 @@ data-event-label="high"
             <span class="target-name">Adoptar y aplicar sistemas de promoción de las inversiones en favor de los países menos adelantados</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -974,7 +1041,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -988,7 +1055,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1005,7 +1072,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.6">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.6</span>
@@ -1015,7 +1082,21 @@ data-event-label="high"
             <span class="target-name">Mejorar la cooperación regional e internacional Norte-Sur, Sur-Sur y triangular en materia de ciencia, tecnología e innovación y el acceso a estas, y aumentar el intercambio de conocimientos en condiciones mutuamente convenidas, incluso mejorando la coordinación entre los mecanismos existentes, en particular a nivel de las Naciones Unidas, y mediante un mecanismo mundial de facilitación de la tecnología</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1044,7 +1125,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1058,7 +1139,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -1075,7 +1156,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.7">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.7</span>
@@ -1085,7 +1166,21 @@ data-event-label="high"
             <span class="target-name">Promover el desarrollo de tecnologías ecológicamente racionales y su transferencia, divulgación y difusión a los países en desarrollo en condiciones favorables, incluso en condiciones concesionarias y preferenciales, según lo convenido de mutuo acuerdo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1127,7 +1222,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1141,7 +1236,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1158,7 +1253,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.8">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.8</span>
@@ -1168,7 +1263,21 @@ data-event-label="high"
             <span class="target-name">Poner en pleno funcionamiento, a más tardar en 2017, el banco de tecnología y el mecanismo de apoyo a la creación de capacidad en materia de ciencia, tecnología e innovación para los países menos adelantados y aumentar la utilización de tecnologías instrumentales, en particular la tecnología de la información y las comunicaciones</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1197,7 +1306,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1211,7 +1320,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -1228,7 +1337,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.9">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.9</span>
@@ -1238,7 +1347,21 @@ data-event-label="high"
             <span class="target-name">Aumentar el apoyo internacional para realizar actividades de creación de capacidad eficaces y específicas en los países en desarrollo a fin de respaldar los planes nacionales de implementación de todos los Objetivos de Desarrollo Sostenible, incluso mediante la cooperación Norte-Sur, Sur-Sur y triangular</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1280,7 +1403,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1294,7 +1417,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1311,7 +1434,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.10">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.10</span>
@@ -1321,7 +1444,13 @@ data-event-label="high"
             <span class="target-name">Promover un sistema de comercio multilateral universal, basado en normas, abierto, no discriminatorio y equitativo en el marco de la Organización Mundial del Comercio, incluso mediante la conclusión de las negociaciones en el marco del Programa de Doha para el Desarrollo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -1363,7 +1492,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1390,7 +1519,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.11">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.11</span>
@@ -1400,7 +1529,13 @@ data-event-label="high"
             <span class="target-name">Aumentar significativamente las exportaciones de los países en desarrollo, en particular con miras a duplicar la participación de los países menos adelantados en las exportaciones mundiales de aquí a 2020</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -1442,7 +1577,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1469,7 +1604,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.12">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.12</span>
@@ -1479,7 +1614,13 @@ data-event-label="high"
             <span class="target-name">Lograr la consecución oportuna del acceso a los mercados libre de derechos y contingentes de manera duradera para todos los países menos adelantados, conforme a las decisiones de la Organización Mundial del Comercio, incluso velando por que las normas de origen preferenciales aplicables a las importaciones de los países menos adelantados sean transparentes y sencillas y contribuyan a facilitar el acceso a los mercados</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -1521,7 +1662,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1548,7 +1689,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.13">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.13</span>
@@ -1558,7 +1699,21 @@ data-event-label="high"
             <span class="target-name">Aumentar la estabilidad macroeconómica mundial, incluso mediante la coordinación y coherencia de las políticas</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/no_evaluable.webp" alt="No evaluable" title="No evaluable" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1587,7 +1742,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1601,7 +1756,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/no_evaluable.png" alt="No evaluable" />
+                    <img src="/site/assets/img/progress/no_evaluable.webp" alt="No evaluable" />
                 </div>
                 
                 
@@ -1618,7 +1773,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.14">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.14</span>
@@ -1628,7 +1783,21 @@ data-event-label="high"
             <span class="target-name">Mejorar la coherencia de las políticas para el desarrollo sostenible</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1670,7 +1839,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1684,7 +1853,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1701,7 +1870,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.15">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.15</span>
@@ -1711,7 +1880,21 @@ data-event-label="high"
             <span class="target-name">Respetar el margen normativo y el liderazgo de cada país para establecer y aplicar políticas de erradicación de la pobreza y desarrollo sostenible</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1753,7 +1936,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1767,7 +1950,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1784,7 +1967,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.16">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.16</span>
@@ -1794,7 +1977,21 @@ data-event-label="high"
             <span class="target-name">Mejorar la Alianza Mundial para el Desarrollo Sostenible, complementada por alianzas entre múltiples interesados que movilicen e intercambien conocimientos, especialización, tecnología y recursos financieros, a fin de apoyar el logro de los Objetivos de Desarrollo Sostenible en todos los países, particularmente los países en desarrollo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1836,7 +2033,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1850,7 +2047,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1867,7 +2064,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.17">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.17</span>
@@ -1877,7 +2074,21 @@ data-event-label="high"
             <span class="target-name">Fomentar y promover la constitución de alianzas eficaces en las esferas pública, público-privada y de la sociedad civil, aprovechando la experiencia y las estrategias de obtención de recursos de las alianzas</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" title="Datos no disponibles" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1919,7 +2130,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1933,7 +2144,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -1950,7 +2161,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.18">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.18</span>
@@ -1960,7 +2171,21 @@ data-event-label="high"
             <span class="target-name">De aquí a 2020, mejorar el apoyo a la creación de capacidad prestado a los países en desarrollo, incluidos los países menos adelantados y los pequeños Estados insulares en desarrollo, para aumentar significativamente la disponibilidad de datos oportunos, fiables y de gran calidad desglosados por ingresos, sexo, edad, raza, origen étnico, estatus migratorio, discapacidad, ubicación geográfica y otras características pertinentes en los contextos nacionales</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -2002,7 +2227,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -2016,7 +2241,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -2055,7 +2280,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -2069,7 +2294,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Meta alcanzada o en vías de alcanzarla" />
                 </div>
                 
                 
@@ -2108,7 +2333,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -2122,7 +2347,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Meta alcanzada o en vías de alcanzarla" />
                 </div>
                 
                 
@@ -2139,7 +2364,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="17.19">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 17.19</span>
@@ -2149,7 +2374,21 @@ data-event-label="high"
             <span class="target-name">De aquí a 2030, aprovechar las iniciativas existentes para elaborar indicadores que permitan medir los progresos en materia de desarrollo sostenible y complementen el producto interno bruto, y apoyar la creación de capacidad estadística en los países en desarrollo</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -2191,7 +2430,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -2205,7 +2444,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles" />
                 </div>
                 
                 
@@ -2244,7 +2483,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -2258,7 +2497,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Meta alcanzada o en vías de alcanzarla" />
                 </div>
                 
                 
@@ -2278,6 +2517,64 @@ data-event-label="high"
   <a href="#top">Volver arriba</a>
 </div>
 
+<script>
+(function () {
+  // Colapso de indicadores por meta: solo las filas div.goal-target (no el h3 interior)
+  var rows = [].filter.call(document.querySelectorAll('.goal-target'), function (r) {
+    return r.tagName === 'DIV';
+  });
+  rows.forEach(function (r) {
+    var nameCol = r.querySelector('.goal-page-target-name');
+    var tn = r.querySelector('.target-name');
+    var c = document.createElement('span');
+    c.className = 'target-chevron';
+    c.setAttribute('aria-hidden', 'true');
+    if (nameCol) nameCol.insertBefore(c, nameCol.firstChild);
+    r.setAttribute('role', 'button');
+    r.setAttribute('tabindex', '0');
+
+    function toggle(col) {
+      r._col = col;
+      c.textContent = col ? '\u25bc' : '\u25b2';
+      var lbl = tn ? tn.textContent.trim().slice(0, 60) : '';
+      r.setAttribute('aria-expanded', col ? 'false' : 'true');
+      r.setAttribute('title', (col ? (opensdg.language === 'eu' ? 'Zabaldu: ' : opensdg.language === 'en' ? 'Expand: ' : 'Expandir: ') : (opensdg.language === 'eu' ? 'Tolestu: ' : opensdg.language === 'en' ? 'Collapse: ' : 'Colapsar: ')) + lbl);
+      var el = r.nextSibling;
+      while (el) {
+        if (el.nodeType === 1 && el.classList.contains('goal-target') && el.tagName === 'DIV') break;
+        if (el.nodeType === 1 && el.tagName !== 'HR') el.style.display = col ? 'none' : '';
+        el = el.nextSibling;
+      }
+    }
+
+    r.addEventListener('click', function () { toggle(!r._col); r.blur(); });
+    r.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(!r._col); }
+    });
+    r._toggle = toggle;
+    toggle(true); // colapsado al cargar
+  });
+
+  // Si la URL trae un ancla de meta (p.ej. #1.5), solo abrimos ese acordeón.
+  // El scroll hasta el ancla lo hace el navegador de forma nativa (la fila de
+  // la meta no se mueve al expandir, solo aparece contenido debajo), con el
+  // hueco del sticky resuelto vía scroll-margin-top en CSS. El id de la fila
+  // es el número de meta con punto, así que usamos getElementById (no
+  // querySelector('#1.5'), donde el punto se interpretaría como clase).
+  function openTargetFromHash() {
+    var raw = window.location.hash;
+    if (!raw) return;
+    var id = decodeURIComponent(raw.slice(1));
+    if (!id) return;
+    var row = document.getElementById(id);
+    if (!row || !row.classList.contains('goal-target') || typeof row._toggle !== 'function') return;
+    row._toggle(false); // expandir
+  }
+
+  openTargetFromHash();
+  window.addEventListener('hashchange', openTargetFromHash);
+})();
+</script>
 
 <footer role="contentinfo">
     <div class="container">
@@ -2418,7 +2715,7 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261109124022'></script>
+<script src='/site/assets/js/sdg.js?v=20261112153624'></script>
 
 
 <script>
@@ -2438,7 +2735,7 @@ data-event-label="high"
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261109124022"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261112153624"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

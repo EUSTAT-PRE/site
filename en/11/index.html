@@ -144,7 +144,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261109124022">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261112153624">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
     <a class="nav-link" href="/site/en/">Home</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/en/jarraipen-txostena">Monitoring report</a>
+    <a class="nav-link" href="/site/en/helburu-jarraipen-txostena">Progress statistics</a>
 </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Disaggregated data
                 </a>
@@ -519,15 +519,20 @@ data-event-label="high"
         <h2 class="goal-page-heading">Targets and indicators</h2>
       </div>
       
+      
       <div class="col-lg-2 d-none d-lg-block progress-column-header">
         <span aria-hidden="true"><b>Progress</b></span>
+        <a href="/site/en/metodologia/"
+           class="progress-info-link"
+           title="Measuring Progress on the Sustainable Development Goals"
+           aria-label="Measuring Progress on the Sustainable Development Goals">i</a>
       </div>
       
     </div>
     <hr class="goal-page-column-header-rule">
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.1">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.1</span>
@@ -537,7 +542,21 @@ data-event-label="high"
             <span class="target-name">By 2030, ensure access for all to adequate, safe and affordable housing and basic services and upgrade slums</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -580,7 +599,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -597,7 +616,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.2">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.2</span>
@@ -607,7 +626,21 @@ data-event-label="high"
             <span class="target-name">By 2030, provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" title="No data available" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -663,7 +696,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="No data available" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" />
                 </div>
                 
                 
@@ -680,7 +713,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.3">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.3</span>
@@ -690,7 +723,21 @@ data-event-label="high"
             <span class="target-name">By 2030, enhance inclusive and sustainable urbanization and capacity for participatory, integrated and sustainable human settlement planning and management in all countries</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -746,7 +793,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="No data available" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" />
                 </div>
                 
                 
@@ -799,7 +846,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -816,7 +863,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.4">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.4</span>
@@ -826,7 +873,21 @@ data-event-label="high"
             <span class="target-name">Strengthen efforts to protect and safeguard the world’s cultural and natural heritage</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -869,7 +930,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -886,7 +947,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.5">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.5</span>
@@ -896,7 +957,21 @@ data-event-label="high"
             <span class="target-name">By 2030, significantly reduce the number of deaths and the number of people affected and substantially decrease the direct economic losses relative to global gross domestic product caused by disasters, including water-related disasters, with a focus on protecting the poor and people in vulnerable situations</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_progreso.webp" alt="No progress towards nor movement away from SD objectives" title="No progress towards nor movement away from SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -939,7 +1014,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/retroceso_significativo.png" alt="Significant regression" />
+                    <img src="/site/assets/img/progress/retroceso_significativo.webp" alt="Significant regression" />
                 </div>
                 
                 
@@ -992,7 +1067,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1058,7 +1133,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="No data available" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" />
                 </div>
                 
                 
@@ -1075,7 +1150,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.6">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.6</span>
@@ -1085,7 +1160,21 @@ data-event-label="high"
             <span class="target-name">By 2030, reduce the adverse per capita environmental impact of cities, including by paying special attention to air quality and municipal and other waste management</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1128,7 +1217,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1181,7 +1270,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1198,7 +1287,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.7">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.7</span>
@@ -1208,7 +1297,21 @@ data-event-label="high"
             <span class="target-name">By 2030, provide universal access to safe, inclusive and accessible, green and public spaces, in particular for women and children, older persons and persons with disabilities</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/retroceso_significativo.webp" alt="Significant movement away from SD objectives" title="Significant movement away from SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1251,7 +1354,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1304,7 +1407,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/retroceso_significativo.png" alt="Significant regression" />
+                    <img src="/site/assets/img/progress/retroceso_significativo.webp" alt="Significant regression" />
                 </div>
                 
                 
@@ -1321,7 +1424,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.a">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.a</span>
@@ -1331,7 +1434,21 @@ data-event-label="high"
             <span class="target-name">Support positive economic, social and environmental links between urban, peri-urban and rural areas by strengthening national and regional development planning</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1374,7 +1491,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1391,7 +1508,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.b">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.b</span>
@@ -1401,7 +1518,21 @@ data-event-label="high"
             <span class="target-name">By 2020, substantially increase the number of cities and human settlements adopting and implementing integrated policies and plans towards inclusion, resource efficiency, mitigation and adaptation to climate change, resilience to disasters, and develop and implement, in line with the Sendai Framework for Disaster Risk Reduction 2015–2030, holistic disaster risk management at all levels</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress towards SD objectives" title="Significant progress towards SD objectives" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1444,7 +1575,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/no_evaluable.png" alt="Not evaluable" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1497,7 +1628,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Significant progress" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Significant progress" />
                 </div>
                 
                 
@@ -1514,7 +1645,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="11.c">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Target</span> 11.c</span>
@@ -1524,7 +1655,21 @@ data-event-label="high"
             <span class="target-name">Support least developed countries, including through financial and technical assistance, in building sustainable and resilient buildings utilizing local materials</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" title="No data available" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -1580,7 +1725,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/sin_datos_disponibles.png" alt="No data available" />
+                    <img src="/site/assets/img/progress/sin_datos_disponibles.webp" alt="No data available" />
                 </div>
                 
                 
@@ -1600,6 +1745,64 @@ data-event-label="high"
   <a href="#top">Back to top</a>
 </div>
 
+<script>
+(function () {
+  // Colapso de indicadores por meta: solo las filas div.goal-target (no el h3 interior)
+  var rows = [].filter.call(document.querySelectorAll('.goal-target'), function (r) {
+    return r.tagName === 'DIV';
+  });
+  rows.forEach(function (r) {
+    var nameCol = r.querySelector('.goal-page-target-name');
+    var tn = r.querySelector('.target-name');
+    var c = document.createElement('span');
+    c.className = 'target-chevron';
+    c.setAttribute('aria-hidden', 'true');
+    if (nameCol) nameCol.insertBefore(c, nameCol.firstChild);
+    r.setAttribute('role', 'button');
+    r.setAttribute('tabindex', '0');
+
+    function toggle(col) {
+      r._col = col;
+      c.textContent = col ? '\u25bc' : '\u25b2';
+      var lbl = tn ? tn.textContent.trim().slice(0, 60) : '';
+      r.setAttribute('aria-expanded', col ? 'false' : 'true');
+      r.setAttribute('title', (col ? (opensdg.language === 'eu' ? 'Zabaldu: ' : opensdg.language === 'en' ? 'Expand: ' : 'Expandir: ') : (opensdg.language === 'eu' ? 'Tolestu: ' : opensdg.language === 'en' ? 'Collapse: ' : 'Colapsar: ')) + lbl);
+      var el = r.nextSibling;
+      while (el) {
+        if (el.nodeType === 1 && el.classList.contains('goal-target') && el.tagName === 'DIV') break;
+        if (el.nodeType === 1 && el.tagName !== 'HR') el.style.display = col ? 'none' : '';
+        el = el.nextSibling;
+      }
+    }
+
+    r.addEventListener('click', function () { toggle(!r._col); r.blur(); });
+    r.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(!r._col); }
+    });
+    r._toggle = toggle;
+    toggle(true); // colapsado al cargar
+  });
+
+  // Si la URL trae un ancla de meta (p.ej. #1.5), solo abrimos ese acordeón.
+  // El scroll hasta el ancla lo hace el navegador de forma nativa (la fila de
+  // la meta no se mueve al expandir, solo aparece contenido debajo), con el
+  // hueco del sticky resuelto vía scroll-margin-top en CSS. El id de la fila
+  // es el número de meta con punto, así que usamos getElementById (no
+  // querySelector('#1.5'), donde el punto se interpretaría como clase).
+  function openTargetFromHash() {
+    var raw = window.location.hash;
+    if (!raw) return;
+    var id = decodeURIComponent(raw.slice(1));
+    if (!id) return;
+    var row = document.getElementById(id);
+    if (!row || !row.classList.contains('goal-target') || typeof row._toggle !== 'function') return;
+    row._toggle(false); // expandir
+  }
+
+  openTargetFromHash();
+  window.addEventListener('hashchange', openTargetFromHash);
+})();
+</script>
 
 <footer role="contentinfo">
     <div class="container">
@@ -1740,7 +1943,7 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261109124022'></script>
+<script src='/site/assets/js/sdg.js?v=20261112153624'></script>
 
 
 <script>
@@ -1760,7 +1963,7 @@ data-event-label="high"
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261109124022"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261112153624"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

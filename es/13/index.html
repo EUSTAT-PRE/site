@@ -144,7 +144,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261109124022">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261112153624">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
     <a class="nav-link" href="/site/es/">Inicio</a>
 </li><li class="nav-item ">
-    <a class="nav-link" href="/site/es/jarraipen-txostena">Informe de seguimiento</a>
+    <a class="nav-link" href="/site/es/helburu-jarraipen-txostena">Estadísticas de progreso</a>
 </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Datos desagregados
                 </a>
@@ -519,15 +519,20 @@ data-event-label="high"
         <h2 class="goal-page-heading">Metas e indicadores</h2>
       </div>
       
+      
       <div class="col-lg-2 d-none d-lg-block progress-column-header">
-        <span aria-hidden="true"><b>Seguimiento</b></span>
+        <span aria-hidden="true"><b>Progreso</b></span>
+        <a href="/site/es/metodologia/"
+           class="progress-info-link"
+           title="Medición del progreso en los Objetivos de Desarrollo Sostenible"
+           aria-label="Medición del progreso en los Objetivos de Desarrollo Sostenible">i</a>
       </div>
       
     </div>
     <hr class="goal-page-column-header-rule">
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="13.1">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 13.1</span>
@@ -537,7 +542,21 @@ data-event-label="high"
             <span class="target-name">Fortalecer la resiliencia y la capacidad de adaptación a los riesgos relacionados con el clima y los desastres naturales en todos los países</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/en_progreso.webp" alt="Avance moderado hacia los objetivos" title="Avance moderado hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -566,7 +585,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -580,7 +599,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/retroceso_significativo.png" alt="Retroceso significativo" />
+                    <img src="/site/assets/img/progress/retroceso_significativo.webp" alt="Retroceso significativo" />
                 </div>
                 
                 
@@ -619,7 +638,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -633,7 +652,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/no_evaluable.png" alt="No evaluable" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -672,7 +691,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -686,7 +705,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -703,7 +722,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="13.2">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 13.2</span>
@@ -713,7 +732,21 @@ data-event-label="high"
             <span class="target-name">Incorporar medidas relativas al cambio climático en las políticas, estrategias y planes nacionales</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -742,7 +775,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -756,7 +789,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/no_evaluable.png" alt="No evaluable" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -795,7 +828,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -809,7 +842,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo / Meta alcanzada o en vías de alcanzarla" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo / Meta alcanzada o en vías de alcanzarla" />
                 </div>
                 
                 
@@ -826,7 +859,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="13.3">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 13.3</span>
@@ -836,7 +869,21 @@ data-event-label="high"
             <span class="target-name">Mejorar la educación, la sensibilización y la capacidad humana e institucional respecto de la mitigación del cambio climático, la adaptación a él, la reducción de sus efectos y la alerta temprana</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Avance significativo hacia los objetivos" title="Avance significativo hacia los objetivos" />
+                  </div>
+                </div>
+              </div>
+            
+          </div>
           
       </div>
         
@@ -865,7 +912,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -879,7 +926,7 @@ data-event-label="high"
             <div class="progress-status-inline">
                 
                 <div class="progress-status-image">
-                    <img src="/site/assets/img/progress/alcanzado.png" alt="Progreso significativo" />
+                    <img src="/site/assets/img/progress/alcanzado.webp" alt="Progreso significativo" />
                 </div>
                 
                 
@@ -896,7 +943,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="13.a">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 13.a</span>
@@ -906,7 +953,13 @@ data-event-label="high"
             <span class="target-name">Cumplir el compromiso de los países desarrollados que son partes en la Convención Marco de las Naciones Unidas sobre el Cambio Climático de lograr para el año 2020 el objetivo de movilizar conjuntamente 100.000 millones de dólares anuales procedentes de todas las fuentes a fin de atender las necesidades de los países en desarrollo respecto de la adopción de medidas concretas de mitigación y la transparencia de su aplicación, y poner en pleno funcionamiento el Fondo Verde para el Clima capitalizándolo lo antes posible</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -948,7 +1001,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -975,7 +1028,7 @@ data-event-label="high"
         <hr class="goal-page-target-rule" />
     
       
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="13.b">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">Meta</span> 13.b</span>
@@ -985,7 +1038,13 @@ data-event-label="high"
             <span class="target-name">Promover mecanismos para aumentar la capacidad para la planificación y gestión eficaces en relación con el cambio climático en los países menos adelantados y los pequeños Estados insulares en desarrollo, haciendo particular hincapié en las mujeres, los jóvenes y las comunidades locales y marginadas</span>
           </div>
           
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          
+          
+          
+          
+          <div class="col-lg-2 goal-page-target-progress">
+            
+          </div>
           
       </div>
         
@@ -1027,7 +1086,7 @@ data-event-label="high"
             </div>
             
             <div class="col-lg-2 goal-page-indicator-progress">
-              <span class="visually-hidden"><b>Seguimiento</b></span>
+              <span class="visually-hidden"><b>Progreso</b></span>
               
     
     
@@ -1057,6 +1116,64 @@ data-event-label="high"
   <a href="#top">Volver arriba</a>
 </div>
 
+<script>
+(function () {
+  // Colapso de indicadores por meta: solo las filas div.goal-target (no el h3 interior)
+  var rows = [].filter.call(document.querySelectorAll('.goal-target'), function (r) {
+    return r.tagName === 'DIV';
+  });
+  rows.forEach(function (r) {
+    var nameCol = r.querySelector('.goal-page-target-name');
+    var tn = r.querySelector('.target-name');
+    var c = document.createElement('span');
+    c.className = 'target-chevron';
+    c.setAttribute('aria-hidden', 'true');
+    if (nameCol) nameCol.insertBefore(c, nameCol.firstChild);
+    r.setAttribute('role', 'button');
+    r.setAttribute('tabindex', '0');
+
+    function toggle(col) {
+      r._col = col;
+      c.textContent = col ? '\u25bc' : '\u25b2';
+      var lbl = tn ? tn.textContent.trim().slice(0, 60) : '';
+      r.setAttribute('aria-expanded', col ? 'false' : 'true');
+      r.setAttribute('title', (col ? (opensdg.language === 'eu' ? 'Zabaldu: ' : opensdg.language === 'en' ? 'Expand: ' : 'Expandir: ') : (opensdg.language === 'eu' ? 'Tolestu: ' : opensdg.language === 'en' ? 'Collapse: ' : 'Colapsar: ')) + lbl);
+      var el = r.nextSibling;
+      while (el) {
+        if (el.nodeType === 1 && el.classList.contains('goal-target') && el.tagName === 'DIV') break;
+        if (el.nodeType === 1 && el.tagName !== 'HR') el.style.display = col ? 'none' : '';
+        el = el.nextSibling;
+      }
+    }
+
+    r.addEventListener('click', function () { toggle(!r._col); r.blur(); });
+    r.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(!r._col); }
+    });
+    r._toggle = toggle;
+    toggle(true); // colapsado al cargar
+  });
+
+  // Si la URL trae un ancla de meta (p.ej. #1.5), solo abrimos ese acordeón.
+  // El scroll hasta el ancla lo hace el navegador de forma nativa (la fila de
+  // la meta no se mueve al expandir, solo aparece contenido debajo), con el
+  // hueco del sticky resuelto vía scroll-margin-top en CSS. El id de la fila
+  // es el número de meta con punto, así que usamos getElementById (no
+  // querySelector('#1.5'), donde el punto se interpretaría como clase).
+  function openTargetFromHash() {
+    var raw = window.location.hash;
+    if (!raw) return;
+    var id = decodeURIComponent(raw.slice(1));
+    if (!id) return;
+    var row = document.getElementById(id);
+    if (!row || !row.classList.contains('goal-target') || typeof row._toggle !== 'function') return;
+    row._toggle(false); // expandir
+  }
+
+  openTargetFromHash();
+  window.addEventListener('hashchange', openTargetFromHash);
+})();
+</script>
 
 <footer role="contentinfo">
     <div class="container">
@@ -1197,7 +1314,7 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261109124022'></script>
+<script src='/site/assets/js/sdg.js?v=20261112153624'></script>
 
 
 <script>
@@ -1217,7 +1334,7 @@ data-event-label="high"
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261109124022"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261112153624"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

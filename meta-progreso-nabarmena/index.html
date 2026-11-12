@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="eu" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
+
+        <script>
+// This is where we initialise any global variables, namespaced in "opensdg".
+var opensdg = {
+
+  // A base URL for asynchronous calls to SDG data.
+  remoteDataBaseUrl: 'https://eustat-pre.github.io/data/eu',
+
+  chartConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Chart.js.
+  chartConfigAlter: function(callback) {
+    this.chartConfigAlterations.push(callback);
+  },
+
+  tableConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Datatables.
+  tableConfigAlter: function(callback) {
+    this.tableConfigAlterations.push(callback);
+  },
+
+  // A hook which can be replaced to alter whether/how the values that are
+  // displayed on indicator tables/graphs get rounded. A "context" parameter
+  // is also passed which contains additional information.
+  dataRounding: function(value, context) {
+    // Alterations go here.
+    return value;
+  },
+
+  // A hook which can be used to alter the data before it is displayed on charts/tables.
+  dataDisplayAlterations: [],
+  dataDisplayAlter: function(callback) {
+    this.dataDisplayAlterations.push(callback);
+  },
+
+  // Disaggregations which should be ignored on indicator pages.
+  ignoredDisaggregations: null,
+
+  language: 'eu',
+
+  language_numbers: 'eu',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
+};
+
+</script>
+
+        <script>
+// JavaScript container for translation data.
+var translations = {
+  //Javascript version of the "t" filter from jekyll-open-sdg-plugins.
+  t: function(key) {
+
+    if (!key || typeof key !== 'string') {
+      return '';
+    }
+
+    // The majority of uses of this function are to translate disaggregation
+    // data. To spare data providers of needing to enter "data." in front of
+    // their disaggregation data, we specifically look for that here.
+    if (typeof this.data === 'object' && this.data !== null && this.data[key]) {
+      return this.data[key];
+    }
+
+    var originalKey = key;
+    var drilled = this;
+    var levelsDrilled = 0;
+    var levels = key.split('.');
+
+    for (var level in levels) {
+      // If we have drilled down to soon, abort.
+      if (typeof drilled !== 'object') {
+        break;
+      }
+
+      if (levels[level] in drilled) {
+        drilled = drilled[levels[level]];
+        levelsDrilled += 1;
+      }
+    }
+
+    // If we didn't drill the right number of levels, return the original string.
+    if (levels.length != levelsDrilled) {
+      return originalKey;
+    }
+
+    // Otherwise we must have drilled all the way.
+    return drilled;
+  },
+};
+</script>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title and meta description
+        ================================================== -->
+
+        
+    <title>Aurrerapen nabarmena / Xedea lortuta edo lortzeko bidean - Garapen Jasangarrirako Helburuen adierazleak</title>
+
+
+
+        
+        <meta name="robots" content="noindex, nofollow">
+        
+
+        <!--[if IE 9]>
+        <script src="/site/assets/js/lib/classList.js"></script>
+        <![endif]-->
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/site/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/site/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/site/assets/img/favicons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/site/assets/img/favicons/favicon.ico" />
+
+        
+
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261112153624">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"  crossorigin=""/>
+        <link rel="stylesheet" href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'  crossorigin=""/>
+        <link rel="stylesheet" href="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.css"  crossorigin=""/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
+        
+
+        
+
+
+        <!--[if IE]>
+        <link rel="stylesheet" href="/site/assets/css/ie.css">
+        <![endif]-->
+
+        
+
+    </head>
+<body class="language-eu
+layout-progrestatus-metas-categoria
+">
+<!-- <div class="container"> -->
+
+<script>translations['header'] = {"alpha":"POC","calendar":"Egutegia","complaints_suggestions":"Kexak/iradokizunak","database":"Datu Bankua","default_contrast":"Kontraste estandarra","disable_high_kontrast":"Desaktibatu kontraste handia","disclaimer":"Webgune hau garapen egoeran dago.","enable_high_kontrast":"Kontraste handia gaitu","follow_us":"Jarraiguzu:","hide_menu":"Ezkutatu nabigazio-menua","high_contrast":"Kontraste handia","info_service":"Informazio zerbitzua","internet_explorer_message":"webgune hau bisitatzeko Internet Explorer erabiltzen ari zarela antzeman dugu. Microsoft orain Internet Explorer ezabatzen ari da. Ondorioz, webgune hau ez da bateragarria Internet Explorer-en inongo bertsiorekin. Gune honen ezaugarri batzuek ez dute funtzionatuko. Nabigatzaile moderno bat erabili behar duzu, hala nola Edge, Chrome, Firefox edo Safari. Beste nabigatzaile bat instalatzeko edo erabiltzeko zailtasunak badituzu, zure IT ekipoarekin harremanetan jarri.","internet_explorer_message_title":"Interneteko nabigatzaile hau jada ez da bateragarria","logo_title":"Joan hasierako orrira","municipal_info":"Udal informazioa","operations":"Eragiketak","press_service":"Prentsa-gunea","show_menu":"Erakutsi nabigazio-menua","situation":"Koiunturakoa","skip_link":"Eduki nagusira joan","tag_line":"Gure mundua eraldatzeko 17 helburu","themes":"Gaiak","toggle_menu":"Txandakatu menua. Egin klik menua zabaltzeko edo uzkurtzeko.","toggle_search":"Bilaketa-barra. Egin klik bilaketa-barra handitzeko edo murrizteko."};</script>
+
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">Eduki nagusira joan</a>
+<div class="container internet-explorer-message">
+    <h2 class="internet-explorer-message-title">Interneteko nabigatzaile hau jada ez da bateragarria</h2>
+    <p class="internet-explorer-message-body">webgune hau bisitatzeko Internet Explorer erabiltzen ari zarela antzeman dugu. Microsoft orain Internet Explorer ezabatzen ari da. Ondorioz, webgune hau ez da bateragarria Internet Explorer-en inongo bertsiorekin. Gune honen ezaugarri batzuek ez dute funtzionatuko. Nabigatzaile moderno bat erabili behar duzu, hala nola Edge, Chrome, Firefox edo Safari. Beste nabigatzaile bat instalatzeko edo erabiltzeko zailtasunak badituzu, zure IT ekipoarekin harremanetan jarri.</p>
+</div>
+<header role="banner" class="">
+  <div class="header" >
+    <div class="header-top">
+        <div id="logo" class="logo-header">
+            <a id="logo-link" href="https://eu.eustat.eus/indice.html">
+                <img src="/site/assets/img/LogoEustat.png" alt="eustat">
+            </a>
+            <div class="logo-header-description">
+                Euskal Estatistika Erakundea<br>Instituto Vasco de Estadística
+            </div>
+        </div>
+        <div id="trigger_home" class="menu-button">
+            <img id="euskadieus-logo"src="/site/assets/img/logo-euskadi-eus.png" alt="eustat">
+            <img id="menu-button-img" src="/site/assets/img/ham.png" alt="Mostrar/ocultar menu principal">
+        </div>
+    </div>
+    <div class="zutabeak">
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL01_01" data-ajax="false" href="https://eu.eustat.eus/estadisticas/opt_0/id_All/temalista.html">Gaiak</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_02" data-ajax="false" href="https://eu.eustat.eus/estadisticas/opt_1/id_All/temalista.html">Eragiketak</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_03" data-ajax="false" href="https://eu.eustat.eus/bancopx/spanish/indice.html">Datu Bankua</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_04" data-ajax="false" onclick="cambiaTemasOperaciones(2);" href="https://eu.eustat.eus/indice.html#cy">Koiunturakoa</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL01_05" data-ajax="false" href="https://eu.eustat.eus/municipal/datos_estadisticos/info_territorial_c.asp">Udal informazioa</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <ul>
+                <li><a id="ctl00_Cabecera_cabCOL02_01" data-ajax="false" href="https://eu.eustat.eus/estadisticas/calendario.html">Egutegia</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_02" data-ajax="false" href="https://eu.eustat.eus/productosServicios/sugerencias.html">Kexak/iradokizunak</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_03" data-ajax="false" href="https://eu.eustat.eusprodserv/info_c.html">Informazio zerbitzua</a></li>
+                <li><a id="ctl00_Cabecera_cabCOL02_04" data-ajax="false" href="https://eu.eustat.eus/notas_c.html">Prentsa-gunea</a></li>
+            </ul>
+        </div>
+        <div class="o-content-zutabe">
+            <div class="rrss">
+                <span class="texto-rrss">
+                  Jarraiguzu:
+                </span>
+                <div class="iconos-rrss">
+                    <a href="https://es.linkedin.com/company/eustat" target="_blank" title="LinkedIn"
+                        style="display:inline-block;"><img class="sociales" alt="LinkedIn"
+                            src="/site/assets/img/rrss/linkedin.gif"></a>
+                    <a href="http://www.facebook.com/eustat" target="_blank" title="Facebook"
+                        style="display:inline-block;"><img class="sociales" alt="Facebook"
+                            src="/site/assets/img/rrss/facebook.gif"></a>
+                    <a href="http://twitter.com/eustat" target="_blank" title="X"
+                        style="display:inline-block;"><img class="sociales" alt="X"
+                            src="/site/assets/img/rrss/X.gif"></a>
+                    <a href="https://bsky.app/profile/eustat.eus" target="_blank" title="BlueSky"
+                        style="display:inline-block;"><img class="sociales" alt="BlueSky"
+                            src="/site/assets/img/rrss/BlueSky.png"></a>
+                    <a href="https://www.youtube.com/user/eustat1986/" target="_blank" title="Youtube"
+                        style="display:inline-block;"><img class="sociales" alt="Youtube"
+                            src="/site/assets/img/rrss/youtube.png"></a>
+                    <a href="https://eu.eustat.eus/web/comun/extractorclobRSS.ashx?id=/rss/novedades_c.xml"
+                        title="Rss novedades" style="display:inline-block;"><img
+                            class="sociales" alt="Rss novedades" src="/site/assets/img/rrss/rss2.png"></a>
+                </div>
+            </div>
+        </div>
+    </div><!-- zutabeak -->
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM completamente cargado y procesado');
+    var container = document.querySelector('.header');
+    var zutabeak = document.querySelector('.zutabeak');
+
+    function buildCanvas() {
+        document.getElementById('trigger_home').addEventListener('click', function (e) {
+            console.log("hey");
+            
+            e.preventDefault();
+            container.classList.toggle('active');
+            zutabeak.classList.toggle('active');
+            if (container.classList.contains('active')) {
+                
+                document.getElementById('menu-button-img').src = "/site/assets/img/aspa.png";
+               
+            } else {
+                document.getElementById('menu-button-img').src = "/site/assets/img/ham.png";
+                
+            }
+        });
+    }
+
+    buildCanvas();
+
+    window.addEventListener('resize', function () {
+        var content = document.querySelector('.o-content');
+        if (content) {
+            cHeight = content.offsetHeight;
+        }
+    });
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 500) {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'block'; }
+        } else {
+            var btn = document.querySelector('.scrollup');
+            if (btn) { btn.style.display = 'none'; }
+        }
+    });
+});
+</script>
+  <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
+            <a class="navbar-brand" href="/site/" id="home" aria-label="Joan hasierako orrira" title="Joan hasierako orrira">
+    <img src="/site/assets/img/logo/SDG_logo_eu.png" alt="Joan hasierako orrira" />
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Erakutsi nabigazio-menua">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav" id="menu"><li class="nav-item ">
+    <a class="nav-link" href="/site/">Hasiera</a>
+</li><li class="nav-item ">
+    <a class="nav-link" href="/site/helburu-jarraipen-txostena">Aurrerapen estatistikak</a>
+</li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-desagregaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Datu desagregatuak
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-desagregaciones"><li class=" ">
+    <a class="dropdown-item" href="/site/lurraldea/">Lurralde historikoa</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/udalerria/">Udalerria</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/sexua/">Sexua</a>
+</li></ul>
+            </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-masinfo" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Informazio gehiago
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-masinfo"><li class=" ">
+    <a class="dropdown-item" href="/site/agenda2030/">2030 Agenda</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/aurkezpena/">Adierazleei buruzko informazio eskuragarria</a>
+</li><li class=" ">
+    <a class="dropdown-item" href="/site/plataforma/">Web plataformari buruz</a>
+</li></ul>
+            </li></ul>
+    
+                </div>
+                <div class="header-search-bar">
+                    <form class="align-self-lg-end" id="search" action="/site/search/">
+    <div class="input-group">
+        <label class="visually-hidden" for="indicator_search">Bilatu</label>
+        <input class="form-control" type="search" name="q" id="indicator_search" title="Bilatu">
+        <span class="input-group-append">
+            <button class="btn btn-outline-secondary ms-n5" aria-label="Bilatu web-orrian" id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+                </div>
+                <div class="header-toggles d-flex">
+
+
+
+
+
+  <div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <span class="language-toggle-active-language">
+                EU
+            </span>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/site/es/meta-progreso-nabarmena/">
+                ES
+            </a>
+        </li><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/site/en/meta-progreso-nabarmena/">
+                EN
+            </a>
+        </li></ul>
+</div>
+
+
+                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
+    <i class="fa fa-globe language-toggle-globe-links"></i>
+    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-eu list-inline-item">
+            <span class="language-toggle-active-language">
+                EU
+            </span>
+        </li><li class="language-option-es list-inline-item">
+            <a class="language-toggle-link" href="/site/es/meta-progreso-nabarmena/">
+                ES
+            </a>
+        </li><li class="language-option-en list-inline-item">
+            <a class="language-toggle-link" href="/site/en/meta-progreso-nabarmena/">
+                EN
+            </a>
+        </li></ul>
+</div></span><a title="" aria-label=""
+    data-contrast-switch-to="" role="button" href="javascript:void(0)" data-on="click"
+data-event-category="Accessibility"
+data-event-action="Change contrast setting"
+data-event-label="high"
+>A</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="top" tabindex=-1></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="main-content" class="container layout-progrestatus-categoria" role="main">
+
+  <!-- Cabecera: volver al informe principal (objetivos) -->
+  <nav aria-label="" style="margin-bottom: 20px;">
+    
+    <a href="/site/helburu-jarraipen-txostena/" class="back-link">
+      &#8592; Aurrerapen estatistikak
+    </a>
+  </nav>
+
+  <!-- Título de la categoría -->
+  <div class="categoria-header" style="margin-bottom: 30px;">
+    <h1 style="margin: 0 0 12px 0;">Aurrerapen nabarmena / Xedea lortuta edo lortzeko bidean</h1>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      
+        <div class="progress-status">
+          <div class="progress-status-image">
+            <img src="/site/assets/img/progress/alcanzado.webp" alt="Aurrerapen nabarmena / Xedea lortuta edo lortzeko bidean" />
+          </div>
+        </div>
+      
+      <span class="total">
+        <span>67</span>
+        meta
+      </span>
+    </div>
+  </div>
+
+  <!-- Orden de goals: sacado de progreso_metas.csv que ya viene ordenado numéricamente por el build -->
+  
+  
+
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/1/" title="Ikusi Helburuaren xedeak eta adierazleak 1" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/1.png" alt="Pobreziaren amaiera" width="80" height="80" class="goal-icon-1 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Pobreziaren amaiera</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">1.1</span>
+              <a href="/site/1/#1.1">2030. urterako, muturreko pobrezia errotik kentzea mundu osoan (gaur egun ulertzen da muturreko pobrezian daudela egunean Ameriketako Estatu Batuetako 3 dolar baino gutxiagorekin bizi direnak)</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">1.4</span>
+              <a href="/site/1/#1.4">2030. urterako, gizon eta emakume guztiek, bereziki pobre eta kalteberek, baliabide ekonomikoetarako eskubide berberak dituztela bermatzea, bai eta hauek irispidean izango dituztela ere: oinarrizko zerbitzuak, lurraren eta beste ondasun batzuen jabetza eta kontrola, herentzia, natura-baliabideak, teknologia berri egokiak eta finantza-zerbitzuak, mikrofinantzaketa barne</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/2/" title="Ikusi Helburuaren xedeak eta adierazleak 2" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/2.png" alt="Goserik ez" width="80" height="80" class="goal-icon-2 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Goserik ez</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">2.c</span>
+              <a href="/site/2/#2.c">Elikadurako oinarrizko produktuen eta eratorrien merkatuak ondo dabiltzala ziurtatzeko neurriak hartzea, eta merkatuei buruzko informaziorako sarbide egokia bideratzea, baita elikaduren erreserben gainean ere, elikagaien prezioen muturreko lurrunkortasuna mugatzen laguntzeko</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/3/" title="Ikusi Helburuaren xedeak eta adierazleak 3" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/3.png" alt="Osasuna eta ongizatea" width="80" height="80" class="goal-icon-3 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Osasuna eta ongizatea</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">3.1</span>
+              <a href="/site/3/#3.1">2030. urterako, munduko amen heriotza‐tasa murriztea, bizirik jaiotako 100.000 umeko hiltzen diren amak 70 baino gutxiago izan daitezen</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.2</span>
+              <a href="/site/3/#3.2">2030. urterako, jaioberrien eta 5 urtetik beherako umeen heriotza saihesgarriei amaiera ematea; horrela, herrialde guztiek jaioberrien heriotza‐tasa gutxienez bizirik jaiotako 1.000 bakoitzeko 12ra jaisteko eta 5 urtetik beherako haurren heriotza‐tasa gutxienez 1.000 bakoitzeko 25era jaisteko ahalegina egin dezaten lortzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.3</span>
+              <a href="/site/3/#3.3">2030. urterako, HIESaren, tuberkulosiaren eta malariaren izurriekin eta aintzat hartu ez diren beste gaixotasun tropikal batzuekin amaitzea eta hepatitisari, uraren bidez transmititutako gaixotasunei eta transmiti daitezkeen beste gaixotasun batzuei aurre egitea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.7</span>
+              <a href="/site/3/#3.7">2030. urterako, sexu‐ eta ugalketa‐osasuneko zerbitzuetarako sarbidea bermatzea, familia‐plangintzakoak, informaziokoak eta hezkuntzakoak barne, eta ugalketa‐osasuna sartzea estrategia eta programa nazionaletan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.a</span>
+              <a href="/site/3/#3.a">Osasunaren Mundu Erakundearen Tabakoaren Kontrolerako Esparru Hitzarmenaren aplikazioa indartzea herrialde guztietan, hala badagokie</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.b</span>
+              <a href="/site/3/#3.b">Batez ere garapen‐bidean dauden herrialdeei eragiten dieten gaixotasun transmitigarrien eta ez‐transmitigarrien aurkako txertoak eta medikamentuak ikertzeko eta garatzeko jarduerak bultzatzea eta funtsezko medikamentu eta txerto eskuragarrietara jotzeko bideak erraztea. Hori guztia, Merkataritzarekin eta Osasun Publikoarekin lotutako Jabetza Intelektualeko Eskubideen alderdiei buruzko Hitzarmenean Osasun publikoa babesteko eta, bereziki, guztiontzako medikamentuak eskuratzeko malgutasunari buruz adierazten diren xedapenak ahalik eta gehien erabiltzeko eskubidea dutela</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">3.c</span>
+              <a href="/site/3/#3.c">Nabarmen areagotzea osasunaren finantzaketa eta osasun‐langileen kontratazioa, hobekuntza eta gaikuntza, eta horiei eustea garapen‐bidean dauden herrialdeetan, bereziki, aurrerapen txikieneko herrialdeetan eta garapen‐bidean dauden uharte‐estatuetan</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/4/" title="Ikusi Helburuaren xedeak eta adierazleak 4" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/4.png" alt="Kalitatezko hezkuntza" width="80" height="80" class="goal-icon-4 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Kalitatezko hezkuntza</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">4.2</span>
+              <a href="/site/4/#4.2">2030. urterako, haur guztiek lehen haurtzaroan eta eskolaurreko hezkuntzan arretarako eta garapenerako kalitatezko zerbitzuak eskura ditzaketela ziurtatzea, lehen hezkuntzarako prest egon daitezen</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">4.4</span>
+              <a href="/site/4/#4.4">2030. urterako, nabarmen areagotzea enplegua eta lan duina eskuratzeko eta ekintzailetzarako beharrezko gaitasunak, batez ere teknikoak eta lanbidekoak, dituzten gazte eta helduen kopurua</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">4.6</span>
+              <a href="/site/4/#4.6">2030. urterako, gazte guztiak eta helduen proportzio handi bat, bai gizonak bai emakumeak, alfabetatuta daudela eta aritmetikako oinarrizko ezagutzak dituztela ziurtatzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">4.7</span>
+              <a href="/site/4/#4.7">2030. urterako, ikasle guztiek garapen jasangarria sustatzeko beharrezkoak diren ezagutza teorikoak eta praktikoak eskuratzen dituztela ziurtatzea, besteak beste, garapen jasangarrirako eta bizi‐estilo jasangarrietarako, giza eskubideetarako, genero‐berdintasunerako, bakearen eta indarkeriarik ezaren kulturaren sustapenerako, munduko herritartasunerako eta kultura‐aniztasunaren baloraziorako eta kulturak garapen jasangarriari laguntzeko, hezkuntzaren bidez</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">4.a</span>
+              <a href="/site/4/#4.a">Haurren eta desgaitasunen bat duten pertsonen beharrak eta genero‐desberdintasunak kontuan hartzen dituzten eta ikaskuntza‐ingurune seguruak, indarkeria gabeak, inklusiboak eta guztiontzako eraginkorrak eskaintzen dituzten hezkuntzako instalazioak eraikitzea eta egokitzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">4.c</span>
+              <a href="/site/4/#4.c">2030. urterako, nabarmen areagotzea goi‐prestakuntza duten irakasleen eskaintza, bai eta garapen‐bidean dauden herrialdeetan, aurrerapen txikieneko herrialdeetan eta garapen‐bidean dauden uharte‐estatuetan irakasleen prestakuntzarako nazioarteko lankidetzaren bidez ere</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/5/" title="Ikusi Helburuaren xedeak eta adierazleak 5" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/5.png" alt="Genero berdintasuna" width="80" height="80" class="goal-icon-5 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Genero berdintasuna</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">5.1</span>
+              <a href="/site/5/#5.1">Mundu guztian emakume eta neskatoen aurkako diskriminazio-modu guztiekin amaitzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">5.3</span>
+              <a href="/site/5/#5.3">Praktika kaltegarri guztiak ezabatzea, besteak beste, haurren ezkontza, goiztiarra eta behartua, eta emakumeen genitalen mutilazioa</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">5.b</span>
+              <a href="/site/5/#5.b">Teknologia instrumentalaren erabilera hobetzea, bereziki, informazioaren eta komunikazioen teknologiarena, emakumeen ahalduntzea sustatzeko</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/6/" title="Ikusi Helburuaren xedeak eta adierazleak 6" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/6.png" alt="Ur garbia eta saneamendua" width="80" height="80" class="goal-icon-6 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Ur garbia eta saneamendua</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">6.1</span>
+              <a href="/site/6/#6.1">2030. urterako, ur edangarria lortzeko aukera unibertsala eta bidezkoa izan dadila lortzea, denontzako prezio egokian</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">6.2</span>
+              <a href="/site/6/#6.2">2030. urterako, saneamendu‐ eta higiene‐zerbitzu egoki eta bidezkoetarako sarbidea lortzea denontzat, eta amaiera ematea aire zabalean sabelusteari. Arreta berezia eskainiko zaie emakumeen eta neskatoen beharrei, eta ahultasun‐egoeran dauden pertsonenei</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">6.3</span>
+              <a href="/site/6/#6.3">2030. urterako, uraren kalitatea hobetzea, alegia: kutsadura murriztea; hondakin, produktu kimiko eta material arriskutsurik ez isurtzea; tratatu gabeko hondakin‐uren ehunekoa erdira murriztea; eta arriskurik gabeko birziklatzea eta berrerabilera nabarmen areagotzea mundu osoan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">6.5</span>
+              <a href="/site/6/#6.5">2030. urterako, baliabide hidrikoen kudeaketa integratua ezartzea maila guztietan, baita mugaz gaindiko lankidetzaren bidez ere, hala badagokio</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">6.b</span>
+              <a href="/site/6/#6.b">Tokiko komunitateek ur‐ eta saneamendu‐kudeaketaren hobekuntzan duten parte‐hartzea babestea eta sendotzea</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/7/" title="Ikusi Helburuaren xedeak eta adierazleak 7" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/7.png" alt="Energia eskuragarria eta garbia" width="80" height="80" class="goal-icon-7 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Energia eskuragarria eta garbia</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">7.1</span>
+              <a href="/site/7/#7.1">2030. urterako, energia‐zerbitzu arrazoizko, fidagarri eta modernoetarako sarbide unibertsala bermatzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">7.2</span>
+              <a href="/site/7/#7.2">2030. urterako, nabarmen areagotzea energia berriztagarrien proportzioa, energia‐iturri guztien artean</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">7.a</span>
+              <a href="/site/7/#7.a">2030. urterako, nazioarteko lankidetza areagotzea, energia garbiari lotutako ikerketarako eta teknologiarako sarbidea ahalbidetzeko. Hemen sartuko dira iturri berriztagarriak, energia‐eraginkortasuna eta erregai fosilen teknologia aurreratu eta ez horren kutsakorrak- Hemen sartzen da, halaber, energia‐azpiegituretako eta teknologia garbietako inbertsioa sustatzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">7.b</span>
+              <a href="/site/7/#7.b">2030. urterako, energia‐zerbitzu modernoak eta jasangarriak emateko azpiegitura areagotzea eta teknologia berritzea, garapen‐bidean dauden herrialde guztietan; bereziki, aurrerapen txikieneko herrialdeetan, garapen‐bidean dauden uharte‐estatu txikietan eta garapen‐bidean dauden kostalderik gabeko herrialdeetan, betiere, bat etorriz beren laguntza‐programekin</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/8/" title="Ikusi Helburuaren xedeak eta adierazleak 8" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/8.png" alt="Lan duina eta hazkunde ekonomikoa" width="80" height="80" class="goal-icon-8 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Lan duina eta hazkunde ekonomikoa</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">8.4</span>
+              <a href="/site/8/#8.4">2030. urterako, pixkanaka hobetzea munduko baliabideen ekoizpen eta kontsumo eraginkorra, eta hazkunde ekonomikoa ingurumenaren degradaziotik bereizten saiatzea, Kontsumo eta Ekoizpen Modalitate Jasangarriei buruzko Programen Hamar Urterako Esparruarekin bat etorriz, garatutako herrialdeetatik hasita</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">8.5</span>
+              <a href="/site/8/#8.5">2030. urterako, enplegu osoa eta produktiboa eta lan egokia lortzea emakume eta gizon guztientzat, gazteak eta desgaitasunen bat dutenak barne; eta balio bereko lanarengatik soldata berdina eman dadila lortzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">8.6</span>
+              <a href="/site/8/#8.6">2020. urterako, nabarmen murriztea enplegurik ez duten eta ikasten edo gaitzen ari ez diren gazteen proportzioa</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">8.7</span>
+              <a href="/site/8/#8.7">Berehalako neurri eraginkorrak hartzea ezinbesteko lanarekin amaitzeko, amaiera ematea egungo esklabotasun‐moduei eta pertsonen salerosketari, eta haurren lanaren forma okerrenak (errekrutatzea eta haur soldaduak barne) debekatu eta kenduko direla bermatzea; eta, hemendik 2025era, amaiera ematea haurren lanari, bere forma guztietan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">8.10</span>
+              <a href="/site/8/#8.10">Finantza‐erakunde nazionalek pertsona guztientzako banku‐, finantza‐ eta aseguru‐zerbitzuetarako sarbidea sustatzeko eta zabaltzeko duten ahalmena areagotzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">8.a</span>
+              <a href="/site/8/#8.a">Merkataritzari laguntzeko ekimenarentzako babesa areagotzea garapen‐bidean dauden herrialdeetan, bereziki, aurrerapen txikieneko herrialdeetan, baita Aurrerapen Txikieneko Herrialdeetan Merkataritzaren Arloko Laguntza Teknikorako Esparru Integratu Hobetuaren bitartez ere</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/9/" title="Ikusi Helburuaren xedeak eta adierazleak 9" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/9.png" alt="Industria, berrikuntza eta azpiegiturak" width="80" height="80" class="goal-icon-9 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Industria, berrikuntza eta azpiegiturak</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">9.1</span>
+              <a href="/site/9/#9.1">Azpiegitura fidagarriak, jasangarriak, sendoak eta kalitatezkoak egitea, eskualde‐mailako eta mugaz gaindiko azpiegiturak barne, garapen ekonomikoa eta giza garapena babesteko, arreta berezia eskainiz pertsona guztiek horiek modu arrazoizko eta bidezkoan erabiltzeko aukera izateari</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">9.4</span>
+              <a href="/site/9/#9.4">2030. urterako, azpiegiturak modernizatzea eta industriak eraldatzea, jasangarriak izan daitezen. Horretarako, eraginkortasun handiagoko baliabideak erabili behar dira eta teknologia eta industria‐prozesu garbiak eta ingurumenaren ikuspegitik arrazoizkoak erabiltzen direla bermatu behar da, eta herrialde guztiek dagozkien ahalmenen araberako neurriak har ditzatela lortu behar da</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">9.5</span>
+              <a href="/site/9/#9.5">Ikerketa zientifikoa areagotzea eta herrialde guztietako industria‐sektoreen ahalmen teknologikoa hobetzea, bereziki garapen‐bidean dauden herrialdeetan. Horretarako, berrikuntza sustatu behar da eta nabarmen areagotu behar da, hemendik 2030era, ikerketan eta garapenean lan egiten duten pertsonen kopurua (milioi biztanletik), baita sektore publikoek eta pribatuek ikerketan eta garapenean egiten duten gastua ere</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">9.a</span>
+              <a href="/site/9/#9.a">Garapen‐bidean dauden herrialdeetan azpiegitura jasangarriak eta sendoak egin daitezela ahalbidetzea, babes finantzario, teknologiko eta tekniko handiagoa emanez Afrikako herrialdeei, aurrerapen txikieneko herrialdeei, kostalderik gabeko garapen‐bideko herrialdeei eta garapen‐bidean dauden uharte‐estatu txikiei</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">9.c</span>
+              <a href="/site/9/#9.c">Nabarmen areagotzea informazioaren eta komunikazioen teknologiarako sarbidea, eta, 2020rako, aurrerapen txikieneko herrialdeei Interneterako sarbide unibertsala eta arrazoizkoa emateko ahalegina egitea</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/10/" title="Ikusi Helburuaren xedeak eta adierazleak 10" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/10.png" alt="Desberdintasunak murriztea" width="80" height="80" class="goal-icon-10 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Desberdintasunak murriztea</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">10.1</span>
+              <a href="/site/10/#10.1">Hemendik 2030era bitartean, biztanleriaren % 40 pobreenaren diru-sarrerak haztea estatuko batez bestekoa baino tasa handiagoan, eta horri eustea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">10.b</span>
+              <a href="/site/10/#10.b">Garapenerako laguntza ofiziala eta finantza-korronteak sustatzea, atzerriko inbertsio zuzena barne, behar handienak dituzten estatuentzat; bereziki, aurrerapen txikieneko herrialdeentzat, Afrikako herrialdeentzat, garapen‐bidean dauden uharte‐estatu txikientzat eta garapen‐bidean dauden kostalderik gabeko herrialdeentzat, beren plan eta programa nazionalekin bat etorriz</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/11/" title="Ikusi Helburuaren xedeak eta adierazleak 11" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/11.png" alt="Hiri eta komunitate jasangarriak" width="80" height="80" class="goal-icon-11 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Hiri eta komunitate jasangarriak</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">11.1</span>
+              <a href="/site/11/#11.1">2030. urterako, pertsona guztiek etxebizitza eta oinarrizko zerbitzu egokiak, seguruak eta arrazoizkoak izan ditzatela bermatzea, eta auzo marjinalak hobetzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">11.3</span>
+              <a href="/site/11/#11.3">2030. urterako, hirigintza inklusiboa eta jasangarria areagotzea, eta baita giza kokaguneen kudeaketa parte‐hartzailea, integratua eta jasangarria ere, herrialde guztietan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">11.4</span>
+              <a href="/site/11/#11.4">Munduko kultura‐ eta natura‐ondarea babesteko eta zaintzeko ahaleginak bikoiztea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">11.6</span>
+              <a href="/site/11/#11.6">2030. urterako, hirietako per capita ingurumen‐inpaktu negatiboa murriztea, eta arreta berezia eskaintzea airearen kalitateari eta udal‐hondakinen eta beste hondakin batzuen kudeaketari</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">11.a</span>
+              <a href="/site/11/#11.a">Hiriguneen, hiri‐inguruen eta landa‐eremuen arteko ekonomia‐, gizarte‐ eta ingurumen‐lotura positiboak babestea, garapen nazionalaren eta eskualdekoaren plangintza sendotuz</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">11.b</span>
+              <a href="/site/11/#11.b">2020. urterako, nabarmen areagotzea politika eta plan integratuak bereganatzen eta ezartzen dituzten hirien eta giza kokaguneen kopurua, horren helburua izanik inklusioa, baliabideen erabilera eraginkorra, klima‐aldaketaren arintzea, klima‐aldaketarako egokitzapena eta hondamendien aurkako erresilientzia hobetzea; horrez gain, hondamendi‐arriskuen kudeaketa integrala egitea eta martxan jartzea, maila guztietan, Hondamendien Arriskua Murrizteko 2015‑2030 aldirako Sendaiko Esparruarekin bat etorriz</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/12/" title="Ikusi Helburuaren xedeak eta adierazleak 12" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/12.png" alt="Ekoizpen eta kontsumo arduratsuak" width="80" height="80" class="goal-icon-12 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Ekoizpen eta kontsumo arduratsuak</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">12.1</span>
+              <a href="/site/12/#12.1">Kontsumo eta Ekoizpen Modalitate Jasangarriei buruzko Programen Hamar Urterako Esparrua aplikatzea, herrialde guztien parte‐hartzearekin eta garatutako herrialdeek gidatuta, kontuan izanda garapen‐bidean dauden herrialdeen garapen‐maila eta ahalmenak</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">12.2</span>
+              <a href="/site/12/#12.2">2030. urterako, baliabide naturalen kudeaketa jasangarria eta erabilera eraginkorra egin dadila lortzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">12.6</span>
+              <a href="/site/12/#12.6">Enpresak animatzea, bereziki enpresa handiak eta transnazionalak, jardunbide jasangarriak erabiltzera eta jasangarritasunari buruzko informazioa sartzera beren txostenen aurkezpen‐zikloan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">12.7</span>
+              <a href="/site/12/#12.7">Erosketa publikoko jardunbide jasangarriak sustatzea, politika eta lehentasun nazionalekin bat etorriz</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">12.8</span>
+              <a href="/site/12/#12.8">2030. urterako, mundu osoko pertsonek beharrezko informazioa eta ezagutzak badituztela bermatzea, garapen jasangarrirako eta naturarekin bat datorren bizi‐estiloa edukitzeko</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">12.a</span>
+              <a href="/site/12/#12.a">Garapen‐bidean dauden herrialdeei laguntzea beren zientzia‐ eta teknologia‐ahalmena sendotzen, kontsumo‐ eta ekoizpen‐modalitate jasangarriagoetarantz aurrera egiteko</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/13/" title="Ikusi Helburuaren xedeak eta adierazleak 13" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/13.png" alt="Klimaren aldeko ekintza" width="80" height="80" class="goal-icon-13 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Klimaren aldeko ekintza</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">13.2</span>
+              <a href="/site/13/#13.2">Klima‐aldaketarekin lotutako neurriak sartzea politika, estrategia eta plan nazionaletan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">13.3</span>
+              <a href="/site/13/#13.3">Hezkuntza, sentsibilizazioa eta giza ahalmena eta erakundeena hobetzea, klima‐aldaketa murrizteko, horretara egokitzeko, dituen eraginak arintzeko eta garaiz ohartarazteko</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/14/" title="Ikusi Helburuaren xedeak eta adierazleak 14" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/14.png" alt="Itsaspeko bizitza" width="80" height="80" class="goal-icon-14 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Itsaspeko bizitza</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">14.5</span>
+              <a href="/site/14/#14.5">2020. urterako, kostaldeen eta itsas eremuen % 10, gutxienez, kontserbatzea, lege nazionalekin eta nazioarteko zuzenbidearekin bat etorriz eta oinarri gisa erabilgarri dagoen informazio zientifiko hoberena erabiliz</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/15/" title="Ikusi Helburuaren xedeak eta adierazleak 15" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/15.png" alt="Lehorreko ekosistemetako bizitza" width="80" height="80" class="goal-icon-15 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Lehorreko ekosistemetako bizitza</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">15.2</span>
+              <a href="/site/15/#15.2">2020. urterako, martxan jartzea baso‐mota guztien kudeaketa jasangarria, deforestazioa geldiaraztea, degradatutako basoak berreskuratzea eta baso-sartzea nahiz basoberritzea nabarmen areagotzea mundu‐mailan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">15.3</span>
+              <a href="/site/15/#15.3">2030. urterako, desertifikazioari aurka egitea, lur eta lurzoru degradatuak birgaitzea (desertifikazioek, lehorteek eta uholdeek kaltetutako lurrak barne) eta lurzoruaren degradazioan eragin neutroa izango duen mundu bat lortzen saiatzea</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">15.8</span>
+              <a href="/site/15/#15.8">2020. urterako, espezie exotiko inbaditzaileak sar daitezela prebenitzeko eta horiek lurreko nahiz uretako ekosistemetan dituzten eraginak nabarmen murrizteko neurriak hartzea, eta lehentasunezko espezieak kontrolatzea edo desagerraraztea</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/16/" title="Ikusi Helburuaren xedeak eta adierazleak 16" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/16.png" alt="Bakea, justizia eta instituzio sendoak" width="80" height="80" class="goal-icon-16 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Bakea, justizia eta instituzio sendoak</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">16.6</span>
+              <a href="/site/16/#16.6">Kontuak emango dituzten erakunde eraginkorrak eta gardenak sortzea maila guztietan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">16.7</span>
+              <a href="/site/16/#16.7">Beharrei erantzungo dieten erabaki inklusiboak, parte‐hartzaileak eta esanguratsuak hartuko direla bermatzea maila guztietan</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">16.9</span>
+              <a href="/site/16/#16.9">2030. urterako, denok nortasun juridikoa izan dezagula ahalbidetzea, batez ere jaiotzak erregistratzearen bidez</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+    
+    
+    
+    <div class="goal reporting-status-item categoria-goal-block">
+        <!-- Cabecera del Objetivo -->
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          
+            <a href="/site/17/" title="Ikusi Helburuaren xedeak eta adierazleak 17" style="margin-right: 15px; flex-shrink: 0;">
+              <img src="https://eustat-pre.github.io/site/assets/img/goals/eu/17.png" alt="Helburuak lortzeko aliantzak" width="80" height="80" class="goal-icon-17 goal-icon-image goal-icon-image-" />
+            </a>
+          
+          <h3 style="margin: 0;">Helburuak lortzeko aliantzak</h3>
+        </div>
+
+        <!-- Lista de metas -->
+        <ul class="categoria-indicator-list">
+          
+            
+            <li>
+              <span class="indicator-number">17.3</span>
+              <a href="/site/17/#17.3">Hainbat iturritako finantza‐baliabide gehigarriak mobilizatzea, garapen‐bidean dauden herrialdeentzat</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.6</span>
+              <a href="/site/17/#17.6">Eskualde‐mailako eta nazioarteko Iparralde‐Hegoalde eta Hegoalde‐Hegoalde lankidetza hobetzea, baita lankidetza triangeluarra ere, honako arlo hauetan: zientzia, teknologia, berrikuntza eta horietarako sarbidea; eta ezagutzen trukea areagotzea bi aldeen artean hitzartutako baldintzetan, egungo mekanismoen arteko koordinazioa hobetuz (bereziki, Nazio Batuei dagokienez) eta teknologiaren erabilera erraztuko duen mundu‐mailako mekanismo baten bidez</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.8</span>
+              <a href="/site/17/#17.8">Martxan jartzea, beranduenez 2017an, teknologia‐bankua eta zientziaren, teknologiaren eta berrikuntzaren arloko ahalmena sortzeko babes‐mekanismoa, aurrerapen txikieneko herrialdeentzat; eta teknologia instrumentalen erabilera areagotzea, bereziki, informazioaren eta komunikazioen teknologiarena</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.18</span>
+              <a href="/site/17/#17.18">2020. urterako, garapen‐bidean dauden herrialdeei (aurrerapen txikieneko herrialdeak eta garapen‐bidean dauden uharte‐estatu txikiak barne) ahalmena sortzeko emandako babesa hobetzea, datu egokien, fidagarrien eta kalitatezkoen erabilgarritasuna nabarmen areagotzeko; datu horiek honela banakatuta egon beharko dute: diru-sarrerak, sexua, adina, arraza, jatorri etnikoa, migrazio‐estatusa, desgaitasuna, kokapen geografikoa eta testuinguru nazionaletan egokitzat jotzen diren beste ezaugarri batzuk</a>
+            </li>
+          
+            
+            <li>
+              <span class="indicator-number">17.19</span>
+              <a href="/site/17/#17.19">2030. urterako, martxan dauden ekimenak aprobetxatzea garapen jasangarriaren arloan egindako aurrerapenak neurtzea ahalbidetuko duten zenbait adierazle sortzeko; adierazle horiek, halaber, barne produktu gordinaren osagarri izango dira, eta garapen bidean dauden herrialdeetan ahalmen estatistikoa sortzen lagunduko dute</a>
+            </li>
+          
+        </ul>
+      </div>
+      <hr class="categoria-separator">
+    
+  
+
+  <a href="#top">Gora itzuli</a>
+</div>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="footerLinks">
+                    <ul>
+                        <li>
+                            <a href="https://open-sdg.org">Open SDGrekin eraikia</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/site/config">Configuration</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pieEustat">
+  <div class="marcopie">
+      <div class="enlaces">
+          <div class="centradomini">
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/about/links_e.html">
+                          Estekak
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/faq_e.html">
+                          FAQ
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/sitemap_e.html">
+                          Mapa
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL01_04" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/accesibilidad_e.html">
+                          Erabilerraztasuna
+                      </a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="centradomini">
+              <div class="Prayamini"></div>
+              <ul class="list-group iconillo rupturasmall">
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_01" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/about/a_eustat_e.html">
+                          Eustati buruz
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_02" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://www.euskadi.eus/egoitza-elektronikoa/">
+                          Egoitza elektronikoa
+                      </a>
+                  </li>
+                  <li class="bloquenubessmall">
+                      <a id="ctl00_Pie_pieCOL02_03" class="list-group-item2 enlaceblanco"
+                         data-ajax="false" href="https://eu.eustat.eus/privacidad_e.html">
+                          Pribatutasuna
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="piederecho">
+          <div class="logos-rrss-pie">
+              <div class="logos">
+                  <a id="ctl00_Pie_pieCOL03_07" data-ajax="false"
+                     href="https://eu.eustat.eus/about/aenor_e.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/aenor_2022_e.png"
+                          alt="AENOR"
+                          style="border-width:0px;">
+                  </a>
+
+                  <a id="ctl00_Pie_pieCOL03_07b" data-ajax="false"
+                     href="https://eu.eustat.eus/about/aenor_e.html">
+                      <img
+                          src="https://www.eustat.eus/cwImages/2015/logo_ENS_2022.png"
+                          alt="ENS"
+                          style="border-width:0px;">
+                  </a>
+              </div>
+          </div>
+
+          <div class="piederecho-texto">
+              <p class="piederechop bold">Eustat - Euskal Estatistika Erakundea - Instituto Vasco de Estadística</p>
+              <p class="piederechop">Eustat, Euskal AEko informazio estatistiko ofiziala garatu, ekoiztu eta zabaltzen duen erakunde publikoa da</p>
+              <p class="piederechop">
+                  c/Donostia - San Sebastián, 1<br>
+                  01010 Vitoria-Gasteiz<br>
+                  Tel: (+34) 945017500<br>
+                  Fax: (+34) 945017501<br>
+                  webmaster_eustat@eustat.eus
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" integrity="sha384-ficRBwtap/VLzILv81vIvgp30PoJYnlCm96tPpNYHXAf+h9SIThOZxxIzRUzbpAh" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" integrity="sha384-jIAE3P7Re8BgMkT0XOtfQ6lzZgbDw/02WeRMJvXK3WMHBNynEx5xofqia1OHuGh0" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js" integrity="sha384-kdgUFNEbslNOEAQ/zFH9wjDORAbvN0KUYOpfJIJYPdjtzLXkZsMJAXU9HPpi5B5c" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha384-eEX5kO4tdQpY+eTjDbZNPlMm4QhsK+kosSZtkzp+uZk0L5g0lSzmWXWHzKDoOzA7" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js" integrity="sha384-3qyhlVVDXXiWhzgKIoL/aw+uaXN5kyAFE0Jv2LGoV+nnQnum4ebt1QAtRbjnz9pL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha384-KQ8aykg/lc6595wSrMplFVs4kRS66x+EdkX7EQsJ2Pe6FX7l3tMqyD1Am0c2dKBG" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script>translations['general'] = translations['general'] || {};
+    translations['general']['hide'] = 'Ezkutatu';</script>
+
+<script>translations['search'] = translations['search'] || {};
+    translations['search']['search'] = 'Bilatu';</script>
+
+<script src='/site/assets/js/sdg.js?v=20261112153624'></script>
+
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],  // Permite $...$ y \(...\) para matemáticas en línea
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],  // Permite $$...$$ y \[...\] para ecuaciones en bloque
+      tags: 'none'  // Desactiva la numeración automática de ecuaciones
+    },
+    svg: {
+      fontCache: 'global'  // Optimiza el rendimiento al reutilizar fuentes matemáticas
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+    
+    <script src="/site/assets/js/custom.js?v=20261112153624"></script><script>
+    new indicatorInit();
+    new accessibilitySwitcher();
+</script>
+
+
+</body>
+</html>
+
