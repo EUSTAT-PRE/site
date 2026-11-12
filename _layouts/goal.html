@@ -34,15 +34,22 @@
         <h2 class="goal-page-heading">{{ page.t.general.targets_and_indicators }}</h2>
       </div>
       {% if show_progress %}
+      {% if page.language == 'es' %}{% assign _met_path = '/es/metodologia/' %}
+      {% elsif page.language == 'en' %}{% assign _met_path = '/en/metodologia/' %}
+      {% else %}{% assign _met_path = '/metodologia/' %}{% endif %}
       <div class="col-lg-2 d-none d-lg-block progress-column-header">
         <span aria-hidden="true">{{ site.progress_status.status_help | t | default: page.t.status.progress_help }}</span>
+        <a href="{{ site.baseurl }}{{ _met_path }}"
+           class="progress-info-link"
+           title="{{ page.t.status.progress_help }}"
+           aria-label="{{ page.t.status.progress_help }}">i</a>
       </div>
       {% endif %}
     </div>
     <hr class="goal-page-column-header-rule">
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row align-items-start goal-target">
+      <div class="row align-items-start goal-target" id="{{ target.number }}">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">{{ page.t.general.target }}</span> {{ target.number }}</span>
@@ -52,7 +59,23 @@
             <span class="target-name">{{ target.name }}</span>
           </div>
           {% if show_progress %}
-          <div class="col-lg-2 d-none d-lg-block"></div>
+          {% assign _meta_id = group.name | replace: '.', '-' %}
+          {% assign _meta_row = site.data.csv.progreso_metas_individual | where: "meta", _meta_id | first %}
+          {% assign _meta_status_type = nil %}
+          {% if _meta_row %}
+            {% assign _meta_status_type = site.progress_status.status_types | where: "value", _meta_row.status | first %}
+          {% endif %}
+          <div class="col-lg-2 goal-page-target-progress">
+            {% if _meta_status_type and _meta_status_type.image %}
+              <div class="progress-status">
+                <div class="progress-status-inline">
+                  <div class="progress-status-image">
+                    <img src="{{ site.baseurl }}/{{ _meta_status_type.image }}" alt="{{ _meta_status_type.label | t }}" title="{{ _meta_status_type.label | t }}" />
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
           {% endif %}
       </div>
         {% for indicator in group.items %}
@@ -98,5 +121,63 @@
   {% include back-to-top.html %}
 </div>
 
+<script>
+(function () {
+  // Colapso de indicadores por meta: solo las filas div.goal-target (no el h3 interior)
+  var rows = [].filter.call(document.querySelectorAll('.goal-target'), function (r) {
+    return r.tagName === 'DIV';
+  });
+  rows.forEach(function (r) {
+    var nameCol = r.querySelector('.goal-page-target-name');
+    var tn = r.querySelector('.target-name');
+    var c = document.createElement('span');
+    c.className = 'target-chevron';
+    c.setAttribute('aria-hidden', 'true');
+    if (nameCol) nameCol.insertBefore(c, nameCol.firstChild);
+    r.setAttribute('role', 'button');
+    r.setAttribute('tabindex', '0');
+
+    function toggle(col) {
+      r._col = col;
+      c.textContent = col ? '\u25bc' : '\u25b2';
+      var lbl = tn ? tn.textContent.trim().slice(0, 60) : '';
+      r.setAttribute('aria-expanded', col ? 'false' : 'true');
+      r.setAttribute('title', (col ? (opensdg.language === 'eu' ? 'Zabaldu: ' : opensdg.language === 'en' ? 'Expand: ' : 'Expandir: ') : (opensdg.language === 'eu' ? 'Tolestu: ' : opensdg.language === 'en' ? 'Collapse: ' : 'Colapsar: ')) + lbl);
+      var el = r.nextSibling;
+      while (el) {
+        if (el.nodeType === 1 && el.classList.contains('goal-target') && el.tagName === 'DIV') break;
+        if (el.nodeType === 1 && el.tagName !== 'HR') el.style.display = col ? 'none' : '';
+        el = el.nextSibling;
+      }
+    }
+
+    r.addEventListener('click', function () { toggle(!r._col); r.blur(); });
+    r.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(!r._col); }
+    });
+    r._toggle = toggle;
+    toggle(true); // colapsado al cargar
+  });
+
+  // Si la URL trae un ancla de meta (p.ej. #1.5), solo abrimos ese acordeón.
+  // El scroll hasta el ancla lo hace el navegador de forma nativa (la fila de
+  // la meta no se mueve al expandir, solo aparece contenido debajo), con el
+  // hueco del sticky resuelto vía scroll-margin-top en CSS. El id de la fila
+  // es el número de meta con punto, así que usamos getElementById (no
+  // querySelector('#1.5'), donde el punto se interpretaría como clase).
+  function openTargetFromHash() {
+    var raw = window.location.hash;
+    if (!raw) return;
+    var id = decodeURIComponent(raw.slice(1));
+    if (!id) return;
+    var row = document.getElementById(id);
+    if (!row || !row.classList.contains('goal-target') || typeof row._toggle !== 'function') return;
+    row._toggle(false); // expandir
+  }
+
+  openTargetFromHash();
+  window.addEventListener('hashchange', openTargetFromHash);
+})();
+</script>
 
 {% include footer.html %}

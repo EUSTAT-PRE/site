@@ -1,0 +1,628 @@
+{% include head.html %}
+{% include header.html %}
+
+{% comment %} â”€â”€ Datos CSV â”€â”€ {% endcomment %}
+{% assign objetivo_data = site.data.csv.progreso_objetivos %}
+{% assign ind_data      = site.data.csv.progreso %}
+{% assign metas_data    = site.data.csv.progreso_metas %}
+{% assign status_types  = site.progress_status.status_types %}
+
+{% comment %} Prefijo de idioma para links de categorÃ­a {% endcomment %}
+{% if page.language == 'es' %}{% assign _cat_prefix = '/es/' %}
+{% elsif page.language == 'en' %}{% assign _cat_prefix = '/en/' %}
+{% else %}{% assign _cat_prefix = '/' %}{% endif %}
+
+
+<script>
+/* â”€â”€ Datos incrustados por Jekyll â”€â”€ */
+
+/* Puntuaciones y estado por objetivo (progreso_objetivos.csv) */
+var OBJETIVO_SCORES = {
+{% for row in objetivo_data %}{% assign _fc = row.goal | slice: 0 %}{% if _fc == '1' or _fc == '2' or _fc == '3' or _fc == '4' or _fc == '5' or _fc == '6' or _fc == '7' or _fc == '8' or _fc == '9' %}  "{{ row.goal }}": { status: "{{ row.status }}", score: {% if row.score and row.score != '' %}{{ row.score }}{% else %}null{% endif %} }{% unless forloop.last %},{% endunless %}
+{% endif %}{% endfor %}};
+
+/* Tipos de estado (site.progress_status.status_types + | t)
+   label: variante "_sin_target" (texto corto, igual que las etiquetas de las
+   zonas de color de la barra superior); se usa en la pastilla de estado del panel.
+   label_mixto: variante "_mixto" (texto largo); se usa en el tooltip de las
+   barras, igual que en los informes de metas/indicadores de abajo.
+   Si no hay traducción, cae al label por defecto del status_type. */
+var STATUS_TYPES = {
+{% for st in site.progress_status.status_types %}{% assign _st_key = 'status.' | append: st.value | append: '_sin_target' %}{% assign _st_label = _st_key | t %}{% if _st_label == _st_key %}{% assign _st_label = st.label | t %}{% endif %}{% assign _st_key_m = 'status.' | append: st.value | append: '_mixto' %}{% assign _st_label_m = _st_key_m | t %}{% if _st_label_m == _st_key_m %}{% assign _st_label_m = st.label | t %}{% endif %}  "{{ st.value }}": { label: {{ _st_label | jsonify }}, label_mixto: {{ _st_label_m | jsonify }}, image: "{{ st.image }}" }{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+
+/* URLs de los 17 objetivos (con prefijo de idioma) */
+var GOAL_URLS = {
+{% for i in (1..17) %}  "{{ i }}": "{{ site.baseurl }}{{ _cat_prefix }}{{ i }}/"{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+
+/* Colores oficiales ODS 1-17 */
+var GOAL_COLORS = {
+  "1":"#e5243b","2":"#dda63a","3":"#4c9f38","4":"#c5192d","5":"#ff3a21",
+  "6":"#26bde2","7":"#fcc30b","8":"#a21942","9":"#fd6925","10":"#dd1367",
+  "11":"#fd9d24","12":"#bf8b2e","13":"#3f7e44","14":"#0a97d9","15":"#56c02b",
+  "16":"#00689d","17":"#19486a"
+};
+
+/* Nombres cortos de los objetivos (sdg_lookup) */
+var GOAL_NAMES = {
+{% for i in (1..17) %}{% assign _gd = i | append: '' | sdg_lookup %}  "{{ i }}": {{ _gd.short | jsonify }}{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+
+/* URLs de los iconos (sdg_lookup) */
+var GOAL_ICONS = {
+{% for i in (1..17) %}{% assign _gd = i | append: '' | sdg_lookup %}  "{{ i }}": "{{ _gd.icon }}"{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+
+/* ConfiguraciÃ³n general */
+var OBJETIVO_CFG = {
+  baseurl:       "{{ site.baseurl }}",
+  lbl_no_eval:   {{ 'status.no_evaluado' | t | jsonify }},
+  lbl_goal:      {{ 'general.goal' | t | jsonify }},
+  lbl_view_goal: {{ 'status.view_goal' | t | jsonify }}
+};
+
+/* Datos de indicadores por objetivo (site.data.csv.progreso, sin overall) */
+var IND_SCORES_BY_GOAL = {
+{% assign _ind_goals = ind_data | where_exp: "item", "item.goal != 'overall'" | group_by: "goal" %}
+{% for _g in _ind_goals %}"{{ _g.name }}": [{% for r in _g.items %}{"status":"{{ r.status }}","count":{{ r.count }},"percentage":{{ r.percentage }},"total":{{ r.total }}}{% unless forloop.last %},{% endunless %}{% endfor %}]{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+
+/* Datos de metas por objetivo (site.data.csv.progreso_metas, sin overall) */
+var MET_SCORES_BY_GOAL = {
+{% assign _met_goals = metas_data | where_exp: "item", "item.goal != 'overall'" | group_by: "goal" %}
+{% for _g in _met_goals %}"{{ _g.name }}": [{% for r in _g.items %}{"status":"{{ r.status }}","count":{{ r.count }},"percentage":{{ r.percentage }},"total":{{ r.total }}}{% unless forloop.last %},{% endunless %}{% endfor %}]{% unless forloop.last %},{% endunless %}
+{% endfor %}};
+</script>
+
+<div id="main-content" class="container layout-progrestatus-objetivos" role="main">
+
+  {% include components/reporting-status-introduction.html %}
+
+  <!-- Barra panorÃ¡mica: 17 objetivos situados segÃºn su puntuaciÃ³n -->
+  <h2 class="om-overview-title">{{ 'status.goals_report' | t }}</h2>
+  <div class="om-overview-section">
+    <div class="om-overview-track om-overview-track--icons"
+         id="om-overview-track" aria-hidden="true">
+      <!-- Zonas de color con tooltip del estado (posiciones fijas del gradiente) -->
+      <span class="om-bar-zone significant_deterioration" style="left:0%;width:25%">
+        <span class="om-zone-label">{{ 'status.significant_deterioration_sin_target' | t }}</span>
+      </span>
+      <span class="om-bar-zone moderate_deterioration" style="left:25%;width:22.5%">
+        <span class="om-zone-label">{{ 'status.moderate_deterioration_sin_target' | t }}</span>
+      </span>
+      <span class="om-bar-zone no_progress" style="left:47.5%;width:5%">
+        <span class="om-zone-label">{{ 'status.no_progress_sin_target' | t }}</span>
+      </span>
+      <span class="om-bar-zone moderate_progress" style="left:52.5%;width:22.5%">
+        <span class="om-zone-label">{{ 'status.moderate_progress_sin_target' | t }}</span>
+      </span>
+      <span class="om-bar-zone significant_progress" style="left:75%;width:25%">
+        <span class="om-zone-label">{{ 'status.significant_progress_sin_target' | t }}</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Panel del objetivo seleccionado -->
+  <div id="objetivo-medidor-panel" class="objetivo-medidor-panel" hidden>
+
+    <div class="objetivo-panel-layout">
+      <div class="objetivo-panel-icon-wrap">
+        <a id="om-goal-link-icon" href="#" aria-label="">
+          <img id="om-goal-icon" src="" alt="" width="120" height="120"
+               class="goal-icon-image" />
+        </a>
+      </div>
+      <div class="objetivo-panel-title-row">
+        <a id="om-goal-link-title" href="#">
+          <h2 class="objetivo-panel-title" id="om-goal-title"></h2>
+        </a>
+        <div class="objetivo-panel-status">
+          <span id="om-status-label" class="om-status-label"></span>
+          <img id="om-status-icon" src="" alt="" class="om-status-img" />
+        </div>
+      </div>
+      <div class="om-panel-sections">
+        <div class="om-panel-section-compact">
+          <span class="om-section-label">{{ 'general.targets' | t }}</span>
+          <div class="om-panel-section-body" id="om-metas-body"></div>
+        </div>
+        <div class="om-panel-section-compact">
+          <span class="om-section-label">{{ 'general.indicators' | t }}</span>
+          <div class="om-panel-section-body" id="om-indicadores-body"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.objetivo-medidor-panel -->
+  {% comment %} â”€â”€ Informe de metas â”€â”€ {% endcomment %}
+  <section class="om-informe-section">
+    {% assign _met_overall = metas_data | where: "goal", "overall" %}
+    {% assign _met_total   = _met_overall | map: "total" | first | times: 1 %}
+    <h2>{{ 'status.targets_report' | t }} <span class="total-inline"><span>{{ _met_total }}</span></span></h2>
+    <div class="goal goal-overall">
+      <div class="frame goal-tiles">
+        <img src="{{ site.baseurl }}/assets/img/SDG Wheel_Transparent-01.png"
+             alt="{{ page.t.general.sdg }}" width="100" height="100"
+             class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
+      </div>
+      <div class="details">
+        {% if _met_total > 0 %}
+        <div class="summary"><div class="statuses">
+          {% for st in status_types %}{% assign _ss = _met_overall | where: "status", st.value | first %}{% if _ss %}
+          {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+          {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+          {% assign _cs = nil %}
+          {% if st.value == 'significant_progress' %}{% assign _cs = 'meta-progreso-nabarmena' %}
+          {% elsif st.value == 'moderate_progress' %}{% assign _cs = 'meta-progreso-moderatua' %}
+          {% elsif st.value == 'no_progress' %}{% assign _cs = 'meta-geldialdia' %}
+          {% elsif st.value == 'moderate_deterioration' %}{% assign _cs = 'meta-atzerakada-moderatua' %}
+          {% elsif st.value == 'significant_deterioration' %}{% assign _cs = 'meta-atzerakada-nabarmena' %}
+          {% elsif st.value == 'noevaluado' or st.value == 'not_available' %}{% assign _cs = 'meta-ez-ebaluagarria' %}
+          {% elsif st.value == 'notstarted' %}{% assign _cs = 'meta-hasieratu-gabe' %}
+          {% elsif st.value == 'notapplicable' %}{% assign _cs = 'meta-ez-aplikagarria' %}{% endif %}
+          <div>
+            <span class="status {{ st.value | slugify }}"><span class="status-inner">{{ _ss.count }}</span></span>
+            {% if _cs %}<a href="{{ site.baseurl }}{{ _cat_prefix }}{{ _cs }}/" class="status-category-link">{{ _tl }}</a>{% else %}<strong>{{ _tl }}</strong>{% endif %}
+            <span class="value">{{ _ss.percentage | round: 2 }}%</span>
+          </div>{% endif %}{% endfor %}
+          <br style="clear:both;">
+        </div></div>
+        <div class="goal-stats">
+          {% for st in status_types %}{% assign _ss = _met_overall | where: "status", st.value | first %}{% if _ss %}
+          {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+          {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+          <span class="{{ st.value | slugify }}" style="width:{{ _ss.percentage }}%"
+                title="{{ _tl }}: {{ _ss.percentage | round: 2 }}%"><span class="status-inner">{{ _ss.count }}</span></span>
+          {% endif %}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <br style="clear:both;">
+    </div>
+    <details class="om-goals-detail">
+      <summary>{{ 'status.detail_by_goal' | t }}</summary>
+      {% assign _met_grouped = metas_data | where_exp: "item", "item.goal != 'overall'" | group_by: "goal" %}
+      {% for _grp in _met_grouped %}{% assign _gd = _grp.name | append: '' | sdg_lookup %}{% assign _gt = _grp.items | first %}
+      <div class="goal reporting-status-item">
+        <div class="frame goal-tiles">
+          <a href="{{ _gd.url }}"><img src="{{ _gd.icon }}" alt="{{ _gd.short | escape }}" width="100" height="100"
+             class="goal-icon-{{ _gd.number }} goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" /></a>
+        </div>
+        <div class="details">
+          <h3 class="status-goal"><a href="{{ _gd.url }}">{{ _gd.short }}</a></h3>
+          {% assign _gt_total = _gt.total | times: 1 %}{% if _gt_total > 0 %}<div class="goal-stats">
+            {% for st in status_types %}{% assign _ss = _grp.items | where: "status", st.value | first %}{% if _ss %}
+            {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+            {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+            <span class="{{ st.value | slugify }}" style="width:{{ _ss.percentage }}%"
+                  title="{{ _tl }}: {{ _ss.percentage | round: 2 }}%"><span class="status-inner">{{ _ss.count }}</span></span>
+            {% endif %}{% endfor %}
+          </div>{% endif %}
+        </div>
+        <br style="clear:both;">
+      </div>
+      {% endfor %}
+    </details>
+  </section>
+
+  {% comment %} â”€â”€ Informe de indicadores â”€â”€ {% endcomment %}
+  <section class="om-informe-section">
+    {% assign _ind_overall = ind_data | where: "goal", "overall" %}
+    {% assign _ind_total   = _ind_overall | map: "total" | first | times: 1 %}
+    <h2>{{ 'status.indicators_report' | t }} <span class="total-inline"><span>{{ _ind_total }}</span></span></h2>
+    <div class="goal goal-overall">
+      <div class="frame goal-tiles">
+        <img src="{{ site.baseurl }}/assets/img/SDG Wheel_Transparent-01.png"
+             alt="{{ page.t.general.sdg }}" width="100" height="100"
+             class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
+      </div>
+      <div class="details">
+        {% if _ind_total > 0 %}
+        <div class="summary"><div class="statuses">
+          {% for st in status_types %}{% assign _ss = _ind_overall | where: "status", st.value | first %}{% if _ss %}
+          {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+          {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+          {% assign _cs = nil %}
+          {% if st.value == 'significant_progress' %}{% assign _cs = 'progreso-nabarmena' %}
+          {% elsif st.value == 'moderate_progress' %}{% assign _cs = 'progreso-moderatua' %}
+          {% elsif st.value == 'no_progress' %}{% assign _cs = 'geldialdia' %}
+          {% elsif st.value == 'moderate_deterioration' %}{% assign _cs = 'atzerakada-moderatua' %}
+          {% elsif st.value == 'significant_deterioration' %}{% assign _cs = 'atzerakada-nabarmena' %}
+          {% elsif st.value == 'not_available' or st.value == 'noevaluado' %}{% assign _cs = 'ez-ebaluagarria' %}
+          {% elsif st.value == 'notstarted' %}{% assign _cs = 'hasieratu-gabe' %}
+          {% elsif st.value == 'notapplicable' %}{% assign _cs = 'ez-aplikagarria' %}{% endif %}
+          <div>
+            <span class="status {{ st.value | slugify }}"><span class="status-inner">{{ _ss.count }}</span></span>
+            {% if _cs %}<a href="{{ site.baseurl }}{{ _cat_prefix }}{{ _cs }}/" class="status-category-link">{{ _tl }}</a>{% else %}<strong>{{ _tl }}</strong>{% endif %}
+            <span class="value">{{ _ss.percentage | round: 2 }}%</span>
+          </div>{% endif %}{% endfor %}
+          <br style="clear:both;">
+        </div></div>
+        <div class="goal-stats">
+          {% for st in status_types %}{% assign _ss = _ind_overall | where: "status", st.value | first %}{% if _ss %}
+          {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+          {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+          <span class="{{ st.value | slugify }}" style="width:{{ _ss.percentage }}%"
+                title="{{ _tl }}: {{ _ss.percentage | round: 2 }}%"><span class="status-inner">{{ _ss.count }}</span></span>
+          {% endif %}{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <br style="clear:both;">
+    </div>
+    <details class="om-goals-detail">
+      <summary>{{ 'status.detail_by_goal' | t }}</summary>
+      {% assign _ind_grouped = ind_data | where_exp: "item", "item.goal != 'overall'" | group_by: "goal" %}
+      {% for _grp in _ind_grouped %}{% assign _gd = _grp.name | append: '' | sdg_lookup %}{% assign _gt = _grp.items | first %}
+      <div class="goal reporting-status-item">
+        <div class="frame goal-tiles">
+          <a href="{{ _gd.url }}"><img src="{{ _gd.icon }}" alt="{{ _gd.short | escape }}" width="100" height="100"
+             class="goal-icon-{{ _gd.number }} goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" /></a>
+        </div>
+        <div class="details">
+          <h3 class="status-goal"><a href="{{ _gd.url }}">{{ _gd.short }}</a></h3>
+          {% assign _gt_total = _gt.total | times: 1 %}{% if _gt_total > 0 %}<div class="goal-stats">
+            {% for st in status_types %}{% assign _ss = _grp.items | where: "status", st.value | first %}{% if _ss %}
+            {% assign _tk = 'status.' | append: st.value | append: '_mixto' %}{% assign _tl = _tk | t %}
+            {% if _tl == _tk %}{% assign _tl = st.label | t %}{% endif %}
+            <span class="{{ st.value | slugify }}" style="width:{{ _ss.percentage }}%"
+                  title="{{ _tl }}: {{ _ss.percentage | round: 2 }}%"><span class="status-inner">{{ _ss.count }}</span></span>
+            {% endif %}{% endfor %}
+          </div>{% endif %}
+        </div>
+        <br style="clear:both;">
+      </div>
+      {% endfor %}
+    </details>
+  </section>
+
+  {% include back-to-top.html %}
+</div><!-- /#main-content -->
+
+<script>
+(function () {
+  var scores    = OBJETIVO_SCORES;
+  var types     = STATUS_TYPES;
+  var cfg       = OBJETIVO_CFG;
+  var colors    = GOAL_COLORS;
+  var goalUrls  = GOAL_URLS;
+  var goalNames = GOAL_NAMES;
+  var goalIcons = GOAL_ICONS;
+  var indData   = IND_SCORES_BY_GOAL;
+  var metData   = MET_SCORES_BY_GOAL;
+
+  /* Referencias DOM â€” panel */
+  var panel       = document.getElementById('objetivo-medidor-panel');
+  var goalIcon    = document.getElementById('om-goal-icon');
+  var goalTitle   = document.getElementById('om-goal-title');
+  var statusIcon  = document.getElementById('om-status-icon');
+  var statusLabel = document.getElementById('om-status-label');
+  var goalLinkIco = document.getElementById('om-goal-link-icon');
+  var goalLinkTit = document.getElementById('om-goal-link-title');
+  var track       = document.getElementById('om-overview-track');
+
+  /* â”€â”€ scoreToPercent: [-5..+5] â†’ 0-100% â”€â”€ */
+  function scoreToPercent(s) {
+    return Math.min(100, Math.max(0, (s + 5) / 10 * 100));
+  }
+
+  /* â”€â”€ buildTicks â”€â”€ */
+  function buildTicks(track) {
+    if (!track) return;
+    Object.keys(scores).sort(function (a, b) { return parseInt(a) - parseInt(b); })
+      .forEach(function (g) {
+        var data = scores[g];
+        if (data.score === null || data.score === undefined) return;
+        var pct = scoreToPercent(parseFloat(data.score));
+
+        /* Tick */
+        var tick = document.createElement('div');
+        tick.className = 'om-tick om-tick-b2';
+        tick.setAttribute('data-goal', g);
+        tick.style.left = pct + '%';
+        tick.style.backgroundColor = colors[g] || '#666';
+        (function (_g) {
+          tick.addEventListener('click', function () { selectGoal(_g); });
+        }(g));
+        track.appendChild(tick);
+
+        /* CÃ­rculo en la mitad de la barra */
+        var dot = document.createElement('div');
+        dot.className = 'om-tick-dot';
+        dot.setAttribute('data-goal', g);
+        dot.style.left = pct + '%';
+        dot.style.backgroundColor = colors[g] || '#666';
+        track.appendChild(dot);
+
+        /* Icono */
+        var icon = document.createElement('img');
+        icon.src = goalIcons[g] || '';
+        icon.alt = cfg.lbl_goal + ' ' + g + ': ' + (goalNames[g] || '');
+        icon.className = 'om-tick-icon goal-icon-image';
+        icon.setAttribute('data-goal', g);
+        icon.style.left = pct + '%';
+        (function (_g) {
+          icon.addEventListener('mouseenter', function () { tickHover(_g, true); });
+          icon.addEventListener('mouseleave', function () { tickHover(_g, false); });
+          icon.addEventListener('click', function () { selectGoal(_g); });
+        }(g));
+        track.appendChild(icon);
+      });
+  }
+
+  /* Tamaño base del icono de la barra: 70px en móvil, 90px en escritorio.
+     El apilamiento (staggerIcons) y los estados hover/activo derivan de aquí. */
+  function iconSize() { return window.innerWidth <= 576 ? 70 : 90; }
+
+  /* â”€â”€ staggerIcons â”€â”€ */
+  function staggerIcons(track) {
+    var ICON = iconSize(), GAP = 10;
+    var barH = track.offsetHeight || 60;
+    var MID  = barH / 2;
+    var w    = track.offsetWidth  || 800;
+
+    track.querySelectorAll('.om-tick-icon').forEach(function (el) {
+      el.style.transition = 'none';
+    });
+
+    var items = [];
+    track.querySelectorAll('.om-tick-icon').forEach(function (el) {
+      var pct = parseFloat(el.style.left) / 100;
+      items.push({ el: el, cx: pct * w });
+    });
+    items.sort(function (a, b) { return a.cx - b.cx; });
+
+    var aRows = [], bRows = [], maxA = -1, maxB = -1;
+    items.forEach(function (ic) {
+      var left  = ic.cx - ICON / 2 - 2;
+      var right = ic.cx + ICON / 2 + 2;
+      var ra = 0; while (ra < aRows.length && aRows[ra] > left) ra++;
+      var rb = 0; while (rb < bRows.length && bRows[rb] > left) rb++;
+      var above = (ra <= rb);
+      var g    = ic.el.getAttribute('data-goal');
+      var tick = track.querySelector('.om-tick-b2[data-goal="' + g + '"]');
+
+      if (above) {
+        aRows[ra] = right; maxA = Math.max(maxA, ra);
+        var bp = GAP + ra * (ICON + GAP);
+        ic.el.style.top       = '-' + (bp + ICON) + 'px';
+        ic.el.style.bottom    = 'auto';
+        ic.el.style.transform = 'translateX(-50%)';
+        if (tick) {
+          tick.style.top    = '-' + bp + 'px';
+          tick.style.bottom = 'auto';
+          tick.style.height = (MID + bp) + 'px';
+        }
+      } else {
+        bRows[rb] = right; maxB = Math.max(maxB, rb);
+        var tp = GAP + rb * (ICON + GAP);
+        ic.el.style.top       = (barH + tp) + 'px';
+        ic.el.style.bottom    = 'auto';
+        ic.el.style.transform = 'translateX(-50%)';
+        if (tick) {
+          tick.style.top    = MID + 'px';
+          tick.style.bottom = 'auto';
+          tick.style.height = (tp + MID) + 'px';
+        }
+      }
+    });
+
+    var topSpace = maxA >= 0 ? GAP + maxA * (ICON + GAP) + ICON + 5 : 5;
+    var botSpace = maxB >= 0 ? GAP + maxB * (ICON + GAP) + ICON + 8 : 0;
+    track.style.marginTop = topSpace + 'px';
+    var section = track.parentElement;
+    if (section) section.style.paddingBottom = botSpace + 'px';
+
+    requestAnimationFrame(function () {
+      track.querySelectorAll('.om-tick-icon').forEach(function (el) {
+        el.style.transition = '';
+      });
+    });
+  }
+
+  /* â”€â”€ Tooltip flotante (mismo estilo que .om-zone-label) â”€â”€ */
+  var omHoverTip = document.createElement('div');
+  omHoverTip.className = 'om-zone-label';
+  omHoverTip.style.display = 'none';
+
+  function showHoverTip(g) {
+    omHoverTip.textContent = goalNames[g] || (cfg.lbl_goal + ' ' + g);
+    var ico = track ? track.querySelector('.om-tick-icon[data-goal="' + g + '"]') : null;
+    if (ico) omHoverTip.style.left = ico.style.left;
+    omHoverTip.style.display = 'block';
+  }
+  function hideHoverTip() { omHoverTip.style.display = 'none'; }
+
+  /* â”€â”€ buildGoalStats: total + barra de colores para las secciones del panel â”€â”€ */
+  function buildGoalStats(arr, unit) {
+    if (!arr || !arr.length) return '';
+    var total = arr[0].total || 0;
+    if (!total) return '';
+    var byStatus = {};
+    arr.forEach(function (d) { byStatus[d.status] = d; });
+    var bar = '';
+    Object.keys(types).forEach(function (status) {
+      var d = byStatus[status];
+      if (d && d.count > 0) {
+        var slug = status.replace(/_/g, '-');
+        // Tooltip: texto largo (_mixto), el mismo que las barras de los informes.
+        var lbl  = (types[status] && (types[status].label_mixto || types[status].label)) || status;
+        var pct  = d.percentage.toFixed(2);
+        bar += '<span class="' + slug + '" style="width:' + pct + '%"'
+             + ' title="' + lbl + ': ' + pct + '%">'
+             + '<span class="status-inner">' + d.count + '</span></span>';
+      }
+    });
+    return '<span class="total"><span>' + total + '</span></span>'
+         + '<div class="goal-stats">' + bar + '</div>';
+  }
+
+  /* â”€â”€ tickHover â”€â”€ */
+  function tickHover(g, on) {
+    document.querySelectorAll('.om-tick[data-goal="' + g + '"]').forEach(function (t) {
+      if (on) {
+        t.style.width = '3px'; t.style.opacity = '1';
+        t.style.zIndex = '3'; t.style.boxShadow = '0 0 6px rgba(0,0,0,.5)';
+      } else {
+        t.style.width = ''; t.style.opacity = ''; t.style.zIndex = ''; t.style.boxShadow = '';
+      }
+    });
+    if (on) showHoverTip(g); else hideHoverTip();
+    var ico = document.querySelector('.om-tick-icon[data-goal="' + g + '"]');
+    if (ico) {
+      if (on && !ico.classList.contains('om-icon--active')) {
+        var hs = (iconSize() + 6) + 'px';
+        ico.style.width = hs; ico.style.height = hs; ico.style.zIndex = '4';
+      } else if (!ico.classList.contains('om-icon--active')) {
+        ico.style.width = ''; ico.style.height = ''; ico.style.zIndex = '';
+      }
+    }
+  }
+
+  /* â”€â”€ selectGoal â”€â”€ */
+  function selectGoal(g) {
+    var data = scores[g];
+    if (!data) return;
+
+    /* Restaurar icono activo anterior (sobre barra â†’ ajustar top) */
+    var prevIco = document.querySelector('.om-tick-icon.om-icon--active');
+    if (prevIco && parseFloat(prevIco.style.top || '0') < 0) {
+      prevIco.style.top = (parseFloat(prevIco.style.top) + 10) + 'px';
+    }
+    document.querySelectorAll('.om-tick-icon').forEach(function (i) {
+      i.classList.remove('om-icon--active');
+      i.style.width = ''; i.style.height = ''; i.style.zIndex = '';
+    });
+    document.querySelectorAll('.om-tick').forEach(function (t) {
+      t.classList.remove('om-tick--active');
+      t.style.width = ''; t.style.opacity = ''; t.style.zIndex = ''; t.style.boxShadow = '';
+    });
+    document.querySelectorAll('.om-tick-dot').forEach(function (d) {
+      d.classList.remove('om-tick-dot--active');
+    });
+
+    /* Activar */
+    document.querySelectorAll('.om-tick[data-goal="' + g + '"]').forEach(function (t) {
+      t.classList.add('om-tick--active');
+      t.style.width = '4px'; t.style.opacity = '1'; t.style.zIndex = '5';
+      t.style.boxShadow = '0 2px 8px rgba(0,0,0,.4)';
+    });
+    document.querySelectorAll('.om-tick-dot[data-goal="' + g + '"]').forEach(function (d) {
+      d.classList.add('om-tick-dot--active');
+    });
+    var ico = document.querySelector('.om-tick-icon[data-goal="' + g + '"]');
+    if (ico) {
+      ico.classList.add('om-icon--active');
+      var as = (iconSize() + 10) + 'px';
+      ico.style.width = as; ico.style.height = as; ico.style.zIndex = '6';
+      if (parseFloat(ico.style.top || '0') < 0) {
+        ico.style.top = (parseFloat(ico.style.top) - 10) + 'px';
+      }
+    }
+
+    /* Actualizar panel */
+    var url = goalUrls[g] || (cfg.baseurl + '/' + g + '/');
+    goalIcon.src = goalIcons[g] || '';
+    goalIcon.alt = cfg.lbl_goal + ' ' + g + ': ' + (goalNames[g] || '');
+    goalTitle.textContent = goalNames[g] || '';
+    if (goalLinkIco) { goalLinkIco.href = url; }
+    if (goalLinkTit) goalLinkTit.href = url;
+
+    /* Estado */
+    var st = types[data.status];
+    if (st) {
+      statusIcon.src  = st.image ? (cfg.baseurl + '/' + st.image) : '';
+      statusIcon.alt  = statusLabel.textContent = st.label;
+      statusIcon.style.display = st.image ? '' : 'none';
+    } else {
+      statusIcon.style.display = 'none';
+      statusLabel.textContent  = data.status || cfg.lbl_no_eval;
+    }
+
+    panel.removeAttribute('hidden');
+
+    /* Secciones Metas / Indicadores */
+    var metaBody = document.getElementById('om-metas-body');
+    var indBody  = document.getElementById('om-indicadores-body');
+    if (metaBody) metaBody.innerHTML = buildGoalStats(metData[g], {{ 'general.targets' | t | downcase | jsonify }});
+    if (indBody)  indBody.innerHTML  = buildGoalStats(indData[g], {{ 'general.indicators' | t | downcase | jsonify }});
+    /* Tooltips de las barras del panel (generadas dinámicamente): el MISMO
+       tooltip que las barras de los informes, vía attachBarTooltip. */
+    [metaBody, indBody].forEach(function(b) {
+      if (!b) return;
+      b.querySelectorAll('.goal-stats span[title]').forEach(attachBarTooltip);
+    });
+  }
+
+  /* ── Tooltip bocadillo de las barras ──
+     Código único usado por las barras de los informes y por las barras del
+     panel. Crea .goal-bar-tooltip y posiciona en mouseenter. */
+  function attachBarTooltip(span) {
+    if (span.querySelector('.goal-bar-tooltip')) return;
+    var text = span.getAttribute('title');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'goal-bar-tooltip';
+    tip.textContent = text;
+    span.appendChild(tip);
+
+    span.addEventListener('mouseenter', function () {
+      var spanRect  = span.getBoundingClientRect();
+      var spanCenter = spanRect.left + spanRect.width / 2;
+
+      if (window.innerWidth <= 576) {
+        var barRect = span.parentNode.getBoundingClientRect();
+        tip.style.left      = (barRect.left - spanRect.left) + 'px';
+        tip.style.right     = '';
+        tip.style.transform = 'none';
+        tip.style.width     = barRect.width + 'px';
+        tip.style.whiteSpace = 'normal';
+        tip.style.textAlign  = 'center';
+        requestAnimationFrame(function () {
+          var newTipRect = tip.getBoundingClientRect();
+          var arrowPct = (spanCenter - newTipRect.left) / newTipRect.width * 100;
+          arrowPct = Math.max(5, Math.min(95, arrowPct));
+          tip.style.setProperty('--arrow-offset', arrowPct + '%');
+        });
+      } else {
+        tip.style.left       = '50%';
+        tip.style.right      = '';
+        tip.style.transform  = 'translateX(-50%)';
+        tip.style.width      = '';
+        tip.style.whiteSpace = 'nowrap';
+        tip.style.textAlign  = '';
+        tip.style.setProperty('--arrow-offset', '50%');
+      }
+    });
+  }
+
+  /* â”€â”€ Init â”€â”€ */
+  buildTicks(track);
+
+  /* El tooltip flotante se aÃ±ade al final del track (encima de ticks en DOM) */
+  if (track) track.appendChild(omHoverTip);
+
+  staggerIcons(track);
+  window.addEventListener('resize', function () { staggerIcons(track); });
+
+  /* SelecciÃ³n inicial: hash URL o primer objetivo */
+  var hash = window.location.hash;
+  if (hash && hash.match(/^#goal-(\d+)$/)) {
+    var n = hash.replace('#goal-', '');
+    if (scores[n]) { selectGoal(n); return; }
+  }
+  var firstGoal = Object.keys(scores)
+    .sort(function (a, b) { return parseInt(a) - parseInt(b); })[0];
+  if (firstGoal) selectGoal(firstGoal);
+
+  /* Tooltips bocadillo en las barras de los informes (mismo attachBarTooltip). */
+  document.querySelectorAll('.reporting-status-item .goal-stats span[title]')
+    .forEach(attachBarTooltip);
+
+})();
+</script>
+
+{% include footer.html %}
+
+

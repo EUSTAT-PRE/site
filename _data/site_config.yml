@@ -217,9 +217,8 @@ menu:
   - path: /
     translation_key: general.home
     dropdown: []
-  - path: /jarraipen-txostena
+  - path: /helburu-jarraipen-txostena
     translation_key: menu.reporting_status
-    dropdown: []
   - translation_key: menu.desagregaciones
     dropdown:
       - path: /lurraldea/
@@ -260,58 +259,58 @@ progress_status:
     # === Estados Eurostat (generados por motor automático) ===
     - value: significant_progress
       label: status.progreso_significativo
-      image: assets/img/progress/alcanzado.png
+      image: assets/img/progress/alcanzado.webp
       alt: status.progreso_significativo
       hide_on_goal_pages: false
     - value: moderate_progress
       label: status.progreso_moderado
-      image: assets/img/progress/en_progreso.png
+      image: assets/img/progress/en_progreso.webp
       alt: status.progreso_moderado
       hide_on_goal_pages: false
     - value: no_progress
       label: status.sin_progreso
-      image: assets/img/progress/sin_progreso.png
+      image: assets/img/progress/sin_progreso.webp
       alt: status.sin_progreso
       hide_on_goal_pages: false
     - value: moderate_deterioration
       label: status.retroceso_moderado
-      image: assets/img/progress/retroceso.png
+      image: assets/img/progress/retroceso.webp
       alt: status.retroceso_moderado
       hide_on_goal_pages: false
     - value: significant_deterioration
       label: status.retroceso_significativo
-      image: assets/img/progress/retroceso_significativo.png
+      image: assets/img/progress/retroceso_significativo.webp
       alt: status.retroceso_significativo
       hide_on_goal_pages: false
     - value: not_available
       label: status.no_evaluado
-      image: assets/img/progress/no_evaluable.png
+      image: assets/img/progress/no_evaluable.webp
       alt: status.no_evaluado
       hide_on_goal_pages: false
     # === Estados legacy (compatibilidad con progress_status manual) ===
     - value: alcanzado
       label: status.progreso_significativo
-      image: assets/img/progress/alcanzado.png
+      image: assets/img/progress/alcanzado.webp
       alt: status.progreso_significativo
       hide_on_goal_pages: false
     - value: progreso
       label: status.progreso_moderado
-      image: assets/img/progress/en_progreso.png
+      image: assets/img/progress/en_progreso.webp
       alt: status.progreso_moderado
       hide_on_goal_pages: false
     - value: retroceso
       label: status.retroceso_moderado
-      image: assets/img/progress/retroceso.png
+      image: assets/img/progress/retroceso.webp
       alt: status.retroceso_moderado
       hide_on_goal_pages: false
     - value: noevaluado
       label: status.no_evaluado
-      image: assets/img/progress/no_evaluable.png
+      image: assets/img/progress/no_evaluable.webp
       alt: status.no_evaluado
       hide_on_goal_pages: false
     - value: notstarted
       label: status.no_data_available
-      image: assets/img/progress/sin_datos_disponibles.png
+      image: assets/img/progress/sin_datos_disponibles.webp
       alt: status.no_data_available
       hide_on_goal_pages: false
     - value: notapplicable

@@ -92,7 +92,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.png" alt="Significant progress">
+        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Significant progress">
       </td>
       <td>
         Target met or on track. The target has been reached, or —if progress continues as it has so far— it will be reached by 2030. 
@@ -104,7 +104,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.png" alt="Moderate progress">
+        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="Moderate progress">
       </td>
       <td>
         Moderate progress towards the target. It is approaching the target, but some acceleration is needed in order to reach it by 2030.
@@ -116,7 +116,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.png" alt="Stagnation">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.webp" alt="Stagnation">
       </td>
       <td>
         [Category not applicable]
@@ -128,7 +128,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso.png" alt="Moderate deterioration">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Moderate deterioration">
       </td>
       <td>
         Insufficient progress towards the target. Progress made towards the target, but significant acceleration required to reach it by 2030.
@@ -140,7 +140,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.png" alt="Significant deterioration">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.webp" alt="Significant deterioration">
       </td>
       <td>
         Movement away from target. Getting further away from the target.  
@@ -152,7 +152,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.png" alt="Not evaluable">
+        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="Not evaluable">
       </td>
       <td colspan="2">
         Not evaluable. Progress cannot be reliably assessed because there is insufficient data, the desired direction is unclear, or for other reasons.<br>
@@ -160,7 +160,7 @@ Disaggregations of indicators or sub-indicators (sex, age, territory, etc.) are 
     </tr>
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.png" alt="No data available">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.webp" alt="No data available">
       </td>
       <td colspan="2">
         No data available. There is currently no data for this indicator, but various sources are being analyzed in order to provide data soon.<br>

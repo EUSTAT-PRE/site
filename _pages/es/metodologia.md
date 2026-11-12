@@ -95,7 +95,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.png" alt="Progreso significativo">
+        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Progreso significativo">
       </td>
       <td>
         Meta alcanzada o en vías de alcanzarla. Se ha alcanzado la meta o, si se progresa como hasta ahora, estará alcanzada en 2030. 
@@ -107,7 +107,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.png" alt="Progreso moderado">
+        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="Progreso moderado">
       </td>
       <td>
         Progreso moderado hacia la meta. Se está acercando a la meta, pero es necesario acelerar algo para poder alcanzar la meta en 2030.
@@ -119,7 +119,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.png" alt="Estancamiento">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.webp" alt="Estancamiento">
       </td>
       <td>
         [Categoría no aplicable]
@@ -131,7 +131,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso.png" alt="Retroceso moderado">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Retroceso moderado">
       </td>
       <td>
         Progreso insuficiente para alcanzar la meta. Hay cierto avance hacia la meta, pero sería necesario acelerar mucho para alcanzarla en 2030.
@@ -143,7 +143,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.png" alt="Retroceso significativo">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.webp" alt="Retroceso significativo">
       </td>
       <td>
         Retroceso con respecto a la meta. Se aleja de la meta.
@@ -155,7 +155,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.png" alt="No evaluable">
+        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="No evaluable">
       </td>
       <td colspan="2">
         No evaluable. No se puede evaluar de manera fiable, porque no hay datos suficientes, porque la dirección deseada no está clara, o por otros motivos.<br>
@@ -163,7 +163,7 @@ Las desagregaciones de indicadores o subindicadores (sexo, edad, territorio, etc
     </tr>
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.png" alt="Datos no disponibles">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.webp" alt="Datos no disponibles">
       </td>
       <td colspan="2">
         Datos no disponibles. Actualmente no hay datos disponibles para este indicador, pero se están analizando diferentes fuentes para poder ofrecer datos en breve.<br>

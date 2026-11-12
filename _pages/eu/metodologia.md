@@ -97,7 +97,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.png" alt="Aurrerapen nabarmena">
+        <img src="{{site.baseurl}}/assets/img/progress/alcanzado.webp" alt="Aurrerapen nabarmena">
       </td>
       <td>
         Xedea lortuta edo lortzeko bidean. Xedea lortu da edo orain arte bezala aurreratzen jarraituta, 2030erako lortuta egongo da. 
@@ -109,7 +109,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.png" alt="Neurrizko aurrerapena">
+        <img src="{{site.baseurl}}/assets/img/progress/en_progreso.webp" alt="Neurrizko aurrerapena">
       </td>
       <td>
         Neurrizko aurrerapena xedea lortzeko bidean. Xedera hurbiltzen ari da, baina 2030ean lortzeko pixka bat azkarrago joan behar da.
@@ -121,7 +121,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.png" alt="Geldialdia">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_progreso.webp" alt="Geldialdia">
       </td>
       <td>
         [Kategoria ez aplikagarria]
@@ -133,7 +133,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso.png" alt="Neurrizko atzerakada">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso.webp" alt="Neurrizko atzerakada">
       </td>
       <td>
         Aurrerapen eskasegia xedea lortzeko. Xederantz doa, baina 2030ean lortzeko askoz azkarrago joan beharko litzateke.
@@ -145,7 +145,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.png" alt="Atzerakada nabarmena">
+        <img src="{{site.baseurl}}/assets/img/progress/retroceso_significativo.webp" alt="Atzerakada nabarmena">
       </td>
       <td>
         Atzerakada xedearekiko. Xedetik urruntzen ari da.
@@ -157,7 +157,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
 
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.png" alt="Ez ebaluagarria">
+        <img src="{{site.baseurl}}/assets/img/progress/no_evaluable.webp" alt="Ez ebaluagarria">
       </td>
       <td colspan="2">
         Ez ebaluagarria. Ezin da aurrerapena modu fidagarrian ebaluatu, nahikoa datu ez dagoelako, norabide normatiboa ez dagoelako argi, edo bestelako arrazoiengatik.<br>
@@ -165,7 +165,7 @@ Adierazle edo azpiadierazleen desagregazioak (sexua, adina, lurraldea, eta abar)
     </tr>
     <tr>
       <td>
-        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.png" alt="Daturik ez eskuragarri">
+        <img src="{{site.baseurl}}/assets/img/progress/sin_datos_disponibles.webp" alt="Daturik ez eskuragarri">
       </td>
       <td colspan="2">
         Daturik ez eskuragarri. Gaur egun ez dago adierazle horretarako daturik, baina iturri desberdinak aztertzen ari gara laster datuak eskaini ahal izateko.<br>

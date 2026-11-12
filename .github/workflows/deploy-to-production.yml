@@ -40,6 +40,12 @@ jobs:
       run: curl -f -o _data/csv/progreso.csv https://sdg.eustat.eus/sdg-data-prod/progreso.csv
     - name: Download progreso_indicadores.csv from data
       run: curl -f -o _data/csv/progreso_indicadores.csv https://sdg.eustat.eus/sdg-data-prod/progreso_indicadores.csv
+    - name: Download progreso_metas.csv from data
+      run: curl -f -o _data/csv/progreso_metas.csv https://sdg.eustat.eus/sdg-data-prod/progreso_metas.csv
+    - name: Download progreso_metas_individual.csv from data
+      run: curl -f -o _data/csv/progreso_metas_individual.csv https://sdg.eustat.eus/sdg-data-prod/progreso_metas_individual.csv
+    - name: Download progreso_objetivos.csv from data
+      run: curl -f -o _data/csv/progreso_objetivos.csv https://sdg.eustat.eus/sdg-data-prod/progreso_objetivos.csv
     - name: Build the site
       run: |
         gem install bundler
