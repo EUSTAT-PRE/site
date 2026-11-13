@@ -43,7 +43,7 @@
       {% endif %}
       <span class="total">
         <span>{{ cat_rows.size }}</span>
-        {% if page.language == 'eu' %}adierazle{% elsif page.language == 'en' %}indicators{% else %}indicadores{% endif %}
+        {{ page.t.general.indicators | downcase }}
       </span>
     </div>
   </div>

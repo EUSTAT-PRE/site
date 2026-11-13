@@ -42,9 +42,7 @@
     {% assign overall_data = reporting_data | where: "goal", "overall" %}
     {% assign overall_totals = overall_data | map: "total" | first | times: 1 %}
     {% assign status_types = site.progress_status.status_types %}
-    {% assign metas_label = 'metas' %}
-    {% if page.language == 'eu' %}{% assign metas_label = 'meta' %}{% endif %}
-    {% if page.language == 'en' %}{% assign metas_label = 'targets' %}{% endif %}
+    {% assign metas_label = page.t.general.targets | downcase %}
 
     {% if page.language == 'es' %}{% assign _cat_prefix = '/es/' %}
     {% elsif page.language == 'en' %}{% assign _cat_prefix = '/en/' %}
@@ -228,7 +226,7 @@
       if (details && goalStats) {
         var totalSpan = document.createElement('span');
         totalSpan.className = 'total';
-        totalSpan.textContent = total + ' ' + (opensdg.language === 'eu' ? 'meta' : opensdg.language === 'es' ? 'metas' : 'targets');
+        totalSpan.textContent = total + ' ' + {{ metas_label | jsonify }};
         details.insertBefore(totalSpan, goalStats.parentNode === details ? goalStats : null);
       }
     }
