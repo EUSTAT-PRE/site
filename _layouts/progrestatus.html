@@ -209,7 +209,7 @@
       if (details && goalStats) {
         var totalSpan = document.createElement('span');
         totalSpan.className = 'total';
-        totalSpan.textContent = total + ' ' + (opensdg.language === 'eu' ? 'adierazle' : opensdg.language === 'es' ? 'indicadores' : 'indicators');
+        totalSpan.textContent = total + ' ' + {{ indicators_plural | jsonify }};
         details.insertBefore(totalSpan, goalStats.parentNode === details ? goalStats : null);
       }
     }

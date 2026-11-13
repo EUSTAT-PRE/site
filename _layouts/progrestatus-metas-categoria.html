@@ -43,7 +43,7 @@
       {% endif %}
       <span class="total">
         <span>{{ cat_rows.size }}</span>
-        {% if page.language == 'eu' %}meta{% elsif page.language == 'en' %}targets{% else %}metas{% endif %}
+        {{ page.t.general.targets | downcase }}
       </span>
     </div>
   </div>
