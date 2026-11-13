@@ -142,7 +142,7 @@ var translations = {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
-        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261112153624">
+        <link rel="stylesheet" href="/site/assets/css/style.css?v=20261113083720">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -605,11 +605,17 @@ var MET_SCORES_BY_GOAL = {
 
 <p>This section summarizes the results of that evaluation, describing the progress made toward achieving the Sustainable Development Goals in the Autonomous Community of the Basque Country.</p>
 
-<p>The “Goals progress” section presents the status of each of the 17 Sustainable Development Goals; by clicking on the image for a specific goal, data on the progress of its associated targets and indicators is shown.</p>
-
-<p>The “Targets progress” section shows how many of the 169 targets that make up the 2030 Agenda fall into each of the progress categories, and allows for a more detailed view of the data by goal.</p>
-
-<p>The “Indicators progress” section shows the number of indicators at different stages of progress and allows for a more detailed view of the data by goal.</p>
+<ul>
+  <li>
+    <p>Goals progress: the status of each of the 17 Sustainable Development Goals is shown; by clicking on the image for a specific goal, data on the progress of its associated targets and indicators is shown.</p>
+  </li>
+  <li>
+    <p>Targets progress: the number of the 169 targets of the 2030 Agenda that fall into each of the progress categories is shown, and a more detailed view of the data by goal can be reached.</p>
+  </li>
+  <li>
+    <p>Indicators progress: the number of indicators at different stages of progress is shown and a more detailed view of the data by goal can be deployed.</p>
+  </li>
+</ul>
 
 <p>To learn more about the methodology used to assess progress, see <a href="/site/en/metodologia/">Measuring Progress on the Sustainable Development Goals</a>.</p>
 
@@ -641,7 +647,7 @@ var MET_SCORES_BY_GOAL = {
 
 
   <!-- Barra panorÃ¡mica: 17 objetivos situados segÃºn su puntuaciÃ³n -->
-  <h2 class="om-overview-title">Goals reporting status</h2>
+  <h2 class="om-overview-title">Goals progress</h2>
   <div class="om-overview-section">
     <div class="om-overview-track om-overview-track--icons"
          id="om-overview-track" aria-hidden="true">
@@ -700,7 +706,7 @@ var MET_SCORES_BY_GOAL = {
   <section class="om-informe-section">
     
     
-    <h2>Targets reporting status <span class="total-inline"><span>169</span></span></h2>
+    <h2>Targets progress <span class="total-inline"><span>169</span></span></h2>
     <div class="goal goal-overall">
       <div class="frame goal-tiles">
         <img src="/site/assets/img/SDG Wheel_Transparent-01.png"
@@ -1446,7 +1452,7 @@ var MET_SCORES_BY_GOAL = {
   <section class="om-informe-section">
     
     
-    <h2>Indicators reporting status <span class="total-inline"><span>261</span></span></h2>
+    <h2>Indicators progress <span class="total-inline"><span>261</span></span></h2>
     <div class="goal goal-overall">
       <div class="frame goal-tiles">
         <img src="/site/assets/img/SDG Wheel_Transparent-01.png"
@@ -2713,7 +2719,7 @@ var MET_SCORES_BY_GOAL = {
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = '';</script>
 
-<script src='/site/assets/js/sdg.js?v=20261112153624'></script>
+<script src='/site/assets/js/sdg.js?v=20261113083720'></script>
 
 
 <script>
@@ -2733,7 +2739,7 @@ var MET_SCORES_BY_GOAL = {
 
     
     
-    <script src="/site/assets/js/custom.js?v=20261112153624"></script><script>
+    <script src="/site/assets/js/custom.js?v=20261113083720"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
