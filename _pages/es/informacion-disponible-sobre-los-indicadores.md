@@ -1,5 +1,5 @@
 ---
-title: Queé hay en esta plataforma?
+title: ¿Qué hay en esta plataforma?
 language: es
 permalink: /es/aurkezpena/
 layout: page
