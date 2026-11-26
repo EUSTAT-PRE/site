@@ -258,29 +258,29 @@ progress_status:
   status_types:
     # === Estados Eurostat (generados por motor automático) ===
     - value: significant_progress
-      label: status.progreso_significativo
+      label: status.significant_progress_sin_target
       image: assets/img/progress/alcanzado.webp
-      alt: status.progreso_significativo
+      alt: status.significant_progress_sin_target
       hide_on_goal_pages: false
     - value: moderate_progress
-      label: status.progreso_moderado
+      label: status.moderate_progress_sin_target
       image: assets/img/progress/en_progreso.webp
-      alt: status.progreso_moderado
+      alt: status.moderate_progress_sin_target
       hide_on_goal_pages: false
     - value: no_progress
-      label: status.sin_progreso
+      label: status.no_progress_sin_target
       image: assets/img/progress/sin_progreso.webp
-      alt: status.sin_progreso
+      alt: status.no_progress_sin_target
       hide_on_goal_pages: false
     - value: moderate_deterioration
-      label: status.retroceso_moderado
+      label: status.moderate_deterioration_sin_target
       image: assets/img/progress/retroceso.webp
-      alt: status.retroceso_moderado
+      alt: status.moderate_deterioration_sin_target
       hide_on_goal_pages: false
     - value: significant_deterioration
-      label: status.retroceso_significativo
+      label: status.significant_deterioration_sin_target
       image: assets/img/progress/retroceso_significativo.webp
-      alt: status.retroceso_significativo
+      alt: status.significant_deterioration_sin_target
       hide_on_goal_pages: false
     - value: not_available
       label: status.no_evaluado
@@ -289,19 +289,19 @@ progress_status:
       hide_on_goal_pages: false
     # === Estados legacy (compatibilidad con progress_status manual) ===
     - value: alcanzado
-      label: status.progreso_significativo
+      label: status.significant_progress_sin_target
       image: assets/img/progress/alcanzado.webp
-      alt: status.progreso_significativo
+      alt: status.significant_progress_sin_target
       hide_on_goal_pages: false
     - value: progreso
-      label: status.progreso_moderado
+      label: status.moderate_progress_sin_target
       image: assets/img/progress/en_progreso.webp
-      alt: status.progreso_moderado
+      alt: status.moderate_progress_sin_target
       hide_on_goal_pages: false
     - value: retroceso
-      label: status.retroceso_moderado
+      label: status.moderate_deterioration_sin_target
       image: assets/img/progress/retroceso.webp
-      alt: status.retroceso_moderado
+      alt: status.moderate_deterioration_sin_target
       hide_on_goal_pages: false
     - value: noevaluado
       label: status.no_evaluado

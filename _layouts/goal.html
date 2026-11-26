@@ -67,10 +67,14 @@
           {% endif %}
           <div class="col-lg-2 goal-page-target-progress">
             {% if _meta_status_type and _meta_status_type.image %}
+              {% comment %}Etiqueta vigente: variante "_mixto" (igual que el tooltip del informe de progreso). Fallback: label del site_config.{% endcomment %}
+              {% assign _meta_t_key = 'status.' | append: _meta_row.status | append: '_mixto' %}
+              {% assign _meta_t_label = _meta_t_key | t %}
+              {% if _meta_t_label == _meta_t_key %}{% assign _meta_t_label = _meta_status_type.label | t %}{% endif %}
               <div class="progress-status">
                 <div class="progress-status-inline">
                   <div class="progress-status-image">
-                    <img src="{{ site.baseurl }}/{{ _meta_status_type.image }}" alt="{{ _meta_status_type.label | t }}" title="{{ _meta_status_type.label | t }}" />
+                    <img src="{{ site.baseurl }}/{{ _meta_status_type.image }}" alt="{{ _meta_t_label }}" title="{{ _meta_t_label }}" />
                   </div>
                 </div>
               </div>
